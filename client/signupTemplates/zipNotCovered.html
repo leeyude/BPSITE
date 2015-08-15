@@ -1,0 +1,43 @@
+<template name='zipNotCovered'>
+    {{>fbPluginSDK}}
+    {{>navMenu}}
+    <section id='earlyContact'>
+      <div class="container-central clearfix">
+        <div class='earlyContactGroup'>
+          <h4>
+            Baby's Purest is not available in your zip code yet, sorry!
+          </h4>
+          <div class='row' id="earlyContactForm">
+            <h3 class='title'> We’ll be in 99999 soon!</h3>
+            <p>
+              Stay tuned! We'll ensure you get notified as soon as we're in your area! Share with your friends who want to give the best to their babies!
+            </p>
+              <div class='row' id="shareWithFriend">
+
+                <div class="col-md-4">
+                  <div class='nameInput'>
+                    <input class="string userName required" id="userName" name="userName" type="text" placeholder="Your Name (Sender)">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class='friendEmailInput'>
+                    <input class="string friend_email required" id="friend_email" name="friend-email" type="email" placeholder="Friend's E-mail">
+                  </div>
+                </div>
+
+                <div class="col-md-4 submit-btn">
+                  <button class="btn signup-btn" id="sign-up-button" style="width: 140px;" type="submit"> Invite Friend </button>
+                </div>
+            </div>
+          </div>
+          <div id='socialSharing'>
+            <p>
+              While you wait, get most useful baby diet news from us!
+            </p>
+            {{>fbLike}}
+          </div>
+        </div>
+      </div>
+    </section>
+    {{>mainFooter}}
+</template>

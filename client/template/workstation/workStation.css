@@ -1,0 +1,41 @@
+#workStationNav a{
+  text-align: center;
+}
+
+#Station-ingredient h1, {
+  width: 270px;
+  float: left;
+  margin-top: 0;
+}
+
+#Station-userManagement h1{
+  width: 270px;
+  float: left;
+  margin-top: 0;
+}
+
+#Station-ingredient, #Station-userManagement, #Station-zips {
+  padding-top: 40px;
+}
+
+#Station-ingredient .btn, #Station-userManagement .btn, #Station-zips .btn{
+  background-color: rgb(43, 96, 0);
+  color: white!important;
+  display: inline-block;
+  position: static;
+}
+
+#Station-userManagement .page-header {
+  display: block;
+  padding-bottom: 40px;
+}
+
+.userTypeSelection {
+  width: 30%;
+  float: left;
+}
+
+.userTypeBP, .userTypeConsumer {
+  width: 50%;
+  float: left;
+}

@@ -1,0 +1,37 @@
+<template name="profile">
+  {{>signupMenu}}
+  <section id="basicProfile">
+    <div class="container-central clearfix">
+        <h3> Tell us about your baby </h3>
+        <p> Baby's Purest is crafting the best meal plan for your baby with you!  </p>
+        <div class="row">
+          <div class="col-md-6 questionnaireContainer">
+            <h4>1. Basic Profile</h4>
+            <div id="questionnaire">
+              <div class="row"> <label for="firstname">First Name</label>  <input class="string babyFirstName required" id="babyFirstName" name="babyFirstName" size="45" type="text" placeholder="First Name">
+              </div>
+              <div class="row">
+                <label for="gender"> Gender</label>
+                  <select>
+                    <option value="male"> Male</option>
+                    <option value="female">Female</option>
+                  </select>
+              </div>
+              <div class="row">
+                <label for="birthday"> Birthday</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+
+          </div>
+        </div>
+
+
+
+      </div>
+  </section>
+
+
+  {{>shortFooter}}
+</template>

@@ -1,0 +1,15 @@
+#weeklyMenu {
+  position: center;
+  text-align: center;
+  padding-bottom: 40px;
+  padding-top: 100px;
+  background-color: rgb(240, 255, 233);
+}
+
+#weeklyMenu h4{
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40);
+  font-size: 32px;
+  text-align: center;
+  line-height: 1.25em;
+}

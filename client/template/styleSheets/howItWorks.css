@@ -1,0 +1,274 @@
+#howItWorks.title {
+  background: #ffffff url(/howItWorks.jpg);
+  height: auto;
+  background-position: 30% 75%;
+  background-size: cover;
+  position: center;
+  text-align: center;
+  height: 450px;
+  padding-top: 180px;
+}
+
+#howItWorks h4 {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+#howItWorks p {
+    font-family: "Overlock", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5em;
+    font-size: 26px;
+    padding-top: 10px;
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+#howItWorks .btn {
+  padding: 10px 15px;
+  border-radius: 6px;
+  position: inherit;
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-bottom: 45px;
+}
+
+#howItWorksJoin #main_join_now {
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 910px) {
+
+}
+
+@media screen and (min-width: 911px) {
+
+}
+
+#howItWorksSteps{
+  text-align: center;
+  background-color: rgb(240, 255, 233);
+}
+
+#howItWorksSteps h4{
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40);
+  font-size: 22px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+#howItWorksSteps p{
+  font-family: "Overlock", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 16px;
+  padding-top: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: rgb(84, 173, 40);
+  text-align: center;
+}
+
+#howItWorksSteps .steps{
+  padding-top:40px;
+  width: 890px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+#howItWorksSteps .steps .step{
+  float: left;
+  width: 33.3%;
+}
+
+#howItWorksSteps .steps .step.one .stepImg {
+    background: url(/babyProfile.png);
+    background-repeat: no-repeat;
+    background-size:contain;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: 100px;
+}
+
+#howItWorksSteps .steps .step.two .stepImg {
+    background: url(/customization.png);
+    background-repeat: no-repeat;
+    background-size:contain;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 100px;
+}
+
+#howItWorksSteps .steps .step.three .stepImg {
+    background: url(/deliverTruck.png);
+    background-repeat: no-repeat;
+    background-size:contain;
+    overflow: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100px;
+    height: 100px;
+}
+
+
+#howItWorksFarmFresh {
+  background: #ffffff url(/woodybackground.jpg ) repeat;
+  height: auto;
+  background-position: center;
+  background-size: cover;
+  position: center;
+  text-align: center;
+  height: 450px;
+  padding-top: 80px;
+}
+
+#howItWorksFarmFresh h4 {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+#howItWorksFarmFresh p {
+    font-family: "Overlock", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5em;
+    font-size: 24px;
+    padding-top: 10px;
+    color: white;
+    text-align: center;
+}
+
+#howItWorksFarmFresh .btn {
+  padding: 10px 15px;
+  border-radius: 6px;
+  position: inherit;
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-bottom: 45px;
+}
+
+
+#standard-section.healthyRecipies {
+  background: #ffffff url("/happyTummie.jpg") no-repeat;
+  background-position: 90% 100%;
+  background-size: contain;
+  border-bottom: 4px solid rgb(84, 173, 40);
+}
+
+#standard-section.healthyRecipies h4 {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40);
+  font-size: 40px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+#standard-section.healthyRecipies p {
+    font-family: "Overlock", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5em;
+    font-size: 17px;
+    padding-top: 10px;
+    color: rgb(84, 173, 40);
+    text-align: center;
+}
+
+.ourPromise {
+  background: rgb(240, 255, 233);
+}
+
+.promiseHeader {
+  margin-bottom: 20px;
+  padding-top: 50px;
+}
+
+.promiseColumn {
+  width: 890px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.promiseImg {
+  height: 182px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(84, 173, 40);
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgb(84, 173, 40);
+  margin-bottom: 15px;
+
+}
+
+.promiseOrganic {
+  background-image: url(/promiseorganic.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.promiseLocal {
+  background-image: url(/promiseLocal.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.promiseAllergyConcious {
+  background-image: url(/promiseAllergyConcious.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.promiseConvenience {
+  background-image: url(/promiseSimple.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.promiseText {
+  background-color: rgb(84, 173, 40);
+  position: relative;
+  height: 180px;
+  display: none;
+}
+
+.promiseImg:hover > .promiseText {
+  display: block;
+  transition: 0.3s;
+}
+
+.promiseImg p {
+  color: white!important;
+  margin-top: 40px;
+  padding-left: 10%;
+  padding-right: 10%;
+  position: absolute;
+}
+
+.promiseColumn h5 {
+  font-size: 22px;
+  padding-bottom: 12px;
+  margin-top: 15px;
+}

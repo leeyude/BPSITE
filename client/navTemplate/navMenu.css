@@ -1,0 +1,84 @@
+@media screen and (min-width: 1200px) {  /* -- If the view port is more than 1200px wide (portrait on phone) then display the following styles -- */
+  .container-fluid {
+    width: 1180px;
+  }
+}
+
+@media screen and (max-width: 845px) {  /* -- If the view port is less than 845px wide (portrait on phone) then display the following styles -- */
+  img {
+    margin-left: 20px;
+  }
+}
+
+.navbar-default {
+padding-top: 8px;
+padding-bottom: 8px;
+background-color: #ffffff;
+border-color: #ffffff;
+border-bottom: 1px solid #bbb;
+border-bottom-width: 1px;
+border-bottom-style: solid;
+border-bottom-color: rgb(98, 108, 88);
+}
+
+#logo {
+  width: 105px;
+  height: auto;
+  margin-right: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.navbar-nav a {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40) !important;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 14px;
+}
+
+#main-header {
+  font-family: "Gentium Book Basic", sans-serif;
+  background: #fff;
+  min-height: 65px;
+  position: fixed;
+  z-index: 510;
+  min-width: 965px;
+  width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: white;
+}
+
+.menu-holder {
+  float: left;
+}
+
+.menu {
+  left: 0px;
+  top: 0px;
+  margin-left: 20px;
+}
+
+.sign-up {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  float: right;
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+a.sign-up:hover{
+  background-color: rgb(39, 85, 1)!important;
+}

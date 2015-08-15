@@ -1,0 +1,152 @@
+#pricing {
+  position: center;
+  text-align: center;
+  padding-bottom: 40px;
+  padding-top: 100px;
+  background-color: rgb(240, 255, 233);
+}
+
+#pricing h4{
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40);
+  font-size: 26px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+#pricing p {
+    font-family: "Overlock", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5em;
+    font-size: 16px;
+    color: #555555;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.pricingBlockBackground {
+  border-radius: 4px;
+  width: 336px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #e8e8ea;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.pricingBlock {
+  border-radius: 4px;
+  border: 1px solid rgb(84, 173, 40);
+  width: 330px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #fff;
+}
+
+.pricingImg {
+
+  background-repeat: no-repeat;
+  background-size:cover;
+  width: 328px;
+  height: 180px;
+}
+
+#small-box .pricingImg {
+    background-image: url(/pricing-small.jpg);
+    background-position: bottom;
+}
+
+#medium-box .pricingImg {
+    background-image: url(/pricing-medium.jpg);
+    background-position: center;
+}
+
+#large-box .pricingImg {
+    background-image: url(/pricing-big.jpg);
+    background-position: center;
+}
+
+.pricingDescription .descriptionList dt {
+  width: 50%;
+  float: left;
+  text-align: right;
+  line-height: 32px;
+  height: 32px;
+  font-family: "Gentium Book Basic", sans-serif;
+  color: #555555;
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.pricingDescription .descriptionList dd {
+  width: 50%;
+  float: right;
+  text-align: left;
+  line-height: 32px;
+  height: 32px;
+  color: rgb(84, 173, 40);
+  font-size: 17px;
+  font-weight: 300;
+}
+
+.pricingDescription .descriptionList .highlight {
+  margin-left: 15px;
+  font-weight: 700!important;
+}
+
+#pricing .btn {
+    padding: 10px 15px;
+    border-radius: 6px;
+    position: inherit;
+    font-size: 14px;
+    letter-spacing: 0;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.QAHead h3{
+  text-align: center;
+  font-size: 32px;
+  margin-top: 40px;
+}
+
+.qaListLeft {
+  width: 75%;
+  float: right;
+  margin-right: 30px;
+}
+
+.qaListRight {
+  width: 75%;
+  float: left;
+  margin-right: 30px;
+}
+
+.qaListLeft p, .qaListRight p {
+  font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+      font-weight: 400;
+      font-stretch: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 24px;
+      color: #555555;
+      padding-bottom: 20px;
+}
+
+.otherQA {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-weight: 400;
+    font-stretch: normal;
+    background-color: #fafafc;
+    font-size: 16px;
+    display: inline-block;
+    border: 1px solid #e8e8eb;
+    padding: 15px 50px;
+    margin-top: 15px;
+}

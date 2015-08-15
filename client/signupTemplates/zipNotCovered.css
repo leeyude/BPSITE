@@ -1,0 +1,82 @@
+@media screen and (min-width: 911px) {
+
+  #earlyContactForm {
+    width: 860px;
+  }
+
+  #earlyContactForm p {
+    width: 460px;
+    margin: auto;
+  }
+
+}
+
+@media screen and (max-width: 910px) {
+
+  #earlyContactForm {
+    width: 360px;
+  }
+  #earlyContactForm p {
+  margin:auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  }
+}
+
+#earlyContact {
+  background-color: rgb(240, 255, 233);
+  padding-top: 140px;
+  text-align: center;
+}
+
+.earlyContactGroup {
+  text-align: center;
+}
+
+.earlyContactGroup h4, #earlyContactForm p, #socialSharing p {
+  color: rgb(95, 103, 89);
+  line-height: 1em;
+  font-weight: 400;
+  font-family: "Overlock", sans-serif;
+  font-size: 16px !important;
+  padding-bottom: 8px;
+}
+
+#earlyContactForm {
+  border: 1px solid;
+  border-color: rgba(84, 173, 40, 0.68);
+  margin: auto;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+#shareWithFriend {
+  margin-top: 30px;
+}
+
+#shareWithFriend .btn:hover, #shareWithFriend .btn:focus {
+    background-color: rgb(43, 96, 0);
+}
+
+#shareWithFriend input {
+  line-height: 30px;
+    font-family: "Quando", sans-serif;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 15px;
+    text-align: center;
+    width: auto;
+    border-radius: 4px;
+}
+
+#shareWithFriend .btn {
+  height: 35px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+#socialSharing {
+  margin-top: 30px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+}

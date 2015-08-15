@@ -1,0 +1,114 @@
+<template name="userManagement">
+  <section id="workStationNav">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand BPworkstation" href="/workstation/themagicofbabypurest"> Baby's Purest <br>Workstation</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="/workstation/ingredients">Ingredients</a></li>
+            <li><a href="/workstation/recipe">Recipes</a></li>
+            <li><a href="/workstation/menuCalendar">Menu</a></li>
+            <li><a href="/workstation/userManagement">User Management</a></li>
+            <li><a href="/workstation/zipcodes"> Zipcodes</a></li>
+
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <section id="Station-userManagement">
+    <div class="container">
+      <div class="page-header">
+        <h1>User <small>List</small></h1>
+        <div class="userTypeSelection">
+          <div class="userTypeBP">
+            <button type="button" class="btn btn-lg" id="userTypeBPButton">
+              BP Admin
+            </button>
+          </div>
+          <div class="userTypeConsumer">
+            <button type="button" class="btn btn-lg" id="userTypeConsumerButton">
+              Consumer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='container-fluid'>
+      <div class='row'>
+
+<!--Admin-->
+        <table class='table table-striped table-bordered table-hover table-condensed'>
+          <thead>
+            <tr>
+              <th>First Name          </th>
+              <th>Last Name           </th>
+              <th>Email               </th>
+              <th>Role                </th>
+              <th>Employee #          </th>
+              <th>is Admin         </th>
+              <th>Active since         </th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {{#each BPadminLine}}
+              {{>BPadminData}}
+            {{/each}}
+          </tbody>
+        </table>
+<!--Consumer-->
+        <table class='table table-striped table-bordered table-hover table-condensed'>
+          <thead>
+            <tr>
+              <th>First Name          </th>
+              <th>Last Name           </th>
+              <th>Email               </th>
+              <th>Active              </th>
+              <th>Stage               </th>
+              <th>Address             </th>
+              <th>Zipcode             </th>
+              <th>Type of address     </th>
+              <th>User last activity  </th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {{#each ingredientItem}}
+              {{>ingredientData}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+  </section>
+</template>
+
+<template name="BPadminData">
+  <tr class="BPadminData">
+    <td>{{firstName}}</td>
+    <td>{{lastName}}</td>
+    <td>{{email}}</td>
+    <td>{{role}}</td>
+    <td>{{employeeSerial}}</td>
+    <td>{{isAdmin}}</td>
+    <td>{{createdAt}}</td>
+
+  </tr>
+</template>

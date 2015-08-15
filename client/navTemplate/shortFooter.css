@@ -1,0 +1,24 @@
+#shortFooter {
+  background-color: rgb(84, 173, 40);
+  color: white;
+}
+
+#mainFooter .col-sm-12 {
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 14px;
+  min-height: 100%;
+  margin-top: 22px;
+  text-align: right;
+    vertical-align: middle;
+}
+
+#shortFooter .footerLogo {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: auto;
+  text-align: center;
+}
+
+#shortFooter img {
+    margin-left: 12px;
+}

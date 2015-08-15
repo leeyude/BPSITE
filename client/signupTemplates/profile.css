@@ -1,0 +1,61 @@
+#basicProfile {
+  padding-top: 85px;
+  text-align: center;
+  background-color: rgb(240, 255, 233);
+}
+
+#basicProfile h3 {
+  margin-bottom: 7px;
+  padding-bottom: 0px;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-weight: 700;
+}
+
+#basicProfile p {
+  font-family: "Quando", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 16px;
+  padding-top: 10px;
+  color: rgb(84, 173, 40);
+  margin-bottom: 35px;
+}
+
+#basicProfile h4 {
+  text-align: left;
+  font-size: 20px;
+}
+
+#basicProfile input {
+  width: 200px;
+}
+
+#questionnaire {
+  list-style: none;
+  display: inline-block;
+  width: inherit;
+    width: 100%;
+}
+
+#questionnaire label {
+  color: rgb(84, 173, 40);
+  line-height: 1em;
+  font-weight: 700;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 16px;
+  padding-top: 12px;
+  float: left;
+
+}
+
+
+#basicProfile .questionnaireContainer {
+  border: 1px solid;
+  border-color: rgba(84, 173, 40, 0.68);
+  margin: auto;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}

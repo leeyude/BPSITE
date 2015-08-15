@@ -1,0 +1,658 @@
+/*Main hero section*/
+
+#main-hero {
+  background: #fafafc url("LandingPage.png") repeat center bottom;
+  height: 660px;
+  background-position: center;
+  background-size: cover;
+  background-position: left center;
+  border-bottom: 2px solid rgb(84, 173, 40);
+  color: rgb(84, 173, 40);
+  position: relative;
+}
+
+.HeroIconHolder {
+  width: auto;
+  height: 64px;
+  position: center;
+}
+
+.HeroIcon {
+  width: 64px;
+  height: 64px;
+}
+
+img {
+  max-width: 100%;
+  width: auto\9;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+#main-hero a, #hp-hero-1 a:link, #main-hero a:visited {
+  color: white;
+}
+
+#main-hero .content {
+  margin-right: 80px;
+}
+
+#main-hero .content {
+  width: 480px;
+  float: right;
+  padding: 150px 0px 0px 0px;
+  text-align: center;
+}
+
+#main-hero h3 {
+  margin-bottom: 7px;
+  padding-bottom: 0px;
+  font-size: 60px;
+  line-height: 1.1em;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-weight: 700;
+}
+
+#main-hero p {
+  font-family: "Quando", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 16px;
+  padding-top: 10px;
+  color: rgb(84, 173, 40);
+}
+
+#main-hero #main_join_now, #closing #main_join_now, #howItWorksJoin #main_join_now{
+  font-family: "Gentium Book Basic", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 7px;
+  margin-top: 27px;
+  color: white;
+  text-align: center;
+  padding: 10px 30px 12px 30px;
+  border-radius: 15px;
+  position:inherit;
+}
+
+#main-hero #main_join_now h5, #closing #main_join_now h5, #howItWorksJoin #main_join_now h5{
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 42px;
+  color: white;
+  margin: 0;
+  letter-spacing: -.01em;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: rgb(84, 173, 40);
+  line-height: 1em;
+  font-weight: 700;
+  font-family: "Gentium Book Basic", sans-serif;
+}
+
+#main-hero #main_join_now span, #closing #main_join_now span, #howItWorksJoin #main_join_now span{
+  font-size: 14px;
+  color: rgb(188, 205, 171);
+  letter-spacing: .01em;
+}
+
+
+
+body a.btn, .btn {
+  text-shadow: none;
+/*
+background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #777a99), color-stop(50%, #424673), color-stop(100%, #2f3567));
+background-image: -webkit-linear-gradient(#777a99, #424673, #2f3567);
+background-image: -moz-linear-gradient(#777a99, #424673, #2f3567);
+background-image: -o-linear-gradient(#777a99, #424673, #2f3567);
+
+
+*/
+  background-image: linear-gradient(rgb(85, 133, 53),rgb(63, 123, 31),rgb(43, 103, 2));
+  behavior: url(/assets/PIE.htc);
+  position: relative;
+  border: 1px solid rgb(86, 119, 68);
+  border-bottom: 1px solid rgb(63, 123, 31);
+  text-align: center;
+  border-radius: 3px;
+  text-decoration: none;
+  color: white;
+}
+
+.btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+  background-color: rgb(84, 173, 40);
+  background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #fff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff,#e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #cccccc;
+  border-bottom-color: #b3b3b3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+}
+
+body a.btn:hover, body a.btn:focus {
+  background-color: rgb(43, 96, 0);
+  color: white!important;
+}
+
+.btn:hover, .btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+
+/*Here starts the second main section*/
+#main-section {
+  background: #ffffff url("") repeat center bottom;
+  height: 520px;
+  background-position: center;
+  background-size: cover;
+  background-position: left center;
+  color: rgb(84, 173, 40);
+}
+
+#main-section .content {
+  position: relative;
+  z-index: 100;
+  padding: 71px 0 30px 0;
+  margin-left: 80px;
+  width: 480px;
+  float: left;
+}
+
+#main-section h3 {
+  margin-bottom: 7px;
+  padding-bottom: 0px;
+  font-size: 54px;
+  line-height: .9em;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-weight: 700;
+}
+
+#main-section p {
+  font-family: "Overlock", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 17px;
+  padding-top: 10px;
+  color: rgb(84, 173, 40);
+}
+
+#main-section .get-started {
+  margin-top: 12px;
+  display: inline-block;
+}
+
+#main-section .btn {
+  padding: 10px 15px;
+  border-radius: 6px;
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+/*Here starts the Footer */
+
+.footer-main {
+  height: 70px;
+  line-height: 70px;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-weight: 400;
+  font-stretch: normal;
+  background: rgb(84, 173, 40);
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.footer-main .footer-nav {
+  margin: 18px 0 0 0;
+}
+
+
+.row-fluid [class*="span"] {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  margin-left: 2.127659574468085%;
+}
+
+.nav-pills > li > a {
+  color: white;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  color: white;
+  background-color: rgb(43, 96, 0);
+  text-decoration: underline;
+}
+
+.footer-main .copy {
+  text-align: right;
+  float: right;
+}
+
+ .footer-main .a {
+  color: #ffffff;
+}
+
+.footer-logo{
+ float:right;
+ padding-left: 18px;
+}
+
+body a.btn, .btn {
+  text-shadow: none;
+  background-image: linear-gradient(rgb(85, 133, 53),rgb(63, 123, 31),rgb(43, 103, 2));
+  behavior: url(/assets/PIE.htc);
+  position: relative;
+  border: 1px solid rgb(86, 119, 68);
+  border-bottom: 1px solid rgb(63, 123, 31);
+  text-align: center;
+  border-radius: 3px;
+  text-decoration: none;
+  color: white!important;
+}
+
+body a.btn:hover, body a.btn:focus {
+  background-color: rgb(43, 96, 0);
+  color: white;
+}
+
+.btn:hover, .btn:focus {
+  color: #333333;
+  text-decoration: none;
+  background-position: 0 -15px;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
+}
+
+#web-user a, #web-user a:link, #web-user a:visited, .mobile-portal a, .mobile-portal a:link, .mobile-portal a:visited {
+  font-weight: 900;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+  letter-spacing: 0px;
+  font-family: Signika;
+}
+
+#OrganicIngredient {
+  background: #ffffff url("/pears.jpg");
+  height: auto;
+  background-position: center left;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+}
+
+.colorBackground {
+    padding-bottom: 50px;
+}
+
+.colorBackground h4 {
+    font-family: "Gentium Book Basic", sans-serif;
+    color: white;
+    font-size: 40px;
+    margin-top: 100px;
+        line-height: 1.25em;
+}
+
+.colorBackground p {
+    font-family: "Overlock", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5em;
+    font-size: 17px;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    color: white;
+}
+
+.get-started {
+  margin-top: 12px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+#OrganicIngredient .btn {
+  padding: 10px 15px;
+  border-radius: 6px;
+  position: inherit;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+#center-section h3 {
+  margin-bottom: 7px;
+  padding-bottom: 0px;
+  font-size: 60px;
+  line-height: 1.25em;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-weight: 700;
+}
+
+
+.noAdditives {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.noAdditives p {
+  font-family: "Overlock", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 17px;
+  padding-top: 10px;
+  color: white  ;
+}
+
+.text-photo {
+  padding-top: 90px;
+  padding-bottom: 90px;
+  text-align: center;
+
+}
+
+#standard-section {
+  background: #ffffff repeat center bottom;
+  height: auto;
+  background-position: center;
+  background-size: cover;
+  position: center;
+  text-align: center;
+}
+
+#standard-section h4 {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40);
+  font-size: 40px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+#standard-section p {
+    font-family: "Overlock", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5em;
+    font-size: 17px;
+    padding-top: 10px;
+    color: rgb(84, 173, 40);
+    text-align: center;
+}
+
+#standard-section .btn {
+  padding: 10px 15px;
+  border-radius: 6px;
+  position: inherit;
+  font-size: 14px;
+  letter-spacing: 0;
+  margin-bottom: 90px;
+}
+
+#standard-section.allergyConcious {
+  background: #ffffff url("/allergyConcious.jpg") no-repeat;
+  background-position: right center;
+  background-size: cover;
+}
+
+#standard-section.allergyConcious h4 {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40);
+  font-size: 40px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+#standard-section.allergyConcious p {
+    font-family: "Overlock", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5em;
+    font-size: 17px;
+    padding-top: 10px;
+    color: rgb(84, 173, 40);
+    text-align: center;
+}
+
+
+#standard-section.sustainable {
+  background: #ffffff url("/sustainable.jpg") no-repeat;
+  background-position: left center;
+  background-size: cover;
+}
+
+#standard-section.sustainable h4 {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: white;
+  font-size: 40px;
+  margin-top: 75px;
+  text-align: center;
+  line-height: 1.25em;
+}
+
+#standard-section.sustainable p {
+  font-family: "Overlock", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 17px;
+  padding-top: 10px;
+  color: white;
+  text-align: center;
+}
+
+#standard-section.gruntWork {
+  background: #ffffff url("/gruntWorks.jpg") no-repeat;
+  background-position: 0% 5%;
+  background-size: cover;
+}
+
+#standard-section.gruntWork h4 {
+  color: white;
+  margin-top: 50px;
+}
+
+#standard-section.gruntWork p {
+  color: white;
+}
+
+#standard-section.gruntWork .get-started {
+  margin-bottom: 90px;
+}
+
+#stage {
+  background: #ffffff repeat center bottom;
+  height: auto;
+  background-position: center;
+  background-size: cover;
+  position: center;
+  text-align: center;
+}
+
+#stage {
+
+  text-align: center;
+
+}
+
+.stage {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  height: auto;
+}
+
+#stage h3 {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: rgb(84, 173, 40);
+  font-size: 40px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+#stage h4 {
+  font-family: "Gentium Book Basic", sans-serif;
+  color: white;
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+#stage img {
+  margin-bottom: 12px;
+}
+
+#stage p {
+  font-family: "Overlock", sans-serif;
+  font-weight: 400;
+  line-height: 1.5em;
+  font-size: 16px;
+  padding-top: 10px;
+  color: rgb(84, 173, 40);
+  text-align: center;
+}
+
+.stage1 {
+
+  border-style: ridge;
+  border-color: rgb(37, 234, 246);
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.stage2 {
+  border-style: ridge;
+  border-color: rgb(205, 29, 193);
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.stage3 {
+  border-style: ridge;
+  border-color: rgb(241, 159, 18);
+  padding-left: 7px;
+  padding-right: 7px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.stage1 h4 {
+  border-style: groove;
+  border-color: rgb(37, 234, 246);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: rgb(37, 234, 246);
+  border-radius: 15px;
+}
+
+.stage1 h5 {
+  color: rgb(16, 124, 130);
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.stage2 h4 {
+  border-style: groove;
+  border-color: rgb(205, 29, 193);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: rgb(205, 29, 193);
+  border-radius: 15px;
+}
+
+.stage2 h5 {
+  color: rgb(148, 18, 139);
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.stage3 h4 {
+  border-style: groove;
+  border-color: rgb(241, 159, 18);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: rgb(241, 159, 18);
+  border-radius: 15px;
+}
+
+.stage3 h5 {
+  color: rgb(153, 103, 17);
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+#closing {
+  background: #ffffff url("share.jpg") repeat;
+  height: auto;
+  background-position: center center;
+  background-size: cover;
+  position: center;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+#closing h4 {
+    font-family: "Gentium Book Basic", sans-serif;
+    color: white;
+    font-size: 40px;
+    margin-top: 65px;
+}
+
+#closing p {
+    font-family: "Overlock", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5em;
+    font-size: 17px;
+    padding-top: 10px;
+    color: white;
+}

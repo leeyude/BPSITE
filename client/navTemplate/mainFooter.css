@@ -1,0 +1,46 @@
+@media screen and (max-width: 910px) {
+  #mainFooter .col-sm-8 {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 911px) {
+  #mainFooter .col-sm-8 {
+    text-align: right;
+  }
+}
+
+
+#mainFooter {
+  background-color: rgb(84, 173, 40);
+  color: white!important;
+}
+
+#mainFooter .col-sm-2 {
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 14px;
+  min-height: 100%;
+  margin-top: 22px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#mainFooter .col-sm-8 {
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 14px;
+  min-height: 100%;
+  margin-top: 22px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#mainFooter .footerLogo {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  height: auto;
+  text-align: center;
+}
+
+#mainFooter a {
+  color: white;
+}
