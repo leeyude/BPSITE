@@ -37,7 +37,7 @@
 
       <form class="well form-inline">
        <label class="control-label" for="readZipCSV"> Import CSV</label>
-       <input class="myFileInput" id="readZipCSV" type="file" name="myFileInput">
+       <input class="myFileInput" id="readZipCSV" type="file" name="files[]">
        <Button class="btn btn-primary" id="readCSV">Import</button>
       </form>
 
@@ -52,21 +52,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+      
             {{#each zipLine}}
-            <td>{{zipcode}}          </td>
-            <td>{{cityName}}          </td>
-            <td>{{stateAbb}}          </td>
-            <td>{{currentServing}}          </td>
+              {{>zipLines}}
             {{/each}}
-          </tr>
 
         </tbody>
       </table>
-
     </div>
-
   </section>
 
 
+</template>
+
+<template name="zipLines">
+  <tr>
+    <td>{{zipcode}}          </td>
+    <td>{{cityName}}          </td>
+    <td>{{stateAbb}}          </td>
+    <td>{{currentServing}}          </td>
+  </tr>
 </template>
