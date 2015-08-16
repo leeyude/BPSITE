@@ -5,8 +5,6 @@ Template.navMenu.events({
   },
 });
 
-
-
 if (Meteor.isClient) {
 
   Router.route('/', function () {
