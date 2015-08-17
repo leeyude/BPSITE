@@ -28,28 +28,3 @@ readFile = function(loadedFile,onLoadCallback) {
   }
   reader.readAsText(loadedFile);
 };
-
-
-/*
- var data;
-
- function handleFileSelect(evt) {
-   var file = evt.target.files[0];  //loadedFile
-
-   Papa.parse(file, {
-     header: false,
-     dynamicTyping: true,
-     complete: function(data) {
-       console.log(data);
-       Meteor.call('upload',data);
-     }
-   });
- }
-
-
- $(document).ready(function(){
-   $("#readZipCSV").change(handleFileSelect);
- });
-
-});
-*/

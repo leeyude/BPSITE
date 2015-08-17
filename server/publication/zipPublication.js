@@ -1,3 +1,3 @@
-// Meteor.publish("zips", function(){
-//  return Zips.find({},{limit:100});
-// });
+Meteor.publish('zipsPublish', function(){
+    return Zips.find();
+});
