@@ -32,4 +32,36 @@ import_file_CSV = function(file) {
     var result = Zips.insert({zipcode:zipcode, cityName:cityName, stateAbb:stateAbb, currentServing: currentServing});
     };
     return result;
-}
+};
+
+Meteor.methods({
+  updateZips: function(zipcode, cityName, stateAbb, currentServing, zipId){
+      if(zipId){
+        var newDate= new Date();
+        var currentDate = moment(newDate).format('ll');
+        Zips.update({_id:zipId}, {$set:{
+          zipcode: zipcode,
+          cityName: cityName,
+          stateAbb: stateAbb,
+          currentServing: currentServing,
+          zipId: zipId,
+        }});
+        console.log(zipId);
+      } else {
+        var newDate= new Date();
+        var currentDate = moment(newDate).format('ll');
+        Zips.insert({
+          zipcode: zipcode,
+          cityName: cityName,
+          stateAbb: stateAbb,
+          currentServing: currentServing,
+          zipId: zipId,
+        });
+      };
+    },
+
+    deleteZips:function(zipId){
+      Zips.remove({_id:zipId});
+      console.log('delete');
+    },
+});

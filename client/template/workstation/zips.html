@@ -32,14 +32,8 @@
     <div class="container">
       <div class="page-header">
         <h1>Zip codes<small> Database</small></h1>
-
+        {{>zipUpdate}}
       </div>
-
-      <form class="well form-inline">
-       <label class="control-label" for="readZipCSV"> Import CSV</label>
-       <input class="myFileInput" id="readZipCSV" type="file" name="files[]">
-       <Button class="btn btn-primary" id="readCSV">Import</button>
-      </form>
 
       <table class='table table-striped table-bordered table-hover table-condensed'>
         <thead>
@@ -52,7 +46,7 @@
           </tr>
         </thead>
         <tbody>
-      
+
             {{#each zipLine}}
               {{>zipLines}}
             {{/each}}
@@ -62,14 +56,148 @@
     </div>
   </section>
 
+  <form class="well form-inline">
+   <label class="control-label" for="readZipCSV"> Import CSV</label>
+   <input class="myFileInput" id="readZipCSV" type="file" name="files[]">
+   <Button class="btn btn-primary" id="readCSV">Import</button>
+  </form>
 
 </template>
 
 <template name="zipLines">
-  <tr>
+  <tr class="zipLines">
     <td>{{zipcode}}          </td>
     <td>{{cityName}}          </td>
     <td>{{stateAbb}}          </td>
     <td>{{currentServing}}          </td>
   </tr>
+</template>
+
+<template name="zipUpdate">
+  <div class="zipUpdateSession">
+    <button type="button" class="btn btn-lg" data-toggle="modal" id="zipUpdateButton" data-target="#zipUpdateForm">
+      Add Zipcode
+    </button>
+    <span>Currently Serving?</span>
+    <button type="button" class="btn btn-lg" id="zipCurrentServingYes">
+      Yes
+    </button>
+    <button type="button" class="btn btn-lg" id="zipCurrentServingNo">
+      No
+    </button>
+    <span>Search by ZIP</span>
+    <input type='text' class='zipcodeSearch input form-control input-xlarge' id= "zipcodeSearch" placeholder='5 digit ZIP Code'>
+    <button type="button" class="btn btn-lg" id="zipcodeSearchInput">
+      Search
+    </button>
+  </div>
+
+  <!-- Add Zipcode -->
+
+  <div class="modal fade" id="zipUpdateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+          {{#if editingZipcode}}
+          <h4 class="modal-title" id="myModalLabel">Update ZIP code</h4>
+          {{else}}
+          <h4 class="modal-title" id="myModalLabel">Add ZIP code</h4>
+          {{/if}}
+        </div>
+        <div class="modal-body">
+          <!--           <label for="nowUsing"> Now Using?:</label> -->
+          <label for="zipcode"> ZIP Code:</label>
+          <input type='text' class='zipcode input form-control input-xlarge' name= "zipcode" placeholder='ZIP Code'>
+          <label for="cityName"> City Name:</label>
+          <input type='text' class='cityName input form-control input-xlarge' name= "cityName" placeholder='City Name'>
+
+          <!--<input type='text' class='itemType input form-control input-xlarge' name= "itemType" value= "{{Ingredients.itemType}}" placeholder='Item Type'>-->
+          <!--           Stage 1 is for babies before 8 months, 2 for 8-10 months, 3 for 10-12 months, and 4 for over 12 months -->
+          <label for="stateAbb"> State:</label>
+          <select name= "stateAbb" class='form-control stateAbb'>
+<option value="AL">	Alabama	,	AL	</option>
+<option value="AK">	Alaska	,	AK	</option>
+<option value="AZ">	Arizona	,	AZ	</option>
+<option value="AR">	Arkansas	,	AR	</option>
+<option value="CA">	California	,	CA	</option>
+<option value="CO">	Colorado	,	CO	</option>
+<option value="CT">	Connecticut	,	CT	</option>
+<option value="DC">	District of Columbia	,	DC	</option>
+<option value="DE">	Delaware	,	DE	</option>
+<option value="FL">	Florida	,	FL	</option>
+<option value="GA">	Georgia	,	GA	</option>
+<option value="HI">	Hawaii	,	HI	</option>
+<option value="ID">	Idaho	,	ID	</option>
+<option value="IL">	Illinois	,	IL	</option>
+<option value="IN">	Indiana	,	IN	</option>
+<option value="IA">	Iowa	,	IA	</option>
+<option value="KS">	Kansas	,	KS	</option>
+<option value="KY">	Kentucky	,	KY	</option>
+<option value="LA">	Louisiana	,	LA	</option>
+<option value="ME">	Maine	,	ME	</option>
+<option value="MD">	Maryland	,	MD	</option>
+<option value="MA">	Massachusetts	,	MA	</option>
+<option value="MI">	Michigan	,	MI	</option>
+<option value="MN">	Minnesota	,	MN	</option>
+<option value="MS">	Mississippi	,	MS	</option>
+<option value="MO">	Missouri	,	MO	</option>
+<option value="MT">	Montana	,	MT	</option>
+<option value="NE">	Nebraska	,	NE	</option>
+<option value="NV">	Nevada	,	NV	</option>
+<option value="NH">	New Hampshire	,	NH	</option>
+<option value="NJ">	New Jersey	,	NJ	</option>
+<option value="NM">	New Mexico	,	NM	</option>
+<option value="NY">	New York	,	NY	</option>
+<option value="NC">	North Carolina	,	NC	</option>
+<option value="ND">	North Dakota	,	ND	</option>
+<option value="OH">	Ohio	,	OH	</option>
+<option value="OK">	Oklahoma	,	OK	</option>
+<option value="OR">	Oregon	,	OR	</option>
+<option value="PA">	Pennsylvania	,	PA	</option>
+<option value="RI">	Rhode Island	,	RI	</option>
+<option value="SC">	South Carolina	,	SC	</option>
+<option value="SD">	South Dakota	,	SD	</option>
+<option value="TN">	Tennessee	,	TN	</option>
+<option value="TX">	Texas	,	TX	</option>
+<option value="UT">	Utah	,	UT	</option>
+<option value="VT">	Vermont	,	VT	</option>
+<option value="VA">	Virginia	,	VA	</option>
+<option value="WA">	Washington	,	WA	</option>
+<option value="WV">	West Virginia	,	WV	</option>
+<option value="WI">	Wisconsin	,	WI	</option>
+<option value="WY">	Wyoming	,	WY	</option>
+<option value="AS">	American Samoa	,	AS	</option>
+<option value="DC">	District of Columbia	,	DC	</option>
+<option value="FM">	Federated States of Micronesia	,	FM	</option>
+<option value="GU">	Guam	,	GU	</option>
+<option value="MH">	Marshall Islands	,	MH	</option>
+<option value="MP">	Northern Mariana Islands	,	MP	</option>
+<option value="PW">	Palau	,	PW	</option>
+<option value="PR">	Puerto Rico	,	PR	</option>
+<option value="VI">	Virgin Islands	,	VI	</option>
+          </select>
+
+          <label for="currentServing"> Now Using?</label>
+          <select name= "currentServing" class='form-control currentServing'>
+            <option>No</option>
+            <option>Yes</option>
+
+          </select>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+          {{#if editingZipcode}}
+          <button type="button" class="btn btn-warning save" data-dismiss="modal">Update</button>
+          <button type="button" class="btn btn-danger delete" data-dismiss="modal">Delete</button>
+          {{else}}
+          <button type="button" class="btn btn-primary save" data-dismiss="modal">Save</button>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+
 </template>
