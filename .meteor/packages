@@ -21,3 +21,4 @@ ejson
 cfs:standard-packages
 cfs:filesystem
 dsyko:meteor-node-csv
+check
