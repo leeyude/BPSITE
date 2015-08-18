@@ -6,7 +6,7 @@ Session.setDefault("CurrentServingSelector", "Yes");
 Template.zipcodes.helpers ({
   zipLine: function(){
     console.log("helper update"+Session.get("CurrentServingSelector"));
-    return Zips.find({},{limit : 50}, {$or: [{ currentServing: Session.get("CurrentServingSelector") }]});
+    return Zips.find({},{limit : 50}, {$or: [{ currentServing: Session.get("CurrentServingSelector") }]}).fetch();
   },
 });
 
