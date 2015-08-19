@@ -1,7 +1,7 @@
 Zips= new Mongo.Collection("zips");
 Session.setDefault("currentServing", false);
-Session.setDefault("CurrentServingSelector", "No");
-
+Session.setDefault("CurrentServingSelector", "Yes");
+Session.setDefault("zipSelector", false);
 
 Template.zipcodes.helpers ({
   zipLine: function(){
@@ -61,17 +61,18 @@ Template.zipUpdate.events({
   },
 
   "click #zipCurrentServingYes": function(event, template){
+    $('.zipcodeSearch').val(null);
     Session.set("CurrentServingSelector", "Yes");
-    console.log(Session.get("CurrentServingSelector"));
   },
 
   "click #zipCurrentServingNo": function(event, template){
+    $('.zipcodeSearch').val(null);
     Session.set("CurrentServingSelector", "No");
-    console.log(Session.get("CurrentServingSelector"));
   },
   "click #zipCurrentServingAll": function(event, template){
+    $('.zipcodeSearch').val(null);
+    Session.set("zipSelector", false);
     Session.set("CurrentServingSelector", false);
-    console.log(Session.get("CurrentServingSelector"));
   },
 
 
@@ -81,9 +82,8 @@ Template.zipUpdate.events({
       alert("Your ZIP code input should be 5 digits.");
       $('.zipcodeSearch').val(null);
     } else {
-      $("#zipCurrentServingAll").click();
-      console.log(zipcodeSearch);
-      
+        $("#zipCurrentServingAll").click();
+        Session.set("zipSelector", zipcodeSearch);
     };
   },
 
@@ -103,5 +103,9 @@ Template.zipLines.events({
 Template.zipcodes.helpers({
   CurrentServingSelector: function(){
       return Session.get('CurrentServingSelector');
-  }
+  },
+  zipSelector: function(){
+      return Session.get('zipSelector');
+  },
+
 });

@@ -2,12 +2,19 @@
 
 //});
 
-Meteor.publish('zipsPublish', function(currentServing){
+Meteor.publish('zipsPublish', function(currentServing, zipInput){
     if(currentServing===false){
-      return Zips.find(
-        {},
-        {limit: 50}
-      );
+      if(zipInput){
+        return Zips.find(
+          {zipcode: zipInput},
+          {limit: 50}
+        );
+      }else{
+        return Zips.find(
+          {},
+          {limit: 50}
+        );
+      };  
     } else {
       return Zips.find(
         {currentServing: currentServing},
