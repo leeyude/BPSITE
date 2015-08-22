@@ -14,12 +14,13 @@ Meteor.publish('zipsPublish', function(currentServing, zipInput){
           {},
           {limit: 50}
         );
-      };  
+      };
     } else {
       return Zips.find(
         {currentServing: currentServing},
         {limit: 50}
       );
     };
+    console.log("publish"+this);  
     return this.ready;
 });

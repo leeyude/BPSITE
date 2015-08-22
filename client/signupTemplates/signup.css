@@ -48,7 +48,7 @@
 }
 
 #signupInitial {
-  padding-top: 85px;
+  padding-top: 110px;
   text-align: center;
   background-color: rgb(240, 255, 233);
 }
@@ -74,7 +74,7 @@
   font-size: 16px;
   padding-top: 10px;
   color: rgb(84, 173, 40);
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 
 
@@ -82,7 +82,7 @@
   line-height: 30px;
     font-family: "Quando", sans-serif;
     margin-top: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     margin-left: 15px;
     text-align: center;
     width: 280px;
@@ -122,7 +122,7 @@
   font-weight: 400;
   font-family: "Overlock", sans-serif;
   font-size: 16px !important;
-  padding-bottom: 8px;
+  padding-bottom: 15px;
 }
 
 .signupIntroBlock {
@@ -154,5 +154,18 @@
 }
 
 #signupIntro .signupIntroItem {
+  display: inline-block;
+}
+
+.arrow-up {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #a84e4d;
+  position: absolute;
+  top: -6px;
+  left: 12px;
+  content: "";
   display: inline-block;
 }
