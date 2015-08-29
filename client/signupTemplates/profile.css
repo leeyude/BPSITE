@@ -156,7 +156,7 @@
   width: 100%;
 }
 
-#questionnaire label{
+#questionnaire label, #eatingHabits label{
   color: rgb(84, 173, 40);
   line-height: 1em;
   font-weight: 700;
@@ -220,7 +220,7 @@
   margin-bottom: 5px;
 }
 
-input[type=checkbox], input[type=radio]{
+input[type=checkbox], input[type=radio], input[type=number]{
   display: none;
 }
 
@@ -266,7 +266,6 @@ input[type=checkbox], input[type=radio]{
 #otherAllergen {
   display: block;
   float: left;
-
   line-height: 30px;
   font-family: "Quando", sans-serif;
   text-align: left;
@@ -276,4 +275,110 @@ input[type=checkbox], input[type=radio]{
   position: relative;
   border: 1px solid #c3c3c3;
   padding-left: 8px;
+}
+
+#eatingHabits h5{
+  float: left;
+}
+
+.freqIconMinus {
+  background-image: url(/freq-minus-off.png);
+  background-repeat: no-repeat;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  top: 8px;
+  left: 10px;
+  line-height: 30px;
+  border-radius: 2px;
+  display: inline-block;
+  float: left;
+  position: absolute;
+  cursor: pointer;
+  background-position: center;
+}
+
+.freqIconPlus {
+  background-image: url(/freq-plus-off.png);
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  top: 8px;
+  left: 10px;
+  line-height: 30px;
+  border-radius: 2px;
+  display: inline-block;
+  float: right;
+  position: absolute;
+  cursor: pointer;
+  margin-left: 80px;
+}
+
+.active .freqIconPlus {
+  background-image: url(/freq-plus.png);
+}
+
+.active .freqIconMinus {
+  background-image: url(/freq-minus.png);
+}
+
+#eatingHabits .freqInput {
+      font-family: "Quando", sans-serif;
+    line-height: 36px;
+    display: block;
+    width: 122px;
+    float: left;
+    position: relative;
+    border: 1px solid #c3c3c3;
+    border-radius: 3px;
+    color: #c3c3c3;
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 40px;
+}
+
+#eatingHabits .freqInput.active {
+    border: 1px solid rgb(84, 173, 40);
+    color: rgb(84, 173, 40);
+}
+
+
+#eatingHabits .freqBlock {
+  float: left;
+  width: auto;
+  text-align: center;
+  display: inline-block;
+  border-right: 1px solid #c3c3c3;
+  border-left:1px solid #c3c3c3;
+  width: 38px;
+}
+
+#eatingHabits .active .freqBlock {
+  border-right: 1px solid rgb(84, 173, 40);
+  border-left:1px solid rgb(84, 173, 40);
+}
+
+
+#hasNotStartedSolidFood {
+  font-family: "Quando", sans-serif;
+  line-height: 36px;
+  display: block;
+  width: 60%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 40px;
+  margin-left: 2%;
+}
+
+#hasNotStartedSolidFood.active {
+  border: 1px solid rgb(84, 173, 40);
+  color: rgb(84, 173, 40);
 }

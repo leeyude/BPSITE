@@ -1,3 +1,20 @@
+// Get baby's name to show baby's name on the page
+Session.setDefault("babyName", null);
+
+Template.profile.events({
+  "change #babyName": function(event, template){
+     var getBabyName= template.find("#babyName").value;
+     Session.set("babyName", getBabyName);
+     console.log(getBabyName);
+  }
+});
+
+Template.profile.helpers({
+  babyName: function(){
+    return Session.get("babyName");
+  }
+});
+
 // Gender Selection starts here
 
 Session.setDefault("gender", null);
@@ -248,4 +265,55 @@ Template.profile.helpers({
       return Session.get("soybeans");                        // change soybeans value
     };
   },
+});
+
+// Setting number of solid food a day
+
+Session.setDefault("mealFreq", 2);
+
+Template.profile.events({
+  "click #hasNotStartedSolidFood": function(event, template){
+    Session.set("mealFreq", false);
+  },
+
+  "click .freqIconPlus": function(event, template){
+    var currentFreq= Session.get("mealFreq");
+    if(currentFreq=="6+"){
+    }else{
+      if(currentFreq==5){
+        Session.set("mealFreq", "6+");
+        currentFreq="6+";
+      }else if(currentFreq>0){
+        currentFreq= currentFreq+1;
+        Session.set("mealFreq", currentFreq);
+      }else{
+        Session.set("mealFreq", 1);
+      };
+    };
+  },
+
+  "click .freqIconMinus": function(event, template){
+    var currentFreq= Session.get("mealFreq");
+    if(currentFreq){
+      if(currentFreq==1){
+        Session.set("mealFreq", false);
+        currentFreq= false;
+      }else if(currentFreq=="6+"){
+        Session.set("mealFreq", 5);
+      }else{
+        currentFreq= currentFreq-1;
+        Session.set("mealFreq", currentFreq);
+      };
+    }else{
+    };
+  },
+
+
+
+});
+
+Template.profile.helpers({
+  mealFreq: function(){
+    return Session.get("mealFreq");
+  }
 });

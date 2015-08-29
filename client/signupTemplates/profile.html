@@ -30,9 +30,8 @@
                           <input name="radioGirl" required="required" type="radio" value={{#if  gender}}false{{else}}true{{/if}}>
                           Girl
                         </div>
-
-
                     </div>
+
                     <div class="questionnaireBlock clearfix input-group date">
                       <label for="birthday"> Birthday: </label>
                       <input id="babyBirthday" data-provide="datepicker" value={{defaultBirthday}} data-date-format="M dd, yyyy">
@@ -46,7 +45,7 @@
 
 
                 <div class="profileContent">
-                  <h5>Check allergens your baby might react to: </h5>
+                  <h5>Check allergens {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} might react to: </h5>
                   <div id="allergensBlock" class="clearfix">
 
                     <!-- Allergy button, Wheat-->
@@ -148,7 +147,7 @@
                     <!-- End of allergy buttons section-->
                     <!-- if there are other known allergens, input here-->
                     <div class="questionOther">
-                      <h5>Can't find one? Tell us here: </h5>
+                      <h5>Can't find one above? Tell us here: </h5>
                     </div>
 
                     <div class="allergenOtherInputWrap clearfix">
@@ -174,6 +173,36 @@
           <div class="col-md-6">
             <div class="col-xs-10">
               <div class="questionnaireContainer clearfix">
+                <div class="profileContent">
+                  <h4>2. Eating Habits</h4>
+                  <div id="eatingHabits">
+                    <h5>How many solid meals a day does your baby eat? </h5>
+                    <div class="questionnaireBlock clearfix">
+                      <div class="freqInput {{# if mealFreq}}active{{/if}}">
+
+                        <div class="freqIconMinus clearfix"></div>
+
+                        <div class="freqBlock">
+                          <input id="mealFreq" type="number" name="mealFreq">
+                          {{#if mealFreq}}{{mealFreq}}{{else}}-{{/if}}
+                        </div>
+
+                        <div class="freqIconPlus clearfix"></div>
+
+                      </div>
+                      <div id="hasNotStartedSolidFood" class="hasNotStartedSolidFood {{# if mealFreq}} {{else}}active{{/if}}">
+                        <div class="profileRadioIcon clearfix">
+                        </div>
+                        <input name="hasNotStartedSolidFood" required="required" type="radio" >
+                        Not yet started
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                </div>
+                <span class="line"></span>
                 <div class="profileContent">
                   <h4>2. Delivery Preference</h4>
                 </div>
