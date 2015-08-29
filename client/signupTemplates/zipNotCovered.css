@@ -35,7 +35,7 @@
 
 .earlyContactGroup h4, #earlyContactForm p, #socialSharing p {
   color: rgb(95, 103, 89);
-  line-height: 1em;
+  line-height: 1.3em;
   font-weight: 400;
   font-family: "Overlock", sans-serif;
   font-size: 16px !important;
@@ -58,21 +58,26 @@
     background-color: rgb(43, 96, 0);
 }
 
+.friendEmailInput input {
+  width: 240px!important;
+}
+
 #shareWithFriend input {
   line-height: 30px;
     font-family: "Quando", sans-serif;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    margin-left: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 10px;
     text-align: center;
     width: auto;
     border-radius: 4px;
+    display: inline-block;
 }
 
 #shareWithFriend .btn {
   height: 35px;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 #socialSharing {

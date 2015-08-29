@@ -1,4 +1,3 @@
-PreUsers = new Mongo.Collection("preUsers");
 
 Meteor.methods({
   emailExist:function(userEmail, userZip){

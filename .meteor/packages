@@ -22,3 +22,8 @@ cfs:standard-packages
 cfs:filesystem
 dsyko:meteor-node-csv
 check
+dbernhard:jquery-ui-draggable
+accounts-facebook
+accounts-google
+accounts-twitter
+u2622:persistent-session

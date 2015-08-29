@@ -25,20 +25,19 @@ Template.signup.events({
         if(result){
           // when result is true, proceed with signup session.
           if(result==="proceed"){
+            Session.setPersistent("validZIP", userZip);
+            Session.setPersistent("userEmail", userEmail);
             console.log(result);
             Router.go('/profile');
           }else if(result==="notCovered"){
-            console.log(result);
-            Session.set("getNotCoveredZIP", userZip);
+            Meteor.call("notCoverTheZIPWaitlisted", userEmail, userZip);
+            Session.setPersistent("getNotCoveredZIP", userZip);
+            Session.setPersistent("waitListUserEmail", userEmail);
             Router.go('/zipNotCovered');
           };
-
-
-
         }else{
           alert('This Email has already been taken. Please revise email entry.');
           // when result is false, show that email has been taken.
-
         };
       });
 

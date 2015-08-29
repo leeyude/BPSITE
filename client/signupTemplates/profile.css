@@ -24,38 +24,256 @@
   margin-bottom: 35px;
 }
 
+#basicProfile .line {
+  border-top: 1px solid #c3c3c3;
+  display: block;
+}
+
 #basicProfile h4 {
   text-align: left;
   font-size: 20px;
 }
 
-#basicProfile input {
-  width: 200px;
+#basicProfile h5 {
+  font-size: 16px;
+  text-align: left;
 }
+
+#basicProfile .babyFirstName {
+    line-height: 30px;
+    font-family: "Quando", sans-serif;
+    text-align: center;
+    border-radius: 3px;
+    display: inline-block;
+    width: 56%;
+    float: left;
+    position: relative;
+    border: 1px solid #c3c3c3;
+    cursor: pointer;
+    margin-left: 1%;
+    margin-right: 1%;
+
+}
+
+.questionnaireBlock .genderSelection {
+  font-family: "Quando", sans-serif;
+  line-height: 36px;
+  display: block;
+  width: 27%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 40px;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.questionnaireBlock .genderSelection.active {
+  font-family: "Quando", sans-serif;
+  line-height: 36px;
+  display: block;
+  width: 27%;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 40px;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+
+#basicProfile .profileRadioIcon {
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  top: 8px;
+  left: 10px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  position: absolute;
+  cursor: pointer;
+  background-image: url(/radio-notSelected.png);
+}
+
+#basicProfile .active .profileRadioIcon {
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  top: 8px;
+  left: 10px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  position: absolute;
+  cursor: pointer;
+  background-image: url(/radio-selected.png);
+}
+
+#babyBirthday {
+  line-height: 30px;
+  font-family: "Quando", sans-serif;
+  text-align: center;
+  display: inline-block;
+  width: 46%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-top-left-radius:3px;
+  border-bottom-left-radius:3px;
+  cursor: pointer;
+  margin-left: 1%;
+}
+
+.input-group-addon {
+  line-height: 20px;
+  text-align: center;
+  width: 30px;
+  border: 1px solid #c3c3c3;
+}
+
 
 #questionnaire {
   list-style: none;
   display: inline-block;
   width: inherit;
-    width: 100%;
+  width: 100%;
 }
 
-#questionnaire label {
+#questionnaire label{
   color: rgb(84, 173, 40);
   line-height: 1em;
   font-weight: 700;
   font-family: "Gentium Book Basic", sans-serif;
   font-size: 16px;
   padding-top: 12px;
+  width: 30%;
+  text-align: left;
   float: left;
-
+  position:relative;
+  display: block;
+  margin-right: 10%;
 }
 
 
 #basicProfile .questionnaireContainer {
-  border: 1px solid;
-  border-color: rgba(84, 173, 40, 0.68);
+  border: 1px solid #c3c3c3;
+  border-radius: 4px;
+  background-color: white;
   margin: auto;
-  padding-bottom: 40px;
   margin-bottom: 40px;
+}
+
+#basicProfile .profileContent {
+  padding: 20px;
+}
+
+.questionnaireBlock {
+  margin-bottom: 8px;
+  margin-top: 16px;
+  display: block;
+  height: auto;
+}
+
+#allergensBlock .allergenCheckboxWrap {
+  margin-left: 1%;
+  margin-right: 1%;
+  float: left;
+  width: 48%;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 18px;
+}
+
+#allergensBlock label {
+  display: block;
+}
+
+#allergensBlock .allergenCheckbox {
+  line-height: 36px;
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+input[type=checkbox], input[type=radio]{
+  display: none;
+}
+
+#allergensBlock .allergenCheckbox.active {
+  line-height: 36px;
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+}
+
+#allergensBlock .allergenCheckboxIcon {
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+#allergensBlock .active .allergenCheckboxIcon {
+  background-image: url(/check.png);
+  border: none;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+#allergensBlock .questionOther {
+  display: block;
+  float: left;
+}
+
+#otherAllergen {
+  display: block;
+  float: left;
+
+  line-height: 30px;
+  font-family: "Quando", sans-serif;
+  text-align: left;
+  border-radius: 3px;
+  display: inline-block;
+  width: 98%;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  padding-left: 8px;
 }
