@@ -1,0 +1,368 @@
+#mealPlan {
+  padding-top: 85px;
+  text-align: center;
+  background-color: rgb(240, 255, 233);
+  padding-bottom: 40px;
+}
+
+#mealPlan h3 {
+  margin-bottom: 7px;
+  padding-bottom: 0px;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-weight: 700;
+  float: left;
+  width: 100%;
+}
+
+#mealPlan p {
+  font-family: "Quando", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 16px;
+  padding-top: 10px;
+  color: rgb(84, 173, 40);
+  margin-bottom: 5px;
+}
+
+#mealPlan .mealPlanContent p {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#mealPlan .line {
+  border-top: 1px solid #c3c3c3;
+  display: block;
+}
+
+#mealPlan h4 {
+  text-align: left;
+  font-size: 20px;
+  float: left;
+  width: 100%;
+}
+
+#mealPlan h5 {
+  font-size: 16px;
+  text-align: left;
+  float: left;
+  width: 100%;
+}
+
+#mealPlan .mealPlanBlock {
+  width: 80%;
+  border: 1px solid #c3c3c3;
+  border-radius: 4px;
+  background-color: white;
+  margin: auto;
+  font-family: "Gentium Book Basic", sans-serif;
+  margin-top: 25px;
+}
+
+#mealPlan .pricingDescription {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.mealPlanTop {
+  border-bottom: 1px solid #c3c3c3;
+}
+
+.mealPlanSummary  {
+  display: inline-block;
+  padding: 20px;
+  float: left;
+  width: 60%;
+  border-right: 1px solid #c3c3c3;
+}
+
+.mealPlanSelection {
+  display: inline-block;
+  padding: 20px;
+  float: left;
+  width: 100%;
+}
+
+
+.pureeType {
+  display: inline-block;
+  padding: 20px;
+  float: left;
+  width: 40%;
+  height: auto;
+}
+
+#mealPlan .mealPlanSummary h4{
+  text-align: center;
+}
+
+.mealPlanContent {
+  display: block;
+  width: 100%;
+  float: left;
+  height: 120px;
+}
+
+.mealPlanContent highlight {
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f48338;
+
+}
+
+.editProfileButton h5{
+  width: auto!important;
+}
+
+.editProfileButton button {
+  float: right;
+  font-family: "Gentium Book Basic", sans-serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+
+.pureeCheckboxWrap{
+  margin-left: 1%;
+  margin-right: 1%;
+  float: left;
+  width: 86%;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 18px;
+
+}
+
+.mealSelectionWrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 18px;
+}
+
+.pureeCheckboxWrap label, .mealSelectionWrap label {
+  display: block;
+}
+
+.pureeCheckbox, .mealSelection {
+  line-height: 36px;
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mealSelectionWrap .mealSelection {
+  margin-bottom: 12px;
+}
+
+input[type=checkbox], input[type=radio], input[type=number]{
+  display: none;
+}
+
+.pureeCheckboxWrap .pureeCheckbox.active, .active .mealSelectionWrap .mealSelection {
+  line-height: 36px;
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+}
+
+.pureeCheckboxWrap .pureeCheckboxIcon {
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.mealSelectionWrap .mealSelectionIcon {
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  top: 8px;
+  left: 10px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  position: absolute;
+  cursor: pointer;
+  background-image: url(/radio-notSelected.png);
+}
+
+.pureeCheckboxWrap .active  .pureeCheckboxIcon {
+  background-image: url(/check.png);
+  border: none;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.active .mealSelectionWrap .mealSelectionIcon {
+    background-image: url(/radio-selected.png);
+}
+
+#small-box-1 .pricingImg, #small-box-2 .pricingImg, #small-box-3 .pricingImg  {
+    background-image: url(/pricing-small.jpg);
+    background-position: bottom;
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+#small-box-1.active .pricingImg, #small-box-2.active .pricingImg, #small-box-3.active .pricingImg  {
+    background-image: url(/pricing-small.jpg);
+    background-position: bottom;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+}
+
+#medium-box-1 .pricingImg, #medium-box-2 .pricingImg, #medium-box-3 .pricingImg {
+    background-image: url(/pricing-medium.jpg);
+    background-position: center;
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+ #medium-box-1.active .pricingImg, #medium-box-2.active .pricingImg, #medium-box-3.active .pricingImg {
+    background-image: url(/pricing-medium.jpg);
+    background-position: center;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+}
+
+#large-box-1 .pricingImg, #large-box-2 .pricingImg, #large-box-3 .pricingImg {
+    background-image: url(/pricing-big.jpg);
+    background-position: center;
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+#large-box-1.active .pricingImg, #large-box-2.active .pricingImg, #large-box-3.active .pricingImg {
+    background-image: url(/pricing-big.jpg);
+    background-position: center;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+}
+
+.mealPlanSelection .pricingBlockBackground {
+  width: 100%;
+  padding: 2px;
+}
+
+.mealPlanSelection .pricingBlockBackground .pricingBlock{
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #c3c3c3;
+}
+
+.mealPlanSelection .active .pricingBlockBackground .pricingBlock{
+  border: 1px solid rgb(84, 173, 40);
+}
+
+
+.mealPlanSelection .pricingBlock .pricingImg{
+  width: 100%;
+  display: inline-block;
+}
+
+#mealPlan .mealPlanSelection h4 {
+  text-align: center;
+  color: #c3c3c3;
+}
+
+#mealPlan .mealPlanSelection .active h4 {
+  text-align: center;
+  color: rgb(84, 173, 40);
+}
+
+#mealPlan .mealPlanSelection p {
+  width: 100%;
+  height: 76px;
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #c3c3c3;
+}
+
+#mealPlan .mealPlanSelection .active p {
+  color: rgb(84, 173, 40);
+}
+
+.mealPlanSelection .pricingDescription .descriptionList dt {
+    color: #c3c3c3;
+}
+
+.mealPlanSelection .active .pricingDescription .descriptionList dt {
+  color: #555555;
+}
+
+.mealPlanSelection .pricingDescription .descriptionList dd {
+    color: #c3c3c3;
+}
+
+.mealPlanSelection .active .pricingDescription .descriptionList dd {
+  color: rgb(84, 173, 40);
+}
+
+.mealPlanBottom .col-sm-4 {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.mealPlanBottom .pricingDescription dt {
+  font-size: 14px;
+}
+
+.mealPlanSubmit {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+
+}

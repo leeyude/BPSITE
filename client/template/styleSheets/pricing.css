@@ -69,8 +69,14 @@
     background-position: center;
 }
 
+.pricingDescription {
+  float: left;
+  width: 100%;
+  margin-top: 15px;
+}
+
 .pricingDescription .descriptionList dt {
-  width: 50%;
+  width: 60%;
   float: left;
   text-align: right;
   line-height: 32px;
@@ -82,7 +88,7 @@
 }
 
 .pricingDescription .descriptionList dd {
-  width: 50%;
+  width: 40%;
   float: right;
   text-align: left;
   line-height: 32px;

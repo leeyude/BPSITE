@@ -206,12 +206,7 @@ Template.profile.events({
 
 Template.profile.helpers({
   milk: function(){                                      // change milk value
-    var checkSession= Session.get("milk");               // change milk value
-    if(checkSession){
       return Session.get("milk");                        // change milk value
-    }else{
-      return Session.get("milk");                        // change milk value
-    };
   },
 });
 
@@ -274,6 +269,7 @@ Session.setDefault("mealFreq", 2);
 Template.profile.events({
   "click #hasNotStartedSolidFood": function(event, template){
     Session.set("mealFreq", false);
+    Session.set("ouncePerMeal", false);
   },
 
   "click .freqIconPlus": function(event, template){
@@ -288,6 +284,7 @@ Template.profile.events({
         Session.set("mealFreq", currentFreq);
       }else{
         Session.set("mealFreq", 1);
+        Session.set("ouncePerMeal", 4);
       };
     };
   },
@@ -297,6 +294,7 @@ Template.profile.events({
     if(currentFreq){
       if(currentFreq==1){
         Session.set("mealFreq", false);
+        Session.set("ouncePerMeal", false);
         currentFreq= false;
       }else if(currentFreq=="6+"){
         Session.set("mealFreq", 5);
@@ -308,12 +306,84 @@ Template.profile.events({
     };
   },
 
-
-
 });
 
 Template.profile.helpers({
   mealFreq: function(){
     return Session.get("mealFreq");
   }
+});
+
+// Setting number of Ounces of solid food per each meal
+
+Session.setDefault("ouncePerMeal", 4);
+
+Template.profile.events({
+  "click .OunceIconMinus": function(event, template){
+    var currentOunces = Session.get("ouncePerMeal");
+    if(currentOunces){
+      if(currentOunces>1){
+        if(currentOunces>8.5){
+          currentOunces=currentOunces-1;
+          Session.set("ouncePerMeal", currentOunces);
+        }else{
+          currentOunces=currentOunces-0.5;
+          Session.set("ouncePerMeal", currentOunces);
+        };
+      };
+    };
+  },
+  "click .OunceIconPlus": function(event, template){
+    var currentOunces = Session.get("ouncePerMeal");
+    if(currentOunces){
+      if(currentOunces>7.5){
+        if(currentOunces>19){
+
+        }else{
+          currentOunces=currentOunces+1;
+          Session.set("ouncePerMeal", currentOunces);
+        };
+      }else{
+        currentOunces=currentOunces+0.5;
+        Session.set("ouncePerMeal", currentOunces);
+      };
+    }else{
+      Session.set("ouncePerMeal", 1);
+      Session.set("mealFreq", 1);
+    };
+  },
+});
+
+Template.profile.helpers({
+  ouncePerMeal: function(){
+    return Session.get("ouncePerMeal");
+  }
+});
+
+// Setting address type
+Session.setDefault("addressTypeBusiness", false);
+Session.setDefault("addressTypeResidential", true);
+
+Template.profile.events({
+  "click #addressTypeBusiness": function(event, template){
+    console.log("click Business");
+     Session.set("addressTypeBusiness", true);
+     Session.set("addressTypeResidential", false);
+  },
+  "click #addressTypeResidential": function(event, template){
+    console.log("click Residential");
+
+     Session.set("addressTypeBusiness", false);
+     Session.set("addressTypeResidential", true);
+  },
+});
+
+
+Template.profile.helpers({
+  addressTypeBusiness: function(){
+    return Session.get("addressTypeBusiness");
+  },
+  addressTypeResidential: function(){
+    return Session.get("addressTypeResidential");
+  },
 });

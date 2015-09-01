@@ -1,0 +1,125 @@
+<template name="delivery">
+  {{>signupMenu}}
+  <section id="delivery">
+    <div class="container clearfix">
+        <h3> Enter your delivery information </h3>
+        <p> Delivery is free and convenient. <br>Meals are carefully packaged in insulated boxes to maintain the safest freshness for your baby. </p>
+        <div class="questionnaireContainer clearfix">
+          <div class="deliveryContent clearfix">
+            <!-- first row of question -->
+
+            <div class="deliveryContentRow">
+              <div class="col-sm-6">
+                <div class="deliveryQuestion">
+                  <label for="userFirstName">First Name
+                  </label>
+                  <div class="deliveryQuestionInput">
+                    <input class="string inputFull required" data-validate="{required: true}" id="userFirstName" name="userFirstName" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="deliveryQuestion">
+                  <label for="userLastName">Last Name
+                  </label>
+                  <div class="deliveryQuestionInput">
+                    <input class="string inputFull required" data-validate="{required: true}" id="userLastName" name="userLastName" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2nd row of question -->
+
+            <div class="deliveryContentRow">
+              <div class="col-sm-6">
+                <div class="deliveryQuestion">
+                  <label for="addressLine1"> Address Line 1
+                  </label>
+                  <div class="deliveryQuestionInput">
+                    <input class="string inputFull required" data-validate="{required: true}" id="addressLine1" name="addressLine1" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="deliveryQuestion">
+                  <label for="addressLine2">Address Line 2
+                  </label>
+                  <div class="deliveryQuestionInput">
+                    <input class="string inputFull required" data-validate="{required: true}" id="addressLine2" name="addressLine2" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3rd row of question -->
+
+            <div class="deliveryContentRow">
+              <div class="col-sm-6">
+                <div class="deliveryQuestion">
+                  <label for="addressCity">City
+                  </label>
+                  <div class="deliveryQuestionInput">
+                    <input class="string inputFull required" data-validate="{required: true}" id="addressCity" name="addressCity" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="col-sm-6 DeliveryQuestionChildren">
+                  <div class="deliveryQuestion">
+                    <label for="addressState">State
+                    </label>
+                    <div class="deliveryQuestionInput">
+                      <input class="string inputShort required" data-validate="{required: true}" id="addressState" name="addressState" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 DeliveryQuestionChildren second">
+                  <div class="deliveryQuestion">
+                    <label for="addressZip"> ZIP Code
+                    </label>
+                    <div class="deliveryQuestionInput">
+                      <input class="string inputShort required" data-validate="{required: true}" id="addressZip" name="addressZip" type="text">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- 4th row of question -->
+
+            <div class="deliveryContentRow">
+              <div class="col-sm-6">
+                <div class="deliveryQuestion">
+                  <label for="userPhoneNumber">Phone Number
+                  </label>
+                  <div class="deliveryQuestionInput">
+                    <input class="string inputFull required" data-validate="{required: true}" id="userPhoneNumber" name="userPhoneNumber" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="deliverySubmit">
+          <div class="signupContinueBlock">
+            <button class="btn signUpContinue" id="deliveryContinue" type="submit">
+            Continue to Subscription
+            <div class="continueArrow"></div>
+            </button>
+          </div>
+        </div>
+
+
+
+      </div>
+  </section>
+
+
+  {{>shortFooter}}
+</template>

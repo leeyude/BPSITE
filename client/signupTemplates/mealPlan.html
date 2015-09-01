@@ -1,0 +1,570 @@
+<template name="mealPlan">
+  {{>signupMenu}}
+  <section id="mealPlan">
+    <div class="container clearfix">
+        <h3> Pick your plan </h3>
+        <p> Baby's Purest carefully prepares nutritionist-approved <br> recipies and ingredients that your baby loves.</p>
+        <div class="row">
+          <div id="mealPlan1" class="mealPlanBlock clearfix">
+            <div class="mealPlanTop clearfix">
+              <div class="mealPlanSummary">
+                <h4>1st Baby’s Dietary Profile</h4>
+                <div class="mealPlanContent">
+                  <p>
+                    1st baby is <highlight>8 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                  </p>
+                </div>
+                <div class="editProfileButton">
+                  <h5>Missing anything?</h5>
+                  <button class="btn" id="edit1stBaby" >
+                  Edit Profile
+                  </button>
+                </div>
+              </div>
+
+              <div class="pureeType">
+                <h5>1st baby's puree options will include:</h5>
+                <!---->
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox active">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="singlePuree1" multiple="" name="" type="checkbox" >
+                      Single Puree
+                    </div>
+                  </label>
+                </div>
+
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="yummyPairs1" multiple="" name="" type="checkbox" >
+                      Yummy Pairs
+                    </div>
+                  </label>
+                </div>
+
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="tastyTrio1" multiple="" name="" type="checkbox" >
+                      Tasty Trio
+                    </div>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="mealPlanBottom clearfix">
+              <div class="mealPlanSelection">
+                  <div class="row-fluid">
+                    <div id="small-box-1" class="col-sm-4">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Small Box</h4>
+                            <p>
+                              Meals for first solid food eaters
+                            </p>
+                          </div>
+
+                          <!-- select for meal plan-->
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="small-1" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 7 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $4.99 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $34.93 </span></dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div id="medium-box-1" class="col-sm-4 active">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Medium Box</h4>
+                            <p>
+                              Meals for little curious adventurers
+                            </p>
+                          </div>
+                          <!-- select for meal plan-->
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="medium-1" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 14 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $4.49 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $62.86 </span></dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="large-box-1" class="col-sm-4">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Big Box</h4>
+                            <p>
+                              Meals for mature palates
+                            </p>
+                          </div>
+
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="large-1" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 21 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $3.95 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $82.95 </span></dd>
+                            </dl>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- end of Meal Plan for the 1st baby-->
+
+          <div id="mealPlan2" class="mealPlanBlock clearfix">
+            <div class="mealPlanTop clearfix">
+              <div class="mealPlanSummary">
+                <h4>2nd Baby’s Dietary Profile</h4>
+                <div class="mealPlanContent">
+                  <p>
+                    2nd baby is <highlight>10 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                  </p>
+                </div>
+                <div class="editProfileButton">
+                  <h5>Missing anything?</h5>
+                  <button class="btn" id="edit2ndBaby" >
+                  Edit Profile
+                  </button>
+                </div>
+              </div>
+
+              <div class="pureeType">
+                <h5>2nd baby's puree options will include:</h5>
+                <!---->
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox active">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="singlePuree2" multiple="" name="" type="checkbox" >
+                      Single Puree
+                    </div>
+                  </label>
+                </div>
+
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="yummyPairs2" multiple="" name="" type="checkbox" >
+                      Yummy Pairs
+                    </div>
+                  </label>
+                </div>
+
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="tastyTrio2" multiple="" name="" type="checkbox" >
+                      Tasty Trio
+                    </div>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="mealPlanBottom clearfix">
+              <div class="mealPlanSelection">
+                  <div class="row-fluid">
+                    <div id="small-box-2" class="col-sm-4">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Small Box</h4>
+                            <p>
+                              Meals for first solid food eaters
+                            </p>
+                          </div>
+
+                          <!-- select for meal plan-->
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="small-2" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 7 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $4.99 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $34.93 </span></dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div id="medium-box-2" class="col-sm-4 active">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Medium Box</h4>
+                            <p>
+                              Meals for little curious adventurers
+                            </p>
+                          </div>
+                          <!-- select for meal plan-->
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="medium-2" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 14 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $4.49 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $62.86 </span></dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="large-box-2" class="col-sm-4">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Big Box</h4>
+                            <p>
+                              Meals for mature palates
+                            </p>
+                          </div>
+
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="large-2" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 21 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $3.95 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $82.95 </span></dd>
+                            </dl>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- end of Meal Plan for the 2nd baby-->
+
+          <div id="mealPlan3" class="mealPlanBlock clearfix">
+            <div class="mealPlanTop clearfix">
+              <div class="mealPlanSummary">
+                <h4>3rd Baby’s Dietary Profile</h4>
+                <div class="mealPlanContent">
+                  <p>
+                    3rd baby is <highlight>12 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                  </p>
+                </div>
+                <div class="editProfileButton">
+                  <h5>Missing anything?</h5>
+                  <button class="btn" id="edit3rdBaby" >
+                  Edit Profile
+                  </button>
+                </div>
+              </div>
+
+              <div class="pureeType">
+                <h5>3rd baby's puree options will include:</h5>
+                <!---->
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="singlePuree3" multiple="" name="" type="checkbox" >
+                      Single Puree
+                    </div>
+                  </label>
+                </div>
+
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox active">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="yummyPairs3" multiple="" name="" type="checkbox" >
+                      Yummy Pairs
+                    </div>
+                  </label>
+                </div>
+
+                <div class="pureeCheckboxWrap clearfix">
+                  <label>
+                    <div class="pureeCheckbox active">
+                      <div class="pureeCheckboxIcon "></div>
+                      <input checked="" class="pureeInput" id="tastyTrio3" multiple="" name="" type="checkbox" >
+                      Tasty Trio
+                    </div>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="mealPlanBottom clearfix">
+              <div class="mealPlanSelection">
+                  <div class="row-fluid">
+                    <div id="small-box-3" class="col-sm-4">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Small Box</h4>
+                            <p>
+                              Meals for first solid food eaters
+                            </p>
+                          </div>
+
+                          <!-- select for meal plan-->
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="small-3" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 7 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $4.99 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $34.93 </span></dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div id="medium-box-3" class="col-sm-4">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Medium Box</h4>
+                            <p>
+                              Meals for little curious adventurers
+                            </p>
+                          </div>
+                          <!-- select for meal plan-->
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="medium-3" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 14 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $4.49 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $62.86 </span></dd>
+                            </dl>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="large-box-3" class="col-sm-4 active">
+                      <div class="pricingBlockBackground">
+                        <div class="pricingBlock">
+                          <div class="pricingHeader">
+                            <h4> Big Box</h4>
+                            <p>
+                              Meals for mature palates
+                            </p>
+                          </div>
+
+                          <div class="mealSelectionWrap clearfix">
+                            <label>
+                              <div class="mealSelection">
+                                <div class="mealSelectionIcon "></div>
+                                <input checked="" class="mealSelectionInput" id="large-3" multiple="" name="" type="checkbox" >
+                                Select
+                              </div>
+                            </label>
+                          </div>
+
+                          <!-- Pricing description-->
+
+                          <div class="pricingImg">
+                          </div>
+                          <div class="pricingDescription">
+                            <dl class="descriptionList">
+                              <dt>Jars per week:</dt>
+                              <dd><span class="highlight"> 21 </span></dd>
+                              <dt>Price per jar:</dt>
+                              <dd><span class="highlight"> $3.95 </span></dd>
+                              <dt>Total per week:</dt>
+                              <dd><span class="highlight"> $82.95 </span></dd>
+                            </dl>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- end of Meal Plan for the 3rd baby-->
+          <div class="mealPlanSubmit">
+            <div class="signupContinueBlock">
+              <button class="btn signUpContinue" id="mealPlanContinue" type="submit">
+              Continue
+              <div class="continueArrow"></div>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+  </section>
+  {{>shortFooter}}
+</template>

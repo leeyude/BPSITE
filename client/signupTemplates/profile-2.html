@@ -1,6 +1,6 @@
-<template name="profile">
+<template name="profile-2">
   {{>signupMenu}}
-  <section id="basicProfile">
+  <section id="basicProfile-2">
     <div class="container clearfix">
         <h3> Tell us about {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} </h3>
         <p> Baby's Purest is crafting the best meal plan for {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} with you!  </p>
@@ -198,7 +198,7 @@
                       </div>
 
                     </div>
-                    <h5>How many ounces each meal do {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} eat?</h5>
+                    <h5>How many ounces each meal dooes {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} eat?</h5>
                     <div class="questionnaireBlock clearfix">
                       <div class="freqInput {{# if mealFreq}}active{{/if}}">
 
@@ -249,9 +249,10 @@
               </div>
 
               <div id="signupContinueBlock">
+
                 <div class="signupContinueBlock">
                   <h5 for="continueArrow1">Completed profile? </h5>
-                  <button class="btn signUpContinue" id="continueArrow1" type="submit">
+                  <button class="btn signUpContinue" id="continueArrow2" type="submit">
                   Continue
                   <div class="continueArrow"></div>
                   </button>
@@ -260,12 +261,14 @@
                 <span class="line"></span>
 
                 <div class="signupContinueBlock">
-                  <h5 for="add2ndBaby">Want to add your second baby? </h5>
-                  <button class="btn profileAdd" id="add2ndBaby" type="submit">
-                  Add Profile
+                  <button class="btn profileAdd backTo" id="backToFirst" >
+                  Back to
+                  </button>
+
+                  <button class="btn profileAdd" id="add3rdBaby" type="submit">
+                  Add 3<sup>rd</sup> Profile
                   </button>
                 </div>
-
               </div>
 
 

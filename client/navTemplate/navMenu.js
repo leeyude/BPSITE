@@ -39,6 +39,22 @@ if (Meteor.isClient) {
     this.render('profile');
   });
 
+  Router.route('/profile-2', function () {
+    this.render('profile-2');
+  });
+
+  Router.route('/profile-3', function () {
+    this.render('profile-3');
+  });
+
+  Router.route('/mealPlan', function () {
+    this.render('mealPlan');
+  });
+
+  Router.route('/delivery', function () {
+    this.render('delivery');
+  });
+
   Router.route('/about', function () {
     this.render('about');
   });
