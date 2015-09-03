@@ -1,4 +1,5 @@
 Session.setDefault("setSigninNav", true);
+
 Template.navMenu.events({
   "click #signup": function(event, template){
     Session.set("setSigninNav", false);
@@ -35,12 +36,40 @@ if (Meteor.isClient) {
     this.render('zipNotCovered');
   });
 
-  Router.route('/profile', function () {
-    this.render('profile');
+  Router.route('/profile', {
+    action: function(){
+      this.render('profile');
+    },
+    onBeforeAction: function(){
+      var preUserToken= Session.get("preUserLoggedIn");
+      // all properties available in the route function
+      // are also available here such as this.params
+      if (!preUserToken) {
+        // if the user is not logged in, render the Login template
+        Router.go('/signup');
+      } else {
+        // otherwise don't hold up the rest of hooks or our route/action function from running
+        this.next();
+      }
+    },
   });
 
-  Router.route('/profile-2', function () {
-    this.render('profile-2');
+  Router.route('/profile-2', {
+    action: function(){
+      this.render('profile-2');
+    },
+    onBeforeAction: function(){
+      var preUserToken= Session.get("preUserLoggedInToProfile2");
+      // all properties available in the route function
+      // are also available here such as this.params
+      if (!preUserToken) {
+        // if the user is not logged in, render the Login template
+        Router.go('/signup');
+      } else {
+        // otherwise don't hold up the rest of hooks or our route/action function from running
+        this.next();
+      }
+    },
   });
 
   Router.route('/profile-3', function () {
