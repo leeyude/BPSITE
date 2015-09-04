@@ -12,17 +12,18 @@
           <div id="mealPlan1" class="mealPlanBlock clearfix">
             <div class="mealPlanTop clearfix">
               <div class="mealPlanSummary">
-                <h4>1st Baby’s Dietary Profile</h4>
+                <h4>{{profile.babyProfileOne.name}}'s' Dietary Profile</h4>
                 <div class="mealPlanContent">
                   <p>
-                    {{profile.babyProfileOne.name}} is <highlight>8 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                    {{profile.babyProfileOne.name}} is <highlight>8 months old</highlight> now. <br> {{#if profile.babyProfileTwo.gender}}He {{else}}She{{/if}}will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
                   </p>
                 </div>
-                <div class="editProfileButton">
-                  <h5>Missing anything?</h5>
+                <div class="editProfileButton clearfix">
                   <button class="btn" id="edit1stBaby" >
                   Edit Profile
                   </button>
+                  <h5>Missing anything?</h5>
+
                 </div>
               </div>
 
@@ -194,17 +195,17 @@
           <div id="mealPlan2" class="mealPlanBlock clearfix">
             <div class="mealPlanTop clearfix">
               <div class="mealPlanSummary">
-                <h4>2nd Baby’s Dietary Profile</h4>
+                <h4>{{profile.babyProfileTwo.name}}'s Dietary Profile</h4>
                 <div class="mealPlanContent">
                   <p>
                     {{profile.babyProfileTwo.name}} is <highlight>10 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
                   </p>
                 </div>
-                <div class="editProfileButton">
-                  <h5>Missing anything?</h5>
+                <div class="editProfileButton clearfix">
                   <button class="btn" id="edit2ndBaby" >
                   Edit Profile
                   </button>
+                  <h5>Missing anything?</h5>
                 </div>
               </div>
 
@@ -376,17 +377,17 @@
           <div id="mealPlan3" class="mealPlanBlock clearfix">
             <div class="mealPlanTop clearfix">
               <div class="mealPlanSummary">
-                <h4>3rd Baby’s Dietary Profile</h4>
+                <h4>{{profile.babyProfileThree.name}}'s' Dietary Profile</h4>
                 <div class="mealPlanContent">
                   <p>
                     {{profile.babyProfileThree.name}} is <highlight>12 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
                   </p>
                 </div>
                 <div class="editProfileButton">
-                  <h5>Missing anything?</h5>
                   <button class="btn" id="edit3rdBaby" >
                   Edit Profile
                   </button>
+                  <h5>Missing anything?</h5>
                 </div>
               </div>
 

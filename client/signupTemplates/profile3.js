@@ -17,50 +17,50 @@ Template.profile3.helpers({
     console.log(profileThreeExist);
     if(profileThreeExist){
       Session.set("babyName3", tempProfile3.profile.babyProfileThree.name);
-      if(tempProfile3.profile.babyProfileThree.gender==="true"){
+      if(tempProfile3.profile.babyProfileThree.gender===true){
         Session.set("gender2", true)
       }else{
         Session.set("gender2", false)
       };
       $('#babyBirthday').val(tempProfile3.profile.babyProfileThree.birthday);
 
-      if(tempProfile3.profile.babyProfileThree.allergenWheat==="true"){
+      if(tempProfile3.profile.babyProfileThree.allergenWheat===true){
         Session.set("wheat3",true)
       }else{
         Session.set("wheat3",false)
       };
-      if(tempProfile3.profile.babyProfileThree.allergenShellfish==="true"){
+      if(tempProfile3.profile.babyProfileThree.allergenShellfish===true){
         Session.set("shellfish3",true)
       }else{
         Session.set("shellfish3",false)
       };
-      if(tempProfile3.profile.babyProfileThree.allergenEggs==="true"){
+      if(tempProfile3.profile.babyProfileThree.allergenEggs===true){
         Session.set("eggs3",true)
       }else{
         Session.set("eggs3",false)
       };
-      if(tempProfile3.profile.babyProfileThree.allergenFish==="true"){
+      if(tempProfile3.profile.babyProfileThree.allergenFish===true){
         Session.set("fish3",true)
       }else{
         Session.set("fish3",false)
       };
-      if(tempProfile3.profile.babyProfileThree.allergenPeanuts==="true"){
+      if(tempProfile3.profile.babyProfileThree.allergenPeanuts===true){
         Session.set("peanuts3",true)
       }else{
         Session.set("peanuts3",false)
       };
-      if(tempProfile3.profile.babyProfileThree.allergenMilk==="true"){
+      if(tempProfile3.profile.babyProfileThree.allergenMilk===true){
         Session.set("milk3",true)
       }else{
         Session.set("milk3",false)
       };
-      if(tempProfile3.profile.babyProfileThree.allergenTreeNuts==="true"){
+      if(tempProfile3.profile.babyProfileThree.allergenTreeNuts===true){
         Session.set("treeNuts3",true)
       }else{
         Session.set("treeNuts3",false)
 
       };
-      if(tempProfile3.profile.babyProfileThree.allergenSoybeans==="true"){
+      if(tempProfile3.profile.babyProfileThree.allergenSoybeans===true){
         Session.set("soybeans3",true)
       }else{
         Session.set("soybeans3",false)
@@ -71,7 +71,7 @@ Template.profile3.helpers({
 
       Session.set("mealFreq3", tempProfile3.profile.babyProfileThree.mealsPerDay);
       Session.set("ouncePerMeal3", tempProfile3.profile.babyProfileThree.ouncePerMeal);
-      if(tempProfile3.profile.addressType=="true"){
+      if(tempProfile3.profile.addressType===true){
         Session.set("addressTypeBusiness", false);
         Session.set("addressTypeResidential", true);
       }else {
@@ -453,16 +453,16 @@ Template.profile3.events({
     var tempUserObject3 = Meteor.users.findOne({_id:preId});
     var thirdBabyStatus= tempUserObject3.profile.babyProfileTwo.babyStatus;
     var babyName = template.find("#babyName").value;
-    var babyGender = template.find(".gender").value;
+    var babyGender = template.find(".gender").value=="true";
     var babyBirthday = template.find("#babyBirthday").value;
-    var allergenWheat = template.find("#allergenWheat").value;
-    var allergenShellfish = template.find("#allergenShellfish").value;
-    var allergenEggs = template.find("#allergenEggs").value;
-    var allergenFish = template.find("#allergenFish").value;
-    var allergenPeanuts = template.find("#allergenPeanuts").value;
-    var allergenMilk = template.find("#allergenMilk").value;
-    var allergenTreeNuts = template.find("#allergenTreeNuts").value;
-    var allergenSoybeans = template.find("#allergenSoybeans").value;
+    var allergenWheat = template.find("#allergenWheat").value=="true";
+    var allergenShellfish = template.find("#allergenShellfish").value=="true";
+    var allergenEggs = template.find("#allergenEggs").value=="true";
+    var allergenFish = template.find("#allergenFish").value=="true";
+    var allergenPeanuts = template.find("#allergenPeanuts").value=="true";
+    var allergenMilk = template.find("#allergenMilk").value=="true";
+    var allergenTreeNuts = template.find("#allergenTreeNuts").value=="true";
+    var allergenSoybeans = template.find("#allergenSoybeans").value=="true";
     var otherAllergen = template.find("#otherAllergen").value;
 
 
@@ -470,7 +470,7 @@ Template.profile3.events({
     var mealOunces = Session.get("ouncePerMeal3");
 
     var eatingHabits = !mealFreq===""; //
-    var addressType = template.find("#addressTypeResidential").value;
+    var addressType = template.find("#addressTypeResidential").value=="true";
 
     var tempUserObject3 = {
       profile: {
