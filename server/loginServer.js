@@ -438,10 +438,11 @@ Meteor.methods({
   },
 
   completeUpdate2: function(preId, tempUserObject2){
+    console.log("fuck I did this...");
     var tempUserObject3 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
-        addressType: tempUserObject1.profile.addressType,
+        addressType: tempUserObject2.profile.addressType,
         babyProfileOne:{
           babyStatus: true,
           name: tempUserObject3.profile.babyProfileOne.name,

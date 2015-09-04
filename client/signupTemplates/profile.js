@@ -118,6 +118,7 @@ User account schema-
 // Get baby's name to show baby's name on the page
 Session.setDefault("babyName", null);
 Session.setDefault("preUserLoggedInToProfile2", false);
+Session.setDefault("preUserforMealPlan", false);
 
 
 Template.profile.events({
@@ -231,7 +232,7 @@ Template.profile.helpers({
 Template.profile.helpers({
   defaultBirthday: function(){
     var defaultBirthday = moment().subtract(6, 'months').format('ll');
-    Session.set("defaultBirthday", defaultBirthday);
+    Session.setDefault("defaultBirthday", defaultBirthday);
 
     return Session.get("defaultBirthday");
   }
@@ -764,7 +765,7 @@ Template.profile.events({
       Meteor.call("preUserContinue1", preId, tempUserObject1);
     };
     Session.setPersistent("preUserLoggedInToProfile2", true);
-    console.log(Session.get("preUserLoggedInToProfile2"));
+    Session.setPersistent("preUserforMealPlan", true);
     Router.go('/profile2');
   },
 });
@@ -827,6 +828,8 @@ Template.profile.events({
       Meteor.call("completeUpdate1", preId, tempUserObject1);
     };
     Session.setPersistent("preUserLoggedInToProfile2", true);
+    Session.setPersistent("preUserforMealPlan", true);
+
     Router.go('/profile2');
   },
 });

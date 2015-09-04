@@ -132,71 +132,74 @@ Template.profile2.helpers({
   babyName: function(){
     var preUserLoggedIn = Session.get("preUserLoggedIn");
     var tempProfile2 = Meteor.users.findOne({_id:preUserLoggedIn});
+    var profileTwoExist = tempProfile2.profile.babyProfileTwo.babyStatus;
+    if(profileTwoExist){
 
-      Session.set("babyName2", tempProfile2.profile.babyProfileTwo.name);
-      console.log(Session.get("babyName2"));
-      if(tempProfile2.profile.babyProfileTwo.gender==="true"){
-        Session.set("gender2", true)
-      }else{
-        Session.set("gender2", false)
-      };
-      $('#babyBirthday').val(tempProfile2.profile.babyProfileTwo.birthday);
+            Session.set("babyName2", tempProfile2.profile.babyProfileTwo.name);
+            console.log(Session.get("babyName2"));
+            if(tempProfile2.profile.babyProfileTwo.gender==="true"){
+              Session.set("gender2", true)
+            }else{
+              Session.set("gender2", false)
+            };
+            $('#babyBirthday').val(tempProfile2.profile.babyProfileTwo.birthday);
 
-      if(tempProfile2.profile.babyProfileTwo.allergenWheat==="true"){
-        Session.set("wheat2",true)
-      }else{
-        Session.set("wheat2",false)
-      };
-      if(tempProfile2.profile.babyProfileTwo.allergenShellfish==="true"){
-        Session.set("shellfish2",true)
-      }else{
-        Session.set("shellfish2",false)
-      };
-      if(tempProfile2.profile.babyProfileTwo.allergenEggs==="true"){
-        Session.set("eggs2",true)
-      }else{
-        Session.set("eggs2",false)
-      };
-      if(tempProfile2.profile.babyProfileTwo.allergenFish==="true"){
-        Session.set("fish2",true)
-      }else{
-        Session.set("fish2",false)
-      };
-      if(tempProfile2.profile.babyProfileTwo.allergenPeanuts==="true"){
-        Session.set("peanuts2",true)
-      }else{
-        Session.set("peanuts2",false)
-      };
-      if(tempProfile2.profile.babyProfileTwo.allergenMilk==="true"){
-        Session.set("milk2",true)
-      }else{
-        Session.set("milk2",false)
-      };
-      if(tempProfile2.profile.babyProfileTwo.allergenTreeNuts==="true"){
-        Session.set("treeNuts2",true)
-      }else{
-        Session.set("treeNuts2",false)
+            if(tempProfile2.profile.babyProfileTwo.allergenWheat==="true"){
+              Session.set("wheat2",true)
+            }else{
+              Session.set("wheat2",false)
+            };
+            if(tempProfile2.profile.babyProfileTwo.allergenShellfish==="true"){
+              Session.set("shellfish2",true)
+            }else{
+              Session.set("shellfish2",false)
+            };
+            if(tempProfile2.profile.babyProfileTwo.allergenEggs==="true"){
+              Session.set("eggs2",true)
+            }else{
+              Session.set("eggs2",false)
+            };
+            if(tempProfile2.profile.babyProfileTwo.allergenFish==="true"){
+              Session.set("fish2",true)
+            }else{
+              Session.set("fish2",false)
+            };
+            if(tempProfile2.profile.babyProfileTwo.allergenPeanuts==="true"){
+              Session.set("peanuts2",true)
+            }else{
+              Session.set("peanuts2",false)
+            };
+            if(tempProfile2.profile.babyProfileTwo.allergenMilk==="true"){
+              Session.set("milk2",true)
+            }else{
+              Session.set("milk2",false)
+            };
+            if(tempProfile2.profile.babyProfileTwo.allergenTreeNuts==="true"){
+              Session.set("treeNuts2",true)
+            }else{
+              Session.set("treeNuts2",false)
 
-      };
-      if(tempProfile2.profile.babyProfileTwo.allergenSoybeans==="true"){
-        Session.set("soybeans2",true)
-      }else{
-        Session.set("soybeans2",false)
-      };
+            };
+            if(tempProfile2.profile.babyProfileTwo.allergenSoybeans==="true"){
+              Session.set("soybeans2",true)
+            }else{
+              Session.set("soybeans2",false)
+            };
 
-      var otherAllergen = tempProfile2.profile.babyProfileTwo.otherAllergen;
-      Session.set("otherAllergen2", otherAllergen);
+            var otherAllergen = tempProfile2.profile.babyProfileTwo.otherAllergen;
+            Session.set("otherAllergen2", otherAllergen);
 
-      Session.set("mealFreq2", tempProfile2.profile.babyProfileTwo.mealsPerDay);
-      Session.set("ouncePerMeal2", tempProfile2.profile.babyProfileTwo.ouncePerMeal);
-      if(tempProfile2.profile.addressType=="true"){
-        Session.set("addressTypeBusiness", false);
-        Session.set("addressTypeResidential", true);
-      }else {
-        Session.set("addressTypeBusiness", true);
-        Session.set("addressTypeResidential", false);
-      };
-      Session.set("babyName", tempProfile2.profile.babyProfileOne.name);
+            Session.set("mealFreq2", tempProfile2.profile.babyProfileTwo.mealsPerDay);
+            Session.set("ouncePerMeal2", tempProfile2.profile.babyProfileTwo.ouncePerMeal);
+            if(tempProfile2.profile.addressType=="true"){
+              Session.set("addressTypeBusiness", false);
+              Session.set("addressTypeResidential", true);
+            }else {
+              Session.set("addressTypeBusiness", true);
+              Session.set("addressTypeResidential", false);
+            };
+            Session.set("babyName", tempProfile2.profile.babyProfileOne.name);
+    };
 
     return Session.get("babyName");
   },
@@ -232,7 +235,7 @@ Template.profile2.helpers({
     var preUserLoggedIn = Session.get("preUserLoggedIn");
     var tempProfile1 = Meteor.users.findOne({_id:preUserLoggedIn});
     var defaultBirthday = tempProfile1.profile.babyProfileOne.birthday;
-    Session.set("defaultBirthday2", defaultBirthday);
+    Session.setDefault("defaultBirthday2", defaultBirthday);
 
     return Session.get("defaultBirthday2");
   }
@@ -842,11 +845,11 @@ Template.profile2.events({
     Router.go('/profile');
   },
   "click #cancelTheSecond": function(event, template){
-    Session.setPersistent("preUserLoggedInToProfile2", false);
-    Session.setPersistent("preUserLoggedInToProfile3", false);
     var preId= Session.get("preUserLoggedIn");
     Meteor.call("cancel2", preId);
 
     Router.go('/mealPlan');
+    Session.setPersistent("preUserLoggedInToProfile2", false);
+    Session.setPersistent("preUserLoggedInToProfile3", false);
   },
 });

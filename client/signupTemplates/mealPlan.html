@@ -1,17 +1,21 @@
 <template name="mealPlan">
   {{>signupMenu}}
   <section id="mealPlan">
+  {{#with profileSummary}}
+  {{monthCalculator}}
     <div class="container clearfix">
         <h3> Pick your plan </h3>
         <p> Baby's Purest carefully prepares nutritionist-approved <br> recipies and ingredients that your baby loves.</p>
         <div class="row">
+          {{#if profile.babyProfileOne.babyStatus}}
+
           <div id="mealPlan1" class="mealPlanBlock clearfix">
             <div class="mealPlanTop clearfix">
               <div class="mealPlanSummary">
                 <h4>1st Baby’s Dietary Profile</h4>
                 <div class="mealPlanContent">
                   <p>
-                    1st baby is <highlight>8 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                    {{profile.babyProfileOne.name}} is <highlight>8 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
                   </p>
                 </div>
                 <div class="editProfileButton">
@@ -184,16 +188,16 @@
               </div>
             </div>
           </div>
-
+          {{/if}}
           <!-- end of Meal Plan for the 1st baby-->
-
+          {{#if profile.babyProfileTwo.babyStatus}}
           <div id="mealPlan2" class="mealPlanBlock clearfix">
             <div class="mealPlanTop clearfix">
               <div class="mealPlanSummary">
                 <h4>2nd Baby’s Dietary Profile</h4>
                 <div class="mealPlanContent">
                   <p>
-                    2nd baby is <highlight>10 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                    {{profile.babyProfileTwo.name}} is <highlight>10 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
                   </p>
                 </div>
                 <div class="editProfileButton">
@@ -366,16 +370,16 @@
               </div>
             </div>
           </div>
-
+          {{/if}}
           <!-- end of Meal Plan for the 2nd baby-->
-
+          {{#if profile.babyProfileThree.babyStatus}}
           <div id="mealPlan3" class="mealPlanBlock clearfix">
             <div class="mealPlanTop clearfix">
               <div class="mealPlanSummary">
                 <h4>3rd Baby’s Dietary Profile</h4>
                 <div class="mealPlanContent">
                   <p>
-                    3rd baby is <highlight>12 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                    {{profile.babyProfileThree.name}} is <highlight>12 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
                   </p>
                 </div>
                 <div class="editProfileButton">
@@ -548,7 +552,7 @@
               </div>
             </div>
           </div>
-
+          {{/if}}
 
           <!-- end of Meal Plan for the 3rd baby-->
           <div class="mealPlanSubmit">
@@ -561,10 +565,9 @@
           </div>
 
         </div>
-
-
-
       </div>
+
+  {{/with}}
   </section>
   {{>shortFooter}}
 </template>

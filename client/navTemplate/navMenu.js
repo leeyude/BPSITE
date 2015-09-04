@@ -59,9 +59,7 @@ if (Meteor.isClient) {
       this.render('profile2');
     },
     onBeforeAction: function(){
-      var preId= Session.get("preUserLoggedIn");
-      var tempUserObject = Meteor.users.findOne({_id:preId});
-      var preUserToken= tempUserObject.profile.babyProfileOne.babyStatus;
+      var preUserToken= Session.get("preUserLoggedInToProfile2");
       // all properties available in the route function
       // are also available here such as this.params
       if (!preUserToken) {
@@ -97,7 +95,8 @@ if (Meteor.isClient) {
       this.render('mealPlan');
     },
     onBeforeAction: function(){
-      var preUserToken= Session.get("preUserLoggedInToProfile2");
+      var preUserToken= Session.get("preUserforMealPlan");
+
       // all properties available in the route function
       // are also available here such as this.params
       if (!preUserToken) {

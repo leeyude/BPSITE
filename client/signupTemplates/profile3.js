@@ -13,7 +13,9 @@ Template.profile3.helpers({
   babyName2: function(){
     var preUserLoggedIn = Session.get("preUserLoggedIn");
     var tempProfile3 = Meteor.users.findOne({_id:preUserLoggedIn});
-
+    var profileThreeExist = tempProfile3.profile.babyProfileThree.babyStatus;
+    console.log(profileThreeExist);
+    if(profileThreeExist){
       Session.set("babyName3", tempProfile3.profile.babyProfileThree.name);
       if(tempProfile3.profile.babyProfileThree.gender==="true"){
         Session.set("gender2", true)
@@ -76,8 +78,11 @@ Template.profile3.helpers({
         Session.set("addressTypeBusiness", true);
         Session.set("addressTypeResidential", false);
       };
-      Session.set("babyName2", tempProfile3.profile.babyProfileTwo.name);
+    };
 
+    Session.set("babyName2", tempProfile3.profile.babyProfileTwo.name);
+
+    console.log(Session.get("babyName2"));
     return Session.get("babyName2");
   },
 
@@ -110,9 +115,10 @@ Template.profile3.helpers({
 Template.profile3.helpers({
   defaultBirthday3: function(){
     var preUserLoggedIn = Session.get("preUserLoggedIn");
+    console.log("why is birthday keeping undefined?");
     var tempProfile2 = Meteor.users.findOne({_id:preUserLoggedIn});
-    var defaultBirthday = tempProfile2.profile.babyProfileTwo.birthday;
-    Session.set("defaultBirthday3", defaultBirthday);
+    var defaultBirthday = tempProfile2.profile.babyProfileOne.birthday;
+    Session.setDefault("defaultBirthday3", defaultBirthday);
 
     return Session.get("defaultBirthday3");
   }
@@ -514,9 +520,9 @@ Template.profile3.events({
     Router.go('/profile2');
   },
   "click #cancelTheThird": function(event, template){
-    Session.setPersistent("preUserLoggedInToProfile3", false);
     var preId= Session.get("preUserLoggedIn");
     Meteor.call("cancel3", preId);
     Router.go('/mealPlan');
+    Session.setPersistent("preUserLoggedInToProfile3", false);
   },
 });
