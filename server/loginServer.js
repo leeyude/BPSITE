@@ -209,15 +209,173 @@ Meteor.methods({
         },
         babyProfileTwo:{
           babyStatus: false,
+          name: false,
+          gender: false,
+          birthday: false,
+          allergenWheat: false,
+          allergenShellfish: false,
+          allergenEggs: false,
+          allergenFish: false,
+          allergenPeanuts: false,
+          allergenMilk: false,
+          allergenTreeNuts: false,
+          allergenSoybeans: false,
+          otherAllergen: false,
+          eatingHabits: false,
+          mealsPerDay: false,
+          ouncePerMeal: false,
         },
         babyProfileThree:{
           babyStatus: false,
+          name: false,
+          gender: false,
+          birthday: false,
+          allergenWheat: false,
+          allergenShellfish: false,
+          allergenEggs: false,
+          allergenFish: false,
+          allergenPeanuts: false,
+          allergenMilk: false,
+          allergenTreeNuts: false,
+          allergenSoybeans: false,
+          otherAllergen: false,
+          eatingHabits: false,
+          mealsPerDay: false,
+          ouncePerMeal: false,
         },
       },
     }});
   },
-  preUserAddProfile1: function(preId, tempUserObject1){
 
+  preUserContinue2: function(preId, tempUserObject2){
+    var tempUserObject1 = Meteor.users.findOne({_id:preId});
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressType: tempUserObject2.profile.addressType,
+        babyProfileOne:{
+          babyStatus: true,
+          name: tempUserObject1.profile.babyProfileOne.name,
+          gender: tempUserObject1.profile.babyProfileOne.gender,
+          birthday: tempUserObject1.profile.babyProfileOne.birthday,
+          allergenWheat: tempUserObject1.profile.babyProfileOne.allergenWheat,
+          allergenShellfish: tempUserObject1.profile.babyProfileOne.allergenShellfish,
+          allergenEggs: tempUserObject1.profile.babyProfileOne.allergenEggs,
+          allergenFish: tempUserObject1.profile.babyProfileOne.allergenFish,
+          allergenPeanuts: tempUserObject1.profile.babyProfileOne.allergenPeanuts,
+          allergenMilk: tempUserObject1.profile.babyProfileOne.allergenMilk,
+          allergenTreeNuts: tempUserObject1.profile.babyProfileOne.allergenTreeNuts,
+          allergenSoybeans: tempUserObject1.profile.babyProfileOne.allergenSoybeans,
+          otherAllergen: tempUserObject1.profile.babyProfileOne.otherAllergen,
+          eatingHabits: tempUserObject1.profile.babyProfileOne.eatingHabits,
+          mealsPerDay: tempUserObject1.profile.babyProfileOne.mealsPerDay,
+          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
+        },
+        babyProfileTwo:{
+          babyStatus: true,
+          name: tempUserObject2.profile.babyProfileTwo.name,
+          gender: tempUserObject2.profile.babyProfileTwo.gender,
+          birthday: tempUserObject2.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+        },
+        babyProfileThree:{
+          babyStatus: false,
+          name: false,
+          gender: false,
+          birthday: false,
+          allergenWheat: false,
+          allergenShellfish: false,
+          allergenEggs: false,
+          allergenFish: false,
+          allergenPeanuts: false,
+          allergenMilk: false,
+          allergenTreeNuts: false,
+          allergenSoybeans: false,
+          otherAllergen: false,
+          eatingHabits: false,
+          mealsPerDay: false,
+          ouncePerMeal: false,
+        },
+      },
+    }});
+  },
+
+  preUserContinue3: function(preId, tempUserObject3){
+    var tempUserObject1 = Meteor.users.findOne({_id:preId});
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressType: tempUserObject3.profile.addressType,
+        babyProfileOne:{
+          babyStatus: true,
+          name: tempUserObject1.profile.babyProfileOne.name,
+          gender: tempUserObject1.profile.babyProfileOne.gender,
+          birthday: tempUserObject1.profile.babyProfileOne.birthday,
+          allergenWheat: tempUserObject1.profile.babyProfileOne.allergenWheat,
+          allergenShellfish: tempUserObject1.profile.babyProfileOne.allergenShellfish,
+          allergenEggs: tempUserObject1.profile.babyProfileOne.allergenEggs,
+          allergenFish: tempUserObject1.profile.babyProfileOne.allergenFish,
+          allergenPeanuts: tempUserObject1.profile.babyProfileOne.allergenPeanuts,
+          allergenMilk: tempUserObject1.profile.babyProfileOne.allergenMilk,
+          allergenTreeNuts: tempUserObject1.profile.babyProfileOne.allergenTreeNuts,
+          allergenSoybeans: tempUserObject1.profile.babyProfileOne.allergenSoybeans,
+          otherAllergen: tempUserObject1.profile.babyProfileOne.otherAllergen,
+          eatingHabits: tempUserObject1.profile.babyProfileOne.eatingHabits,
+          mealsPerDay: tempUserObject1.profile.babyProfileOne.mealsPerDay,
+          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
+        },
+        babyProfileTwo:{
+          babyStatus: true,
+          name: tempUserObject1.profile.babyProfileTwo.name,
+          gender: tempUserObject1.profile.babyProfileTwo.gender,
+          birthday: tempUserObject1.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject1.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject1.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject1.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject1.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject1.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject1.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject1.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject1.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject1.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject1.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject1.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject1.profile.babyProfileTwo.ouncePerMeal
+        },
+        babyProfileThree:{
+          babyStatus: true,
+          name: tempUserObject3.profile.babyProfileTwo.name,
+          gender: tempUserObject3.profile.babyProfileTwo.gender,
+          birthday: tempUserObject3.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject3.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject3.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject3.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject3.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject3.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject3.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject3.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject3.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject3.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject3.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject3.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject3.profile.babyProfileTwo.ouncePerMeal
+        },
+      },
+    }});
+  },
+
+
+  completeUpdate1: function(preId, tempUserObject1){
+    var tempUserObject2 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressType: tempUserObject1.profile.addressType,
@@ -240,13 +398,297 @@ Meteor.methods({
           ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
         },
         babyProfileTwo:{
-          babyStatus: false,
+          babyStatus: tempUserObject2.profile.babyProfileTwo.babyStatus,
+          name: tempUserObject2.profile.babyProfileTwo.name,
+          gender: tempUserObject2.profile.babyProfileTwo.gender,
+          birthday: tempUserObject2.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
         },
         babyProfileThree:{
-          babyStatus: false,
+          babyStatus: tempUserObject2.profile.babyProfileThree.babyStatus,
+          name: tempUserObject2.profile.babyProfileThree.name,
+          gender: tempUserObject2.profile.babyProfileThree.gender,
+          birthday: tempUserObject2.profile.babyProfileThree.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileThree.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileThree.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileThree.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileThree.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileThree.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileThree.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileThree.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileThree.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal
         },
       },
     }});
+  },
+
+  completeUpdate2: function(preId, tempUserObject2){
+    var tempUserObject3 = Meteor.users.findOne({_id:preId});
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressType: tempUserObject1.profile.addressType,
+        babyProfileOne:{
+          babyStatus: true,
+          name: tempUserObject3.profile.babyProfileOne.name,
+          gender: tempUserObject3.profile.babyProfileOne.gender,
+          birthday: tempUserObject3.profile.babyProfileOne.birthday,
+          allergenWheat: tempUserObject3.profile.babyProfileOne.allergenWheat,
+          allergenShellfish: tempUserObject3.profile.babyProfileOne.allergenShellfish,
+          allergenEggs: tempUserObject3.profile.babyProfileOne.allergenEggs,
+          allergenFish: tempUserObject3.profile.babyProfileOne.allergenFish,
+          allergenPeanuts: tempUserObject3.profile.babyProfileOne.allergenPeanuts,
+          allergenMilk: tempUserObject3.profile.babyProfileOne.allergenMilk,
+          allergenTreeNuts: tempUserObject3.profile.babyProfileOne.allergenTreeNuts,
+          allergenSoybeans: tempUserObject3.profile.babyProfileOne.allergenSoybeans,
+          otherAllergen: tempUserObject3.profile.babyProfileOne.otherAllergen,
+          eatingHabits: tempUserObject3.profile.babyProfileOne.eatingHabits,
+          mealsPerDay: tempUserObject3.profile.babyProfileOne.mealsPerDay,
+          ouncePerMeal: tempUserObject3.profile.babyProfileOne.ouncePerMeal
+        },
+        babyProfileTwo:{
+          babyStatus: tempUserObject2.profile.babyProfileTwo.babyStatus,
+          name: tempUserObject2.profile.babyProfileTwo.name,
+          gender: tempUserObject2.profile.babyProfileTwo.gender,
+          birthday: tempUserObject2.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+        },
+        babyProfileThree:{
+          babyStatus: tempUserObject3.profile.babyProfileTwo.babyStatus,
+          name: tempUserObject3.profile.babyProfileTwo.name,
+          gender: tempUserObject3.profile.babyProfileTwo.gender,
+          birthday: tempUserObject3.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject3.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject3.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject3.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject3.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject3.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject3.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject3.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject3.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject3.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject3.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject3.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject3.profile.babyProfileTwo.ouncePerMeal
+        },
+      },
+    }});
+  },
+
+  completeUpdate3: function(preId, tempUserObject2){
+    var tempUserObject1 = Meteor.users.findOne({_id:preId});
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressType: tempUserObject1.profile.addressType,
+        babyProfileOne:{
+          babyStatus: true,
+          name: tempUserObject1.profile.babyProfileOne.name,
+          gender: tempUserObject1.profile.babyProfileOne.gender,
+          birthday: tempUserObject1.profile.babyProfileOne.birthday,
+          allergenWheat: tempUserObject1.profile.babyProfileOne.allergenWheat,
+          allergenShellfish: tempUserObject1.profile.babyProfileOne.allergenShellfish,
+          allergenEggs: tempUserObject1.profile.babyProfileOne.allergenEggs,
+          allergenFish: tempUserObject1.profile.babyProfileOne.allergenFish,
+          allergenPeanuts: tempUserObject1.profile.babyProfileOne.allergenPeanuts,
+          allergenMilk: tempUserObject1.profile.babyProfileOne.allergenMilk,
+          allergenTreeNuts: tempUserObject1.profile.babyProfileOne.allergenTreeNuts,
+          allergenSoybeans: tempUserObject1.profile.babyProfileOne.allergenSoybeans,
+          otherAllergen: tempUserObject1.profile.babyProfileOne.otherAllergen,
+          eatingHabits: tempUserObject1.profile.babyProfileOne.eatingHabits,
+          mealsPerDay: tempUserObject1.profile.babyProfileOne.mealsPerDay,
+          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
+        },
+        babyProfileTwo:{
+          babyStatus: true,
+          name: tempUserObject1.profile.babyProfileTwo.name,
+          gender: tempUserObject1.profile.babyProfileTwo.gender,
+          birthday: tempUserObject1.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject1.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject1.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject1.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject1.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject1.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject1.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject1.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject1.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject1.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject1.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject1.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject1.profile.babyProfileTwo.ouncePerMeal
+        },
+        babyProfileThree:{
+          babyStatus: true,
+          name: tempUserObject2.profile.babyProfileThree.name,
+          gender: tempUserObject2.profile.babyProfileThree.gender,
+          birthday: tempUserObject2.profile.babyProfileThree.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileThree.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileThree.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileThree.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileThree.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileThree.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileThree.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileThree.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileThree.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal
+        },
+      },
+    }});
+  },
+
+  cancel2: function(preId){
+    var tempUserObject2 = Meteor.users.findOne({_id:preId});
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressType: tempUserObject2.profile.addressType,
+        babyProfileOne:{
+          babyStatus: true,
+          name: tempUserObject2.profile.babyProfileOne.name,
+          gender: tempUserObject2.profile.babyProfileOne.gender,
+          birthday: tempUserObject2.profile.babyProfileOne.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileOne.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileOne.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileOne.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileOne.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileOne.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileOne.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileOne.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileOne.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileOne.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileOne.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileOne.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileOne.ouncePerMeal
+        },
+        babyProfileTwo:{
+          babyStatus: false, // the only change of the user object is here- change to false of the second baby.
+          name: tempUserObject2.profile.babyProfileTwo.name,
+          gender: tempUserObject2.profile.babyProfileTwo.gender,
+          birthday: tempUserObject2.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+        },
+        babyProfileThree:{
+          babyStatus: false,
+          name: tempUserObject2.profile.babyProfileThree.name,
+          gender: tempUserObject2.profile.babyProfileThree.gender,
+          birthday: tempUserObject2.profile.babyProfileThree.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileThree.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileThree.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileThree.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileThree.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileThree.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileThree.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileThree.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileThree.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal
+        },
+      },
+    }});
+
+  },
+
+  cancel3: function(preId){
+    var tempUserObject2 = Meteor.users.findOne({_id:preId});
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressType: tempUserObject2.profile.addressType,
+        babyProfileOne:{
+          babyStatus: true,
+          name: tempUserObject2.profile.babyProfileOne.name,
+          gender: tempUserObject2.profile.babyProfileOne.gender,
+          birthday: tempUserObject2.profile.babyProfileOne.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileOne.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileOne.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileOne.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileOne.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileOne.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileOne.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileOne.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileOne.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileOne.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileOne.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileOne.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileOne.ouncePerMeal
+        },
+        babyProfileTwo:{
+          babyStatus: true,
+          name: tempUserObject2.profile.babyProfileTwo.name,
+          gender: tempUserObject2.profile.babyProfileTwo.gender,
+          birthday: tempUserObject2.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+        },
+        babyProfileThree:{
+          babyStatus: false, // the only change of the user object is here- change to false of the second baby.
+          name: tempUserObject2.profile.babyProfileThree.name,
+          gender: tempUserObject2.profile.babyProfileThree.gender,
+          birthday: tempUserObject2.profile.babyProfileThree.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileThree.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileThree.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileThree.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileThree.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileThree.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileThree.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileThree.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileThree.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal
+        },
+      },
+    }});
+
   },
 
 

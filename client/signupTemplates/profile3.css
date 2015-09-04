@@ -1,11 +1,11 @@
-#basicProfile-2 {
+#basicProfile3 {
   padding-top: 85px;
   text-align: center;
   background-color: rgb(240, 255, 233);
   padding-bottom: 40px;
 }
 
-#basicProfile-2 h3 {
+#basicProfile3 h3 {
   margin-bottom: 7px;
   padding-bottom: 0px;
   font-size: 32px;
@@ -16,7 +16,7 @@
   width: 100%;
 }
 
-#basicProfile-2 p {
+#basicProfile3 p {
   font-family: "Quando", sans-serif;
   font-weight: 400;
   font-style: italic;
@@ -27,26 +27,26 @@
   margin-bottom: 35px;
 }
 
-#basicProfile-2 .line {
+#basicProfile3 .line {
   border-top: 1px solid #c3c3c3;
   display: block;
 }
 
-#basicProfile-2 h4 {
+#basicProfile3 h4 {
   text-align: left;
   font-size: 20px;
   float: left;
   width: 100%;
 }
 
-#basicProfile-2 h5 {
+#basicProfile3 h5 {
   font-size: 16px;
   text-align: left;
   float: left;
   width: 100%;
 }
 
-#basicProfile-2 .babyFirstName {
+#basicProfile3 .babyFirstName {
     line-height: 30px;
     font-family: "Quando", sans-serif;
     text-align: center;
@@ -62,7 +62,7 @@
 
 }
 
-#basicProfile-2 .profileRadioIcon {
+#basicProfile3 .profileRadioIcon {
   background-size: 20px,auto;
   width: 20px;
   height: 20px;
@@ -78,7 +78,7 @@
   background-image: url(/radio-notSelected.png);
 }
 
-#basicProfile-2 .active .profileRadioIcon {
+#basicProfile3 .active .profileRadioIcon {
   background-size: 20px,auto;
   width: 20px;
   height: 20px;
@@ -94,19 +94,13 @@
   background-image: url(/radio-selected.png);
 }
 
-#basicProfile-2 .questionnaireContainer {
+#basicProfile3 .questionnaireContainer {
   border: 1px solid #c3c3c3;
   border-radius: 4px;
   background-color: white;
   margin: auto;
 }
 
-#basicProfile-2 .profileContent {
+#basicProfile3 .profileContent {
   padding: 20px;
-}
-
-.profileAdd.backTo {
-  float: left;
-  margin-left: 0px;
-  margin-left: 4%;
 }

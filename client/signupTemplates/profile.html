@@ -168,11 +168,10 @@
                       <label>
                         <div class="allergenOtherInput">
                           <label for="otherAllergen"></label>
-                          <input class="string otherAllergen required" id="otherAllergen" name="otherAllergen" type="text" placeholder="Other allergens you are aware of..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Other allergens you are aware of...'">
+                          <input class="string otherAllergen required" id="otherAllergen" name="otherAllergen" type="text" placeholder="Other allergens you are aware of..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Other allergens you are aware of...'" value={{#if otherAllergen}}{{otherAllergen}}{{else}}{{/if}}>
                         </div>
                       </label>
                     </div>
-
 
 
                   </div>
@@ -273,12 +272,21 @@
 
                 <span class="line"></span>
 
+                {{#if profile2ndBabyName}}
+                <div class="signupContinueBlock">
+                  <button class="btn profileAdd" id="goTo2ndBaby" type="submit">
+                  Confirm change and go to {{profile2ndBabyName}}
+                  </button>
+                </div>
+                {{else}}
                 <div class="signupContinueBlock">
                   <h5 for="add2ndBaby">Want to add your second baby? </h5>
                   <button class="btn profileAdd" id="add2ndBaby" type="submit">
                   Add Profile
                   </button>
                 </div>
+                {{/if}}
+
 
               </div>
 

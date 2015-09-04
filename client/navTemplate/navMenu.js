@@ -54,9 +54,47 @@ if (Meteor.isClient) {
     },
   });
 
-  Router.route('/profile-2', {
+  Router.route('/profile2', {
     action: function(){
-      this.render('profile-2');
+      this.render('profile2');
+    },
+    onBeforeAction: function(){
+      var preId= Session.get("preUserLoggedIn");
+      var tempUserObject = Meteor.users.findOne({_id:preId});
+      var preUserToken= tempUserObject.profile.babyProfileOne.babyStatus;
+      // all properties available in the route function
+      // are also available here such as this.params
+      if (!preUserToken) {
+        // if the user is not logged in, render the Login template
+        Router.go('/signup');
+      } else {
+        // otherwise don't hold up the rest of hooks or our route/action function from running
+        this.next();
+      }
+    },
+  });
+
+  Router.route('/profile3', {
+    action: function(){
+      this.render('profile3');
+    },
+    onBeforeAction: function(){
+      var preUserToken= Session.get("preUserLoggedInToProfile3");
+      // all properties available in the route function
+      // are also available here such as this.params
+      if (!preUserToken) {
+        // if the user is not logged in, render the Login template
+        Router.go('/signup');
+      } else {
+        // otherwise don't hold up the rest of hooks or our route/action function from running
+        this.next();
+      }
+    },
+  });
+
+  Router.route('/mealPlan', {
+    action: function(){
+      this.render('mealPlan');
     },
     onBeforeAction: function(){
       var preUserToken= Session.get("preUserLoggedInToProfile2");
@@ -70,14 +108,6 @@ if (Meteor.isClient) {
         this.next();
       }
     },
-  });
-
-  Router.route('/profile-3', function () {
-    this.render('profile-3');
-  });
-
-  Router.route('/mealPlan', function () {
-    this.render('mealPlan');
   });
 
   Router.route('/delivery', function () {

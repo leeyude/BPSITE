@@ -1,9 +1,9 @@
-<template name="profile-2">
+<template name="profile2">
   {{>signupMenu}}
-  <section id="basicProfile-2">
+  <section id="basicProfile2">
     <div class="container clearfix">
-        <h3> Tell us about {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} </h3>
-        <p> Baby's Purest is crafting the best meal plan for {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} with you!  </p>
+        <h3> Tell us about {{#if babyName2}}{{babyName2}}{{else}}your baby{{/if}} </h3>
+        <p> Baby's Purest is crafting the best meal plan for {{#if babyName2}}{{babyName2}}{{else}}your baby{{/if}} with you!  </p>
         <div class="row">
           <div class="col-md-6 ">
             <div class="col-xs-10 pull-right">
@@ -13,28 +13,28 @@
                   <div id="questionnaire">
                     <div class="questionnaireBlock clearfix">
                       <label for="firstname">Baby's Name:</label>
-                      <input class="string babyFirstName required" id="babyName" name="babyName" type="text" placeholder="Baby's Name" onfocus="this.placeholder = ''" onblur='this.placeholder = "Baby&#39;s Name"'>
+                      <input class="string babyFirstName required" id="babyName" name="babyName" type="text" placeholder="Baby's Name" onfocus="this.placeholder = ''" onblur='this.placeholder = "Baby&#39;s Name"' value="{{babyName2}}">
                     </div>
 
                     <div class="questionnaireBlock clearfix">
                       <label for="gender"> Gender: </label>
-                        <div id="radioBoy" class="genderSelection {{#if gender}}active {{/if}}">
+                        <div id="radioBoy" class="genderSelection {{#if gender2}}active {{/if}}">
                           <div class="profileRadioIcon clearfix">
                           </div>
-                          <input name="radioBoy" required="required" type="radio" value={{#if  gender}}true{{else}}false{{/if}}>
+                          <input class="gender" name="radioBoy" required="required" type="radio" value={{#if  gender2}}true{{else}}false{{/if}}>
                           Boy
                         </div>
-                        <div id="radioGirl" class="genderSelection {{#if gender}} {{else}}active {{/if}}">
+                        <div id="radioGirl" class="genderSelection {{#if gender2}} {{else}}active {{/if}}">
                           <div class="profileRadioIcon clearfix">
                           </div>
-                          <input name="radioGirl" required="required" type="radio" value={{#if  gender}}false{{else}}true{{/if}}>
+                          <input name="radioGirl" required="required" type="radio" value={{#if  gender2}}false{{else}}true{{/if}}>
                           Girl
                         </div>
                     </div>
 
                     <div class="questionnaireBlock clearfix input-group date">
                       <label for="birthday"> Birthday: </label>
-                      <input id="babyBirthday" data-provide="datepicker" value={{defaultBirthday}} data-date-format="M dd, yyyy">
+                      <input id="babyBirthday" data-provide="datepicker" value={{defaultBirthday2}} data-date-format="M dd, yyyy">
                       <div class="input-group-addon clearfix"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></div>
                     </div>
                   </div>
@@ -45,16 +45,16 @@
 
 
                 <div class="profileContent">
-                  <h5>Check allergens {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} might react to: </h5>
+                  <h5>Check allergens {{#if babyName2}}{{babyName2}}{{else}}your baby{{/if}} might react to: </h5>
                   <div id="allergensBlock" class="clearfix">
 
                     <!-- Allergy button, Wheat-->
 
                     <div class="allergenCheckboxWrap clearfix">
                         <label>
-                          <div class="allergenCheckbox {{#if wheat}}active{{/if}}">
+                          <div class="allergenCheckbox {{#if wheat2}}active{{/if}}">
                             <div class="allergenCheckboxIcon"></div>
-                            <input checked="" class="allergenInput" id="allergenWheat" multiple="" name="allergenWheat" type="checkbox" value={{#if wheat}}true{{else}}false{{/if}}>
+                            <input checked="" class="allergenInput" id="allergenWheat" multiple="" name="allergenWheat" type="checkbox" value={{#if wheat2}}true{{else}}false{{/if}}>
                             Wheat
                           </div>
                         </label>
@@ -64,9 +64,9 @@
 
                     <div class="allergenCheckboxWrap clearfix">
                         <label>
-                          <div class="allergenCheckbox {{#if shellfish}}active{{/if}}">
+                          <div class="allergenCheckbox {{#if shellfish2}}active{{/if}}">
                             <div class="allergenCheckboxIcon "></div>
-                            <input checked="" class="allergenInput" id="allergenShellfish" multiple="" name="allergenShellfish" type="checkbox" value={{#if  shellfish}}true{{else}}false{{/if}}>
+                            <input checked="" class="allergenInput" id="allergenShellfish" multiple="" name="allergenShellfish" type="checkbox" value={{#if  shellfish2}}true{{else}}false{{/if}}>
                             Shellfish
                           </div>
                         </label>
@@ -76,9 +76,9 @@
 
                     <div class="allergenCheckboxWrap clearfix">
                         <label>
-                          <div class="allergenCheckbox {{#if eggs}}active{{/if}}">
+                          <div class="allergenCheckbox {{#if eggs2}}active{{/if}}">
                             <div class="allergenCheckboxIcon "></div>
-                            <input checked="" class="allergenInput" id="allergenEggs" multiple="" name="allergenEggs" type="checkbox" value={{#if  eggs}}true{{else}}false{{/if}}>
+                            <input checked="" class="allergenInput" id="allergenEggs" multiple="" name="allergenEggs" type="checkbox" value={{#if  eggs2}}true{{else}}false{{/if}}>
                             Eggs
                           </div>
                         </label>
@@ -88,9 +88,9 @@
 
                     <div class="allergenCheckboxWrap clearfix">
                         <label>
-                          <div class="allergenCheckbox {{#if fish}}active{{/if}}">
+                          <div class="allergenCheckbox {{#if fish2}}active{{/if}}">
                             <div class="allergenCheckboxIcon "></div>
-                            <input checked="" class="allergenInput" id="allergenFish" multiple="" name="allergenFish" type="checkbox" value={{#if  fish}}true{{else}}false{{/if}}>
+                            <input checked="" class="allergenInput" id="allergenFish" multiple="" name="allergenFish" type="checkbox" value={{#if  fish2}}true{{else}}false{{/if}}>
                             Fish
                           </div>
                         </label>
@@ -100,9 +100,9 @@
 
                     <div class="allergenCheckboxWrap clearfix">
                         <label>
-                          <div class="allergenCheckbox {{#if peanuts}}active{{/if}}">
+                          <div class="allergenCheckbox {{#if peanuts2}}active{{/if}}">
                             <div class="allergenCheckboxIcon "></div>
-                            <input checked="" class="allergenInput" id="allergenPeanuts" multiple="" name="allergenPeanuts" type="checkbox" value={{#if  peanuts}}true{{else}}false{{/if}}>
+                            <input checked="" class="allergenInput" id="allergenPeanuts" multiple="" name="allergenPeanuts" type="checkbox" value={{#if  peanuts2}}true{{else}}false{{/if}}>
                             Peanuts
                           </div>
                         </label>
@@ -112,9 +112,9 @@
 
                     <div class="allergenCheckboxWrap clearfix">
                       <label>
-                        <div class="allergenCheckbox {{#if milk}}active{{/if}}">
+                        <div class="allergenCheckbox {{#if milk2}}active{{/if}}">
                           <div class="allergenCheckboxIcon "></div>
-                          <input checked="" class="allergenInput" id="allergenMilk" multiple="" name="allergenMilk" type="checkbox" value={{#if  milk}}true{{else}}false{{/if}}>
+                          <input checked="" class="allergenInput" id="allergenMilk" multiple="" name="allergenMilk" type="checkbox" value={{#if  milk2}}true{{else}}false{{/if}}>
                           Milk
                         </div>
                       </label>
@@ -124,9 +124,9 @@
 
                     <div class="allergenCheckboxWrap clearfix">
                       <label>
-                        <div class="allergenCheckbox {{#if treeNuts}}active{{/if}}">
+                        <div class="allergenCheckbox {{#if treeNuts2}}active{{/if}}">
                           <div class="allergenCheckboxIcon "></div>
-                          <input checked="" class="allergenInput" id="allergenTreeNuts" multiple="" name="allergenTreeNuts" type="checkbox" value={{#if  treeNuts}}true{{else}}false{{/if}}>
+                          <input checked="" class="allergenInput" id="allergenTreeNuts" multiple="" name="allergenTreeNuts" type="checkbox" value={{#if  treeNuts2}}true{{else}}false{{/if}}>
                           Tree Nuts
                         </div>
                       </label>
@@ -136,9 +136,9 @@
 
                     <div class="allergenCheckboxWrap clearfix">
                       <label>
-                        <div class="allergenCheckbox {{#if soybeans}}active{{/if}}">
+                        <div class="allergenCheckbox {{#if soybeans2}}active{{/if}}">
                           <div class="allergenCheckboxIcon "></div>
-                          <input checked="" class="allergenInput" id="allergenSoybeans" multiple="" name="allergenSoybeans" type="checkbox" value={{#if  soybeans}}true{{else}}false{{/if}}>
+                          <input checked="" class="allergenInput" id="allergenSoybeans" multiple="" name="allergenSoybeans" type="checkbox" value={{#if  soybeans2}}true{{else}}false{{/if}}>
                           Soybeans
                         </div>
                       </label>
@@ -154,7 +154,7 @@
                       <label>
                         <div class="allergenOtherInput">
                           <label for="otherAllergen"></label>
-                          <input class="string otherAllergen required" id="otherAllergen" name="otherAllergen" type="text" placeholder="Other allergens you are aware of..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Other allergens you are aware of...'">
+                          <input class="string otherAllergen required" id="otherAllergen" name="otherAllergen" type="text" placeholder="Other allergens you are aware of..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Other allergens you are aware of...'" value={{#if otherAllergen2}}{{otherAllergen2}}{{else}}{{/if}}>
                         </div>
                       </label>
                     </div>
@@ -176,21 +176,21 @@
                 <div class="profileContent">
                   <h4>2. Eating Habits</h4>
                   <div id="eatingHabits">
-                    <h5>How many solid meals a day does {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} eat? </h5>
+                    <h5>How many solid meals a day does {{#if babyName2}}{{babyName2}}{{else}}your baby{{/if}} eat? </h5>
                     <div class="questionnaireBlock clearfix">
-                      <div class="freqInput {{# if mealFreq}}active{{/if}}">
+                      <div class="freqInput {{# if mealFreq2}}active{{/if}}">
 
                         <div class="freqIconMinus clearfix"></div>
 
                         <div class="freqBlock">
                           <input id="mealFreq" type="number" name="mealFreq">
-                          {{#if mealFreq}}{{mealFreq}}{{else}}-{{/if}}
+                          {{#if mealFreq2}}{{mealFreq2}}{{else}}-{{/if}}
                         </div>
 
                         <div class="freqIconPlus clearfix"></div>
 
                       </div>
-                      <div id="hasNotStartedSolidFood" class="hasNotStartedSolidFood {{# if mealFreq}} {{else}}active{{/if}}">
+                      <div id="hasNotStartedSolidFood" class="hasNotStartedSolidFood {{# if mealFreq2}} {{else}}active{{/if}}">
                         <div class="profileRadioIcon clearfix">
                         </div>
                         <input name="hasNotStartedSolidFood" required="required" type="radio" >
@@ -198,15 +198,15 @@
                       </div>
 
                     </div>
-                    <h5>How many ounces each meal dooes {{#if babyName}}{{babyName}}{{else}}your baby{{/if}} eat?</h5>
+                    <h5>How many ounces each meal dooes {{#if babyName2}}{{babyName2}}{{else}}your baby{{/if}} eat?</h5>
                     <div class="questionnaireBlock clearfix">
-                      <div class="freqInput {{# if mealFreq}}active{{/if}}">
+                      <div class="freqInput {{# if mealFreq2}}active{{/if}}">
 
                         <div class="OunceIconMinus clearfix"></div>
 
                         <div class="ounceBlock">
                           <input id="mealOunces" type="number" name="mealOunces">
-                          {{#if mealFreq}}{{ouncePerMeal}}{{else}}-{{/if}}
+                          {{#if mealFreq2}}{{ouncePerMeal2}}{{else}}-{{/if}}
                         </div>
                         <div class="OunceIconPlus clearfix"></div>
                       </div>
@@ -251,7 +251,7 @@
               <div id="signupContinueBlock">
 
                 <div class="signupContinueBlock">
-                  <h5 for="continueArrow1">Completed profile? </h5>
+                  <h5 for="continueArrow2">Completed profile? </h5>
                   <button class="btn signUpContinue" id="continueArrow2" type="submit">
                   Continue
                   <div class="continueArrow"></div>
@@ -259,16 +259,27 @@
                 </div>
 
                 <span class="line"></span>
-
                 <div class="signupContinueBlock">
                   <button class="btn profileAdd backTo" id="backToFirst" >
-                  Back to
+                  Back to {{babyName}}
                   </button>
-
+                  <button class="btn profileAdd backTo" id="cancelTheSecond" >
+                  Cancel this profile
+                  </button>
+                </div>
+                {{#if profile3rdBabyName}}
+                <div class="signupContinueBlock">
+                  <button class="btn profileAdd" id="goTo3rdBaby" type="submit">
+                  Confirm change and go to {{profile3rdBabyName}}
+                  </button>
+                </div>
+                {{else}}
+                <div class="signupContinueBlock">
                   <button class="btn profileAdd" id="add3rdBaby" type="submit">
                   Add 3<sup>rd</sup> Profile
                   </button>
                 </div>
+                {{/if}}
               </div>
 
 
