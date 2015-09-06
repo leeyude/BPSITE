@@ -110,3 +110,11 @@
   margin-left: 0px;
   margin-left: 2%;
 }
+
+#basicProfile2 .fieldWarningMessage p {
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  color: #e77930;
+  font-size: 14px;
+
+}

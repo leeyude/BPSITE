@@ -158,7 +158,10 @@ Meteor.methods({
             },
             babyProfileTwo:{
               babyStatus: false,
-            }
+            },
+            babyProfileThree:{
+              babyStatus: false,
+            },
           }
         }, function (error) {
           if (error) {
@@ -184,7 +187,7 @@ Meteor.methods({
 
   },
 
-  preUserContinue1: function(preId, tempUserObject1){
+  preUserContinue1: function(preId, tempUserObject1, mealOption){
 
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
@@ -205,7 +208,13 @@ Meteor.methods({
           otherAllergen: tempUserObject1.profile.babyProfileOne.otherAllergen,
           eatingHabits: tempUserObject1.profile.babyProfileOne.eatingHabits,
           mealsPerDay: tempUserObject1.profile.babyProfileOne.mealsPerDay,
-          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
+          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
         },
         babyProfileTwo:{
           babyStatus: false,
@@ -224,6 +233,12 @@ Meteor.methods({
           eatingHabits: false,
           mealsPerDay: false,
           ouncePerMeal: false,
+          singlePuree: false,
+          yummyPairs:false,
+          tastyTrio:false,
+          boxSmall:false,
+          boxMedium:false,
+          boxLarge:false,
         },
         babyProfileThree:{
           babyStatus: false,
@@ -242,12 +257,18 @@ Meteor.methods({
           eatingHabits: false,
           mealsPerDay: false,
           ouncePerMeal: false,
+          singlePuree: false,
+          yummyPairs:false,
+          tastyTrio:false,
+          boxSmall:false,
+          boxMedium:false,
+          boxLarge:false,
         },
       },
     }});
   },
 
-  preUserContinue2: function(preId, tempUserObject2){
+  preUserContinue2: function(preId, tempUserObject2, mealOption){
     var tempUserObject1 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
@@ -268,7 +289,13 @@ Meteor.methods({
           otherAllergen: tempUserObject1.profile.babyProfileOne.otherAllergen,
           eatingHabits: tempUserObject1.profile.babyProfileOne.eatingHabits,
           mealsPerDay: tempUserObject1.profile.babyProfileOne.mealsPerDay,
-          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
+          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
         },
         babyProfileTwo:{
           babyStatus: true,
@@ -286,7 +313,13 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal,
+          singlePuree: mealOption[1].singlePuree,
+          yummyPairs: mealOption[1].yummyPairs,
+          tastyTrio: mealOption[1].tastyTrio,
+          boxSmall: mealOption[1].boxSmall,
+          boxMedium: mealOption[1].boxMedium,
+          boxLarge: mealOption[1].boxLarge,
         },
         babyProfileThree:{
           babyStatus: false,
@@ -305,12 +338,18 @@ Meteor.methods({
           eatingHabits: false,
           mealsPerDay: false,
           ouncePerMeal: false,
+          singlePuree: false,
+          yummyPairs: false,
+          tastyTrio: false,
+          boxSmall:false,
+          boxMedium:false,
+          boxLarge:false,
         },
       },
     }});
   },
 
-  preUserContinue3: function(preId, tempUserObject3){
+  preUserContinue3: function(preId, tempUserObject3, mealOption){
     var tempUserObject1 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
@@ -331,7 +370,13 @@ Meteor.methods({
           otherAllergen: tempUserObject1.profile.babyProfileOne.otherAllergen,
           eatingHabits: tempUserObject1.profile.babyProfileOne.eatingHabits,
           mealsPerDay: tempUserObject1.profile.babyProfileOne.mealsPerDay,
-          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
+          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
         },
         babyProfileTwo:{
           babyStatus: true,
@@ -349,32 +394,44 @@ Meteor.methods({
           otherAllergen: tempUserObject1.profile.babyProfileTwo.otherAllergen,
           eatingHabits: tempUserObject1.profile.babyProfileTwo.eatingHabits,
           mealsPerDay: tempUserObject1.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject1.profile.babyProfileTwo.ouncePerMeal
+          ouncePerMeal: tempUserObject1.profile.babyProfileTwo.ouncePerMeal,
+          singlePuree: mealOption[1].singlePuree,
+          yummyPairs: mealOption[1].yummyPairs,
+          tastyTrio: mealOption[1].tastyTrio,
+          boxSmall: mealOption[1].boxSmall,
+          boxMedium: mealOption[1].boxMedium,
+          boxLarge: mealOption[1].boxLarge,
         },
         babyProfileThree:{
           babyStatus: true,
-          name: tempUserObject3.profile.babyProfileTwo.name,
-          gender: tempUserObject3.profile.babyProfileTwo.gender,
-          birthday: tempUserObject3.profile.babyProfileTwo.birthday,
-          allergenWheat: tempUserObject3.profile.babyProfileTwo.allergenWheat,
-          allergenShellfish: tempUserObject3.profile.babyProfileTwo.allergenShellfish,
-          allergenEggs: tempUserObject3.profile.babyProfileTwo.allergenEggs,
-          allergenFish: tempUserObject3.profile.babyProfileTwo.allergenFish,
-          allergenPeanuts: tempUserObject3.profile.babyProfileTwo.allergenPeanuts,
-          allergenMilk: tempUserObject3.profile.babyProfileTwo.allergenMilk,
-          allergenTreeNuts: tempUserObject3.profile.babyProfileTwo.allergenTreeNuts,
-          allergenSoybeans: tempUserObject3.profile.babyProfileTwo.allergenSoybeans,
-          otherAllergen: tempUserObject3.profile.babyProfileTwo.otherAllergen,
-          eatingHabits: tempUserObject3.profile.babyProfileTwo.eatingHabits,
-          mealsPerDay: tempUserObject3.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject3.profile.babyProfileTwo.ouncePerMeal
+          name: tempUserObject3.profile.babyProfileThree.name,
+          gender: tempUserObject3.profile.babyProfileThree.gender,
+          birthday: tempUserObject3.profile.babyProfileThree.birthday,
+          allergenWheat: tempUserObject3.profile.babyProfileThree.allergenWheat,
+          allergenShellfish: tempUserObject3.profile.babyProfileThree.allergenShellfish,
+          allergenEggs: tempUserObject3.profile.babyProfileThree.allergenEggs,
+          allergenFish: tempUserObject3.profile.babyProfileThree.allergenFish,
+          allergenPeanuts: tempUserObject3.profile.babyProfileThree.allergenPeanuts,
+          allergenMilk: tempUserObject3.profile.babyProfileThree.allergenMilk,
+          allergenTreeNuts: tempUserObject3.profile.babyProfileThree.allergenTreeNuts,
+          allergenSoybeans: tempUserObject3.profile.babyProfileThree.allergenSoybeans,
+          otherAllergen: tempUserObject3.profile.babyProfileThree.otherAllergen,
+          eatingHabits: tempUserObject3.profile.babyProfileThree.eatingHabits,
+          mealsPerDay: tempUserObject3.profile.babyProfileThree.mealsPerDay,
+          ouncePerMeal: tempUserObject3.profile.babyProfileThree.ouncePerMeal,
+          singlePuree: mealOption[2].singlePuree,
+          yummyPairs: mealOption[2].yummyPairs,
+          tastyTrio: mealOption[2].tastyTrio,
+          boxSmall: mealOption[2].boxSmall,
+          boxMedium: mealOption[2].boxMedium,
+          boxLarge: mealOption[2].boxLarge,
         },
       },
     }});
   },
 
 
-  completeUpdate1: function(preId, tempUserObject1){
+  completeUpdate1: function(preId, tempUserObject1, mealOption){
     var tempUserObject2 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
@@ -395,7 +452,13 @@ Meteor.methods({
           otherAllergen: tempUserObject1.profile.babyProfileOne.otherAllergen,
           eatingHabits: tempUserObject1.profile.babyProfileOne.eatingHabits,
           mealsPerDay: tempUserObject1.profile.babyProfileOne.mealsPerDay,
-          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
+          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
         },
         babyProfileTwo:{
           babyStatus: tempUserObject2.profile.babyProfileTwo.babyStatus,
@@ -413,7 +476,13 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal,
+          singlePuree: mealOption[1].singlePuree,
+          yummyPairs: mealOption[1].yummyPairs,
+          tastyTrio: mealOption[1].tastyTrio,
+          boxSmall: mealOption[2].boxSmall,
+          boxMedium: mealOption[2].boxMedium,
+          boxLarge: mealOption[2].boxLarge,
         },
         babyProfileThree:{
           babyStatus: tempUserObject2.profile.babyProfileThree.babyStatus,
@@ -431,13 +500,19 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal,
+          singlePuree: mealOption[2].singlePuree,
+          yummyPairs: mealOption[2].yummyPairs,
+          tastyTrio: mealOption[2].tastyTrio,
+          boxSmall: mealOption[2].boxSmall,
+          boxMedium: mealOption[2].boxMedium,
+          boxLarge: mealOption[2].boxLarge,
         },
       },
     }});
   },
 
-  completeUpdate2: function(preId, tempUserObject2){
+  completeUpdate2: function(preId, tempUserObject2, mealOption){
     console.log("fuck I did this...");
     var tempUserObject3 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
@@ -459,7 +534,13 @@ Meteor.methods({
           otherAllergen: tempUserObject3.profile.babyProfileOne.otherAllergen,
           eatingHabits: tempUserObject3.profile.babyProfileOne.eatingHabits,
           mealsPerDay: tempUserObject3.profile.babyProfileOne.mealsPerDay,
-          ouncePerMeal: tempUserObject3.profile.babyProfileOne.ouncePerMeal
+          ouncePerMeal: tempUserObject3.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
         },
         babyProfileTwo:{
           babyStatus: tempUserObject2.profile.babyProfileTwo.babyStatus,
@@ -477,31 +558,43 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal,
+          singlePuree: mealOption[1].singlePuree,
+          yummyPairs: mealOption[1].yummyPairs,
+          tastyTrio: mealOption[1].tastyTrio,
+          boxSmall: mealOption[1].boxSmall,
+          boxMedium: mealOption[1].boxMedium,
+          boxLarge: mealOption[1].boxLarge,
         },
         babyProfileThree:{
-          babyStatus: tempUserObject3.profile.babyProfileTwo.babyStatus,
-          name: tempUserObject3.profile.babyProfileTwo.name,
-          gender: tempUserObject3.profile.babyProfileTwo.gender,
-          birthday: tempUserObject3.profile.babyProfileTwo.birthday,
-          allergenWheat: tempUserObject3.profile.babyProfileTwo.allergenWheat,
-          allergenShellfish: tempUserObject3.profile.babyProfileTwo.allergenShellfish,
-          allergenEggs: tempUserObject3.profile.babyProfileTwo.allergenEggs,
-          allergenFish: tempUserObject3.profile.babyProfileTwo.allergenFish,
-          allergenPeanuts: tempUserObject3.profile.babyProfileTwo.allergenPeanuts,
-          allergenMilk: tempUserObject3.profile.babyProfileTwo.allergenMilk,
-          allergenTreeNuts: tempUserObject3.profile.babyProfileTwo.allergenTreeNuts,
-          allergenSoybeans: tempUserObject3.profile.babyProfileTwo.allergenSoybeans,
-          otherAllergen: tempUserObject3.profile.babyProfileTwo.otherAllergen,
-          eatingHabits: tempUserObject3.profile.babyProfileTwo.eatingHabits,
-          mealsPerDay: tempUserObject3.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject3.profile.babyProfileTwo.ouncePerMeal
+          babyStatus: tempUserObject3.profile.babyProfileThree.babyStatus,
+          name: tempUserObject3.profile.babyProfileThree.name,
+          gender: tempUserObject3.profile.babyProfileThree.gender,
+          birthday: tempUserObject3.profile.babyProfileThree.birthday,
+          allergenWheat: tempUserObject3.profile.babyProfileThree.allergenWheat,
+          allergenShellfish: tempUserObject3.profile.babyProfileThree.allergenShellfish,
+          allergenEggs: tempUserObject3.profile.babyProfileThree.allergenEggs,
+          allergenFish: tempUserObject3.profile.babyProfileThree.allergenFish,
+          allergenPeanuts: tempUserObject3.profile.babyProfileThree.allergenPeanuts,
+          allergenMilk: tempUserObject3.profile.babyProfileThree.allergenMilk,
+          allergenTreeNuts: tempUserObject3.profile.babyProfileThree.allergenTreeNuts,
+          allergenSoybeans: tempUserObject3.profile.babyProfileThree.allergenSoybeans,
+          otherAllergen: tempUserObject3.profile.babyProfileThree.otherAllergen,
+          eatingHabits: tempUserObject3.profile.babyProfileThree.eatingHabits,
+          mealsPerDay: tempUserObject3.profile.babyProfileThree.mealsPerDay,
+          ouncePerMeal: tempUserObject3.profile.babyProfileThree.ouncePerMeal,
+          singlePuree: mealOption[2].singlePuree,
+          yummyPairs: mealOption[2].yummyPairs,
+          tastyTrio: mealOption[2].tastyTrio,
+          boxSmall: mealOption[2].boxSmall,
+          boxMedium: mealOption[2].boxMedium,
+          boxLarge: mealOption[2].boxLarge,
         },
       },
     }});
   },
 
-  completeUpdate3: function(preId, tempUserObject2){
+  completeUpdate3: function(preId, tempUserObject2, mealOption){
     var tempUserObject1 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
@@ -522,7 +615,13 @@ Meteor.methods({
           otherAllergen: tempUserObject1.profile.babyProfileOne.otherAllergen,
           eatingHabits: tempUserObject1.profile.babyProfileOne.eatingHabits,
           mealsPerDay: tempUserObject1.profile.babyProfileOne.mealsPerDay,
-          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal
+          ouncePerMeal: tempUserObject1.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
         },
         babyProfileTwo:{
           babyStatus: true,
@@ -540,7 +639,13 @@ Meteor.methods({
           otherAllergen: tempUserObject1.profile.babyProfileTwo.otherAllergen,
           eatingHabits: tempUserObject1.profile.babyProfileTwo.eatingHabits,
           mealsPerDay: tempUserObject1.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject1.profile.babyProfileTwo.ouncePerMeal
+          ouncePerMeal: tempUserObject1.profile.babyProfileTwo.ouncePerMeal,
+          singlePuree: mealOption[1].singlePuree,
+          yummyPairs: mealOption[1].yummyPairs,
+          tastyTrio: mealOption[1].tastyTrio,
+          boxSmall: mealOption[1].boxSmall,
+          boxMedium: mealOption[1].boxMedium,
+          boxLarge: mealOption[1].boxLarge,
         },
         babyProfileThree:{
           babyStatus: true,
@@ -558,13 +663,19 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal,
+          singlePuree: mealOption[2].singlePuree,
+          yummyPairs: mealOption[2].yummyPairs,
+          tastyTrio: mealOption[2].tastyTrio,
+          boxSmall: mealOption[2].boxSmall,
+          boxMedium: mealOption[2].boxMedium,
+          boxLarge: mealOption[2].boxLarge,
         },
       },
     }});
   },
 
-  cancel2: function(preId){
+  cancel2: function(preId, mealOption){
     var tempUserObject2 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
@@ -585,7 +696,13 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileOne.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileOne.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileOne.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileOne.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
         },
         babyProfileTwo:{
           babyStatus: false, // the only change of the user object is here- change to false of the second baby.
@@ -603,7 +720,13 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal,
+          singlePuree: mealOption[1].singlePuree,
+          yummyPairs: mealOption[1].yummyPairs,
+          tastyTrio: mealOption[1].tastyTrio,
+          boxSmall: mealOption[1].boxSmall,
+          boxMedium: mealOption[1].boxMedium,
+          boxLarge: mealOption[1].boxLarge,
         },
         babyProfileThree:{
           babyStatus: false,
@@ -621,14 +744,20 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal,
+          singlePuree: mealOption[2].singlePuree,
+          yummyPairs: mealOption[2].yummyPairs,
+          tastyTrio: mealOption[2].tastyTrio,
+          boxSmall: mealOption[2].boxSmall,
+          boxMedium: mealOption[2].boxMedium,
+          boxLarge: mealOption[2].boxLarge,
         },
       },
     }});
 
   },
 
-  cancel3: function(preId){
+  cancel3: function(preId, mealOption){
     var tempUserObject2 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
@@ -649,7 +778,13 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileOne.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileOne.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileOne.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileOne.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
         },
         babyProfileTwo:{
           babyStatus: true,
@@ -667,7 +802,13 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal,
+          singlePuree: mealOption[1].singlePuree,
+          yummyPairs: mealOption[1].yummyPairs,
+          tastyTrio: mealOption[1].tastyTrio,
+          boxSmall: mealOption[1].boxSmall,
+          boxMedium: mealOption[1].boxMedium,
+          boxLarge: mealOption[1].boxLarge,
         },
         babyProfileThree:{
           babyStatus: false, // the only change of the user object is here- change to false of the second baby.
@@ -685,7 +826,13 @@ Meteor.methods({
           otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
           eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
           mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
-          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal,
+          singlePuree: mealOption[2].singlePuree,
+          yummyPairs: mealOption[2].yummyPairs,
+          tastyTrio: mealOption[2].tastyTrio,
+          boxSmall: mealOption[2].boxSmall,
+          boxMedium: mealOption[2].boxMedium,
+          boxLarge: mealOption[2].boxLarge,
         },
       },
     }});

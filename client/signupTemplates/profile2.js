@@ -7,7 +7,6 @@ Template.profile2.events({
   "change #babyName": function(event, template){
      var getBabyName2= template.find("#babyName").value;
      Session.set("babyName2", getBabyName2);
-     console.log(getBabyName2);
   }
 });
 
@@ -18,13 +17,12 @@ Template.profile2.helpers({
     var profileTwoExist = tempProfile2.profile.babyProfileTwo.babyStatus;
     if(profileTwoExist){
       Session.set("babyName2", tempProfile2.profile.babyProfileTwo.name);
-      console.log(Session.get("babyName2"));
       if(tempProfile2.profile.babyProfileTwo.gender===true){
         Session.set("gender2", true)
       }else{
         Session.set("gender2", false)
       };
-      $('#babyBirthday').val(tempProfile2.profile.babyProfileTwo.birthday);
+      Session.set("defaultBirthday2", tempProfile2.profile.babyProfileTwo.birthday);
 
       if(tempProfile2.profile.babyProfileTwo.allergenWheat===true){
         Session.set("wheat2",true)
@@ -114,10 +112,13 @@ Template.profile2.helpers({
 Template.profile2.helpers({
   defaultBirthday2: function(){
     var preUserLoggedIn = Session.get("preUserLoggedIn");
-    var tempProfile1 = Meteor.users.findOne({_id:preUserLoggedIn});
-    var defaultBirthday = tempProfile1.profile.babyProfileOne.birthday;
-    Session.setDefault("defaultBirthday2", defaultBirthday);
-
+    var tempProfile2 = Meteor.users.findOne({_id:preUserLoggedIn});
+    var secondBabyCreated = tempProfile2.profile.babyProfileTwo.babyStatus;
+    if(secondBabyCreated){
+    }else {
+      var defaultBirthday = moment().subtract(6, 'months').format('ll');
+      Session.setDefault("defaultBirthday2", defaultBirthday);
+    };
     return Session.get("defaultBirthday2");
   }
 });
@@ -421,12 +422,10 @@ Template.profile2.helpers({
 
 Template.profile2.events({
   "click #addressTypeBusiness": function(event, template){
-    console.log("click Business");
      Session.set("addressTypeBusiness", true);
      Session.set("addressTypeResidential", false);
   },
   "click #addressTypeResidential": function(event, template){
-    console.log("click Residential");
 
      Session.set("addressTypeBusiness", false);
      Session.set("addressTypeResidential", true);
@@ -448,122 +447,79 @@ Template.profile2.helpers({
 Template.profile2.events({
   "click #continueArrow2": function(event, template){
     var preId= Session.get("preUserLoggedIn");
-    var tempUserObject3 = Meteor.users.findOne({_id:preId});
-    var thirdBabyStatus= tempUserObject3.profile.babyProfileTwo.babyStatus;
+    var tempUserObject2 = Meteor.users.findOne({_id:preId});
+    var thirdBabyStatus= tempUserObject2.profile.babyProfileThree.babyStatus;
+    var babyName = template.find("#babyName").value;
+    var babyGender = template.find(".gender").value=="true";
+    var babyBirthday = template.find("#babyBirthday").value;
+    var allergenWheat = template.find("#allergenWheat").value=="true";
+    var allergenShellfish = template.find("#allergenShellfish").value=="true";
+    var allergenEggs = template.find("#allergenEggs").value=="true";
+    var allergenFish = template.find("#allergenFish").value=="true";
+    var allergenPeanuts = template.find("#allergenPeanuts").value=="true";
+    var allergenMilk = template.find("#allergenMilk").value=="true";
+    var allergenTreeNuts = template.find("#allergenTreeNuts").value=="true";
+    var allergenSoybeans = template.find("#allergenSoybeans").value=="true";
+    var otherAllergen = template.find("#otherAllergen").value;
+
+    var mealFreq = Session.get("mealFreq2");
+    var mealOunces = Session.get("ouncePerMeal2");
+
+    var eatingHabits = !mealFreq===""; //
+    var addressType = template.find("#addressTypeResidential").value=="true";
+
+    var tempUserObject2 = {
+      profile: {
+        addressType: addressType,
+        babyProfileTwo:{
+          babyStatus: true,
+          name: babyName,
+          gender: babyGender,
+          birthday: babyBirthday,
+          allergenWheat: allergenWheat,
+          allergenShellfish: allergenShellfish,
+          allergenEggs: allergenEggs,
+          allergenFish: allergenFish,
+          allergenPeanuts: allergenPeanuts,
+          allergenMilk: allergenMilk,
+          allergenTreeNuts: allergenTreeNuts,
+          allergenSoybeans: allergenSoybeans,
+          otherAllergen: otherAllergen,
+          eatingHabits: eatingHabits,
+          mealsPerDay: mealFreq,
+          ouncePerMeal: mealOunces
+        },
+      }
+    };
+
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+
+    if(babyName){
+      var fieldCheckingWarning=false;
+    }else{
+      var fieldCheckingWarning=true;
+    };
 
     if(thirdBabyStatus){
-      var babyName = template.find("#babyName").value;
-      var babyGender = template.find(".gender").value=="true";
-      var babyBirthday = template.find("#babyBirthday").value;
-      var allergenWheat = template.find("#allergenWheat").value=="true";
-      var allergenShellfish = template.find("#allergenShellfish").value=="true";
-      var allergenEggs = template.find("#allergenEggs").value=="true";
-      var allergenFish = template.find("#allergenFish").value=="true";
-      var allergenPeanuts = template.find("#allergenPeanuts").value=="true";
-      var allergenMilk = template.find("#allergenMilk").value=="true";
-      var allergenTreeNuts = template.find("#allergenTreeNuts").value=="true";
-      var allergenSoybeans = template.find("#allergenSoybeans").value=="true";
-      var otherAllergen = template.find("#otherAllergen").value;
-
-
-      var mealFreq = Session.get("mealFreq2");
-      var mealOunces = Session.get("ouncePerMeal2");
-
-      var eatingHabits = !mealFreq===""; //
-      var addressType = template.find("#addressTypeResidential").value=="true";
-
-      var tempUserObject2 = {
-        profile: {
-          addressType: addressType,
-          babyProfileTwo:{
-            babyStatus: true,
-            name: babyName,
-            gender: babyGender,
-            birthday: babyBirthday,
-            allergenWheat: allergenWheat,
-            allergenShellfish: allergenShellfish,
-            allergenEggs: allergenEggs,
-            allergenFish: allergenFish,
-            allergenPeanuts: allergenPeanuts,
-            allergenMilk: allergenMilk,
-            allergenTreeNuts: allergenTreeNuts,
-            allergenSoybeans: allergenSoybeans,
-            otherAllergen: otherAllergen,
-            eatingHabits: eatingHabits,
-            mealsPerDay: mealFreq,
-            ouncePerMeal: mealOunces
-          },
-        }
-      };
-      console.log(tempUserObject2);
-      var fieldCheckingWarning = babyName==="";
-      console.log(eatingHabits);
-
       if(fieldCheckingWarning){
         Session.set("fieldCheckingWarning", true);
         $("html, body").animate({ scrollTop: 0 }, "slow");
       }else{
         Session.set("fieldCheckingWarning", false);
-        Meteor.call("completeUpdate2", preId, tempUserObject2);
+        Meteor.call("completeUpdate2", preId, tempUserObject2, getDefaultMealOption);
+        Router.go('/mealPlan');
       };
-      Router.go('/mealPlan');
 
     }else {
-      var babyName = template.find("#babyName").value;
-      var babyGender = template.find(".gender").value=="true";
-      var babyBirthday = template.find("#babyBirthday").value;
-      var allergenWheat = template.find("#allergenWheat").value=="true";
-      var allergenShellfish = template.find("#allergenShellfish").value=="true";
-      var allergenEggs = template.find("#allergenEggs").value=="true";
-      var allergenFish = template.find("#allergenFish").value=="true";
-      var allergenPeanuts = template.find("#allergenPeanuts").value=="true";
-      var allergenMilk = template.find("#allergenMilk").value=="true";
-      var allergenTreeNuts = template.find("#allergenTreeNuts").value=="true";
-      var allergenSoybeans = template.find("#allergenSoybeans").value=="true";
-      var otherAllergen = template.find("#otherAllergen").value;
-
-
-      var mealFreq = Session.get("mealFreq2");
-      var mealOunces = Session.get("ouncePerMeal2");
-
-      var eatingHabits = !mealFreq===""; //
-      var addressType = template.find("#addressTypeResidential").value=="true";
-
-      var tempUserObject2 = {
-        profile: {
-          addressType: addressType,
-          babyProfileTwo:{
-            babyStatus: true,
-            name: babyName,
-            gender: babyGender,
-            birthday: babyBirthday,
-            allergenWheat: allergenWheat,
-            allergenShellfish: allergenShellfish,
-            allergenEggs: allergenEggs,
-            allergenFish: allergenFish,
-            allergenPeanuts: allergenPeanuts,
-            allergenMilk: allergenMilk,
-            allergenTreeNuts: allergenTreeNuts,
-            allergenSoybeans: allergenSoybeans,
-            otherAllergen: otherAllergen,
-            eatingHabits: eatingHabits,
-            mealsPerDay: mealFreq,
-            ouncePerMeal: mealOunces
-          },
-        }
-      };
-      console.log(tempUserObject2);
-      var fieldCheckingWarning = babyName==="";
-      console.log(eatingHabits);
-
       if(fieldCheckingWarning){
         Session.set("fieldCheckingWarning", true);
         $("html, body").animate({ scrollTop: 0 }, "slow");
       }else{
         Session.set("fieldCheckingWarning", false);
-        Meteor.call("preUserContinue2", preId, tempUserObject2);
-      };
+        Meteor.call("preUserContinue2", preId, tempUserObject2, getDefaultMealOption);
         Router.go('/mealPlan');
+
+      };
     };
   },
 });
@@ -623,19 +579,24 @@ Template.profile2.events({
       }
     };
 
-    var fieldCheckingWarning = babyName==="";
-    console.log(eatingHabits);
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+
+    if(babyName){
+      var fieldCheckingWarning=false;
+    }else{
+      var fieldCheckingWarning=true;
+    };
 
     if(fieldCheckingWarning){
       Session.set("fieldCheckingWarning", true);
       $("html, body").animate({ scrollTop: 0 }, "slow");
     }else{
       Session.set("fieldCheckingWarning", false);
-      Meteor.call("preUserContinue2", preId, tempUserObject2);
-    };
-      console.log(Meteor.users.findOne({_id: preId}));
+      Meteor.call("preUserContinue2", preId, tempUserObject2, getDefaultMealOption);
       Session.setPersistent("preUserLoggedInToProfile3", true);
       Router.go('/profile3');
+    };
+
   },
 });
 
@@ -688,19 +649,24 @@ Template.profile2.events({
       }
     };
 
-    var fieldCheckingWarning = babyName==="";
-    console.log(eatingHabits);
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+
+    if(babyName){
+      var fieldCheckingWarning=false;
+    }else{
+      var fieldCheckingWarning=true;
+    };
 
     if(fieldCheckingWarning){
       Session.set("fieldCheckingWarning", true);
       $("html, body").animate({ scrollTop: 0 }, "slow");
     }else{
       Session.set("fieldCheckingWarning", false);
-      Meteor.call("completeUpdate2", preId, tempUserObject2);
-    };
-      console.log(Meteor.users.findOne({_id: preId}));
+      Meteor.call("completeUpdate2", preId, tempUserObject2, getDefaultMealOption);
       Session.setPersistent("preUserLoggedInToProfile3", true);
       Router.go('/profile3');
+    };
+
   },
 });
 
@@ -728,7 +694,11 @@ Template.profile2.events({
   },
   "click #cancelTheSecond": function(event, template){
     var preId= Session.get("preUserLoggedIn");
-    Meteor.call("cancel2", preId);
+    var babyBirthday = template.find("#babyBirthday").value;
+
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+
+    Meteor.call("cancel2", preId, getDefaultMealOption);
 
     Router.go('/mealPlan');
     Session.setPersistent("preUserLoggedInToProfile2", false);

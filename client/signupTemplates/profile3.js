@@ -5,7 +5,6 @@ Template.profile3.events({
   "change #babyName": function(event, template){
      var getBabyName= template.find("#babyName").value;
      Session.set("babyName3", getBabyName);
-     console.log(getBabyName);
   }
 });
 
@@ -14,15 +13,15 @@ Template.profile3.helpers({
     var preUserLoggedIn = Session.get("preUserLoggedIn");
     var tempProfile3 = Meteor.users.findOne({_id:preUserLoggedIn});
     var profileThreeExist = tempProfile3.profile.babyProfileThree.babyStatus;
-    console.log(profileThreeExist);
+
     if(profileThreeExist){
       Session.set("babyName3", tempProfile3.profile.babyProfileThree.name);
       if(tempProfile3.profile.babyProfileThree.gender===true){
-        Session.set("gender2", true)
+        Session.set("gender3", true)
       }else{
-        Session.set("gender2", false)
+        Session.set("gender3", false)
       };
-      $('#babyBirthday').val(tempProfile3.profile.babyProfileThree.birthday);
+      Session.set("defaultBirthday3", tempProfile3.profile.babyProfileThree.birthday)
 
       if(tempProfile3.profile.babyProfileThree.allergenWheat===true){
         Session.set("wheat3",true)
@@ -81,8 +80,6 @@ Template.profile3.helpers({
     };
 
     Session.set("babyName2", tempProfile3.profile.babyProfileTwo.name);
-
-    console.log(Session.get("babyName2"));
     return Session.get("babyName2");
   },
 
@@ -115,11 +112,13 @@ Template.profile3.helpers({
 Template.profile3.helpers({
   defaultBirthday3: function(){
     var preUserLoggedIn = Session.get("preUserLoggedIn");
-    console.log("why is birthday keeping undefined?");
-    var tempProfile2 = Meteor.users.findOne({_id:preUserLoggedIn});
-    var defaultBirthday = tempProfile2.profile.babyProfileOne.birthday;
-    Session.setDefault("defaultBirthday3", defaultBirthday);
-
+    var tempProfile3 = Meteor.users.findOne({_id:preUserLoggedIn});
+    var firstBabyCreated = tempProfile3.profile.babyProfileThree.babyStatus;
+    if(firstBabyCreated){
+    }else {
+      var defaultBirthday = moment().subtract(6, 'months').format('ll');
+      Session.setDefault("defaultBirthday3", defaultBirthday);
+    };
     return Session.get("defaultBirthday3");
   }
 });
@@ -423,12 +422,10 @@ Template.profile3.helpers({
 
 Template.profile3.events({
   "click #addressTypeBusiness": function(event, template){
-    console.log("click Business");
      Session.set("addressTypeBusiness", true);
      Session.set("addressTypeResidential", false);
   },
   "click #addressTypeResidential": function(event, template){
-    console.log("click Residential");
 
      Session.set("addressTypeBusiness", false);
      Session.set("addressTypeResidential", true);
@@ -451,7 +448,7 @@ Template.profile3.events({
   "click #continueArrow3": function(event, template){
     var preId= Session.get("preUserLoggedIn");
     var tempUserObject3 = Meteor.users.findOne({_id:preId});
-    var thirdBabyStatus= tempUserObject3.profile.babyProfileTwo.babyStatus;
+    var thirdBabyStatus= true;
     var babyName = template.find("#babyName").value;
     var babyGender = template.find(".gender").value=="true";
     var babyBirthday = template.find("#babyBirthday").value;
@@ -495,15 +492,23 @@ Template.profile3.events({
         },
       }
     };
-    var fieldCheckingWarning = babyName==="";
+
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+
+    if(babyName){
+      var fieldCheckingWarning=false;
+    }else{
+      var fieldCheckingWarning=true;
+    };
+
     if(fieldCheckingWarning){
       Session.set("fieldCheckingWarning", true);
       $("html, body").animate({ scrollTop: 0 }, "slow");
     }else{
       Session.set("fieldCheckingWarning", false);
-      Meteor.call("completeUpdate3", preId, tempUserObject3);
+      Meteor.call("completeUpdate3", preId, tempUserObject3, getDefaultMealOption);
+      Router.go('/mealPlan');
     };
-    Router.go('/mealPlan');
   },
 });
 
@@ -521,7 +526,11 @@ Template.profile3.events({
   },
   "click #cancelTheThird": function(event, template){
     var preId= Session.get("preUserLoggedIn");
-    Meteor.call("cancel3", preId);
+    var babyBirthday = template.find("#babyBirthday").value;
+
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+
+    Meteor.call("cancel3", preId, getDefaultMealOption);
     Router.go('/mealPlan');
     Session.setPersistent("preUserLoggedInToProfile3", false);
   },

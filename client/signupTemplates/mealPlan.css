@@ -30,7 +30,7 @@
 #mealPlan .mealPlanContent p {
   font-size: 12px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 #mealPlan .line {
@@ -103,7 +103,6 @@
   display: block;
   width: 100%;
   float: left;
-  height: 120px;
 }
 
 .mealPlanContent highlight {
@@ -114,8 +113,16 @@
 
 }
 
-.editProfileButton h5{
-  width: auto!important;
+#mealPlan .editProfileButton {
+  width: 100%;
+  float: left;
+}
+
+#mealPlan .editProfileButton label{
+  width: auto;
+  margin-right: 4%;
+  color: rgb(84, 173, 40);
+
 }
 
 .editProfileButton button {
@@ -134,7 +141,7 @@
   margin-left: 1%;
   margin-right: 1%;
   float: left;
-  width: 86%;
+  width: 96%;
   font-family: "Gentium Book Basic", sans-serif;
   font-size: 18px;
 
@@ -228,6 +235,10 @@ input[type=checkbox], input[type=radio], input[type=number]{
 
 .active .mealSelectionWrap .mealSelectionIcon {
     background-image: url(/radio-selected.png);
+}
+
+#small-box-1 .pricingBlock, #small-box-2 .pricingBlock, #small-box-3 .pricingBlock, #medium-box-1 .pricingBlock, #medium-box-2 .pricingBlock, #medium-box-3 .pricingBlock, #large-box-1 .pricingBlock, #large-box-2 .pricingBlock, #large-box-3.pricingBlock, {
+  cursor: pointer;
 }
 
 #small-box-1 .pricingImg, #small-box-2 .pricingImg, #small-box-3 .pricingImg  {

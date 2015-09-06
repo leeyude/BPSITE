@@ -1,40 +1,44 @@
 <template name="mealPlan">
   {{>signupMenu}}
   <section id="mealPlan">
+
   {{#with profileSummary}}
-  {{monthCalculator}}
     <div class="container clearfix">
         <h3> Pick your plan </h3>
         <p> Baby's Purest carefully prepares nutritionist-approved <br> recipies and ingredients that your baby loves.</p>
         <div class="row">
           {{#if profile.babyProfileOne.babyStatus}}
-
+          {{setMealPlan}}
           <div id="mealPlan1" class="mealPlanBlock clearfix">
             <div class="mealPlanTop clearfix">
-              <div class="mealPlanSummary">
+              <div class="mealPlanSummary clearfix">
                 <h4>{{profile.babyProfileOne.name}}'s' Dietary Profile</h4>
-                <div class="mealPlanContent">
+                <div class="mealPlanContent clearfix">
                   <p>
-                    {{profile.babyProfileOne.name}} is <highlight>8 months old</highlight> now. <br> {{#if profile.babyProfileTwo.gender}}He {{else}}She{{/if}}will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                    {{profile.babyProfileOne.name}} is <highlight> {{monthCalculator.[0].months}} months and {{monthCalculator.[0].days}} days old</highlight> now. <br> {{#if profile.babyProfileOne.gender}}He {{else}}She{{/if}} will receive meals that avoid <highlight>{{allergenStatementOne}}</highlight>.<br>{{#if profile.babyProfileOne.gender}}His {{else}}Her{{/if}} puree will include <highlight>{{pureeStatementOne}}</highlight>.
                   </p>
                 </div>
                 <div class="editProfileButton clearfix">
-                  <button class="btn" id="edit1stBaby" >
-                  Edit Profile
-                  </button>
-                  <h5>Missing anything?</h5>
+                  <div class="toTheRight clearfix">
+                    <label for="edit1stBaby">Missing anything?</label>
+                    <button class="btn" id="edit1stBaby" >
+                    Edit Profile
+                    </button>
+
+                  </div>
+
 
                 </div>
               </div>
 
               <div class="pureeType">
-                <h5>1st baby's puree options will include:</h5>
+                <h5>{{profile.babyProfileOne.name}}'s puree options will include:</h5>
                 <!---->
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox active">
+                    <div class="pureeCheckbox {{#if singlePuree1}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="singlePuree1" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="singlePuree1" multiple="" name="" type="checkbox" value={{singlePuree1}}>
                       Single Puree
                     </div>
                   </label>
@@ -42,9 +46,9 @@
 
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox">
+                    <div class="pureeCheckbox {{#if yummyPairs1}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="yummyPairs1" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="yummyPairs1" multiple="" name="" type="checkbox" value={{yummyPairs1}}>
                       Yummy Pairs
                     </div>
                   </label>
@@ -52,9 +56,9 @@
 
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox">
+                    <div class="pureeCheckbox {{#if tastyTrio1}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="tastyTrio1" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="tastyTrio1" multiple="" name="" type="checkbox" value={{tastyTrio1}}>
                       Tasty Trio
                     </div>
                   </label>
@@ -66,7 +70,7 @@
             <div class="mealPlanBottom clearfix">
               <div class="mealPlanSelection">
                   <div class="row-fluid">
-                    <div id="small-box-1" class="col-sm-4">
+                    <div id="small-box-1" class="col-sm-4 {{#if boxOptionSmallOne}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -106,7 +110,7 @@
 
                     </div>
 
-                    <div id="medium-box-1" class="col-sm-4 active">
+                    <div id="medium-box-1" class="col-sm-4 {{#if boxOptionMediumOne}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -145,7 +149,7 @@
                       </div>
                     </div>
 
-                    <div id="large-box-1" class="col-sm-4">
+                    <div id="large-box-1" class="col-sm-4 {{#if boxOptionLargeOne}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -198,25 +202,25 @@
                 <h4>{{profile.babyProfileTwo.name}}'s Dietary Profile</h4>
                 <div class="mealPlanContent">
                   <p>
-                    {{profile.babyProfileTwo.name}} is <highlight>10 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                    {{profile.babyProfileTwo.name}} is <highlight>{{monthCalculator.[1].months}} months and {{monthCalculator.[1].days}} days old</highlight> now. <br>{{#if profile.babyProfileTwo.gender}}He {{else}}She{{/if}} will receive meals that avoid <highlight>{{allergenStatementTwo}}</highlight>.<br>{{#if profile.babyProfileTwo.gender}}His {{else}}Her{{/if}} puree will include <highlight>{{pureeStatementTwo}}</highlight>.
                   </p>
                 </div>
                 <div class="editProfileButton clearfix">
+                  <label for="edit2ndBaby">Missing anything?</label>
                   <button class="btn" id="edit2ndBaby" >
                   Edit Profile
                   </button>
-                  <h5>Missing anything?</h5>
                 </div>
               </div>
 
               <div class="pureeType">
-                <h5>2nd baby's puree options will include:</h5>
+                <h5>{{profile.babyProfileTwo.name}}'s puree options will include:</h5>
                 <!---->
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox active">
+                    <div class="pureeCheckbox {{#if singlePuree2}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="singlePuree2" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="singlePuree2" multiple="" name="" type="checkbox" value={{singlePuree2}}>
                       Single Puree
                     </div>
                   </label>
@@ -224,9 +228,9 @@
 
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox">
+                    <div class="pureeCheckbox {{#if yummyPairs2}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="yummyPairs2" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="yummyPairs2" multiple="" name="" type="checkbox" value={{yummyPairs2}}>
                       Yummy Pairs
                     </div>
                   </label>
@@ -234,9 +238,9 @@
 
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox">
+                    <div class="pureeCheckbox {{#if tastyTrio2}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="tastyTrio2" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="tastyTrio2" multiple="" name="" type="checkbox" value={{tastyTrio2}}>
                       Tasty Trio
                     </div>
                   </label>
@@ -248,7 +252,7 @@
             <div class="mealPlanBottom clearfix">
               <div class="mealPlanSelection">
                   <div class="row-fluid">
-                    <div id="small-box-2" class="col-sm-4">
+                    <div id="small-box-2" class="col-sm-4 {{#if boxOptionSmallTwo}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -288,7 +292,7 @@
 
                     </div>
 
-                    <div id="medium-box-2" class="col-sm-4 active">
+                    <div id="medium-box-2" class="col-sm-4 {{#if boxOptionMediumTwo}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -327,7 +331,7 @@
                       </div>
                     </div>
 
-                    <div id="large-box-2" class="col-sm-4">
+                    <div id="large-box-2" class="col-sm-4 {{#if boxOptionLargeTwo}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -380,25 +384,25 @@
                 <h4>{{profile.babyProfileThree.name}}'s' Dietary Profile</h4>
                 <div class="mealPlanContent">
                   <p>
-                    {{profile.babyProfileThree.name}} is <highlight>12 months old</highlight> now. <br>He/she will receive meals that avoid <highlight>AAA, BBB, CCC, and DDD</highlight>.<br>His/her puree will include <highlight>X, Y, and Z</highlight>.
+                    {{profile.babyProfileThree.name}} is <highlight>{{monthCalculator.[2].months}} months and {{monthCalculator.[2].days}} days old</highlight> now. <br>{{#if profile.babyProfileThree.gender}}He {{else}}She{{/if}} will receive meals that avoid <highlight>{{allergenStatementThree}}</highlight>.<br>{{#if profile.babyProfileThree.gender}}His{{else}}Her{{/if}} puree will include <highlight>{{pureeStatementThree}}</highlight>.
                   </p>
                 </div>
                 <div class="editProfileButton">
+                  <label for="edit3rdBaby">Missing anything?</label>
                   <button class="btn" id="edit3rdBaby" >
                   Edit Profile
                   </button>
-                  <h5>Missing anything?</h5>
                 </div>
               </div>
 
               <div class="pureeType">
-                <h5>3rd baby's puree options will include:</h5>
+                <h5>{{profile.babyProfileThree.name}}'s puree options will include:</h5>
                 <!---->
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox">
+                    <div class="pureeCheckbox {{#if singlePuree3}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="singlePuree3" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="singlePuree3" multiple="" name="" type="checkbox" value={{singlePuree3}}>
                       Single Puree
                     </div>
                   </label>
@@ -406,9 +410,9 @@
 
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox active">
+                    <div class="pureeCheckbox {{#if yummyPairs3}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="yummyPairs3" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="yummyPairs3" multiple="" name="" type="checkbox" value={{yummyPairs3}}>
                       Yummy Pairs
                     </div>
                   </label>
@@ -416,9 +420,9 @@
 
                 <div class="pureeCheckboxWrap clearfix">
                   <label>
-                    <div class="pureeCheckbox active">
+                    <div class="pureeCheckbox {{#if tastyTrio3}}active{{/if}}">
                       <div class="pureeCheckboxIcon "></div>
-                      <input checked="" class="pureeInput" id="tastyTrio3" multiple="" name="" type="checkbox" >
+                      <input checked="" class="pureeInput" id="tastyTrio3" multiple="" name="" type="checkbox" value={{tastyTrio3}}>
                       Tasty Trio
                     </div>
                   </label>
@@ -430,7 +434,7 @@
             <div class="mealPlanBottom clearfix">
               <div class="mealPlanSelection">
                   <div class="row-fluid">
-                    <div id="small-box-3" class="col-sm-4">
+                    <div id="small-box-3" class="col-sm-4 {{#if boxOptionSmallThree}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -470,7 +474,7 @@
 
                     </div>
 
-                    <div id="medium-box-3" class="col-sm-4">
+                    <div id="medium-box-3" class="col-sm-4 {{#if boxOptionMediumThree}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -509,7 +513,7 @@
                       </div>
                     </div>
 
-                    <div id="large-box-3" class="col-sm-4 active">
+                    <div id="large-box-3" class="col-sm-4 {{#if boxOptionLargeThree}}active{{/if}}">
                       <div class="pricingBlockBackground">
                         <div class="pricingBlock">
                           <div class="pricingHeader">
@@ -567,7 +571,6 @@
 
         </div>
       </div>
-
   {{/with}}
   </section>
   {{>shortFooter}}

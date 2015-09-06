@@ -4,6 +4,17 @@
     <div class="container clearfix">
         <h3> Tell us about {{#if babyName3}}{{babyName3}}{{else}}your baby{{/if}} </h3>
         <p> Baby's Purest is crafting the best meal plan for {{#if babyName3}}{{babyName3}}{{else}}your baby{{/if}} with you!  </p>
+
+        {{#if fieldCheckingWarning}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+               Please enter the following fields.
+            </p>
+          </div>
+        </div>
+        {{/if}}
+
         <div class="row">
           <div class="col-md-6 ">
             <div class="col-xs-10 pull-right">
@@ -12,7 +23,11 @@
                   <h4>1. Basic Profile</h4>
                   <div id="questionnaire">
                     <div class="questionnaireBlock clearfix">
-                      <label for="firstname">Baby's Name:</label>
+                      <label for="firstname">Baby's Name:
+                        {{#if fieldCheckingWarning}}
+                        <div class="warningIcon"></div>
+                        {{/if}}
+                      </label>
                       <input class="string babyFirstName required" id="babyName" name="babyName" type="text" placeholder="Baby's Name" onfocus="this.placeholder = ''" onblur='this.placeholder = "Baby&#39;s Name"' value="{{babyName3}}">
                     </div>
 
