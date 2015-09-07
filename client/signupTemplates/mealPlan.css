@@ -237,7 +237,7 @@ input[type=checkbox], input[type=radio], input[type=number]{
     background-image: url(/radio-selected.png);
 }
 
-#small-box-1 .pricingBlock, #small-box-2 .pricingBlock, #small-box-3 .pricingBlock, #medium-box-1 .pricingBlock, #medium-box-2 .pricingBlock, #medium-box-3 .pricingBlock, #large-box-1 .pricingBlock, #large-box-2 .pricingBlock, #large-box-3.pricingBlock, {
+#small-box-1 .pricingBlock, #small-box-2 .pricingBlock, #small-box-3 .pricingBlock, #medium-box-1 .pricingBlock, #medium-box-2 .pricingBlock, #medium-box-3 .pricingBlock, #large-box-1 .pricingBlock, #large-box-2 .pricingBlock, #large-box-3.pricingBlock {
   cursor: pointer;
 }
 

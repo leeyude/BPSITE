@@ -6,6 +6,16 @@
     <div class="container clearfix">
         <h3> Pick your plan </h3>
         <p> Baby's Purest carefully prepares nutritionist-approved <br> recipies and ingredients that your baby loves.</p>
+
+        {{#if fieldCheckingWarning}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+               Please select at least one kind of puree below.
+            </p>
+          </div>
+        </div>
+        {{/if}}
         <div class="row">
           {{#if profile.babyProfileOne.babyStatus}}
           {{setMealPlan}}
@@ -40,6 +50,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="singlePuree1" multiple="" name="" type="checkbox" value={{singlePuree1}}>
                       Single Puree
+                      {{#if emptyWarning1}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>
@@ -50,6 +63,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="yummyPairs1" multiple="" name="" type="checkbox" value={{yummyPairs1}}>
                       Yummy Pairs
+                      {{#if emptyWarning1}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>
@@ -60,6 +76,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="tastyTrio1" multiple="" name="" type="checkbox" value={{tastyTrio1}}>
                       Tasty Trio
+                      {{#if emptyWarning1}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>
@@ -222,6 +241,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="singlePuree2" multiple="" name="" type="checkbox" value={{singlePuree2}}>
                       Single Puree
+                      {{#if emptyWarning2}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>
@@ -232,6 +254,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="yummyPairs2" multiple="" name="" type="checkbox" value={{yummyPairs2}}>
                       Yummy Pairs
+                      {{#if emptyWarning2}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>
@@ -242,6 +267,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="tastyTrio2" multiple="" name="" type="checkbox" value={{tastyTrio2}}>
                       Tasty Trio
+                      {{#if emptyWarning2}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>
@@ -404,6 +432,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="singlePuree3" multiple="" name="" type="checkbox" value={{singlePuree3}}>
                       Single Puree
+                      {{#if emptyWarning3}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>
@@ -414,6 +445,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="yummyPairs3" multiple="" name="" type="checkbox" value={{yummyPairs3}}>
                       Yummy Pairs
+                      {{#if emptyWarning3}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>
@@ -424,6 +458,9 @@
                       <div class="pureeCheckboxIcon "></div>
                       <input checked="" class="pureeInput" id="tastyTrio3" multiple="" name="" type="checkbox" value={{tastyTrio3}}>
                       Tasty Trio
+                      {{#if emptyWarning3}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </div>
                   </label>
                 </div>

@@ -188,9 +188,11 @@ Meteor.methods({
   },
 
   preUserContinue1: function(preId, tempUserObject1, mealOption){
+    var tempUserObject0 = Meteor.users.findOne({_id:preId});
 
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
+        addressZIP: tempUserObject0.profile.addressZIP,
         addressType: tempUserObject1.profile.addressType,
         babyProfileOne:{
           babyStatus: true,
@@ -272,8 +274,8 @@ Meteor.methods({
     var tempUserObject1 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
-        addressType: tempUserObject2.profile.addressType,
-        babyProfileOne:{
+        addressZIP: tempUserObject1.profile.addressZIP,
+        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
           gender: tempUserObject1.profile.babyProfileOne.gender,
@@ -353,8 +355,8 @@ Meteor.methods({
     var tempUserObject1 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
-        addressType: tempUserObject3.profile.addressType,
-        babyProfileOne:{
+        addressZIP: tempUserObject1.profile.addressZIP,
+        addressType: tempUserObject3.profile.addressType,        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
           gender: tempUserObject1.profile.babyProfileOne.gender,
@@ -435,8 +437,8 @@ Meteor.methods({
     var tempUserObject2 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
-        addressType: tempUserObject1.profile.addressType,
-        babyProfileOne:{
+        addressZIP: tempUserObject2.profile.addressZIP,
+        addressType: tempUserObject1.profile.addressType,        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
           gender: tempUserObject1.profile.babyProfileOne.gender,
@@ -513,12 +515,11 @@ Meteor.methods({
   },
 
   completeUpdate2: function(preId, tempUserObject2, mealOption){
-    console.log("fuck I did this...");
     var tempUserObject3 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
-        addressType: tempUserObject2.profile.addressType,
-        babyProfileOne:{
+        addressZIP: tempUserObject3.profile.addressZIP,
+        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject3.profile.babyProfileOne.name,
           gender: tempUserObject3.profile.babyProfileOne.gender,
@@ -598,8 +599,8 @@ Meteor.methods({
     var tempUserObject1 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
-        addressType: tempUserObject1.profile.addressType,
-        babyProfileOne:{
+        addressZIP: tempUserObject1.profile.addressZIP,
+        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
           gender: tempUserObject1.profile.babyProfileOne.gender,
@@ -679,8 +680,8 @@ Meteor.methods({
     var tempUserObject2 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
-        addressType: tempUserObject2.profile.addressType,
-        babyProfileOne:{
+        addressZIP: tempUserObject2.profile.addressZIP,
+        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject2.profile.babyProfileOne.name,
           gender: tempUserObject2.profile.babyProfileOne.gender,
@@ -761,8 +762,8 @@ Meteor.methods({
     var tempUserObject2 = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
-        addressType: tempUserObject2.profile.addressType,
-        babyProfileOne:{
+        addressZIP: tempUserObject2.profile.addressZIP,
+        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject2.profile.babyProfileOne.name,
           gender: tempUserObject2.profile.babyProfileOne.gender,
@@ -838,6 +839,119 @@ Meteor.methods({
     }});
 
   },
+  mealPlanContinue: function(preId, mealOption){
+    var tempUserObject2 = Meteor.users.findOne({_id:preId});
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressZIP: tempUserObject2.profile.addressZIP,
+        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
+          babyStatus: true,
+          name: tempUserObject2.profile.babyProfileOne.name,
+          gender: tempUserObject2.profile.babyProfileOne.gender,
+          birthday: tempUserObject2.profile.babyProfileOne.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileOne.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileOne.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileOne.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileOne.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileOne.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileOne.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileOne.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileOne.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileOne.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileOne.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileOne.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileOne.ouncePerMeal,
+          singlePuree: mealOption[0].singlePuree,
+          yummyPairs: mealOption[0].yummyPairs,
+          tastyTrio: mealOption[0].tastyTrio,
+          boxSmall: mealOption[0].boxSmall,
+          boxMedium: mealOption[0].boxMedium,
+          boxLarge: mealOption[0].boxLarge,
+        },
+        babyProfileTwo:{
+          babyStatus: tempUserObject2.profile.babyProfileTwo.babyStatus,
+          name: tempUserObject2.profile.babyProfileTwo.name,
+          gender: tempUserObject2.profile.babyProfileTwo.gender,
+          birthday: tempUserObject2.profile.babyProfileTwo.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileTwo.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileTwo.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileTwo.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileTwo.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileTwo.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileTwo.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileTwo.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileTwo.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileTwo.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileTwo.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileTwo.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileTwo.ouncePerMeal,
+          singlePuree: mealOption[1].singlePuree,
+          yummyPairs: mealOption[1].yummyPairs,
+          tastyTrio: mealOption[1].tastyTrio,
+          boxSmall: mealOption[1].boxSmall,
+          boxMedium: mealOption[1].boxMedium,
+          boxLarge: mealOption[1].boxLarge,
+        },
+        babyProfileThree:{
+          babyStatus: tempUserObject2.profile.babyProfileThree.babyStatus,
+          name: tempUserObject2.profile.babyProfileThree.name,
+          gender: tempUserObject2.profile.babyProfileThree.gender,
+          birthday: tempUserObject2.profile.babyProfileThree.birthday,
+          allergenWheat: tempUserObject2.profile.babyProfileThree.allergenWheat,
+          allergenShellfish: tempUserObject2.profile.babyProfileThree.allergenShellfish,
+          allergenEggs: tempUserObject2.profile.babyProfileThree.allergenEggs,
+          allergenFish: tempUserObject2.profile.babyProfileThree.allergenFish,
+          allergenPeanuts: tempUserObject2.profile.babyProfileThree.allergenPeanuts,
+          allergenMilk: tempUserObject2.profile.babyProfileThree.allergenMilk,
+          allergenTreeNuts: tempUserObject2.profile.babyProfileThree.allergenTreeNuts,
+          allergenSoybeans: tempUserObject2.profile.babyProfileThree.allergenSoybeans,
+          otherAllergen: tempUserObject2.profile.babyProfileThree.otherAllergen,
+          eatingHabits: tempUserObject2.profile.babyProfileThree.eatingHabits,
+          mealsPerDay: tempUserObject2.profile.babyProfileThree.mealsPerDay,
+          ouncePerMeal: tempUserObject2.profile.babyProfileThree.ouncePerMeal,
+          singlePuree: mealOption[2].singlePuree,
+          yummyPairs: mealOption[2].yummyPairs,
+          tastyTrio: mealOption[2].tastyTrio,
+          boxSmall: mealOption[2].boxSmall,
+          boxMedium: mealOption[2].boxMedium,
+          boxLarge: mealOption[2].boxLarge,
+        },
+      },
+    }});
+  },
+
+  deliveryContinue: function(preId, deliveryInfo){
+    console.log(preId);
+    console.log(deliveryInfo);
+    var tempUserObject = Meteor.users.findOne({_id:preId});
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressType: tempUserObject.profile.addressType,
+        userFirstName: deliveryInfo.userFirstName,
+        userLastName: deliveryInfo.userLastName,
+        addressLine1: deliveryInfo.addressLine1,
+        addressLine2: deliveryInfo.addressLine2,
+        addressCity: deliveryInfo.addressCity,
+        addressState: deliveryInfo.addressState,
+        addressZIP: tempUserObject.profile.addressZIP,
+        userPhoneNumber: deliveryInfo.userPhoneNumber,
+        babyProfileOne: tempUserObject.profile.babyProfileOne,
+        babyProfileTwo: tempUserObject.profile.babyProfileTwo,
+        babyProfileThree: tempUserObject.profile.babyProfileThree,
+      },
+    }});
+  },
+
+  checkZipServing: function(zipInput){
+    var zipServingCheck = Zips.findOne({zipcode: zipInput}).currentServing==="Yes";
+    console.log(zipServingCheck);
+    if(zipServingCheck){
+      return "serving"
+    }else{
+      return "not"
+    };
+  },
+
 
 
 });

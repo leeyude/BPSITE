@@ -32,9 +32,7 @@ BDDifferenceResults = function (userId, birthInput){
       };
       result[i] =BDdifference(momentNow, momentBD[i]);
     }else{
-      console.log("get value from page");
       result[i] = BDdifference(momentNow, momentBirthInput);
-      console.log(result[i]);
     };
   };
   return result;
@@ -131,7 +129,6 @@ defaultMealOption = function(userId, birthInput){
   ];
   var defaultPureeOption = [{},{},{}];
   var mealPerWeek = mealVolume(userId);
-  console.log(mealPerWeek);
 
   for (var i = 0; i < 3; i++) {
     if(babyStatus[i]){  // baby status is active, so the function gets what user saved before.
@@ -225,17 +222,18 @@ defaultMealOption = function(userId, birthInput){
       };
     };
   };
-  console.log("test helper is running.");
-  console.log(defaultPureeOption);
+
   return defaultPureeOption;
 };
 
-/*
-singlePuree: false,
-yummyPairs:false,
-tastyTrio:false,
-boxSmall:false,
-boxMedium:false,
-boxLarge:false,
+// Get ZIP to check state and city
+zipForStateAndCity = function(zipInput){
 
-*/
+  var zipObject = Zips.findOne({zipcode:zipInput});
+  var result = {
+    city: zipObject.cityName,
+    state: zipObject.stateAbb,
+    currentServing: zipObject.currentServing,
+  };
+  return result;
+};

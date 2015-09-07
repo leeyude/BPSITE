@@ -521,6 +521,7 @@ Template.profile.events({
       }else{
         Session.set("fieldCheckingWarning", false);
         Meteor.call("preUserContinue1", preId, tempUserObject1, getDefaultMealOption);
+        Session.setPersistent("preUserforMealPlan", true);
         Router.go('/mealPlan');
       };
 

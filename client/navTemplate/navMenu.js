@@ -109,9 +109,25 @@ if (Meteor.isClient) {
     },
   });
 
-  Router.route('/delivery', function () {
-    this.render('delivery');
+  Router.route('/delivery', {
+    action: function(){
+      this.render('delivery');
+    },
+    onBeforeAction: function(){
+      var preUserToken= Session.get("preUserLoggedIn");
+      // all properties available in the route function
+      // are also available here such as this.params
+      if (!preUserToken) {
+        // if the user is not logged in, render the Login template
+        Router.go('/signup');
+      } else {
+        // otherwise don't hold up the rest of hooks or our route/action function from running
+        this.next();
+      }
+    },
   });
+
+
 
   Router.route('/about', function () {
     this.render('about');

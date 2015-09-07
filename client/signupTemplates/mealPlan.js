@@ -148,6 +148,10 @@ Template.mealPlan.helpers({
 
 
 // This section helps handle summary of puree options.
+Session.setDefault("emptyWarning1", false);
+Session.setDefault("emptyWarning2", false);
+Session.setDefault("emptyWarning3", false);
+
 Template.mealPlan.helpers({
   pureeStatementOne: function(){
     var getPuree1 = Session.get("singlePuree1")
@@ -155,7 +159,6 @@ Template.mealPlan.helpers({
     var getPuree3 = Session.get("tastyTrio1")
     var getPuree = [getPuree1, getPuree2, getPuree3];
     var pureeOptions = ["Single Puree", "Yummy Pairs", "Tasty Trio"];
-    console.log("puree array"+getPuree);
     var pureeFactor = 0;
     var statementContent=[];
     var j=0;
@@ -167,12 +170,17 @@ Template.mealPlan.helpers({
         j++;
       };
     };
-    console.log(statementContent);
-    if(pureeFactor==1){
+    if(pureeFactor==0){
+      Session.set("emptyWarning1", true);
+      var statementSummary = "nothing. Please select at least one kind of puree";
+    }else if(pureeFactor==1){
+      Session.set("emptyWarning1", false);
       var statementSummary = statementContent[0];
     }else if(pureeFactor==2){
+      Session.set("emptyWarning1", false);
       var statementSummary = statementContent[0]+" and "+statementContent[1];
     }else{
+      Session.set("emptyWarning1", false);
       var statementSummary = statementContent[0]+", "+statementContent[1]+", and "+statementContent[2];
     };
     return statementSummary;
@@ -183,7 +191,6 @@ Template.mealPlan.helpers({
     var getPuree3 = Session.get("tastyTrio2")
     var getPuree = [getPuree1, getPuree2, getPuree3];
     var pureeOptions = ["Single Puree", "Yummy Pairs", "Tasty Trio"];
-    console.log("puree array"+getPuree);
     var pureeFactor = 0;
     var statementContent=[];
     var j=0;
@@ -195,12 +202,17 @@ Template.mealPlan.helpers({
         j++;
       };
     };
-    console.log(statementContent);
-    if(pureeFactor==1){
+    if(pureeFactor==0){
+      Session.set("emptyWarning2", true);
+      var statementSummary = "nothing. Please select at least one kind of puree";
+    }else if(pureeFactor==1){
+      Session.set("emptyWarning2", false);
       var statementSummary = statementContent[0];
     }else if(pureeFactor==2){
+      Session.set("emptyWarning2", false);
       var statementSummary = statementContent[0]+" and "+statementContent[1];
     }else{
+      Session.set("emptyWarning2", false);
       var statementSummary = statementContent[0]+", "+statementContent[1]+", and "+statementContent[2];
     };
     return statementSummary;
@@ -211,7 +223,6 @@ Template.mealPlan.helpers({
     var getPuree3 = Session.get("tastyTrio3")
     var getPuree = [getPuree1, getPuree2, getPuree3];
     var pureeOptions = ["Single Puree", "Yummy Pairs", "Tasty Trio"];
-    console.log("puree array"+getPuree);
     var pureeFactor = 0;
     var statementContent=[];
     var j=0;
@@ -223,18 +234,30 @@ Template.mealPlan.helpers({
         j++;
       };
     };
-    console.log(statementContent);
-    if(pureeFactor==1){
+    if(pureeFactor==0){
+      Session.set("emptyWarning3", true);
+      var statementSummary = "nothing. Please select at least one kind of puree";
+    }else if(pureeFactor==1){
+      Session.set("emptyWarning3", false);
       var statementSummary = statementContent[0];
     }else if(pureeFactor==2){
+      Session.set("emptyWarning3", false);
       var statementSummary = statementContent[0]+" and "+statementContent[1];
     }else{
+      Session.set("emptyWarning3", false);
       var statementSummary = statementContent[0]+", "+statementContent[1]+", and "+statementContent[2];
     };
     return statementSummary;
   },
-
-
+  emptyWarning1: function(){
+    return Session.get("emptyWarning1");
+  },
+  emptyWarning2: function(){
+    return Session.get("emptyWarning2");
+  },
+  emptyWarning3: function(){
+    return Session.get("emptyWarning3");
+  },
 });
 
 
@@ -302,7 +325,6 @@ Template.mealPlan.events({
     }else{
       Session.set("singlePuree1", true);                  //change singlePuree
     };
-    console.log(Session.get("singlePuree1"));
   },
   "click #yummyPairs1": function(event, template){       //change yummyPaires1
     var getValue= template.find("#yummyPairs1").value;   //change yummyPaires1
@@ -560,7 +582,92 @@ Template.mealPlan.helpers({
 
     var test= mealVolume(userId);
 
-    console.log("finished");
     return false;
+  },
+});
+
+// meal plan continue buttons
+Session.setDefault("fieldCheckingWarning", false);
+
+Template.mealPlan.events({
+  "click #mealPlanContinue": function(event, template){
+    var userId= Session.get("preUserLoggedIn");
+    var userObject = Meteor.users.findOne({_id:userId});
+    var babyStatus = [
+      userObject.profile.babyProfileOne.babyStatus,
+      userObject.profile.babyProfileTwo.babyStatus,
+      userObject.profile.babyProfileThree.babyStatus
+    ];
+    var mealOption = [{},{},{}];
+    var singlePuree = [];
+    var yummyPairs = [];
+    var tastyTrio = [];
+    var boxSmall = [];
+    var boxMedium = [];
+    var boxLarge= [];
+    var verifyEmpty = [0,0,0];
+
+
+    singlePuree[0]= Session.get("singlePuree1");
+    singlePuree[1]= Session.get("singlePuree2");
+    singlePuree[2]= Session.get("singlePuree3");
+    yummyPairs[0]= Session.get("yummyPairs1");
+    yummyPairs[1]= Session.get("yummyPairs2");
+    yummyPairs[2]= Session.get("yummyPairs3");
+    tastyTrio[0]= Session.get("tastyTrio1");
+    tastyTrio[1]= Session.get("tastyTrio2");
+    tastyTrio[2]= Session.get("tastyTrio3");
+
+    boxSmall[0]= Session.get("boxOptionSmallOne");
+    boxSmall[1]= Session.get("boxOptionSmallTwo");
+    boxSmall[2]= Session.get("boxOptionSmallThree");
+    boxMedium[0]= Session.get("boxOptionMediumOne");
+    boxMedium[1]= Session.get("boxOptionMediumTwo");
+    boxMedium[2]= Session.get("boxOptionMediumThree");
+    boxLarge[0]= Session.get("boxOptionLargeOne");
+    boxLarge[1]= Session.get("boxOptionLargeTwo");
+    boxLarge[2]= Session.get("boxOptionLargeThree");
+
+    for (var i = 0; i < 3; i++) {
+      if(babyStatus[i]){
+        mealOption[i]={
+          singlePuree: singlePuree[i],
+          yummyPairs: yummyPairs[i],
+          tastyTrio: tastyTrio[i],
+          boxSmall: boxSmall[i],
+          boxMedium: boxMedium[i],
+          boxLarge: boxLarge[i],
+        };
+      }else{
+        mealOption[i]={
+          singlePuree: true,
+          yummyPairs: false,
+          tastyTrio: false,
+          boxSmall: true,
+          boxMedium: false,
+          boxLarge: false,
+        };
+      };
+    };
+
+    if(singlePuree[0]==false&&yummyPairs[0]==false&&tastyTrio[0]==false){
+      Session.set("fieldCheckingWarning", true);
+    }else if(singlePuree[1]==false&&yummyPairs[1]==false&&tastyTrio[1]==false){
+      Session.set("fieldCheckingWarning", true);
+      console.log("2nd baby needs selection");
+    }else if(singlePuree[2]==false&&yummyPairs[2]==false&&tastyTrio[2]==false){
+      Session.set("fieldCheckingWarning", true);
+      console.log("3rd baby needs selection");
+    }else{
+      Session.set("fieldCheckingWarning", false);
+      Meteor.call("mealPlanContinue", userId, mealOption);
+      console.log("puree selections are fine");
+      Router.go('/delivery');
+    };
+
+
+  },
+  fieldCheckingWarning: function(){
+    return Session.get('fieldCheckingWarning');
   },
 });

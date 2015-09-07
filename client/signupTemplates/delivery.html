@@ -4,14 +4,45 @@
     <div class="container clearfix">
         <h3> Enter your delivery information </h3>
         <p> Delivery is free and convenient. <br>Meals are carefully packaged in insulated boxes to maintain the safest freshness for your baby. </p>
+        {{#if warningMessage}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+               Please ensure the following column(s) is filled.
+            </p>
+          </div>
+        </div>
+        {{/if}}
+        {{#if zipFiveDigitWarning}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+               Please ensure a five-digit valid ZIP code.
+            </p>
+          </div>
+        </div>
+        {{/if}}
+        {{#if setCurrentServingValue}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+               We have not served the ZIP code area you entered.
+            </p>
+          </div>
+        </div>
+        {{/if}}
+
         <div class="questionnaireContainer clearfix">
           <div class="deliveryContent clearfix">
             <!-- first row of question -->
 
-            <div class="deliveryContentRow">
+            <div class="deliveryContentRow clearfix">
               <div class="col-sm-6">
                 <div class="deliveryQuestion">
                   <label for="userFirstName">First Name
+                    {{#if emptyWarning1}}
+                    <div class="warningIcon"></div>
+                    {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
                     <input class="string inputFull required" data-validate="{required: true}" id="userFirstName" name="userFirstName" type="text">
@@ -21,6 +52,9 @@
               <div class="col-sm-6">
                 <div class="deliveryQuestion">
                   <label for="userLastName">Last Name
+                    {{#if emptyWarning2}}
+                    <div class="warningIcon"></div>
+                    {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
                     <input class="string inputFull required" data-validate="{required: true}" id="userLastName" name="userLastName" type="text">
@@ -31,10 +65,13 @@
 
             <!-- 2nd row of question -->
 
-            <div class="deliveryContentRow">
+            <div class="deliveryContentRow clearfix">
               <div class="col-sm-6">
                 <div class="deliveryQuestion">
                   <label for="addressLine1"> Address Line 1
+                    {{#if emptyWarning3}}
+                    <div class="warningIcon"></div>
+                    {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
                     <input class="string inputFull required" data-validate="{required: true}" id="addressLine1" name="addressLine1" type="text">
@@ -54,13 +91,16 @@
 
             <!-- 3rd row of question -->
 
-            <div class="deliveryContentRow">
+            <div class="deliveryContentRow clearfix">
               <div class="col-sm-6">
                 <div class="deliveryQuestion">
                   <label for="addressCity">City
+                    {{#if emptyWarning4}}
+                    <div class="warningIcon"></div>
+                    {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
-                    <input class="string inputFull required" data-validate="{required: true}" id="addressCity" name="addressCity" type="text">
+                    <input class="string inputFull required" data-validate="{required: true}" id="addressCity" name="addressCity" type="text" value={{setCityValue}}>
                   </div>
                 </div>
               </div>
@@ -68,18 +108,25 @@
                 <div class="col-sm-6 DeliveryQuestionChildren">
                   <div class="deliveryQuestion">
                     <label for="addressState">State
+                      {{#if emptyWarning5}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </label>
                     <div class="deliveryQuestionInput">
-                      <input class="string inputShort required" data-validate="{required: true}" id="addressState" name="addressState" type="text">
+                      
+                      <input class="string inputShort required" data-validate="{required: true}" id="addressState" name="addressState" type="text" value={{setStateValue}}>
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6 DeliveryQuestionChildren second">
                   <div class="deliveryQuestion">
                     <label for="addressZip"> ZIP Code
+                      {{#if zipFiveDigitWarning}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </label>
                     <div class="deliveryQuestionInput">
-                      <input class="string inputShort required" data-validate="{required: true}" id="addressZip" name="addressZip" type="text">
+                      <input class="string inputShort required" data-validate="{required: true}" id="addressZip" name="addressZip" type="text" value="{{setZIP}}">
                     </div>
                   </div>
                 </div>
@@ -89,10 +136,13 @@
 
             <!-- 4th row of question -->
 
-            <div class="deliveryContentRow">
+            <div class="deliveryContentRow clearfix">
               <div class="col-sm-6">
                 <div class="deliveryQuestion">
                   <label for="userPhoneNumber">Phone Number
+                    {{#if emptyWarning6}}
+                    <div class="warningIcon"></div>
+                    {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
                     <input class="string inputFull required" data-validate="{required: true}" id="userPhoneNumber" name="userPhoneNumber" type="text">
