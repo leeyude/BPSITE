@@ -45,7 +45,7 @@
                     {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
-                    <input class="string inputFull required" data-validate="{required: true}" id="userFirstName" name="userFirstName" type="text">
+                    <input class="string inputFull required" data-validate="{required: true}" id="userFirstName" name="userFirstName" type="text" value={{#if deliveryFirstName}}{{deliveryFirstName}}{{/if}}>
                   </div>
                 </div>
               </div>
@@ -57,7 +57,7 @@
                     {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
-                    <input class="string inputFull required" data-validate="{required: true}" id="userLastName" name="userLastName" type="text">
+                    <input class="string inputFull required" data-validate="{required: true}" id="userLastName" name="userLastName" type="text" value={{#if deliveryLastName}}{{deliveryLastName}}{{/if}}>
                   </div>
                 </div>
               </div>
@@ -74,7 +74,7 @@
                     {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
-                    <input class="string inputFull required" data-validate="{required: true}" id="addressLine1" name="addressLine1" type="text">
+                    <input class="string inputFull required" data-validate="{required: true}" id="addressLine1" name="addressLine1" type="text" value={{#if deliveryAddressOne}}{{deliveryAddressOne}}{{/if}}>
                   </div>
                 </div>
               </div>
@@ -83,7 +83,7 @@
                   <label for="addressLine2">Address Line 2
                   </label>
                   <div class="deliveryQuestionInput">
-                    <input class="string inputFull required" data-validate="{required: true}" id="addressLine2" name="addressLine2" type="text">
+                    <input class="string inputFull required" data-validate="{required: true}" id="addressLine2" name="addressLine2" type="text" value={{#if deliveryAddressTwo}}{{deliveryAddressTwo}}{{/if}}>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@
                     {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
-                    <input class="string inputFull required" data-validate="{required: true}" id="addressCity" name="addressCity" type="text" value={{setCityValue}}>
+                    <input class="string inputFull required" data-validate="{required: true}" id="addressCity" name="addressCity" type="text" value={{#if setCityValue}}{{setCityValue}}{{/if}}>
                   </div>
                 </div>
               </div>
@@ -113,8 +113,9 @@
                       {{/if}}
                     </label>
                     <div class="deliveryQuestionInput">
-                      
-                      <input class="string inputShort required" data-validate="{required: true}" id="addressState" name="addressState" type="text" value={{setStateValue}}>
+
+
+                     <input class="string inputShort required" data-validate="{required: true}" id="addressState" name="addressState" type="text" value={{#if setStateValue}}{{setStateValue}}{{/if}}>
                     </div>
                   </div>
                 </div>
@@ -124,9 +125,12 @@
                       {{#if zipFiveDigitWarning}}
                       <div class="warningIcon"></div>
                       {{/if}}
+                      {{#if setCurrentServingValue}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
                     </label>
                     <div class="deliveryQuestionInput">
-                      <input class="string inputShort required" data-validate="{required: true}" id="addressZip" name="addressZip" type="text" value="{{setZIP}}">
+                      <input class="string inputShort required" data-validate="{required: true}" id="addressZip" name="addressZip" type="text" value={{#if setZIP}}{{setZIP}}{{/if}}>
                     </div>
                   </div>
                 </div>
@@ -145,17 +149,62 @@
                     {{/if}}
                   </label>
                   <div class="deliveryQuestionInput">
-                    <input class="string inputFull required" data-validate="{required: true}" id="userPhoneNumber" name="userPhoneNumber" type="text">
+                    <input class="string inputFull required" data-validate="{required: true}" id="userPhoneNumber" name="userPhoneNumber" type="text" value={{#if deliveryPhone}}{{deliveryPhone}}{{/if}}>
                   </div>
                 </div>
               </div>
               <div class="col-sm-6">
-
+                <div class="deliveryQuestion">
+                  <label for="deliveryDay"> Delivery Day
+                    {{#if emptyWarning7}}
+                    <div class="warningIcon"></div>
+                    {{/if}}
+                  </label>
+                  <div class="deliveryQuestionInput">
+                    <select id="deliveryDay" class="inputFull" name="deliveryDay">
+                <!--      <option>-</option>-->
+                      {{#if deliveryDayOption.MO}}<option value="MO" selected={{deliveryMO}}>Monday</option>{{/if}}
+                      {{#if deliveryDayOption.TU}}<option value="TU" selected={{deliveryTU}}>Tuesday</option>{{/if}}
+                      {{#if deliveryDayOption.WE}}<option value="WE" selected={{deliveryWE}}>Wednesday</option>{{/if}}
+                      {{#if deliveryDayOption.TH}}<option value="TH" selected={{deliveryTH}}>Thursday</option>{{/if}}
+                      {{#if deliveryDayOption.FR}}<option value="FR" selected={{deliveryFR}}>Friday</option>{{/if}}
+                      {{#if deliveryDayOption.SA}}<option value="SA" selected={{deliverySA}}>Saturday</option>{{/if}}
+                      {{#if deliveryDayOption.SU}}<option value="SU" selected={{deliverySU}}>Sunday</option>{{/if}}
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
-
           </div>
+          <span class="line"></span>
+          <!-- first delivery set up -->
+
+
+          <div class="deliveryContent clearfix firstDeliveryWrap">
+            <div class="deliveryContentRow clearfix">
+              <div class="firstDelivery">
+                <h4>Your First Delivery</h4>
+                <h5>{{firstDelivery}}</h5>
+                <select id="firstDeliveryOptions" class="inputFull" name="firstDeliveryOptions">
+                  {{#if deliveryDay}}
+                  <option value="{{firstDeliveryOptions.[0]}}" selected={{firstDelverySelection.[0]}}>{{firstDeliveryOptions.[0]}}</option>
+                  <option value="{{firstDeliveryOptions.[1]}}" selected={{firstDelverySelection.[1]}}>{{firstDeliveryOptions.[1]}}</option>
+                  <option value="{{firstDeliveryOptions.[2]}}" selected={{firstDelverySelection.[2]}}>{{firstDeliveryOptions.[2]}}</option>
+                  <option value="{{firstDeliveryOptions.[3]}}" selected={{firstDelverySelection.[3]}}>{{firstDeliveryOptions.[3]}}</option>
+                  {{/if}}
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+
+
         </div>
+
+
+
+
         <div class="deliverySubmit">
           <div class="signupContinueBlock">
             <button class="btn signUpContinue" id="deliveryContinue" type="submit">
@@ -164,9 +213,6 @@
             </button>
           </div>
         </div>
-
-
-
       </div>
   </section>
 

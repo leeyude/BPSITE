@@ -468,6 +468,8 @@ Template.profile.events({
     var eatingHabits = !mealFreq===""; //
     var addressType = template.find("#addressTypeResidential").value=="true";
 
+    Meteor.call("mealDataUpdate1", preId, mealFreq, mealOunces);
+
     var tempUserObject1 = {
       profile: {
         addressType: addressType,
@@ -493,8 +495,6 @@ Template.profile.events({
     };
 
     var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
-    console.log(preId);
-    console.log(getDefaultMealOption);
 
     if(babyName){
       var fieldCheckingWarning=false;

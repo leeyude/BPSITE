@@ -7,19 +7,26 @@
   email: aiolos.lee@gmail.com
   emailVerified: false;
   password: false;
-  creditCard: 1234-5678-9012-3456,
+  creditCard: {
+    cardNumber: 1234-5678-9012-3456,
+    expirationMonth: 11,
+    expirationYear: 2018
+    cvcNumber: 123
+  };
+  stripeID: "cus_6xxdILvOPNDuQe", // Stripe ID from customer creation
 
   createdAt: Wed Aug 21 2013 15:16:52 GMT-0700 (PDT),
 
   profile: {
+    addressZIP: [text]
     addressType: [true] for Residential/ [false] for Business,
+    deliveryDay: [text]
     userFirstName: [text]
     userLastName: [text]
     addressLine1: [text]
     addressLine2: [text]
     addressCity: [text]
     addressState: [text]
-    addressZIP: [text]
     userPhoneNumber: [text]
     babyProfileOne:{
       babyStatus: [true] for profile created by user/ [false] for not,
@@ -108,51 +115,71 @@
   }
 }
 
-
-User account schema-
-
-
 */
-
 
 Meteor.methods({
   emailExist:function(userEmail, userZip){
     var zipExistCheck = Zips.find({zipcode: userZip}).count()>0;
-    var emailExistCheck = Meteor.users.find({email: userEmail}).count()>0;
-
-    console.log("email matching found..."+emailExistCheck);
+    var emailExistCheck = Meteor.users.find({"emails.address": userEmail}).count()>0;
+    var zipServingCheck = Zips.findOne({zipcode: userZip}).currentServing==="Yes";
 
     if(zipExistCheck){
       // If ZIP code exists then proceed to check email.
-      if(emailExistCheck){
-        console.log("email input "+ userEmail+ " already exists");
-        // check whether the user email exists with active status
-//        var preUserActive = Meteor.users.find({'emails.address': userEmail}).activeStatus==true; this was used due to meteor accounts-password package.
-        var preUserActive = Meteor.users.findOne({email: userEmail}).activeStatus==true;
+      if(zipServingCheck){
+        // if the ZIP exists and also being served by Baby Purest,
+        // move to check email entry.
+        if(emailExistCheck){
+          console.log("email input "+ userEmail+ " already exists");
+          // email exists, then move to check whether the email user completed registration process before by checking active status.
+          var preUserActive = Meteor.users.findOne({"emails.address": userEmail}).activeStatus==true;
 
-        // check whether the existing email represents an active user.
-        console.log("preUserActive is ..."+preUserActive);
-        if(!preUserActive){
-          return "proceed";
+          console.log("active status is..."+preUserActive);
+          if(preUserActive){
+            // check whether user status is active.
+            return "active";
+            // return false to client that indicates the email input exists. This prompts the client to show "This Email has already been taken. Please revise email entry."
+          }else{
+            // the user submitted email before but did not complete process, or has terminated his account.
+            var tempUserObject = Meteor.users.findOne({"emails.address":userEmail});
+             Meteor.users.update({"emails.address":userEmail}, {$set:{
+               profile: {
+                 addressType: tempUserObject.profile.addressType,
+                 deliveryDay: tempUserObject.profile.deliveryDay,
+                 userFirstName: tempUserObject.profile.userFirstName,
+                 userLastName: tempUserObject.profile.userLastName,
+                 addressLine1: tempUserObject.profile.addressLine1,
+                 addressLine2: tempUserObject.profile.addressLine2,
+                 addressCity: tempUserObject.profile.addressCity,
+                 addressState: tempUserObject.profile.addressState,
+                 addressZIP: userZip,
+                 userPhoneNumber: tempUserObject.userPhoneNumber,
+                 babyProfileOne: tempUserObject.profile.babyProfileOne,
+                 babyProfileTwo: tempUserObject.profile.babyProfileTwo,
+                 babyProfileThree: tempUserObject.profile.babyProfileThree,
+               },
+             }});
+
+             return "proceed";
+          };
         }else{
-          return false;
-          // return false to client that indicates the email input exists. This prompts the client to show "This Email has already been taken. Please revise email entry."
-        };
-      }else{
-        // return true to client that indicates that the email entry is valid. Client can move to next step of user profile building.
-
+        // email does not exist
         console.log("email input "+ userEmail+ " does not exist and is valid.");
 
-        var zipServingCheck = Zips.findOne({zipcode: userZip}).currentServing==="Yes";
-
-        Meteor.users.insert({
+        Accounts.createUser({
           email:    userEmail,
-          password: false,
-          emailVerified: false,
-          activeStatus: false,
           createdAt: new Date(),
           profile: {
             addressZIP: userZip,
+            deliveryDay: false,
+            addressType: false,
+            userFirstName: false,
+            userLastName: false,
+            addressLine1: false,
+            addressLine2: false,
+            addressCity: false,
+            addressState: false,
+            userPhoneNumber: false,
+
             babyProfileOne:{
               babyStatus: false,
             },
@@ -163,28 +190,74 @@ Meteor.methods({
               babyStatus: false,
             },
           }
-        }, function (error) {
-          if (error) {
-            console.log("Cannot create user");
-          }
         });
-        console.log("user created");
-        if(zipServingCheck){
-        //email entry is valid and the zipcode is currentServing, then direct the user to Profile buiding.
-        console.log("Zip and Email are fine");
-          return "proceed";
-        }else{
-        //email entry is valid BUT the zipcode is NOT currentServing, then direct the user to to not serving page.
-        console.log("Email is fine, but ZIP is not served.");
-          return "notCovered";
-        };
-      };
 
+        Meteor.users.update({"emails.address":userEmail}, {$set:{
+          emailVerified: false,
+          activeStatus: false,
+        }});
+
+        console.log("user created");
+        //email entry is valid and the zipcode is currentServing, then direct the user to Profile buiding.
+        return "proceed";
+        };
+      }else{
+        //The ZIP code is valid but currently not served.
+        //Direct the user to to "not-serving" page.
+        console.log("zip code is 5 digit, but ZIP is not served.");
+        return "notCovered";
+      };
     }else{
       //if ZIP code does not exist, the error message asks Client to alert that ZIP entry is wrong.
       throw new Meteor.Error(500, 'ZIP Code does not exist');
     };
 
+  },
+
+  mealDataUpdate1: function(preId, mealFreq, mealOunces){ // before 1st baby status becomes true
+    var tempUserObject = Meteor.users.findOne({_id:preId});
+    console.log("meal data update 1");
+    Meteor.users.update({_id:preId}, {$set:{
+      profile: {
+        addressZIP: tempUserObject.profile.addressZIP,
+        addressType: tempUserObject.profile.addressType,
+        deliveryDay: tempUserObject.profile.deliveryDay,
+        userFirstName: tempUserObject.profile.userFirstName,
+        userLastName: tempUserObject.profile.userLastName,
+        addressLine1: tempUserObject.profile.addressLine1,
+        addressLine2: tempUserObject.profile.addressLine2,
+        addressCity: tempUserObject.profile.addressCity,
+        addressState: tempUserObject.profile.addressState,
+        userPhoneNumber: tempUserObject.profile.userPhoneNumber,
+
+        babyProfileOne:{
+          babyStatus: false,
+          name: tempUserObject.profile.babyProfileOne.name,
+          gender: tempUserObject.profile.babyProfileOne.gender,
+          birthday: tempUserObject.profile.babyProfileOne.birthday,
+          allergenWheat: tempUserObject.profile.babyProfileOne.allergenWheat,
+          allergenShellfish: tempUserObject.profile.babyProfileOne.allergenShellfish,
+          allergenEggs: tempUserObject.profile.babyProfileOne.allergenEggs,
+          allergenFish: tempUserObject.profile.babyProfileOne.allergenFish,
+          allergenPeanuts: tempUserObject.profile.babyProfileOne.allergenPeanuts,
+          allergenMilk: tempUserObject.profile.babyProfileOne.allergenMilk,
+          allergenTreeNuts: tempUserObject.profile.babyProfileOne.allergenTreeNuts,
+          allergenSoybeans: tempUserObject.profile.babyProfileOne.allergenSoybeans,
+          otherAllergen: tempUserObject.profile.babyProfileOne.otherAllergen,
+          eatingHabits: tempUserObject.profile.babyProfileOne.eatingHabits,
+          mealsPerDay: mealFreq,
+          ouncePerMeal: mealOunces,
+          singlePuree: tempUserObject.profile.babyProfileOne.singlePuree,
+          yummyPairs: tempUserObject.profile.babyProfileOne.yummyPairs,
+          tastyTrio: tempUserObject.profile.babyProfileOne.tastyTrio,
+          boxSmall: tempUserObject.profile.babyProfileOne.boxSmall,
+          boxMedium: tempUserObject.profile.babyProfileOne.boxMedium,
+          boxLarge: tempUserObject.profile.babyProfileOne.boxLarge,
+        },
+        babyProfileTwo:tempUserObject.profile.babyProfileTwo,
+        babyProfileThree:tempUserObject.profile.babyProfileThree,
+      },
+    }});
   },
 
   preUserContinue1: function(preId, tempUserObject1, mealOption){
@@ -194,6 +267,15 @@ Meteor.methods({
       profile: {
         addressZIP: tempUserObject0.profile.addressZIP,
         addressType: tempUserObject1.profile.addressType,
+        deliveryDay: tempUserObject0.profile.deliveryDay,
+        userFirstName: tempUserObject0.profile.userFirstName,
+        userLastName: tempUserObject0.profile.userLastName,
+        addressLine1: tempUserObject0.profile.addressLine1,
+        addressLine2: tempUserObject0.profile.addressLine2,
+        addressCity: tempUserObject0.profile.addressCity,
+        addressState: tempUserObject0.profile.addressState,
+        userPhoneNumber: tempUserObject0.profile.userPhoneNumber,
+
         babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
@@ -275,7 +357,17 @@ Meteor.methods({
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressZIP: tempUserObject1.profile.addressZIP,
-        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
+        addressType: tempUserObject2.profile.addressType,
+        deliveryDay: tempUserObject1.profile.deliveryDay,
+        userFirstName: tempUserObject1.profile.userFirstName,
+        userLastName: tempUserObject1.profile.userLastName,
+        addressLine1: tempUserObject1.profile.addressLine1,
+        addressLine2: tempUserObject1.profile.addressLine2,
+        addressCity: tempUserObject1.profile.addressCity,
+        addressState: tempUserObject1.profile.addressState,
+        userPhoneNumber: tempUserObject1.profile.userPhoneNumber,
+
+        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
           gender: tempUserObject1.profile.babyProfileOne.gender,
@@ -356,7 +448,17 @@ Meteor.methods({
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressZIP: tempUserObject1.profile.addressZIP,
-        addressType: tempUserObject3.profile.addressType,        babyProfileOne:{
+        addressType: tempUserObject3.profile.addressType,
+        deliveryDay: tempUserObject1.profile.deliveryDay,
+        userFirstName: tempUserObject1.profile.userFirstName,
+        userLastName: tempUserObject1.profile.userLastName,
+        addressLine1: tempUserObject1.profile.addressLine1,
+        addressLine2: tempUserObject1.profile.addressLine2,
+        addressCity: tempUserObject1.profile.addressCity,
+        addressState: tempUserObject1.profile.addressState,
+        userPhoneNumber: tempUserObject1.profile.userPhoneNumber,
+
+        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
           gender: tempUserObject1.profile.babyProfileOne.gender,
@@ -438,7 +540,17 @@ Meteor.methods({
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressZIP: tempUserObject2.profile.addressZIP,
-        addressType: tempUserObject1.profile.addressType,        babyProfileOne:{
+        addressType: tempUserObject1.profile.addressType,
+        deliveryDay: tempUserObject2.profile.deliveryDay,
+        userFirstName: tempUserObject2.profile.userFirstName,
+        userLastName: tempUserObject2.profile.userLastName,
+        addressLine1: tempUserObject2.profile.addressLine1,
+        addressLine2: tempUserObject2.profile.addressLine2,
+        addressCity: tempUserObject2.profile.addressCity,
+        addressState: tempUserObject2.profile.addressState,
+        userPhoneNumber: tempUserObject2.profile.userPhoneNumber,
+
+        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
           gender: tempUserObject1.profile.babyProfileOne.gender,
@@ -519,7 +631,17 @@ Meteor.methods({
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressZIP: tempUserObject3.profile.addressZIP,
-        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
+        addressType: tempUserObject2.profile.addressType,
+        deliveryDay: tempUserObject3.profile.deliveryDay,
+        userFirstName: tempUserObject3.profile.userFirstName,
+        userLastName: tempUserObject3.profile.userLastName,
+        addressLine1: tempUserObject3.profile.addressLine1,
+        addressLine2: tempUserObject3.profile.addressLine2,
+        addressCity: tempUserObject3.profile.addressCity,
+        addressState: tempUserObject3.profile.addressState,
+        userPhoneNumber: tempUserObject3.profile.userPhoneNumber,
+
+        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject3.profile.babyProfileOne.name,
           gender: tempUserObject3.profile.babyProfileOne.gender,
@@ -600,7 +722,17 @@ Meteor.methods({
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressZIP: tempUserObject1.profile.addressZIP,
-        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
+        addressType: tempUserObject2.profile.addressType,
+        deliveryDay: tempUserObject1.profile.deliveryDay,
+        userFirstName: tempUserObject1.profile.userFirstName,
+        userLastName: tempUserObject1.profile.userLastName,
+        addressLine1: tempUserObject1.profile.addressLine1,
+        addressLine2: tempUserObject1.profile.addressLine2,
+        addressCity: tempUserObject1.profile.addressCity,
+        addressState: tempUserObject1.profile.addressState,
+        userPhoneNumber: tempUserObject1.profile.userPhoneNumber,
+
+        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject1.profile.babyProfileOne.name,
           gender: tempUserObject1.profile.babyProfileOne.gender,
@@ -681,7 +813,17 @@ Meteor.methods({
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressZIP: tempUserObject2.profile.addressZIP,
-        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
+        addressType: tempUserObject2.profile.addressType,
+        deliveryDay: tempUserObject2.profile.deliveryDay,
+        userFirstName: tempUserObject2.profile.userFirstName,
+        userLastName: tempUserObject2.profile.userLastName,
+        addressLine1: tempUserObject2.profile.addressLine1,
+        addressLine2: tempUserObject2.profile.addressLine2,
+        addressCity: tempUserObject2.profile.addressCity,
+        addressState: tempUserObject2.profile.addressState,
+        userPhoneNumber: tempUserObject2.profile.userPhoneNumber,
+
+        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject2.profile.babyProfileOne.name,
           gender: tempUserObject2.profile.babyProfileOne.gender,
@@ -763,7 +905,17 @@ Meteor.methods({
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressZIP: tempUserObject2.profile.addressZIP,
-        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
+        addressType: tempUserObject2.profile.addressType,
+        deliveryDay: tempUserObject2.profile.deliveryDay,
+        userFirstName: tempUserObject2.profile.userFirstName,
+        userLastName: tempUserObject2.profile.userLastName,
+        addressLine1: tempUserObject2.profile.addressLine1,
+        addressLine2: tempUserObject2.profile.addressLine2,
+        addressCity: tempUserObject2.profile.addressCity,
+        addressState: tempUserObject2.profile.addressState,
+        userPhoneNumber: tempUserObject2.profile.userPhoneNumber,
+
+        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject2.profile.babyProfileOne.name,
           gender: tempUserObject2.profile.babyProfileOne.gender,
@@ -844,7 +996,17 @@ Meteor.methods({
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressZIP: tempUserObject2.profile.addressZIP,
-        addressType: tempUserObject2.profile.addressType,        babyProfileOne:{
+        addressType: tempUserObject2.profile.addressType,
+        deliveryDay: tempUserObject2.profile.deliveryDay,
+        userFirstName: tempUserObject2.profile.userFirstName,
+        userLastName: tempUserObject2.profile.userLastName,
+        addressLine1: tempUserObject2.profile.addressLine1,
+        addressLine2: tempUserObject2.profile.addressLine2,
+        addressCity: tempUserObject2.profile.addressCity,
+        addressState: tempUserObject2.profile.addressState,
+        userPhoneNumber: tempUserObject2.profile.userPhoneNumber,
+
+        babyProfileOne:{
           babyStatus: true,
           name: tempUserObject2.profile.babyProfileOne.name,
           gender: tempUserObject2.profile.babyProfileOne.gender,
@@ -921,12 +1083,11 @@ Meteor.methods({
   },
 
   deliveryContinue: function(preId, deliveryInfo){
-    console.log(preId);
-    console.log(deliveryInfo);
     var tempUserObject = Meteor.users.findOne({_id:preId});
     Meteor.users.update({_id:preId}, {$set:{
       profile: {
         addressType: tempUserObject.profile.addressType,
+        deliveryDay: deliveryInfo.deliveryDay,
         userFirstName: deliveryInfo.userFirstName,
         userLastName: deliveryInfo.userLastName,
         addressLine1: deliveryInfo.addressLine1,
@@ -940,18 +1101,89 @@ Meteor.methods({
         babyProfileThree: tempUserObject.profile.babyProfileThree,
       },
     }});
+// collect information from collection and delivery form
+
+
+// if this action is for new data insert, the skip data wipe-out step; otherwise, this section clear data so that all updates can be loaded in the collection.
+
+    var planSelection = [tempUserObject.profile.babyProfileOne.boxSmall, tempUserObject.profile.babyProfileOne.boxMedium,tempUserObject.profile.babyProfileOne.boxLarge];
+    for(i=0;i<3;i++){
+      if(planSelection[i]){
+        var planValue=i;
+      };
+    };
+    var mealPlanDetails = getMealPlanDetails(planValue);
+
+    var tempDeliveryContent = [{
+          mealPlan: mealPlanDetails.mealPlan,
+          price: mealPlanDetails.price,
+          itemVolume: mealPlanDetails.itemVolume,
+          babyProfile: tempUserObject.profile.babyProfileOne,
+        },,];
+
+    if(tempUserObject.profile.babyProfileTwo.babyStatus){
+      var planSelection = [tempUserObject.profile.babyProfileTwo.boxSmall, tempUserObject.profile.babyProfileTwo.boxMedium,tempUserObject.profile.babyProfileTwo.boxLarge];
+      for(i=0;i<3;i++){
+        if(planSelection[i]){
+          var planValue=i;
+        };
+      };
+      var mealPlanDetails = getMealPlanDetails(planValue);
+
+      tempDeliveryContent[1] = {
+            mealPlan: mealPlanDetails.mealPlan,
+            price: mealPlanDetails.price,
+            itemVolume: mealPlanDetails.itemVolume,
+            babyProfile: tempUserObject.profile.babyProfileTwo,
+      };
+    };
+
+    if(tempUserObject.profile.babyProfileThree.babyStatus){
+      var planSelection = [tempUserObject.profile.babyProfileThree.boxSmall, tempUserObject.profile.babyProfileThree.boxMedium,tempUserObject.profile.babyProfileThree.boxLarge];
+      for(i=0;i<3;i++){
+        if(planSelection[i]){
+          var planValue=i;
+        };
+      };
+      var mealPlanDetails = getMealPlanDetails(planValue);
+
+      tempDeliveryContent[2] = {
+            mealPlan: mealPlanDetails.mealPlan,
+            price: mealPlanDetails.price,
+            itemVolume: mealPlanDetails.itemVolume,
+            babyProfile: tempUserObject.profile.babyProfileThree,
+      };
+    };
+
+    var subtotal = getSubtotal(tempUserObject);
+
+    Meteor.users.update({_id:preId}, {$set:{
+      deliveryLog: [
+        { status: deliveryInfo.deliveryStatus,  // 0- not yet fulfilled, can be changed or canceled; 1- not yet fulfilled, to be fulfilled in the current week; 2- delivered, within two weeks after delivery, 3- delivered, out of two weeks of delivery
+          fulfilmentDate: deliveryInfo.firstDelivery,//give a time of this shipment....
+          deliveryAddress1: deliveryInfo.addressLine1,
+          deliveryAddress2: deliveryInfo.addressLine2,
+
+          content: [
+            tempDeliveryContent[0],tempDeliveryContent[1],tempDeliveryContent[2]
+          ],
+          subtotal: subtotal,
+        },
+      ],
+    }});
+
   },
 
   checkZipServing: function(zipInput){
-    var zipServingCheck = Zips.findOne({zipcode: zipInput}).currentServing==="Yes";
-    console.log(zipServingCheck);
+    var zipObject = Zips.findOne({zipcode: zipInput});
+    var zipServingCheck = zipObject.currentServing==="Yes";
+
     if(zipServingCheck){
-      return "serving"
+      return zipObject;
     }else{
-      return "not"
+      return "not";
     };
   },
-
 
 
 });

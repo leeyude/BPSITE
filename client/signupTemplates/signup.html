@@ -7,6 +7,24 @@
           Get freshly-made , organic, local  baby food weekly, right at your door for your little one. <br>
           Delivery is always free!
         </p>
+        {{#if inputWarningZIP}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+               {{inputWarningZIP}}
+            </p>
+          </div>
+        </div>
+        {{/if}}
+        {{#if inputWarningEmail}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+               {{inputWarningEmail}}
+            </p>
+          </div>
+        </div>
+        {{/if}}
       <div class='row' id="helloInput">
         <div class="col-md-4">
           <div class='emailInput'>

@@ -505,6 +505,8 @@ Template.profile3.events({
       Session.set("fieldCheckingWarning", true);
       $("html, body").animate({ scrollTop: 0 }, "slow");
     }else{
+
+
       Session.set("fieldCheckingWarning", false);
       Meteor.call("completeUpdate3", preId, tempUserObject3, getDefaultMealOption);
       Router.go('/mealPlan');

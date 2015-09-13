@@ -18,8 +18,6 @@ Template.mealPlan.helpers({
   allergenStatementOne: function(){
     var preUserLoggedIn = Session.get("preUserLoggedIn");
     var tempProfile = Meteor.users.findOne({_id:preUserLoggedIn});
-    var statementFactor = 0;
-    var statementContent = [];
     var profileOneAllergen = [
       tempProfile.profile.babyProfileOne.allergenWheat,
       tempProfile.profile.babyProfileOne.allergenShellfish,
@@ -30,32 +28,9 @@ Template.mealPlan.helpers({
       tempProfile.profile.babyProfileOne.allergenTreeNuts,
       tempProfile.profile.babyProfileOne.allergenSoybeans,
     ];
-    var profileOneAllergenNames = [
-      "wheat", "shellfish", "eggs", "fish", "peanuts", "milk", "nuts", "soybeans" ];
-    var j=0;
-    for (var i = 0; i < 8; i++) {
-      if(profileOneAllergen[i]){
-        statementFactor++;
-        statementContent[j]= profileOneAllergenNames[i];
-        j++;
-      };
-    };
 
-    if(statementFactor==0){
-      var statementSummary = "none of the eight allergens";
-    }else if(statementFactor==1){
-      var statementSummary = statementContent[0];
-    }else if(statementFactor==2){
-      var statementSummary = statementContent[0]+" and "+statementContent[1]
-    }else{
-      var lastAllergenNum = statementFactor-1;
-      var insertAnd = "and "+statementContent[lastAllergenNum];
-      statementContent[lastAllergenNum]=insertAnd;
-      var statementSummary=statementContent[0];
-      for (var k = 1; k < statementFactor; k++) {
-        statementSummary = statementSummary +", "+ statementContent[k];
-      };
-    };
+    statementSummary= getAllergenStatement(profileOneAllergen);
+
     return statementSummary;
   },
   allergenStatementTwo: function(){
@@ -73,32 +48,9 @@ Template.mealPlan.helpers({
       tempProfile.profile.babyProfileTwo.allergenTreeNuts,
       tempProfile.profile.babyProfileTwo.allergenSoybeans,
     ];
-    var profileTwoAllergenNames = [
-      "wheat", "shellfish", "eggs", "fish", "peanuts", "milk", "nuts", "soybeans" ];
-    var j=0;
-    for (var i = 0; i < 8; i++) {
-      if(profileTwoAllergen[i]){
-        statementFactor++;
-        statementContent[j]= profileTwoAllergenNames[i];
-        j++;
-      };
-    };
 
-    if(statementFactor==0){
-      var statementSummary = "none of the eight allergens";
-    }else if(statementFactor==1){
-      var statementSummary = statementContent[0];
-    }else if(statementFactor==2){
-      var statementSummary = statementContent[0]+" and "+statementContent[1]
-    }else{
-      var lastAllergenNum = statementFactor-1;
-      var insertAnd = "and "+statementContent[lastAllergenNum];
-      statementContent[lastAllergenNum]=insertAnd;
-      var statementSummary=statementContent[0];
-      for (var k = 1; k < statementFactor; k++) {
-        statementSummary = statementSummary +", "+ statementContent[k];
-      };
-    };
+    statementSummary= getAllergenStatement(profileTwoAllergen);
+
     return statementSummary;
   },
   allergenStatementThree: function(){
@@ -116,32 +68,9 @@ Template.mealPlan.helpers({
       tempProfile.profile.babyProfileThree.allergenTreeNuts,
       tempProfile.profile.babyProfileThree.allergenSoybeans,
     ];
-    var profileThreeAllergenNames = [
-      "wheat", "shellfish", "eggs", "fish", "peanuts", "milk", "nuts", "soybeans" ];
-    var j=0;
-    for (var i = 0; i < 8; i++) {
-      if(profileThreeAllergen[i]){
-        statementFactor++;
-        statementContent[j]= profileThreeAllergenNames[i];
-        j++;
-      };
-    };
 
-    if(statementFactor==0){
-      var statementSummary = "none of the eight allergens";
-    }else if(statementFactor==1){
-      var statementSummary = statementContent[0];
-    }else if(statementFactor==2){
-      var statementSummary = statementContent[0]+" and "+statementContent[1]
-    }else{
-      var lastAllergenNum = statementFactor-1;
-      var insertAnd = "and "+statementContent[lastAllergenNum];
-      statementContent[lastAllergenNum]=insertAnd;
-      var statementSummary=statementContent[0];
-      for (var k = 1; k < statementFactor; k++) {
-        statementSummary = statementSummary +", "+ statementContent[k];
-      };
-    };
+    statementSummary= getAllergenStatement(profileThreeAllergen);
+
     return statementSummary;
   },
 });
@@ -158,31 +87,9 @@ Template.mealPlan.helpers({
     var getPuree2 = Session.get("yummyPairs1")
     var getPuree3 = Session.get("tastyTrio1")
     var getPuree = [getPuree1, getPuree2, getPuree3];
-    var pureeOptions = ["Single Puree", "Yummy Pairs", "Tasty Trio"];
-    var pureeFactor = 0;
-    var statementContent=[];
-    var j=0;
 
-    for (var i = 0; i < 3; i++) {
-      if(getPuree[i]){
-        pureeFactor++;
-        statementContent[j]= pureeOptions[i];
-        j++;
-      };
-    };
-    if(pureeFactor==0){
-      Session.set("emptyWarning1", true);
-      var statementSummary = "nothing. Please select at least one kind of puree";
-    }else if(pureeFactor==1){
-      Session.set("emptyWarning1", false);
-      var statementSummary = statementContent[0];
-    }else if(pureeFactor==2){
-      Session.set("emptyWarning1", false);
-      var statementSummary = statementContent[0]+" and "+statementContent[1];
-    }else{
-      Session.set("emptyWarning1", false);
-      var statementSummary = statementContent[0]+", "+statementContent[1]+", and "+statementContent[2];
-    };
+    var statementSummary = getPureeStatement(getPuree);
+
     return statementSummary;
   },
   pureeStatementTwo: function(){
@@ -190,31 +97,7 @@ Template.mealPlan.helpers({
     var getPuree2 = Session.get("yummyPairs2")
     var getPuree3 = Session.get("tastyTrio2")
     var getPuree = [getPuree1, getPuree2, getPuree3];
-    var pureeOptions = ["Single Puree", "Yummy Pairs", "Tasty Trio"];
-    var pureeFactor = 0;
-    var statementContent=[];
-    var j=0;
-
-    for (var i = 0; i < 3; i++) {
-      if(getPuree[i]){
-        pureeFactor++;
-        statementContent[j]= pureeOptions[i];
-        j++;
-      };
-    };
-    if(pureeFactor==0){
-      Session.set("emptyWarning2", true);
-      var statementSummary = "nothing. Please select at least one kind of puree";
-    }else if(pureeFactor==1){
-      Session.set("emptyWarning2", false);
-      var statementSummary = statementContent[0];
-    }else if(pureeFactor==2){
-      Session.set("emptyWarning2", false);
-      var statementSummary = statementContent[0]+" and "+statementContent[1];
-    }else{
-      Session.set("emptyWarning2", false);
-      var statementSummary = statementContent[0]+", "+statementContent[1]+", and "+statementContent[2];
-    };
+    var statementSummary = getPureeStatement(getPuree);
     return statementSummary;
   },
   pureeStatementThree: function(){
@@ -222,31 +105,7 @@ Template.mealPlan.helpers({
     var getPuree2 = Session.get("yummyPairs3")
     var getPuree3 = Session.get("tastyTrio3")
     var getPuree = [getPuree1, getPuree2, getPuree3];
-    var pureeOptions = ["Single Puree", "Yummy Pairs", "Tasty Trio"];
-    var pureeFactor = 0;
-    var statementContent=[];
-    var j=0;
-
-    for (var i = 0; i < 3; i++) {
-      if(getPuree[i]){
-        pureeFactor++;
-        statementContent[j]= pureeOptions[i];
-        j++;
-      };
-    };
-    if(pureeFactor==0){
-      Session.set("emptyWarning3", true);
-      var statementSummary = "nothing. Please select at least one kind of puree";
-    }else if(pureeFactor==1){
-      Session.set("emptyWarning3", false);
-      var statementSummary = statementContent[0];
-    }else if(pureeFactor==2){
-      Session.set("emptyWarning3", false);
-      var statementSummary = statementContent[0]+" and "+statementContent[1];
-    }else{
-      Session.set("emptyWarning3", false);
-      var statementSummary = statementContent[0]+", "+statementContent[1]+", and "+statementContent[2];
-    };
+    var statementSummary = getPureeStatement(getPuree);
     return statementSummary;
   },
   emptyWarning1: function(){
@@ -487,6 +346,7 @@ Template.mealPlan.helpers({
     var userId= Session.get("preUserLoggedIn");
     var getDefaultMealOption =  defaultMealOption(userId);
     var getMealVolume = mealVolume(userId);
+console.log(getDefaultMealOption);
 
 // below section sets default of puree options
     if(getDefaultMealOption[0].singlePuree){
@@ -579,8 +439,6 @@ Template.mealPlan.helpers({
     }else{
       Session.set("boxOptionLargeThree", false);
     };
-
-    var test= mealVolume(userId);
 
     return false;
   },

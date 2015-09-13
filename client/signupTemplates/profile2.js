@@ -493,7 +493,6 @@ Template.profile2.events({
     };
 
     var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
-
     if(babyName){
       var fieldCheckingWarning=false;
     }else{

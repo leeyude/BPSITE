@@ -169,3 +169,20 @@
   content: "";
   display: inline-block;
 }
+
+
+#signupInitial .fieldWarningMessage {
+  margin-bottom: 5px;
+}
+
+#signupInitial .fieldWarningMessage p {
+  padding-bottom: 10px;
+  margin-bottom: 0px;
+  color: #e77930;
+  font-size: 14px;
+
+}
+
+#signupInitial .fieldWarning {
+  margin-top: 20px;
+}

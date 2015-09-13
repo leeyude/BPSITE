@@ -4,3 +4,63 @@
   position: static;
 
 }
+
+#Station-zips label{
+  float: left;
+  width: 100%;
+}
+.zipCheckboxWrap {
+  float: left;
+  width: 80px;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 14px;
+}
+
+.zipCheckbox {
+  line-height: 36px;
+  padding-left: 30px;
+  display: block;
+  width: 70px;;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.zipCheckbox.active {
+  line-height: 36px;
+  display: block;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+}
+
+.zipCheckboxIcon{
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.active .zipCheckboxIcon {
+  background-image: url(/check.png);
+  border: none;
+  background-size: 15px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}

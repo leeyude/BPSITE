@@ -28,14 +28,34 @@ import_file_CSV = function(file) {
     var cityName = line_parts[1];
     var stateAbb = line_parts[2];
     var currentServing = "No";
+    var MO= false;
+    var TU= false;
+    var WE= false;
+    var TH= false;
+    var FR= false;
+    var SA= false;
+    var SU= false;
 
-    var result = Zips.insert({zipcode:zipcode, cityName:cityName, stateAbb:stateAbb, currentServing: currentServing});
+
+    var result = Zips.insert({
+      zipcode:zipcode,
+      cityName:cityName,
+      stateAbb:stateAbb,
+      currentServing: currentServing,
+      MO: MO,
+      TU: TU,
+      WE: WE,
+      TH: TH,
+      FR: FR,
+      SA: SA,
+      SU: SU
+    });
     };
     return result;
 };
 
 Meteor.methods({
-  updateZips: function(zipcode, cityName, stateAbb, currentServing, zipId){
+  updateZips: function(zipcode, cityName, stateAbb, currentServing, zipId, MO, TU, WE, TH, FR, SA, SU){
       if(zipId){
         var newDate= new Date();
         var currentDate = moment(newDate).format('ll');
@@ -45,6 +65,13 @@ Meteor.methods({
           stateAbb: stateAbb,
           currentServing: currentServing,
           zipId: zipId,
+          MO: MO,
+          TU: TU,
+          WE: WE,
+          TH: TH,
+          FR: FR,
+          SA: SA,
+          SU: SU
         }});
         console.log(zipId);
       } else {
@@ -56,6 +83,13 @@ Meteor.methods({
           stateAbb: stateAbb,
           currentServing: currentServing,
           zipId: zipId,
+          MO: MO,
+          TU: TU,
+          WE: WE,
+          TH: TH,
+          FR: FR,
+          SA: SA,
+          SU: SU
         });
       };
     },

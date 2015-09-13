@@ -65,7 +65,7 @@ img {
   color: rgb(84, 173, 40);
 }
 
-#main-hero #main_join_now, #closing #main_join_now, #howItWorksJoin #main_join_now{
+#main-hero #main_join_now, #closing #main_join_now, #howItWorksJoin #main_join_now {
   font-family: "Gentium Book Basic", sans-serif;
   font-weight: 600;
   font-size: 20px;
@@ -78,7 +78,7 @@ img {
   position:inherit;
 }
 
-#main-hero #main_join_now h5, #closing #main_join_now h5, #howItWorksJoin #main_join_now h5{
+#main-hero #main_join_now h5, #closing #main_join_now h5, #howItWorksJoin #main_join_now h5 {
   font-family: "Gentium Book Basic", sans-serif;
   font-size: 42px;
   color: white;

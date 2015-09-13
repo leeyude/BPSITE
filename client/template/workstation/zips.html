@@ -42,7 +42,13 @@
             <th>City           </th>
             <th>State              </th>
             <th>Serving                </th>
-
+            <th>Mo                </th>
+            <th>Tu                </th>
+            <th>We                </th>
+            <th>Th                </th>
+            <th>Fr                </th>
+            <th>Sa                </th>
+            <th>Su                </th>
           </tr>
         </thead>
         <tbody>
@@ -70,6 +76,13 @@
     <td>{{cityName}}          </td>
     <td>{{stateAbb}}          </td>
     <td>{{currentServing}}          </td>
+    <td>{{#if MO}}Yes{{else}}No{{/if}}            </td>
+    <td>{{#if TU}}Yes{{else}}No{{/if}}                  </td>
+    <td>{{#if WE}}Yes{{else}}No{{/if}}                  </td>
+    <td>{{#if TH}}Yes{{else}}No{{/if}}                  </td>
+    <td>{{#if FR}}Yes{{else}}No{{/if}}                  </td>
+    <td>{{#if SA}}Yes{{else}}No{{/if}}                  </td>
+    <td>{{#if SU}}Yes{{else}}No{{/if}}                  </td>
   </tr>
 </template>
 
@@ -188,6 +201,73 @@
             <option>Yes</option>
 
           </select>
+
+          <label for="deliveryDays"> Our delivery days</label>
+          <div class="zipCheckboxWrap clearfix">
+              <label>
+                <div class="zipCheckbox {{#if zipServingMO}}active{{/if}}">
+                  <div class="zipCheckboxIcon"></div>
+                  <input checked="" class="zipInput" id="zipServingMO" type="checkbox" value={{#if zipServingMO}}true{{else}}false{{/if}}>
+                  MO
+                </div>
+              </label>
+          </div>
+
+          <div class="zipCheckboxWrap clearfix">
+              <label>
+                <div class="zipCheckbox {{#if zipServingTU}}active{{/if}}">
+                  <div class="zipCheckboxIcon"></div>
+                  <input checked="" class="zipInput" id="zipServingTU" type="checkbox" value={{#if zipServingTU}}true{{else}}false{{/if}}>
+                  TU
+                </div>
+              </label>
+          </div>
+
+          <div class="zipCheckboxWrap clearfix">
+              <label>
+                <div class="zipCheckbox {{#if zipServingWE}}active{{/if}}">
+                  <div class="zipCheckboxIcon"></div>
+                  <input checked="" class="zipInput" id="zipServingWE" multiple="" type="checkbox" value={{#if zipServingWE}}true{{else}}false{{/if}}>
+                  WE
+                </div>
+              </label>
+          </div>
+          <div class="zipCheckboxWrap clearfix">
+              <label>
+                <div class="zipCheckbox {{#if zipServingTH}}active{{/if}}">
+                  <div class="zipCheckboxIcon"></div>
+                  <input checked="" class="zipInput" id="zipServingTH" multiple="" name="allergenWheat" type="checkbox" value={{#if zipServingTH}}true{{else}}false{{/if}}>
+                  TH
+                </div>
+              </label>
+          </div>
+          <div class="zipCheckboxWrap clearfix">
+              <label>
+                <div class="zipCheckbox {{#if zipServingFR}}active{{/if}}">
+                  <div class="zipCheckboxIcon"></div>
+                  <input checked="" class="zipInput" id="zipServingFR" multiple="" name="allergenWheat" type="checkbox" value={{#if zipServingFR}}true{{else}}false{{/if}}>
+                  MO
+                </div>
+              </label>
+          </div>
+          <div class="zipCheckboxWrap clearfix">
+              <label>
+                <div class="zipCheckbox {{#if zipServingSA}}active{{/if}}">
+                  <div class="zipCheckboxIcon"></div>
+                  <input checked="" class="zipInput" id="zipServingSA" multiple="" name="allergenWheat" type="checkbox" value={{#if zipServingSA}}true{{else}}false{{/if}}>
+                  SA
+                </div>
+              </label>
+          </div>
+          <div class="zipCheckboxWrap clearfix">
+              <label>
+                <div class="zipCheckbox {{#if zipServingSU}}active{{/if}}">
+                  <div class="zipCheckboxIcon"></div>
+                  <input checked="" class="zipInput" id="zipServingSU" multiple="" name="allergenWheat" type="checkbox" value={{#if zipServingSU}}true{{else}}false{{/if}}>
+                  SU
+                </div>
+              </label>
+          </div>
 
         </div>
         <div class="modal-footer">

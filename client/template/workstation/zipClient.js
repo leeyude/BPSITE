@@ -2,6 +2,15 @@ Zips= new Mongo.Collection("zips");
 Session.setDefault("currentServing", false);
 Session.setDefault("CurrentServingSelector", "Yes");
 Session.setDefault("zipSelector", false);
+Session.setDefault("zipServingMO", false);
+Session.setDefault("zipServingTU", false);
+Session.setDefault("zipServingWE", false);
+Session.setDefault("zipServingTH", false);
+Session.setDefault("zipServingFR", false);
+Session.setDefault("zipServingSA", false);
+Session.setDefault("zipServingSU", false);
+
+
 
 Template.zipcodes.helpers ({
   zipLine: function(){
@@ -34,7 +43,30 @@ readFile = function(loadedFile,onLoadCallback) {
 Template.zipUpdate.helpers({
   editingZipcode: function(){
       return Session.get('editingZipcode');
-  }
+  },
+  zipServingMO: function(){
+      return Session.get('zipServingMO');
+  },
+  zipServingTU: function(){
+      return Session.get('zipServingTU');
+  },
+  zipServingWE: function(){
+      return Session.get('zipServingWE');
+  },
+  zipServingTH: function(){
+      return Session.get('zipServingTH');
+  },
+  zipServingFR: function(){
+      return Session.get('zipServingFR');
+  },
+  zipServingSA: function(){
+      return Session.get('zipServingSA');
+  },
+  zipServingSU: function(){
+      return Session.get('zipServingSU');
+  },
+
+
 });
 
 Template.zipUpdate.events({
@@ -44,6 +76,77 @@ Template.zipUpdate.events({
     $('.cityName').val(null);
     $('.stateAbb').val(null);
     $('.currentServing').val(null);
+    Session.set("zipServingMO",false);
+    Session.set("zipServingTU",false);
+    Session.set("zipServingWE",false);
+    Session.set("zipServingTH",false);
+    Session.set("zipServingFR",false);
+    Session.set("zipServingSA",false);
+    Session.set("zipServingSU",false);
+  },
+
+  "click #zipServingMO": function(event, template) {
+    var servingValue = Session.get("zipServingMO");
+    if(servingValue){
+      Session.set("zipServingMO",false);
+    }else{
+      Session.set("zipServingMO",true);
+    };
+  },
+
+  "click #zipServingTU": function(event, template) {
+    var servingValue = Session.get("zipServingTU");
+    if(servingValue){
+      Session.set("zipServingTU",false);
+    }else{
+      Session.set("zipServingTU",true);
+    };
+  },
+
+  "click #zipServingWE": function(event, template) {
+    var servingValue = Session.get("zipServingWE");
+    if(servingValue){
+      Session.set("zipServingWE",false);
+    }else{
+      Session.set("zipServingWE",true);
+    };
+  },
+
+  "click #zipServingTH": function(event, template) {
+    var servingValue = Session.get("zipServingTH");
+    if(servingValue){
+      Session.set("zipServingTH",false);
+    }else{
+      Session.set("zipServingTH",true);
+    };
+
+  },
+
+  "click #zipServingFR": function(event, template) {
+    var servingValue = Session.get("zipServingFR");
+    if(servingValue){
+      Session.set("zipServingFR",false);
+    }else{
+      Session.set("zipServingFR",true);
+    };
+  },
+
+  "click #zipServingSA": function(event, template) {
+    var servingValue = Session.get("zipServingSA");
+    if(servingValue){
+      Session.set("zipServingSA",false);
+    }else{
+      Session.set("zipServingSA",true);
+    };
+  },
+
+  "click #zipServingSU": function(event, template) {
+    var servingValue = Session.get("zipServingSU");
+    if(servingValue){
+      Session.set("zipServingSU",false);
+    }else{
+      Session.set("zipServingSU",true);
+    };
   },
 
   "click .save": function(event, template){
@@ -52,7 +155,14 @@ Template.zipUpdate.events({
     var stateAbb= template.find(".stateAbb").value;
     var currentServing= template.find(".currentServing").value;
     var zipId= Session.get('editingZipcode');
-    Meteor.call('updateZips', zipcode, cityName, stateAbb, currentServing, zipId);
+    var MO= Session.get("zipServingMO");
+    var TU= Session.get("zipServingTU");
+    var WE= Session.get("zipServingWE");
+    var TH= Session.get("zipServingTH");
+    var FR= Session.get("zipServingFR");
+    var SA= Session.get("zipServingSA");
+    var SU= Session.get("zipServingSU");
+    Meteor.call('updateZips', zipcode, cityName, stateAbb, currentServing, zipId, MO, TU, WE, TH, FR, SA, SU);
   },
 
   "click .delete": function(event, template){
@@ -97,7 +207,17 @@ Template.zipLines.events({
     $('.cityName').val(this.cityName);
     $('.stateAbb').val(this.stateAbb);
     $('.currentServing').val(this.currentServing);
-  }
+    Session.set("zipServingMO", this.MO);
+    Session.set("zipServingTU", this.TU);
+    Session.set("zipServingWE", this.WE);
+    Session.set("zipServingTH", this.TH);
+    Session.set("zipServingFR", this.FR);
+    Session.set("zipServingSA", this.SA);
+    Session.set("zipServingSU", this.SU);
+
+  },
+
+
 });
 
 Template.zipcodes.helpers({

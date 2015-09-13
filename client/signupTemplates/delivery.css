@@ -156,3 +156,19 @@
   color: #e77930;
   font-size: 14px;
 }
+
+#delivery .firstDelivery {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.firstDeliveryWrap{
+  background-color: rgb(250, 255, 249);
+}
+
+#delivery .firstDelivery h4{
+  color: #e77930;
+  text-align: center;
+}

@@ -1,12 +1,25 @@
 Session.setDefault("preUserLoggedIn", false);
+Session.setDefault("inputWarningZIP", false);
+Session.setDefault("inputWarningEmail", false);
+
+
+Template.signup.helpers({
+  inputWarningZIP: function(){
+    return Session.get("inputWarningZIP");
+  },
+  inputWarningEmail: function(){
+    return Session.get("inputWarningEmail");
+  },
+});
 
 Template.signup.events({
   "change #user_email": function(event, template) {
+  // make sure that user's email is prepared for the registration
     var userEmail= template.find("#user_email").value;
     Meteor.subscribe('preUser',userEmail)
   },
-  "click #sign-up-button": function(event, template){
 
+  "click #sign-up-button": function(event, template){
     var userEmail= template.find("#user_email").value;
     var userZip= template.find("#user_zip").value;
     Session.set("validZIP", userZip);
@@ -15,9 +28,12 @@ Template.signup.events({
 
     if(userZip.length!==5){
       // if zipcode is not 5 digits, throw an error to user.
-      alert("Please enter 5-digit ZIP code.");
+      Session.set("inputWarningZIP", "Please enter 5-digit ZIP code.")
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+
       $('#user_zip').val(null);
     }else{
+      Session.set("inputWarningZIP", false)
       /* if zipcode is 5-digit, proceed to check two things.
       First, check the 5-digit input exists in database.
       Second, check whether the email input exist in database*/
@@ -29,8 +45,10 @@ Template.signup.events({
           alert("Please enter a valid 5-digit ZIP Code.");
         }
         if(result){
+          Session.set("inputWarningEmail", false);
+
           // when result is true, proceed with signup session.
-          if(result==="proceed"){
+          if(result=="proceed"){
             Session.setPersistent("validZIP", userZip);
             Session.setPersistent("userEmail", userEmail);
             Session.setPersistent("preUserLoggedIn", true);
@@ -42,12 +60,13 @@ Template.signup.events({
             Router.go('/zipNotCovered');
           };
 
-          Session.setPersistent("preUserLoggedIn", Meteor.users.findOne({email:userEmail})._id);
+          Session.setPersistent("preUserLoggedIn", Meteor.users.findOne({"emails.address":userEmail})._id);
           console.log("useraccount id is......."+Session.get("preUserLoggedIn"));
           Router.go('/profile');
 
-        }else{
-          alert('This Email has already been taken. Please revise email entry.');
+        }else if(result==="active"){
+          Session.set("inputWarningEmail", 'This Email has already been taken. Please revise email entry.');
+
           // when result is false, show that email has been taken.
         };
       });
