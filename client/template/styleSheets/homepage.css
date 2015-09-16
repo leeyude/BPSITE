@@ -655,3 +655,9 @@ body a.btn:hover, body a.btn:focus {
     padding-top: 10px;
     color: white;
 }
+
+.btn > span {
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 16px;
+
+}

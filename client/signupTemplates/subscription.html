@@ -1,0 +1,229 @@
+<template name="subscription">
+
+  {{>signupMenu}}
+  <section id="subscription">
+
+    <div class="container clearfix">
+        <h3> Enter your billing information </h3>
+        <p> Delivery is free and convenient. <br>Meals are carefully packaged in insulated boxes to maintain the safest freshness for your baby. </p>
+        {{#if passwordError}}
+        <div class="fieldWarning clearfix">
+          <div class="fieldWarningMessage">
+            <p>
+               Please enter a password of your choice.
+            </p>
+          </div>
+        </div>
+        {{/if}}
+        {{#if paymentError}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+              Please enter valid credit card information.
+            </p>
+          </div>
+        </div>
+        {{/if}}
+        {{#if accountCreationError}}
+        <div class="fieldWarning">
+          <div class="fieldWarningMessage">
+            <p>
+              Account creation failed. This most likely is a network issue. Please make sure you have stable internet connection.
+            </p>
+          </div>
+        </div>
+        {{/if}}
+
+        <div class="row clearfix">
+          <div class="col-md-6 col-left">
+            <div class="subscriptionSummarySection clearfix">
+              <h4>Order Summary</h4>
+              <table class='table table-hover table-condensed'>
+                <thead>
+                  <tr>
+                    <th>Baby          </th>
+                    <th>Plan Type          </th>
+                    <th>Puree Options       </th>
+                    <th>Avoided <br>Allergens      </th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>  {{babyName.[0]}}      </td>
+                    <td>  {{planStatement.[0]}}       </td>
+                    <td>  {{pureeStatement.[0]}}        </td>
+                    <td>  {{allergenStatement.[0]}}         </td>
+
+                  </tr>
+                  {{#if babyStatus.[1]}}<tr>
+                    <td>  {{babyName.[1]}}      </td>
+                    <td>   {{planStatement.[1]}}      </td>
+                    <td>   {{pureeStatement.[1]}}        </td>
+                    <td>   {{allergenStatement.[1]}}       </td>
+                  </tr>{{/if}}
+                  {{#if babyStatus.[2]}}<tr>
+                    <td> {{babyName.[2]}}      </td>
+                    <td>  {{planStatement.[2]}}        </td>
+                    <td>   {{pureeStatement.[2]}}       </td>
+                    <td>   {{allergenStatement.[2]}}        </td>
+                  </tr>{{/if}}
+                </tbody>
+              </table>
+            </div>
+            <div class="subscriptionSummarySection clearfix">
+              <h4>Delivery Summary</h4>
+              <div class="deliverySummaryWrap clearfix">
+                <dl class="deliverySummary clearfix">
+                      <dt>First Delivery:</dt>
+                      <dd><span class="highlight"> {{deliveryData.firstDelivery}} </span></dd>
+                      <dt>Delivery Day:</dt>
+                      <dd><span class="highlight"> {{deliveryData.deliveryDate}} </span></dd>
+                      <dt>Delivery Address:</dt>
+                      <dd><span class="highlight"> {{deliveryData.deliveryAddress}} </span></dd>
+                </dl>
+              </div>
+            </div>
+            <span class="line"></span>
+            <div class="subscriptionSummarySection clearfix weeklyTotal">
+              <h4>Weekly Total</h4>
+              <div class="deliverySummaryWrap clearfix">
+                <dl class="deliverySummary clearfix">
+                      <dt>Subtotal:</dt>
+                      <dd><span class="highlight"> ${{deliveryData.subtotal}} </span></dd>
+                      <dt>Delivery and Tax:</dt>
+                      <dd><span class="highlight"> Free </span></dd>
+                      <dt>Total:</dt>
+                      <dd><span class="highlight totalPrice"> ${{deliveryData.subtotal}} </span></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-right">
+            <div  class="subscribePaymentSection">
+              <form id="payment-form" action="index.html" method="post">
+                <div class="subscribePaymentBlock">
+                  <span class="payment-errors"></span>
+
+                  <div class="paymentTitle">
+                    <h4>Payment Information
+                      {{#if paymentError}}
+                      <div class="warningIcon"></div>
+                      {{/if}}
+                    </h4>
+
+                  </div>
+                  <div class="creditCardBlock clearfix">
+                    <label for="cardNumber">Card Number
+                        {{#if fieldCheckingWarning}}
+                        <div class="warningIcon"></div>
+                        {{/if}}
+                    </label>
+                    <input class="string cardNumber required" id="cardNumber" name="cardNumber" type="text" size="20" placeholder="16-digit credit card number" onfocus="this.placeholder = ''" onblur='this.placeholder = "16-digit credit card number"' value="{{cardNumber}}" data-stripe="number">
+                  </div>
+
+                  <div class="creditCardBlock clearfix">
+                    <div class="expirationBlock">
+                      <label for="expDateMonth">Expiration Date
+                          {{#if fieldCheckingWarning}}
+                          <div class="warningIcon"></div>
+                          {{/if}}
+                      </label>
+                      <select id="expirationDateMonth" class="inputFull" name="expirationDateMonth" data-stripe="exp-month">
+
+                        <option value="">Month</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                      <select id="expirationDateYear" class="inputFull" name="expirationDateYear" data-stripe="exp-year">
+                        <option value="">Year</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                        <option value="2033">2033</option>
+                        <option value="2034">2034</option>
+                        <option value="2035">2035</option>
+                        <option value="2036">2036</option>
+                        <option value="2037">2037</option>
+                        <option value="2038">2038</option>
+                        <option value="2039">2039</option>
+                        <option value="2040">2040</option>
+                      </select>
+                    </div>
+
+                    <div class="cvcInputBlock">
+                        <label for="cvc"> cvc
+
+                        </label>
+                        <input class="string cvcInput required" id="cvcInput" name="cvcInput" size="4" type="text" data-stripe="cvc">
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              </div>
+
+              <div class="passwordSection">
+              <div class="passwordBlock">
+                <div class="passwordTitle">
+                  <h4>Account Access</h4>
+                </div>
+                <div class="passwordInput clearfix">
+                  <label for="password">Set a Password
+                    {{#if passwordError}}
+                    <div class="warningIcon"></div>
+                    {{/if}}
+                  </label>
+                  <input class="string password required" id="password" name="password" type="text" onfocus="this.placeholder = ''">
+                </div>
+
+                </div>
+              </div>
+              <div class="subscriptionSummarySection clearfix">
+                <a class="btn" id="startSubscription">
+                  <h5>Confirm Subscription</h5>
+                </a>
+
+              </div>
+            </div>
+            <div class="disclaimer">
+              <p>
+                By clicking “Confirm Subscription” you agree your purchase of a continuous subscription, and that you will receive deliveries, and be billed to your designated payment method, weekly, unless you skip a delivery or cancel your subscription at least 7 days before your next delivery by contacting us and following the instructions in our response. For more information see our <a href="/terms" target="_blank">Term of Use</a> and <a href="/pricing" target="_blank">FAQs.</a>{{ currentUser }}
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+  </section>
+  {{>shortFooter}}
+</template>

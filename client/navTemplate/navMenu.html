@@ -17,15 +17,34 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/howItWorks">How It Works <span class="sr-only"></span></a></li>
-        <li><a href="/weeklyMenu">Weekly Menu</a></li>
-        <li><a href="/pricing">Pricing</a></li>
+        {{#if currentUser}}
+            <li><a href="/deliverySchedule">Delivery Schedule</a></li>
+            <li><a href="/babyProfile">My Baby's Profile</a></li>
+
+        {{else}}
+            <li><a href="/howItWorks">How It Works <span class="sr-only"></span></a></li>
+            <li><a href="/weeklyMenu">Weekly Menu</a></li>
+            <li><a href="/pricing">Pricing</a></li>
+        {{/if}}
+
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login">Log In</a></li>
-        <li>
-          <a href="/signup" class="btn sign-up" id="signup"> Sign Up</a>
-        </li>
+      <ul id="navMenuLoggedIn" class="nav navbar-nav navbar-right">
+        {{#if currentUser}}
+            <li>
+              <div class="signOut">
+                {{greeting}} {{userName}}!  ( <a id="signOut" href="/" class="logout">Log out</a> )
+              </div>
+              <div class="myAccount btn">
+                    <span>My Account </span>
+              </div>
+            </li>
+        {{else}}
+            <li><a href="/signin">Log In</a></li>
+            <li>
+              <a href="/signup" class="btn sign-up" id="signup"> Sign Up</a>
+            </li>
+        {{/if}}
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

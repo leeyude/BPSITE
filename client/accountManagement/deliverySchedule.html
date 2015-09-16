@@ -1,0 +1,192 @@
+<template name="deliverySchedule">
+  {{>navMenu}}
+  <section id="deliverySchedule">
+      <div class="container-fluid clearfix">
+        <div class="scheduleBlockBackground">
+          <div class="scheduleBlockContent">
+            <div class="scheduleHeader clearfix">
+              <h3>Delivery Schedule</h3>
+              <span class="line"></span>
+            </div>
+            <div class="row">
+              <div id="deliveryScheduleCalendarBlock" class="col-sm-6">
+                <table id="deliveryScheduleCalendar">
+
+                  <thead>
+                    <tr>
+                      <th colspan="7" class="calendarHeader"> {{thisMonth}}</th>
+                    </tr>
+                    <tr>
+                      <th>Sun               </th>
+                      <th>Mon               </th>
+                      <th>Tue               </th>
+                      <th>Wed               </th>
+                      <th>Thu               </th>
+                      <th>Fri               </th>
+                      <th>Sat               </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr class="wk1">
+                      <td class="{{firstMonthClassValueArray.[0]}}">{{#if firstMonthValueArray.[0]}}
+                        {{firstMonthValueArray.[0]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[1]}}">{{#if firstMonthValueArray.[1]}}
+                        {{firstMonthValueArray.[1]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[2]}}">{{#if firstMonthValueArray.[2]}}
+                        {{firstMonthValueArray.[2]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[3]}}">{{#if firstMonthValueArray.[3]}}
+                        {{firstMonthValueArray.[3]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[4]}}">{{#if firstMonthValueArray.[4]}}
+                        {{firstMonthValueArray.[4]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[5]}}">{{#if firstMonthValueArray.[5]}}
+                        {{firstMonthValueArray.[5]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[6]}}">{{#if firstMonthValueArray.[6]}}
+                        {{firstMonthValueArray.[6]}}
+                        {{else}}{{/if}} </td>
+                    </tr>
+
+                    {{#if firstMonthWeekSwitch.[0]}}
+                    <tr class="wk2">
+                      <td class="{{firstMonthClassValueArray.[7]}}">{{#if firstMonthValueArray.[7]}}
+                        {{firstMonthValueArray.[7]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[8]}}">{{#if firstMonthValueArray.[8]}}
+                        {{firstMonthValueArray.[8]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[9]}}">{{#if firstMonthValueArray.[9]}}
+                        {{firstMonthValueArray.[9]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[10]}}">{{#if firstMonthValueArray.[10]}}
+                        {{firstMonthValueArray.[10]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[11]}}">{{#if firstMonthValueArray.[11]}}
+                        {{firstMonthValueArray.[11]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[12]}}">{{#if firstMonthValueArray.[12]}}
+                        {{firstMonthValueArray.[12]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[13]}}">{{#if firstMonthValueArray.[13]}}
+                        {{firstMonthValueArray.[13]}}
+                        {{else}}{{/if}} </td>
+                    </tr>
+                    {{/if}}
+                    {{#if firstMonthWeekSwitch.[1]}}
+                    <tr class="wk3">
+                      <td class="{{firstMonthClassValueArray.[14]}}">{{#if firstMonthValueArray.[14]}}
+                        {{firstMonthValueArray.[14]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[15]}}">{{#if firstMonthValueArray.[15]}}
+                        {{firstMonthValueArray.[15]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[16]}}">{{#if firstMonthValueArray.[16]}}
+                        {{firstMonthValueArray.[16]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[17]}}">{{#if firstMonthValueArray.[17]}}
+                        {{firstMonthValueArray.[17]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[18]}}">{{#if firstMonthValueArray.[18]}}
+                        {{firstMonthValueArray.[18]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[19]}}">{{#if firstMonthValueArray.[19]}}
+                        {{firstMonthValueArray.[19]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[20]}}">{{#if firstMonthValueArray.[20]}}
+                        {{firstMonthValueArray.[20]}}
+                        {{else}}{{/if}} </td>
+                    </tr>
+                    {{/if}}
+                    {{#if firstMonthWeekSwitch.[2]}}
+                    <tr class="wk4">
+                      <td class="{{firstMonthClassValueArray.[21]}}">{{#if firstMonthValueArray.[21]}}
+                        {{firstMonthValueArray.[21]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[22]}}">{{#if firstMonthValueArray.[22]}}
+                        {{firstMonthValueArray.[22]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[23]}}">{{#if firstMonthValueArray.[23]}}
+                        {{firstMonthValueArray.[23]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[24]}}">{{#if firstMonthValueArray.[24]}}
+                        {{firstMonthValueArray.[24]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[25]}}">{{#if firstMonthValueArray.[25]}}
+                        {{firstMonthValueArray.[25]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[26]}}">{{#if firstMonthValueArray.[26]}}
+                        {{firstMonthValueArray.[26]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[27]}}">{{#if firstMonthValueArray.[27]}}
+                        {{firstMonthValueArray.[27]}}
+                        {{else}}{{/if}} </td>
+                    </tr>
+                    {{/if}}
+                    {{#if firstMonthWeekSwitch.[3]}}
+                    <tr class="wk5">
+                      <td class="{{firstMonthClassValueArray.[28]}}">{{#if firstMonthValueArray.[28]}}
+                        {{firstMonthValueArray.[28]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[29]}}">{{#if firstMonthValueArray.[29]}}
+                        {{firstMonthValueArray.[29]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[30]}}">{{#if firstMonthValueArray.[30]}}
+                        {{firstMonthValueArray.[30]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[31]}}">{{#if firstMonthValueArray.[31]}}
+                        {{firstMonthValueArray.[31]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[32]}}">{{#if firstMonthValueArray.[32]}}
+                        {{firstMonthValueArray.[32]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[33]}}">{{#if firstMonthValueArray.[33]}}
+                        {{firstMonthValueArray.[33]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[34]}}">{{#if firstMonthValueArray.[34]}}
+                        {{firstMonthValueArray.[34]}}
+                        {{else}}{{/if}} </td>
+                    </tr>
+                    {{/if}}
+                    {{#if firstMonthWeekSwitch.[4]}}
+                    <tr class="wk6">
+                      <td class="{{firstMonthClassValueArray.[35]}}">{{#if firstMonthValueArray.[35]}}
+                        {{firstMonthValueArray.[35]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[36]}}">{{#if firstMonthValueArray.[36]}}
+                        {{firstMonthValueArray.[36]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[37]}}">{{#if firstMonthValueArray.[37]}}
+                        {{firstMonthValueArray.[37]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[38]}}">{{#if firstMonthValueArray.[38]}}
+                        {{firstMonthValueArray.[38]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[39]}}">{{#if firstMonthValueArray.[39]}}
+                        {{firstMonthValueArray.[39]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[40]}}">{{#if firstMonthValueArray.[40]}}
+                        {{firstMonthValueArray.[40]}}
+                        {{else}}{{/if}} </td>
+                      <td class="{{firstMonthClassValueArray.[41]}}">{{#if firstMonthValueArray.[41]}}
+                        {{firstMonthValueArray.[41]}}
+                        {{else}}{{/if}} </td>
+                    </tr>
+                    {{/if}}
+                  </tbody>
+                </table>
+              </div>
+              <div id="deliveryContent" class="col-sm-6">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+  {{>mainFooter}}
+</template>

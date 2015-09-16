@@ -1,4 +1,4 @@
-Session.setDefault("setSigninNav", true);
+Session.setDefault("setSigninNav", true); // used to control for nav display of general use or sign-up use.
 
 Template.navMenu.events({
   "click #signup": function(event, template){
@@ -24,18 +24,19 @@ if (Meteor.isClient) {
     this.render('pricing');
   });
 
-  Router.route('/login', function () {
-    this.render('login');
-  });
-
   Router.route('/signup', function () {
     this.render('signup');
+  });
+
+  Router.route('/signin', function () {
+    this.render('signin');
   });
 
   Router.route('/zipNotCovered', function () {
     this.render('zipNotCovered');
   });
 
+// sign-up routing
   Router.route('/profile', {
     action: function(){
       this.render('profile');
@@ -171,8 +172,27 @@ if (Meteor.isClient) {
     },
   });
 
-  Router.route('/thankyou', function () {
-    this.render('thankyou');
+  Router.route('/thankyou', {
+    action: function(){
+
+      this.render('thankyou');
+    },
+    onBeforeAction: function(){
+      var preUserToken= Session.get("preUserLoggedIn");
+      // all properties available in the route function
+      // are also available here such as this.params
+      if (!preUserToken) {
+        // if the user is not logged in, render the Login template
+        Router.go('/signup');
+      } else {
+        // otherwise don't hold up the rest of hooks or our route/action function from running
+        this.next();
+      }
+    },
+    waitOn: function(){
+      var userEmail = Session.get("userEmail");
+      return Meteor.subscribe('preUser', userEmail);
+    },
   });
 
   Router.route('/about', function () {
@@ -203,4 +223,50 @@ if (Meteor.isClient) {
     this.render('zipcodes');
   });
 
+// sign-in routing
+  Router.route('/myAccount', function () {
+    this.render('myAccount');
+  });
+
+  Router.route('/deliverySchedule', function () {
+    this.render('deliverySchedule');
+  });
+
+  Router.route('/babyProfile', function () {
+    this.render('babyProfile');
+  });
+
 }
+
+Template.navMenu.helpers({
+  userName: function(){
+    var userId= Meteor.userId();
+    var userObject = Meteor.users.findOne({_id:userId});
+    var userName = userObject.profile.userFirstName;
+    Session.set("userFirstName", userName);
+    return Session.get("userFirstName");
+  },
+  greeting: function(){
+    var now = new Date();
+    var hours = moment(now).hour();
+    if(hours>18){
+      var greeting = "Good evening";
+    }else if(hours>12){
+      var greeting = "Good afternoon";
+    }else if(hours<3){
+      var greeting = "Good evening";
+    }else{
+      var greeting = "Good morning";
+    };
+    Session.set("greeting", greeting);
+    return Session.get("greeting");
+  },
+});
+
+Template.navMenu.events({
+  "click #signOut": function(event, template){
+    console.log("click log out");
+    Meteor.logout();
+    return false;
+  }
+});

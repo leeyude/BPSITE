@@ -1,0 +1,62 @@
+<template name="signin">
+
+  {{>navMenu}}
+  <section id="signin">
+    <div class="container clearfix">
+      <div class="col-sm-6 col-md-5 col-lg-4 col-centered clearfix">
+        <div class="signInBackground clearfix">
+          <h3>Sign In</h3>
+          {{#if zipFiveDigitWarning}}
+          <div class="fieldWarning">
+            <div class="fieldWarningMessage">
+              <p>
+                 Incorrect email or password. Please try again.
+              </p>
+            </div>
+          </div>
+          {{/if}}
+          <div class="signInField">
+            <label for="signInEmail">Email
+            </label>
+            <div class="signInInput">
+              <input class="string inputFull required" data-validate="{required: true}" id="signInEmail">
+            </div>
+          </div>
+
+          <div class="signInField">
+            <label for="signInPassword">Password
+            </label>
+            <div class="signInInput">
+              <input class="string inputFull required" data-validate="{required: true}" id="signInPassword" type="password">
+            </div>
+          </div>
+
+          <div class="signInField">
+            <div class="col-xs-6">
+              <div id="rememberMe" class="clearfix {{#if rememberMe}}active{{else}}{{/if}}">
+                <label>
+                    <div class="rememberMeCheckboxIcon"></div>
+                    <input checked="" class="rememberMeInput" type="checkbox" value={{#if rememberMe}}true{{else}}false{{/if}}>
+                    Remember Me
+                </label>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div id="forgotPassword">
+                <a href="#">Forgot Password?</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="signInField">
+            <div id="logInButton" >
+              <a class="btn" href="#">Log In</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  {{>mainFooter}}
+</template>

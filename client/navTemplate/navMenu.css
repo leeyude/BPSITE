@@ -2,11 +2,21 @@
   .container-fluid {
     width: 1180px;
   }
+
+  #navMenuLoggedIn .myAccount {
+    float: right;
+    margin-left: 15px;
+  }
 }
 
 @media screen and (max-width: 845px) {  /* -- If the view port is less than 845px wide (portrait on phone) then display the following styles -- */
   img {
     margin-left: 20px;
+  }
+
+  #navMenuLoggedIn .myAccount {
+    float: left;
+    margin-left: 15px;
   }
 }
 
@@ -18,7 +28,6 @@ border-color: #ffffff;
 border-bottom: 1px solid #bbb;
 border-bottom-width: 1px;
 border-bottom-style: solid;
-border-bottom-color: rgb(98, 108, 88);
 }
 
 #logo {
@@ -34,7 +43,8 @@ border-bottom-color: rgb(98, 108, 88);
   color: rgb(84, 173, 40) !important;
   font-size: 18px;
   font-weight: 700;
-  margin-top: 14px;
+  margin-top: 24px;
+  margin-bottom: 4px;
 }
 
 #main-header {
@@ -81,4 +91,38 @@ border-bottom-color: rgb(98, 108, 88);
 
 a.sign-up:hover{
   background-color: rgb(39, 85, 1)!important;
+}
+
+#navMenuLoggedIn .signOut a{
+  padding: 0;
+  margin: 0;
+  color: #777!important;
+  font-size: 16px;
+
+  font-weight: lighter;
+}
+
+#navMenuLoggedIn .signOut{
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 16px;
+  color: #777;
+  font-style: italic;
+  margin-top: 12px;
+  width: 100%;
+  display: block;
+  margin-left: 15px;
+}
+
+.navbar .nav > li > a:hover, .navbar .nav > li > a:focus {
+    text-decoration: none;
+    border-bottom: #bbb solid 2px;
+}
+
+.navbar .nav > li > a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
+  margin-left: 12px;
+  margin-right: 12px;
 }
