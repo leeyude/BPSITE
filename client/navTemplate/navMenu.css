@@ -47,6 +47,13 @@ border-bottom-style: solid;
   margin-bottom: 4px;
 }
 
+#signup {
+  margin-top: 14px;
+  margin-bottom: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 #main-header {
   font-family: "Gentium Book Basic", sans-serif;
   background: #fff;
@@ -90,7 +97,7 @@ border-bottom-style: solid;
 }
 
 a.sign-up:hover{
-  background-color: rgb(39, 85, 1)!important;
+  background-color: rgb(49, 98, 8)!important;
 }
 
 #navMenuLoggedIn .signOut a{
@@ -116,6 +123,11 @@ a.sign-up:hover{
 .navbar .nav > li > a:hover, .navbar .nav > li > a:focus {
     text-decoration: none;
     border-bottom: #bbb solid 2px;
+}
+
+.navbar .nav > li > a.current {
+    text-decoration: none;
+    border-bottom: rgb(71, 147, 33) solid 2px;
 }
 
 .navbar .nav > li > a {

@@ -1,9 +1,7 @@
 Template.thankyou.helpers({
   thisMonth: function(){
     var userId= Meteor.userId();
-    var userObject = Meteor.users.findOne({_id:userId});
-    var firstDelivery = userObject.deliveryLog[0].fulfilmentDate;
-    console.log(firstDelivery);
+
 
     var today = new Date;
 // setting displayed months
@@ -13,6 +11,32 @@ Template.thankyou.helpers({
 
     Session.set("thisMonth", months[todayMonth]);
     Session.set("nextMonth", months[todayMonth+1]);
+
+// start to get delivery log items so we can feed dates to calendar
+    var userDeliveryLog = Meteor.users.findOne({_id:userId}).deliveryLog;
+    var logLength = userDeliveryLog.length; // set total calc for for loop
+    var fulfilmentDateLogs = [];
+    var deliveryDatesThisMonth = [];
+    var deliveryStatusThisMonth = [];
+    var deliveryDatesNextMonth = [];
+    var deliveryStatusNextMonth = [];
+
+    for(i=0;i<logLength;i++){
+      var deliveryDate = moment(userDeliveryLog[i].fulfilmentDate, "ddd, MMM Do");
+      var deliveryStatus = userDeliveryLog[i].status;
+      if(moment(deliveryDate).month()==todayMonth){
+        deliveryDatesThisMonth.push(moment(deliveryDate).date());
+        deliveryStatusThisMonth.push(deliveryStatus);
+      }else if(moment(deliveryDate).month()==(todayMonth+1)){
+        deliveryDatesNextMonth.push(moment(deliveryDate).date());
+        deliveryStatusNextMonth.push(deliveryStatus);
+      };
+    };
+    console.log(deliveryDatesThisMonth);
+    console.log(deliveryStatusThisMonth);
+    console.log(deliveryDatesNextMonth);
+    console.log(deliveryStatusNextMonth);
+
 // setting
     var todayWeekday = moment(today).day();
     var todayYear = moment(today).year();
@@ -35,10 +59,32 @@ Template.thankyou.helpers({
 
     var calendarDateWithValue = todayWeekday; // start to set dates from today
     for(i=todayDateInMonth; i<(daysInMonth[todayMonth]+1);i++){
-      firstMonthValueArray[calendarDateWithValue]= i;
-      firstMonthClassValueArray[calendarDateWithValue]='';
+      firstMonthValueArray[calendarDateWithValue]= i; // setting displayed dates
+      // and to set class of these displayed dates
+      for(j=0; j<deliveryDatesThisMonth.length; j++){
+
+        if(i==deliveryDatesThisMonth[j]){
+          console.log("when i =..."+i+"and and and "+deliveryDatesThisMonth[j]);
+          console.log(deliveryStatusThisMonth[j]==99);
+          if(deliveryStatusThisMonth[j]==99){
+            console.log("it is true that date is ..."+deliveryDatesThisMonth[j]);
+            console.log(calendarDateWithValue);
+            firstMonthClassValueArray[calendarDateWithValue]='skipped';
+            console.log(firstMonthClassValueArray[calendarDateWithValue]);
+            console.log(firstMonthClassValueArray);
+          }else{
+            firstMonthClassValueArray[calendarDateWithValue]='scheduled';
+          };
+          break;
+        }else{
+          firstMonthClassValueArray[calendarDateWithValue]='';
+        };
+      };
       calendarDateWithValue++;
-    }; // the array includes all dates remaining in the current month.
+    };
+    firstMonthClassValueArray[todayWeekday]='todayIcon';
+
+     // the array includes all dates remaining for display in the current month.
 
 
     Session.set("firstMonthValueArray", firstMonthValueArray);
@@ -64,9 +110,26 @@ Template.thankyou.helpers({
     }; // disable any date before today.
     for(i=1; i<(daysInMonth[nextMonth]+1);i++){
       secondMonthValueArray[calendarDateWithValue]= i;
-      secondMonthClassValueArray[calendarDateWithValue]='';
+
+      for(j=0; j<deliveryDatesNextMonth.length; j++){
+
+        if(i==deliveryDatesNextMonth[j]){
+
+          if(deliveryStatusNextMonth[j]==99){
+
+            secondMonthClassValueArray[calendarDateWithValue]='skipped';
+
+          }else{
+            secondMonthClassValueArray[calendarDateWithValue]='scheduled';
+          };
+          break;
+        }else{
+          secondMonthClassValueArray[calendarDateWithValue]='';
+        };
+      };
       calendarDateWithValue++;
     }; // the array includes all dates remaining in the current month.
+    console.log(secondMonthClassValueArray);
     Session.set("secondMonthValueArray", secondMonthValueArray);
 
     var checkWeeksInSecondMonth = Math.ceil((secondMonthValueArray.length/7));
@@ -82,6 +145,7 @@ Template.thankyou.helpers({
 
     Session.set("firstMonthClassValueArray", firstMonthClassValueArray);
     Session.set("secondMonthClassValueArray", secondMonthClassValueArray);
+
 
 
 

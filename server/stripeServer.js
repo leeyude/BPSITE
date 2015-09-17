@@ -17,6 +17,7 @@ Meteor.methods({
           stripePlan: subscrptionPlan,
           activeStatus: true,
         }});
+        Meteor.call("createDefaultDeliveryLog", userId);
         Accounts.setPassword(userId, password);
         console.log(Meteor.users.findOne({"emails.address":userEmail}));
         console.log("set password done.");

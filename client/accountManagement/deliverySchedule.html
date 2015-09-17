@@ -10,12 +10,10 @@
             </div>
             <div class="row">
               <div id="deliveryScheduleCalendarBlock" class="col-sm-6">
-                <table id="deliveryScheduleCalendar">
+                <table id="deliveryScheduleCalendar" class="table table-striped table-bordered table-hover">
 
                   <thead>
-                    <tr>
-                      <th colspan="7" class="calendarHeader"> {{thisMonth}}</th>
-                    </tr>
+
                     <tr>
                       <th>Sun               </th>
                       <th>Mon               </th>
@@ -24,6 +22,10 @@
                       <th>Thu               </th>
                       <th>Fri               </th>
                       <th>Sat               </th>
+                    </tr>
+
+                    <tr>
+                      <th colspan="7" class="calendarHeader"> {{thisMonth}}</th>
                     </tr>
                   </thead>
 
@@ -181,7 +183,9 @@
                 </table>
               </div>
               <div id="deliveryContent" class="col-sm-6">
-
+                <div class="deliveryContentHeader">
+                  <h4> Monday, September 21st</h4>
+                </div>
               </div>
             </div>
           </div>

@@ -127,3 +127,16 @@
     table-layout: fixed;
 
 }
+
+.scheduleHeader {
+  margin-bottom: 15px;
+}
+
+.deliveryContentHeader {
+  width: 100%;
+  float: left;
+}
+
+.deliveryContentHeader h4 {
+  margin: 0;
+}

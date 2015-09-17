@@ -1159,7 +1159,12 @@ Meteor.methods({
 
     Meteor.users.update({_id:preId}, {$set:{
       deliveryLog: [
-        { status: deliveryInfo.deliveryStatus,  // 0- not yet fulfilled, can be changed or canceled; 1- not yet fulfilled, to be fulfilled in the current week; 2- delivered, within two weeks after delivery, 3- delivered, out of two weeks of delivery
+        { status: deliveryInfo.deliveryStatus,
+          // 0- not yet fulfilled, can be changed or canceled;
+          // 1- not yet fulfilled, to be fulfilled in the current week;
+          // 2- delivered, within two weeks after delivery,
+          // 3- delivered, out of two weeks of delivery
+          // 99 - skipped
           fulfilmentDate: deliveryInfo.firstDelivery,//give a time of this shipment....
           deliveryAddress1: deliveryInfo.addressLine1,
           deliveryAddress2: deliveryInfo.addressLine2,
