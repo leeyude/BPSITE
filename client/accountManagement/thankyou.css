@@ -124,24 +124,68 @@
 
 }
 
-.iconExplanation h5 {
+#thankyou .iconExplanation h5 {
   color: #888;
+  display: inline-block;
+  width: auto;
+  margin-left: 12px;
 }
 
 .todayMarkBlock, .deliveryMarkBlock {
   width: auto;
   float: left;
+  margin-right: 18px;
 }
 
 .manageAccount, .iconExplanation {
   width:100%;
   display: inline-block;
+  margin-bottom: 10px;
+}
+
+#thankyou .todayMark {
+  background: url("/todayHeart.png")  no-repeat;
+  background-size: contain;
+  width: 22px;
+  height: 22px;
+  float: left;
+  display: inline-block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+
+#thankyou .deliveryMark {
+  background: url("/pearIcon.png")  no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 36px;
+  float: left;
+  display: inline-block;
+}
+
+#thankyou .skipMark {
+  background: url("/skip.png")  no-repeat;
+  background-size: contain;
+  width: 22px;
+  height: 22px;
+  float: left;
+  display: inline-block;
+  margin-top: 6px;
+  margin-bottom: 8px;
 }
 
 #thankyou .todayIcon {
-
+  background: url("/todayHeart.png") no-repeat 50% 75%;
+  background-size: 32px 32px ;
 }
 
-#thankyou  .deliveryIcon {
+#thankyou .scheduled {
+  background: url("/pearIcon.png") no-repeat 50% 75%;
+  background-size: 28px 42px ;
+}
 
+#thankyou .skipped {
+  background: url("/skip.png") no-repeat 50% 75%;
+  background-size: 32px 32px ;
 }

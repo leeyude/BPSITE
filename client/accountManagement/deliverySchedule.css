@@ -44,7 +44,7 @@
 
 #deliverySchedule h4 {
   text-align: left;
-  font-size: 20px;
+  font-size: 32px;
   float: left;
   width: 100%;
 }
@@ -87,6 +87,13 @@
   width:100%;
 }
 
+#deliverySchedule tr {
+
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+
+}
+
 #deliverySchedule th, #deliverySchedule td  {
   text-align: center;
   padding: 0;
@@ -94,9 +101,23 @@
 
 #deliverySchedule table {
   border-collapse: collapse!important;
+  border: none;
 }
 
-#deliverySchedule th {
+#deliverySchedule .weekdayName th{
+  padding: 8px;
+}
+
+#deliverySchedule .monthHeader th{
+  background-color: rgb(84, 173, 40);
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: lighter;
+  font-size: 16px;
+}
+
+#deliverySchedule  th {
   border: none;
   font-size: 14px;
   font-family: "Quando", sans-serif;
@@ -105,16 +126,20 @@
   padding-top: 4px;
   padding-bottom: 4px;
   color: #666;
+
 }
 
 #deliverySchedule td  {
- height: 60px;
- border-spacing: 0px;
- border-collapse: collapse;
- border: 1px solid #ddd!important;
- border-top: 0;
- font-family: "Quando", sans-serif;
- color: #999;
+  padding-top: 6px;
+  height: 72px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+  border-top: 1px solid #ddd!important;
+  border-bottom: 1px solid #ddd!important;
+  border-left: none;
+  border-right: none;
+  font-family: "Quando", sans-serif;
+  color: #999;
 }
 
 #deliverySchedule td.invisible {
@@ -139,4 +164,108 @@
 
 .deliveryContentHeader h4 {
   margin: 0;
+}
+
+#deliverySchedule .todayIcon {
+  color: rgb(63, 149, 20);
+  text-decoration: underline;
+}
+
+
+#deliverySchedule .deliveryMark {
+  background: url("/pearIcon.png")  no-repeat;
+  background-size: contain;
+  width: 24px;
+  height: 36px;
+  float: left;
+  display: inline-block;
+}
+
+#deliverySchedule .skipMark {
+  background: url("/skip.png")  no-repeat;
+  background-size: contain;
+  width: 22px;
+  height: 22px;
+  float: left;
+  display: inline-block;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+
+#deliverySchedule .scheduled {
+  background: url("/pearIcon.png") no-repeat 50% 80%;
+  background-size: 24px 36px ;
+}
+
+#deliverySchedule .skipped {
+  background: url("/skip.png") no-repeat 50% 75%;
+  background-size: 24px 24px ;
+}
+
+.deliveryContentHeader h4{
+  margin-bottom: 12px;
+  color: #df8655;
+}
+
+.deliveryContentHeader span {
+  margin-bottom: 12px;
+}
+
+
+.statusMarkBlock, .logisticsMarkBlock {
+  width: auto;
+  float: left;
+  display: block;
+  margin-right: 20px;
+}
+
+#deliverySchedule .scheduledDelivery {
+  background: url("/pearIcon.png")  no-repeat;
+  background-size: contain;
+  width: 26px;
+  height: 36px;
+  float: left;
+  display: inline-block;
+}
+
+#deliverySchedule .skippedDelivery {
+  background: url("/skip.png")  no-repeat;
+  background-size: contain;
+  width: 26px;
+  height: 26px;
+  margin-top: 6px;
+  float: left;
+  display: inline-block;
+}
+
+#deliverySchedule .logisticsMark {
+  background: url("/deliverTruck.png")  no-repeat;
+  background-size: contain;
+  width: 42px;
+  height: 28px;
+  float: left;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+
+#deliverySchedule .statusMarkBlock h5 {
+  color: #53ad28;
+  display: inline-block;
+  width: auto;
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+#deliverySchedule  h5.Skipped {
+  color: #961521;
+}
+
+#deliverySchedule .logisticsMarkBlock h5 {
+  color: #53ad28;
+  display: inline-block;
+  width: auto;
+  margin-left: 8px;
+  font-size: 18px;
 }

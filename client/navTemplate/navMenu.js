@@ -228,8 +228,27 @@ if (Meteor.isClient) {
     this.render('myAccount');
   });
 
-  Router.route('/deliverySchedule', function () {
-    this.render('deliverySchedule');
+  Router.route('/deliverySchedule', {
+    action: function(){
+
+      this.render('deliverySchedule');
+    },
+    onBeforeAction: function(){
+      var userToken= Session.get("preUserLoggedIn");
+      // all properties available in the route function
+      // are also available here such as this.params
+      if (!userToken) {
+        // if the user is not logged in, render the Login template
+        Router.go('/signup');
+      } else {
+        // otherwise don't hold up the rest of hooks or our route/action function from running
+        this.next();
+      }
+    },
+    waitOn: function(){
+      var userEmail = Session.get("userEmail");
+      return Meteor.subscribe('preUser', userEmail);
+    },
   });
 
   Router.route('/babyProfile', function () {
