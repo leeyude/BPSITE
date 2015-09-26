@@ -207,8 +207,14 @@ if (Meteor.isClient) {
     this.render('ingredients');
   });
 
-  Router.route('/workstation/recipe', function () {
-    this.render('recipe');
+  Router.route('/workstation/recipe', {
+    action: function(){
+
+      this.render('recipe');
+    },
+    waitOn: function(){
+      return Meteor.subscribe('recipePublish');
+    },
   });
 
   Router.route('/workstation/menuCalendar', function () {
@@ -221,6 +227,16 @@ if (Meteor.isClient) {
 
   Router.route('/workstation/zipcodes', function () {
     this.render('zipcodes');
+  });
+
+  Router.route('/workstation/supplier', {
+    action: function(){
+
+      this.render('supplier');
+    },
+    waitOn: function(){
+      return Meteor.subscribe('supplierImages');
+    },
   });
 
 // sign-in routing

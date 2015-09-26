@@ -2,7 +2,11 @@
   text-align: center;
 }
 
-#Station-ingredient h1, {
+#workStationNav {
+  display: inline-block;
+}
+
+#Station-ingredient h1, #supplier h1, #recipe h1{
   width: 270px;
   float: left;
   margin-top: 0;
@@ -14,7 +18,7 @@
   margin-top: 0;
 }
 
-#Station-ingredient, #Station-userManagement, #Station-zips {
+#Station-ingredient, #Station-userManagement, #Station-zips, #supplier, #recipe {
   padding-top: 40px;
 }
 
@@ -25,7 +29,7 @@
   position: static;
 }
 
-#Station-userManagement .page-header {
+#Station-userManagement .page-header{
   display: block;
   padding-bottom: 40px;
 }

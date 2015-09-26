@@ -3,7 +3,7 @@
 <section id="Station-ingredient">
   <div class='container-fluid'>
     <div class='row'>
-      <div class="page-header">
+      <div class="page-header clearfix">
         <h1>Ingredient <small>List</small></h1>
           {{>addIngredients}}
       </div>
@@ -16,7 +16,15 @@
             <th>Stage             </th>
             <th>Currently Using?  </th>
             <th>Nutrition         </th>
-            <th>Allergen Type     </th>
+            <th>Wheat</th>
+            <th>Shellfish</th>
+            <th>Eggs</th>
+            <th>Fish</th>
+            <th>Peanuts</th>
+            <th>Milk</th>
+            <th>Tree Nuts</th>
+            <th>Soybeans</th>
+            <th>Other Allergens     </th>
             <th>Create by         </th>
             <th>Time Last Update  </th>
             <th>Time Created  </th>
@@ -42,7 +50,15 @@
 <td>{{stage}}</td>
 <td>{{nowUsing}}</td>
 <td>{{nutrition}}</td>
-<td>{{allergenType}}</td>
+<td>{{#if allergenWheat}}Yes{{else}}No{{/if}}</td>
+<td>{{#if allergenShellfish}}Yes{{else}}No{{/if}}</td>
+<td>{{#if allergenEggs}}Yes{{else}}No{{/if}}</td>
+<td>{{#if allergenFish}}Yes{{else}}No{{/if}}</td>
+<td>{{#if allergenPeanuts}}Yes{{else}}No{{/if}}</td>
+<td>{{#if allergenMilk}}Yes{{else}}No{{/if}}</td>
+<td>{{#if allergenTreeNuts}}Yes{{else}}No{{/if}}</td>
+<td>{{#if allergenSoybeans}}Yes{{else}}No{{/if}}</td>
+<td>{{otherAllergens}}</td>
 <td>{{createBy}}</td>
 <td>{{updateAt}}</td>
 <td>{{createAt}}</td>
@@ -78,7 +94,7 @@
         <select name= "itemType" class='form-control itemType'>
           <option>Fruits</option>
           <option>Starchy Roots</option>
-          <option>Vegitables</option>
+          <option>Vegetables</option>
           <option>Whole Grains</option>
           <option>Protein</option>
         </select>
@@ -103,7 +119,95 @@
 
         <!--<input type='text' class='nowUsing input form-control input-xlarge' name= "nowUsing" value= "{{Ingredients.nowUsing}}" placeholder='Now Using?'>-->
         <input type='text' class='nutrition input form-control input-xlarge' name= "nutrition"  placeholder='Nutrition'>
-        <input type='text' class='allergenType input form-control input-xlarge' name= "allergenType"  placeholder='Allergen Types'>
+
+        <div class="allergenCheckboxWrap clearfix">
+            <label>
+              <div class="allergenCheckbox {{#if ingredientAllergenWheat}} active {{else}}{{/if}}">
+                <div class="allergenCheckboxIcon"></div>
+                <input checked="" class="ingredientAllergenInput" id="ingredientAllergenWheat" type="checkbox" value={{#if ingredientAllergenWheat}}true{{else}}false{{/if}}>
+                Wheat
+              </div>
+            </label>
+        </div>
+
+        <div class="allergenCheckboxWrap clearfix">
+            <label>
+              <div class="allergenCheckbox {{#if ingredientAllergenShellfish}} active {{else}}{{/if}}">
+                <div class="allergenCheckboxIcon"></div>
+                <input checked="" class="ingredientAllergenInput" id="ingredientAllergenShellfish" type="checkbox" value={{#if ingredientAllergenShellfish}}true{{else}}false{{/if}}>
+                Shellfish
+              </div>
+            </label>
+        </div>
+
+        <div class="allergenCheckboxWrap clearfix">
+            <label>
+              <div class="allergenCheckbox {{#if ingredientAllergenEggs}} active {{else}}{{/if}}">
+                <div class="allergenCheckboxIcon"></div>
+                <input checked="" class="ingredientAllergenInput" id="ingredientAllergenEggs" type="checkbox" value={{#if ingredientAllergenEggs}}true{{else}}false{{/if}}>
+                Eggs
+              </div>
+            </label>
+        </div>
+
+        <div class="allergenCheckboxWrap clearfix">
+            <label>
+              <div class="allergenCheckbox {{#if ingredientAllergenFish}} active {{else}}{{/if}}">
+                <div class="allergenCheckboxIcon"></div>
+                <input checked="" class="ingredientAllergenInput" id="ingredientAllergenFish" type="checkbox" value={{#if ingredientAllergenFish}}true{{else}}false{{/if}}>
+                Fish
+              </div>
+            </label>
+        </div>
+
+        <div class="allergenCheckboxWrap clearfix">
+            <label>
+              <div class="allergenCheckbox {{#if ingredientAllergenPeanuts}} active {{else}}{{/if}}">
+                <div class="allergenCheckboxIcon"></div>
+                <input checked="" class="ingredientAllergenInput" id="ingredientAllergenPeanuts" type="checkbox" value={{#if ingredientAllergenPeanuts}}true{{else}}false{{/if}}>
+                Peanuts
+              </div>
+            </label>
+        </div>
+
+        <div class="allergenCheckboxWrap clearfix">
+            <label>
+              <div class="allergenCheckbox {{#if ingredientAllergenMilk}} active {{else}}{{/if}}">
+                <div class="allergenCheckboxIcon"></div>
+                <input checked="" class="ingredientAllergenInput" id="ingredientAllergenMilk" type="checkbox" value={{#if ingredientAllergenMilk}}true{{else}}false{{/if}}>
+                Milk
+              </div>
+            </label>
+        </div>
+
+        <div class="allergenCheckboxWrap clearfix">
+            <label>
+              <div class="allergenCheckbox {{#if ingredientAllergenTreeNuts}} active {{else}}{{/if}}">
+                <div class="allergenCheckboxIcon"></div>
+                <input checked="" class="ingredientAllergenInput" id="ingredientAllergenTreeNuts" type="checkbox" value={{#if ingredientAllergenTreeNuts}}true{{else}}false{{/if}}>
+                Tree Nuts
+              </div>
+            </label>
+        </div>
+
+        <div class="allergenCheckboxWrap clearfix">
+            <label>
+              <div class="allergenCheckbox {{#if ingredientAllergenSoybeans}} active {{else}}{{/if}}">
+                <div class="allergenCheckboxIcon"></div>
+                <input checked="" class="ingredientAllergenInput" id="ingredientAllergenSoybeans" type="checkbox" value={{#if ingredientAllergenSoybeans}}true{{else}}false{{/if}}>
+                Soybeans
+              </div>
+            </label>
+        </div>
+<!--
+
+        Session.setDefault("", false);-->
+
+
+
+
+
+        <input type='text' class='otherAllergens input form-control input-xlarge' name= "otherAllergens"  placeholder='Other allergens'>
 
       </div>
       <div class="modal-footer">

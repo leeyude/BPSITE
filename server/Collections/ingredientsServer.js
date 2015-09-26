@@ -4,7 +4,7 @@ IngredientCollects = new Mongo.Collection("ingredients");
 if (Meteor.isServer) {
 
   Meteor.methods({
-    saveIngredients: function(itemName, itemType, stage, nowUsing, nutrition, allergenType, ingreId){
+    saveIngredients: function(itemName, itemType, stage, nowUsing, nutrition, otherAllergens, ingreId, allergenWheat, allergenShellfish, allergenEggs, allergenFish, allergenPeanuts, allergenMilk, allergenTreeNuts, allergenSoybeans){
         if(ingreId){
           var newDate= new Date();
           var currentDate = moment(newDate).format('ll');
@@ -14,7 +14,15 @@ if (Meteor.isServer) {
             stage: stage,
             nowUsing: nowUsing,
             nutrition: nutrition,
-            allergenType: allergenType,
+            allergenWheat: allergenWheat,
+            allergenShellfish: allergenShellfish,
+            allergenEggs: allergenEggs,
+            allergenFish: allergenFish,
+            allergenPeanuts: allergenPeanuts,
+            allergenMilk: allergenMilk,
+            allergenTreeNuts: allergenTreeNuts,
+            allergenSoybeans: allergenSoybeans,
+            otherAllergens: otherAllergens,
             updateAt: currentDate
           }});
           console.log(ingreId);
@@ -27,17 +35,25 @@ if (Meteor.isServer) {
             stage: stage,
             nowUsing: nowUsing,
             nutrition: nutrition,
-            allergenType: allergenType,
+            allergenWheat: allergenWheat,
+            allergenShellfish: allergenShellfish,
+            allergenEggs: allergenEggs,
+            allergenFish: allergenFish,
+            allergenPeanuts: allergenPeanuts,
+            allergenMilk: allergenMilk,
+            allergenTreeNuts: allergenTreeNuts,
+            allergenSoybeans: allergenSoybeans,
+            otherAllergens: otherAllergens,
             updateAt: currentDate,
             createAt: currentDate,
-            createBy: Meteor.user().username
+            createBy: Meteor.user().emails[0].address
           });
         };
       },
 
       deleteIngredients:function(ingreId){
         IngredientCollects.remove({_id:ingreId});
-        console.log('delete');
+        console.log('delete '+ingreId);
       },
   });
 
@@ -51,7 +67,15 @@ if (Meteor.isServer) {
       stage:'3',
       nowUsing:'Yes',
       nutrition:'fiber, potassium, Vitamin E, B-vitamins, and folic acid',
-      allergenType:'N/A',
+      allergenWheat: false,
+      allergenShellfish:false,
+      allergenEggs: false,
+      allergenFish:false,
+      allergenPeanuts: false,
+      allergenMilk: false,
+      allergenTreeNuts:false,
+      allergenSoybeans:false,
+      otherAllergens:'N/A',
       createBy: 'System Default'
     });
 
@@ -61,7 +85,15 @@ if (Meteor.isServer) {
       stage:'2',
       nowUsing:'Yes',
       nutrition:'fiber, vitamin C',
-      allergenType:'N/A',
+      allergenWheat: false,
+      allergenShellfish:false,
+      allergenEggs: false,
+      allergenFish:false,
+      allergenPeanuts: false,
+      allergenMilk: false,
+      allergenTreeNuts:false,
+      allergenSoybeans:false,
+      otherAllergens:'N/A',
       createBy: 'System Default'
     });
 
@@ -71,7 +103,15 @@ if (Meteor.isServer) {
       stage:'2',
       nowUsing:'Yes',
       nutrition:'vitamine A, carotenoids',
-      allergenType:'N/A',
+      allergenWheat: false,
+      allergenShellfish:false,
+      allergenEggs: false,
+      allergenFish:false,
+      allergenPeanuts: false,
+      allergenMilk: false,
+      allergenTreeNuts:false,
+      allergenSoybeans:false,
+      otherAllergens:'N/A',
       createBy: 'System Default'
     });
 
@@ -81,7 +121,15 @@ if (Meteor.isServer) {
       stage:'1',
       nowUsing:'Yes',
       nutrition:'magnesium, phosphorus, selenium, thiamin, niacin and vitamin B6,',
-      allergenType:'N/A',
+      allergenWheat: false,
+      allergenShellfish:false,
+      allergenEggs: false,
+      allergenFish:false,
+      allergenPeanuts: false,
+      allergenMilk: false,
+      allergenTreeNuts:false,
+      allergenSoybeans:false,
+      otherAllergens:'N/A',
       createBy: 'System Default'
     });
   }

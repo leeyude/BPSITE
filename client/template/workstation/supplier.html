@@ -1,0 +1,221 @@
+<template name="supplier">
+  {{>workStationNav}}
+<section id="supplier">
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class="page-header">
+        <h1>Supplier <small>List</small></h1>
+        {{>supplierUpdate}}
+
+      </div>
+
+      <div class="rows">
+        <div class="col-sm-6">
+          <table class='table table-striped table-bordered table-hover table-condensed'>
+            <thead>
+              <tr>
+                <th>Name         </th>
+                <th>Main Contact              </th>
+                <th>City</th>
+                <th>ZIP</th>
+                <th>Produce</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each supplierLine}}
+                {{>supplierSummary}}
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-6">
+
+          <div class="supplierInformation clearfix">
+            {{#if selectingSupplier}}
+
+            <h3> {{selectingSupplier.supplierName}}</h3>
+
+            <div class="twoColRow">
+              <div class="col-xs-6">
+                <dl>
+                  <dt>Phone #: </dt>
+                  <dd>{{selectingSupplier.supplierPhoneNumber}}</dd>
+                  <dt>Address Line 1: </dt>
+                  <dd>{{selectingSupplier.supplierAddressLine1}}</dd>
+                  <dt>Address ZIP Code: </dt>
+                  <dd>{{selectingSupplier.supplierZIP}}</dd>
+                  <dt>Organic Certified? </dt>
+                  <dd>{{#if selectingSupplier.isOrganic}}Yes{{else}}No{{/if}}</dd>
+                </dl>
+              </div>
+              <div class="col-xs-6">
+                <dl>
+                  <dt>E-mail: </dt>
+                  <dd>{{selectingSupplier.supplierEmail}}</dd>
+                  <dt>Address Line 2: </dt>
+                  <dd>{{selectingSupplier.supplierAddressLine2}}</dd>
+                  <dt>City: </dt>
+                  <dd>{{selectingSupplier.supplierCity}}</dd>
+                  <dt>Produce in Winter? </dt>
+                  <dd>{{#if selectingSupplier.isWinterActive}}Yes{{else}}No{{/if}}</dd>
+                </dl>
+              </div>
+            </div>
+            <dl>
+              <dt>Produce Receipt: </dt>
+              <dd>{{selectingSupplier.supplierProdReceipt}}</dd>
+            </dl>
+            <div class="supplierDetails">
+              <h5>Supplier Produce</h5>
+              <p>
+                {{selectingSupplier.supplierProduce}}
+              </p>
+              <h5>Description</h5>
+              <p>
+                {{selectingSupplier.supplierDescription}}
+              </p>
+
+              <h5>Supplier Photos</h5>
+              <div class="supplierPhotoBlock">
+                {{#each supplierImages}}
+                <div class="supplierPhotoUnit" style="background: url('{{this.url}}') no-repeat; background-size: contain">
+
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            {{else}}
+            <h3>Please Select a Supplier</h3>
+            {{/if}}
+          </div>
+
+
+<!--
+<th>Name         </th>
+<th>Main Contact              </th>
+<th>Phone #             </th>
+<th>Email             </th>
+<th>Address Line 1  </th> // to not show in main page
+<th>Address Line 2  </th> // to not show in main page
+<th>City</th> // to not show in main page
+<th>State</th> // to not show in main page
+<th>ZIP</th>
+<th>Description</th> //to not show in main page
+<th>Photo</th> // to not show in main page
+<th>Produce</th>
+<th>Organic Certified  </th> // to not show in main page
+<th>Winter Ops.     </th>
+<th>Prod. Receipt   </th> // to not show in main page
+
+-->
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+</template>
+
+<template name="supplierSummary">
+<tr class="supplierSummary">
+  <td>{{supplierName}}</td>
+  <td>{{supplierMainContact}}</td>
+  <td>{{supplierCity}}</td>
+  <td>{{supplierZIP}}</td>
+  <td>{{supplierProduce}}</td>
+
+
+</tr>
+</template>
+
+<template name="supplierUpdate">
+<!-- Button trigger modal -->
+
+<div class="supplierUpdateSession">
+  <button type="button" class="btn btn-lg" data-toggle="modal" id="supplierUpdateButton" data-target="#supplierUpdateForm">
+    Add Supplier
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="supplierUpdateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+        {{#if editingSupplier}}
+        <h4 class="modal-title" id="myModalLabel">Update Supplier</h4>
+        {{else}}
+        <h4 class="modal-title" id="myModalLabel">Add Supplier</h4>
+        {{/if}}
+      </div>
+      <div class="modal-body">
+        <input type='text' class='supplierName input form-control input-xlarge' name= "supplierName" placeholder='Supplier Name'>
+
+        <input type='text' class='supplierMainContact input form-control input-xlarge' name= "supplierMainContact" placeholder='Main Contact'>
+
+        <input type='text' class='supplierPhoneNumber input form-control input-xlarge' name= "supplierPhoneNumber" placeholder='Phone #'>
+
+        <input type='email' class='supplierEmail input form-control input-xlarge' name= "supplierEmail" placeholder='e-mail'>
+
+        <input type='text' class='supplierAddressLine1 input form-control input-xlarge' name= "supplierAddressLine1" placeholder='Address Line 1'>
+
+        <input type='text' class='supplierAddressLine2 input form-control input-xlarge' name= "supplierAddressLine2" placeholder='Address Line 2'>
+
+        <input type='text' class='supplierCity input form-control input-xlarge' name= "supplierCity" placeholder='City' readonly="readonly">
+        <input type='text' class='supplierState input form-control input-xlarge' name= "supplierState" placeholder='State' readonly="readonly">
+        <input type='text' class='supplierZIP input form-control input-xlarge' name= "supplierZIP" placeholder='ZIP Code'>
+        <textarea row="5" type='text' class='supplierDescription input form-control input-xlarge' name= "supplierDescription" placeholder='Description'>Description
+        </textarea>
+        <textarea row="5" type='text' class='supplierProduce input form-control input-xlarge' name= "supplierProduce" placeholder='Produce'> Produce
+        </textarea>
+
+
+        <div class="col-md-12">
+          <div id="supplierImageDropZone" class="dropzone">
+            <div class="well well-drop-zone">
+              Drop file(s) here to upload.....
+            </div>
+          </div>
+        </div>
+
+
+        <div class="opsCheckboxWrap clearfix">
+            <label>
+              <div class="opsCheckbox {{#if isOrganic}} active {{else}}{{/if}}">
+                <div class="opsCheckboxIcon"></div>
+                <input checked="" class="isOrganic" id="isOrganic" type="checkbox" value={{#if isOrganic}}true{{else}}false{{/if}}>
+                Organic
+              </div>
+            </label>
+        </div>
+        <div class="opsCheckboxWrap clearfix">
+            <label>
+              <div class="opsCheckbox {{#if isWinterActive}} active {{else}}{{/if}}">
+                <div class="opsCheckboxIcon"></div>
+                <input checked="" class="isWinterActive" id="isWinterActive" type="checkbox" value={{#if isWinterActive}}true{{else}}false{{/if}}>
+                Winter Ops.
+              </div>
+            </label>
+        </div>
+        <input type='text' class='supplierProdReceipt input form-control input-xlarge' name= "supplierProdReceipt" placeholder='Product Receipt'>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+        {{#if editingSupplier}}
+        <button type="button" class="btn btn-warning save" data-dismiss="modal">Update</button>
+        <button type="button" class="btn btn-danger delete" data-dismiss="modal">Delete</button>
+        {{else}}
+        <button type="button" class="btn btn-primary save" data-dismiss="modal">Save</button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+
+</template>

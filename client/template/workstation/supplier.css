@@ -1,0 +1,145 @@
+#supplier .page-header {
+  display: block;
+}
+
+#supplier .col-sm-6 {
+  padding: 0;
+}
+
+#supplier h3 {
+  margin-top: 0;
+  width: 60%;
+  float: left;
+}
+#Station-zips label{
+  float: left;
+  width: 100%;
+}
+.opsCheckboxWrap {
+  float: left;
+  width: 130px;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 14px;
+}
+
+.opsCheckbox {
+  line-height: 36px;
+  padding-left: 30px;
+  display: inline-block;
+  width: 110px;;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.opsCheckbox.active {
+  line-height: 36px;
+  display: block;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+}
+
+.opsCheckboxIcon{
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.active .opsCheckboxIcon {
+  background-image: url(/check.png);
+  border: none;
+  background-size: 15px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.supplierInformation {
+  margin-left: 12px;
+}
+
+.supplierInformation h3, .supplierInformation h5 {
+  color: #666;
+}
+
+.supplierInformation h5 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.supplierInformation p {
+  border: 1px solid #999;
+  height: 60px;
+  padding-left: 6px;
+}
+
+.supplierInformation dt {
+  width: 50%;
+  float: left;
+  border-bottom: 1px dotted #ddd;
+  margin-bottom: 8px;
+  color: #666;
+  font-family: "Quando", sans-serif;
+  font-size: 11px;
+}
+
+.supplierInformation dd {
+  width: 50%;
+  float: right;
+  border-bottom: 1px dotted #ddd;
+  margin-bottom: 8px;
+  color: #777;
+  font-family: "Quando", sans-serif;
+  font-size: 11px;
+
+}
+
+.twoColRow {
+  display: inline-block;
+  width: 100%;
+}
+
+.supplierDetails {
+  width: 100%;
+  float: left;
+
+}
+
+.editSupplier {
+  float: right;
+}
+
+.supplierPhotoBlock {
+  border: 1px solid #999;
+  display: block;
+  width: 100%;
+  float: left;
+  padding: 3px;
+}
+
+.supplierPhotoUnit {
+  border: 1px solid #999;
+  display: block;
+  width: 30%;
+  height: 90px;
+  float: left;
+  margin-right: 3px;
+  background-size: contain;
+}

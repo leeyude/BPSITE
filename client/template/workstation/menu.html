@@ -1,0 +1,125 @@
+<template name="menu">
+  {{>workStationNav}}
+  <section id="menu">
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class="page-header">
+          <h1>Menu <small>Management</small></h1>
+          {{>recipeUpdate}}
+
+        </div>
+        <div class="rows">
+          <div class="col-sm-4">
+            <table class='table table-striped table-bordered table-hover table-condensed'>
+              <thead>
+                <tr>
+                  <th>Name     </th>
+                  <th>Stage         </th>
+                  <th>Active?        </th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each recipeLine}}
+                  {{>recipeSummary}}
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-8">
+
+            <div class="recipeInformation clearfix {{#if selectingRecipe}}invisible{{else}}{{/if}}">
+              <h3> Please Select a Recipe from the Left</h3>
+            </div>
+
+            <div class="recipeInformation clearfix {{#if selectingRecipe}}{{else}}invisible{{/if}}">
+              <h3 id='recipeName'></h3>
+              <div class="recipeInformationRow">
+                <div class="col-xs-3">
+                  <label for="stage"> Stage:</label>
+                    <select name= "recipeStage" id='recipeStage' class='form-control recipeStage' value='{{selectingRecipe.recipeStage}}'>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                </div>
+                <div class="col-xs-3">
+                  <label for="recipeIsActive"> Active:</label>
+                    <select name= "recipeIsActive" id='recipeIsActive' class='form-control recipeStage' value='{{#if selectingRecipe.recipeIsActive}}true{{else}}false{{/if}}'>
+                        <option>Yes</option>
+                        <option>No</option>
+                      </select>
+                </div>
+                <div class="col-xs-3">
+                  <label for="recipeClassification"> Classification:</label>
+                    <select name= "recipeClassification" id='recipeClassification' class='form-control recipeClassification'>
+                      <option>-</option>
+                      <option>Fruits</option>
+                      <option>Starchy Roots</option>
+                      <option>Vegetables</option>
+                      <option>Whole Grains</option>
+                      <option>Protein</option>
+                    </select>
+                </div>
+
+
+              </div>
+
+              <span class="line"></span>
+              <div class="recipeInformationRow">
+                <h5>Ingredients</h5>
+                {{>recipeEditIngredients}}
+              </div>
+
+              <div class="recipeInformationRow">
+                <table class='table table-striped table-bordered table-hover table-condensed'>
+                  <thead>
+                      <tr>
+                          <th colspan="8"></th>
+                          <th colspan="18">Allergens</th>
+                      </tr>
+                      <tr>
+                          <th colspan="4">Ingredient</th>
+                          <th colspan="2"> % </th>
+                          <th colspan="2"> Stage </th>
+                          <th colspan="2">Wheat</th>
+                          <th colspan="2">Shellfish</th>
+                          <th colspan="2">Eggs</th>
+                          <th colspan="2">Fish</th>
+                          <th colspan="2">Peanuts</th>
+                          <th colspan="2">Milk</th>
+                          <th colspan="2">Tree Nuts</th>
+                          <th colspan="2">Soybeans</th>
+                          <th colspan="2">Other Allergens    </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {{#each recipeIngredient}}
+                      {{>recipeIngredientDetail}}
+                    {{/each}}
+                  </tbody>
+                  <tbody class='summarizingIngredients'>
+                    {{#with summarizingIngredients}}
+                      {{>recipeIngredientDetailSummary}}
+                    {{/with}}
+                  </tbody>
+                </table>
+              </div>
+
+
+              <div class="recipeDeleteButton">
+                <button type="button" class="btn btn-lg" id="recipeDeleteButton">
+                  Delete Recipe
+                </button>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+</template>
