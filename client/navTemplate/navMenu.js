@@ -217,8 +217,14 @@ if (Meteor.isClient) {
     },
   });
 
-  Router.route('/workstation/menuCalendar', function () {
-    this.render('menuCalendar');
+  Router.route('/workstation/menuCalendar', {
+    action: function(){
+
+      this.render('menuCalendar');
+    },
+    waitOn: function(){
+      return Meteor.subscribe('menuCalendarPublish');
+    },
   });
 
   Router.route('/workstation/userManagement', function () {

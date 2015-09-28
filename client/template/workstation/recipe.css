@@ -8,10 +8,14 @@
 
 #recipe .col-sm-4 {
   overflow: scroll;
+  padding: 0;
+  padding-right: 15px;
 }
 
 #recipe .col-sm-8 {
   overflow: scroll;
+  padding: 0;
+
 }
 
 #recipe .col-xs-3, #recipe .col-xs-4 {

@@ -1,0 +1,248 @@
+#menuCalendar .page-header {
+  display: block;
+}
+
+#menuCalendar .col-sm-6, #menuCalendar .col-sm-4, #menuCalendar .col-sm-8, #menuCalendar .col-xs-9, #menuCalendar .col-sm-3, #menuCalendar .col-sm-2  {
+  padding: 0;
+  padding-right: 12px;
+}
+
+#menuCalendar .col-xs-3, #menuCalendar .col-xs-4 {
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 6px;
+}
+
+#menuCalendar h3 {
+  margin-top: 0;
+  width: 60%;
+  float: left;
+}
+
+#menuCalendar .invisible {
+  height: 0;
+}
+
+#menuCalendar .invisible h3{
+  height: 0;
+}
+
+
+.opsCheckboxWrap {
+  float: left;
+  width: 130px;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 14px;
+}
+
+.opsCheckbox {
+  line-height: 36px;
+  padding-left: 30px;
+  display: inline-block;
+  width: 110px;;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.opsCheckbox.active {
+  line-height: 36px;
+  display: block;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+}
+
+.opsCheckboxIcon{
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.active .opsCheckboxIcon {
+  background-image: url(/check.png);
+  border: none;
+  background-size: 15px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.calendarControl {
+  width: 100%;
+  float: left;
+  display: block;
+  padding: 5px;
+  background-color: #DF8755;
+}
+
+#previousMonthButton {
+  float: left;
+}
+
+#nextMonthButton {
+  float: right;
+}
+
+.calendarControlButton .btn {
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-weight: bold;
+}
+
+#menuCalendar .menuWeekRow:focus {
+  background-color: #FFB48A;
+  color: #700016;
+}
+
+.menuInformation {
+  display: inline-block;
+  width: 100%;
+  margin-left: 12px;
+
+}
+
+.menuInformationRow {
+  display: inline-block;
+  width: 100%;
+}
+
+.menuInformation h3 {
+  color: #666;
+}
+
+.menuInformation h5 {
+  color: #888;
+}
+
+#menuCalendar .modal-dialog {
+  width: 75%;
+}
+
+
+#menuCalendar .menuTypeCheckboxWrap, #menuCalendar .recipeSelectionCheckboxWrap, #menuCalendar .selectedIngredientCheckboxWrap, #menuCalendar .supplierforIngredientCheckboxWrap{
+  margin-left: 1%;
+  margin-right: 1%;
+  float: left;
+  width: 98%;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 18px;
+}
+
+#menuCalendar .menuTypeCheckboxWrap label, #menuCalendar  .recipeSelectionCheckboxWrap label, #menuCalendar .selectedIngredientCheckboxWrap label, #menuCalendar .supplierforIngredientCheckboxWrap label{
+  width: 100%;
+  margin: 0;
+  font-size: 12px;
+}
+
+
+#menuCalendar .menuTypeCheckbox, #menuCalendar .recipeSelectionCheckbox, #menuCalendar .selectedIngredientCheckbox, #menuCalendar .supplierforIngredientCheckbox{
+  line-height: 36px;
+  padding-left: 30px;
+  padding-right: 10px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  background-color: white;
+
+}
+
+#menuCalendar .menuTypeCheckbox.active, #menuCalendar .recipeSelectionCheckbox.active, #menuCalendar .selectedIngredientCheckbox.active, #menuCalendar  .supplierforIngredientCheckbox.active{
+  line-height: 36px;
+  padding-left: 30px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+}
+
+#menuCalendar .menuTypeCheckboxIcon, #menuCalendar .recipeSelectionCheckboxIcon, #menuCalendar .selectedIngredientCheckboxIcon, #menuCalendar .supplierforIngredientCheckboxIcon {
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 14px,auto;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#menuCalendar .supplierforIngredientSelectedIcon {
+  background-size: 14px,auto;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+
+
+#menuCalendar .active .menuTypeCheckboxIcon, #menuCalendar .active .recipeSelectionCheckboxIcon, #menuCalendar .active .selectedIngredientCheckboxIcon, #menuCalendar .active .supplierforIngredientCheckboxIcon {
+  background-image: url(/check.png);
+  border: none;
+  background-size: 14px,auto;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.menuSelectionCol {
+  width: 100%;
+  display: inline-block;
+  border: 1px solid #c3c3c3;
+  padding: 10px;
+  background-color: #e2fbd5;
+  overflow: scroll;
+}
+
+.doubleArrowRight {
+  width: 14px;
+  display: block;
+  margin-top:-10px;
+  color: white;
+}
+
+#menuCalendar .selectIngredient .doubleArrowRight {
+  color: #C8662E;
+}
+
+.recipeTypeHeader {
+  background-color: #99DE78;
+}
+
+.menuRecipeNoRecord {
+  text-align: center;
+  color: #777;
+}

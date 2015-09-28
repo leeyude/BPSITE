@@ -1,6 +1,316 @@
 <template name="menuCalendar">
   {{>workStationNav}}
-  <section id="Station-menuCalendar">
+  <section id="menuCalendar">
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class="page-header">
+          <h1>Menu <small>Management</small></h1>
+        </div>
+        <div class="rows">
+          <div class="col-sm-4">
+            <div class="calendarControl">
+              <div id="previousMonthButton" class="calendarControlButton">
+                <button type="button" class="btn btn-lg">
+                  &#8678;
+                </button>
+              </div>
+              <div class="description">
 
+              </div>
+              <div id="nextMonthButton" class="calendarControlButton">
+                <button type="button" class="btn btn-lg">
+                  &#8680;
+                </button>
+              </div>
+            </div>
+            <table id='menuCalendarTable' class='table table-striped table-bordered table-hover table-condensed'>
+              <thead>
+                <tr>
+                  <th colspan="2">WK#     </th>
+                  <th colspan="2">SU         </th>
+                  <th colspan="2">MO        </th>
+                  <th colspan="2">TU        </th>
+                  <th colspan="2">WE        </th>
+                  <th colspan="2">TH        </th>
+                  <th colspan="2">FR        </th>
+                  <th colspan="2">SA        </th>
+                </tr>
+                <tr>
+                  <th colspan="16" id='menuCalendarThisMonth'> {{viewingMonth.thisMonthText}}, {{viewingMonth.thisYear}}    </th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each weekOfThisMonth}}
+                  {{>menuCalendarWeeks}}
+                {{/each}}
+              </tbody>
+              <thead>
+                <tr>
+                  <th colspan="16" id='menuCalendarNextMonth'> {{viewingMonth.nextMonthText}}, {{viewingMonth.nextMonthYear}}      </th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each weekOfNextMonth}}
+                  {{>menuCalendarWeeks}}
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-8">
+
+            <div class="recipeInformation clearfix {{#if selectingMenuWeek}}invisible{{else}}{{/if}}">
+              <h3> Please Select a Calendar Week</h3>
+            </div>
+
+            <div class="menuInformation clearfix {{#if selectingMenuWeek}}{{else}}invisible{{/if}}">
+              <h3 > Menu of {{selectingMenuWeek}}</h3>
+              {{>menuAddRecipe}}
+              <div class="menuInformationRow">
+                  <h5>Menu Summary</h5>
+                  <table class='table table-striped table-bordered table-hover table-condensed'>
+                    <thead>
+                        <tr>
+                            <th colspan="4">Recipe</th>
+                            <th colspan="2">Classification</th>
+                            <th colspan="2">Description</th>
+                            <th colspan="2">Nutrients</th>
+                            <th colspan="2">Images</th>
+                            <th colspan="1">Seasonal?</th>
+                            <th colspan="1">remove</th>
+                        </tr>
+                        <tr>
+                            <th class='recipeTypeHeader' colspan="14">Single Puree</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {{#if menuDisplayingRecipeSinglePuree}}
+                      {{#each menuDisplayingRecipeSinglePuree}}
+                        {{>menuRecipeSinglePuree}}
+                      {{/each}}
+                    {{else}}
+                      <td class='menuRecipeNoRecord' colspan="14"> No record exists.</td>
+                    {{/if}}
+                    </tbody>
+
+                    <thead>
+                        <tr>
+                            <th class='recipeTypeHeader' colspan="14">Yummy Pairs</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {{#if menuDisplayingRecipeYummyPairs}}
+                      {{#each menuDisplayingRecipeYummyPairs}}
+                        {{>menuRecipeYummyPairs}}
+                      {{/each}}
+                    {{else}}
+                      <td class='menuRecipeNoRecord' colspan="14"> No record exists.</td>
+                    {{/if}}
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th class='recipeTypeHeader'  colspan="14">Tasty Trio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {{#if menuDisplayingRecipeTastyTrio}}
+                      {{#each menuDisplayingRecipeTastyTrio}}
+                        {{>menuRecipeTastyTrio}}
+                      {{/each}}
+                    {{else}}
+                      <td class='menuRecipeNoRecord' colspan="14"> No record exists.</td>
+                    {{/if}}
+                    </tbody>
+                  </table>
+
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
   </section>
+</template>
+
+<template name="menuCalendarWeeks">
+  <tr id={{menuWeekName}} class='menuWeekRow'>
+    <th colspan="2">{{weekOfYear}}     </th>
+    <th colspan="2">{{dateSU}}         </th>
+    <th colspan="2">{{dateMO}}        </th>
+    <th colspan="2">{{dateTU}}        </th>
+    <th colspan="2">{{dateWE}}        </th>
+    <th colspan="2">{{dateTH}}        </th>
+    <th colspan="2">{{dateFR}}        </th>
+    <th colspan="2">{{dateSA}}        </th>
+  </tr>
+</template>
+
+
+<template name="menuAddRecipe">
+<!-- Button trigger modal -->
+
+<div class="menuAddRecipeSession">
+  <button type="button" class="btn btn-lg" data-toggle="modal" id="menuAddRecipeButton" data-target="#menuAddRecipeForm">
+    Add Recipe
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="menuAddRecipeForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+        <h4 class="modal-title">Add Recipe to Menu</h4>
+      </div>
+      <div class="modal-body clearfix">
+        <div class="col-sm-2">
+          <h5>1. Select a Meal Type:</h5>
+          <div class="menuSelectionCol">
+            <div id="menuSinglePuree" class="menuTypeCheckboxWrap clearfix">
+                <label>
+                  <div class="menuTypeCheckbox {{#if selectingMenuType.singlePuree}}active{{else}}{{/if}}" >
+                    <div class="menuTypeCheckboxIcon"></div>
+                    <input checked="" class="menuTypeInput" type="checkbox">
+                    Single Puree
+                  </div>
+                </label>
+            </div>
+
+            <div id="menuYummyPairs" class="menuTypeCheckboxWrap clearfix">
+                <label>
+                  <div class="menuTypeCheckbox {{#if selectingMenuType.yummyPairs}}active{{else}}{{/if}}" >
+                    <div class="menuTypeCheckboxIcon"></div>
+                    <input checked="" class="menuTypeInput" type="checkbox">
+                    Yummy Pairs
+                  </div>
+                </label>
+            </div>
+
+            <div id="menuTastyTrio" class="menuTypeCheckboxWrap clearfix">
+                <label>
+                  <div class="menuTypeCheckbox {{#if selectingMenuType.tastyTrio}}active{{else}}{{/if}}" >
+                    <div class="menuTypeCheckboxIcon"></div>
+                    <input checked="" class="menuTypeInput" type="checkbox">
+                    Tasty Trio
+                  </div>
+                </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <h5>2. Select a Recipe: </h5>
+          <div id='menuRecipies'  class="menuSelectionCol">
+            {{#each menuGettingRecipies}}
+              {{>menuGetRecipe}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <h5>3. Ingredients Included in the Recipe </h5>
+          <div class="menuSelectionCol">
+            {{#each selectingMenuRecipe}}
+              {{>ingredientIncludedInRecipe}}
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <h5>4. Match supplier to ingredient</h5>
+          <div class="menuSelectionCol">
+            {{#each supplierForIngredient}}
+              {{>allSuppliers}}
+            {{/each}}
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+        <button id='addRecipeToMenu' type="button" class="btn btn-primary save" data-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</template>
+
+<template name="menuGetRecipe">
+  <div class="recipeSelectionCheckboxWrap clearfix">
+      <label>
+        <div id='forMenu{{_id}}' class="recipeSelectionCheckbox" >
+          <div class="recipeSelectionCheckboxIcon"></div>
+          <input checked="" class="menuGetRecipeItem" type="checkbox">
+          {{recipeName}}
+        </div>
+      </label>
+  </div>
+</template>
+
+<template name="ingredientIncludedInRecipe">
+  <div class="selectedIngredientCheckboxWrap clearfix">
+      <label>
+        <div id='ingreOnMenu-{{ingredientId}}' class="selectedIngredientCheckbox" >
+          <div class="selectedIngredientCheckboxIcon"></div>
+          <input checked="" class="" type="checkbox">
+          {{ingredientName}}
+          <div class="supplierforIngredientSelectedIcon">
+            <div class='doubleArrowRight'>&#10095;&#10095;
+            </div>
+          </div>
+        </div>
+      </label>
+  </div>
+</template>
+
+<template name="allSuppliers">
+  <div class="supplierforIngredientCheckboxWrap clearfix">
+      <label>
+        <div id='ingreSupplier-{{_id}}' class="supplierforIngredientCheckbox" >
+          <div class="supplierforIngredientCheckboxIcon"></div>
+          <input checked="" class="" type="checkbox">
+          {{supplierName}}
+        </div>
+      </label>
+  </div>
+</template>
+
+
+<template name="menuRecipeSinglePuree">
+  <td colspan="4">{{selectedRecipeName}}</td>
+  <td colspan="2">Y</td>
+  <td colspan="2">Z</td>
+  <td colspan="2">Y</td>
+  <td colspan="2">Z</td>
+  <td colspan="1">remove</td>
+  <td colspan="1">remove</td>
+
+</template>
+
+
+<template name="menuRecipeYummyPairs">
+  <td colspan="4">{{selectedRecipeName}}</td>
+  <td colspan="2">Y</td>
+  <td colspan="2">Z</td>
+  <td colspan="2">Y</td>
+  <td colspan="2">Z</td>
+  <td colspan="1">remove</td>
+  <td colspan="1">remove</td>
+</template>
+
+<template name="menuRecipeTastyTrio">
+  <td colspan="4">{{selectedRecipeName}}</td>
+  <td colspan="2">Y</td>
+  <td colspan="2">Z</td>
+  <td colspan="2">Y</td>
+  <td colspan="2">Z</td>
+  <td colspan="1">remove</td>
+  <td colspan="1">remove</td>
 </template>
