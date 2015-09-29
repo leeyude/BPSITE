@@ -213,7 +213,7 @@ if (Meteor.isClient) {
       this.render('recipe');
     },
     waitOn: function(){
-      return Meteor.subscribe('recipePublish');
+      return [Meteor.subscribe('recipePublish'), Meteor.subscribe('recipeImages')];
     },
   });
 

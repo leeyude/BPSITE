@@ -1,5 +1,11 @@
 Recipies= new Mongo.Collection("recipies");
 
+// below section handle's recipe's photo image upload;
+
+RecipeImages = new FS.Collection("recipeImages", {
+  stores: [new FS.Store.FileSystem("recipeImages")]
+});
+
 Session.setDefault("editingRecipe", false);
 
 Template.recipe.helpers({
@@ -151,6 +157,20 @@ Template.recipe.helpers({
       return false;
     };
   },
+
+  recipeImages: function() {
+    var recipeId = Session.get('selectingRecipe');
+    if(recipeId){
+      var recipeObject = Recipies.findOne({_id: recipeId});
+      if(recipeObject.imageId.length>0){
+        return RecipeImages.find({_id:{ $in: recipeObject.imageId}});;
+      }else{
+        return false;
+      };
+    }else{
+      return false;
+    };
+  },
 });
 
 Template.recipe.events({
@@ -180,6 +200,46 @@ Template.recipe.events({
     Meteor.call("updateRecipeStage", recipeId, stage);
 
   },
+
+  "change #recipeIsSeasonal": function(event, template){
+    var recipeId = Session.get('selectingRecipe');
+    var recipeIsSeasonal = $('#recipeIsSeasonal').val();
+    Meteor.call("updateRecipeIsSeasonal", recipeId, recipeIsSeasonal);
+
+  },
+
+  "change #recipeDescription": function(event, template){
+    var recipeId = Session.get('selectingRecipe');
+    var recipeDescription = $('#recipeDescription').val();
+    console.log(recipeDescription);
+    Meteor.call("updateRecipeDescription", recipeId, recipeDescription);
+  },
+
+
+
+  'dropped #recipeImageDropZone': function(event, template) {
+    FS.Utility.eachFile(event, function(file) {
+      RecipeImages.insert(file, function (err, fileObj) {
+        if (err){
+          console.log(err);
+          console.log(fileObj);
+          toastr.error("Upload failed... please try again.");
+        } else {
+          toastr.success('Upload succeeded!');
+          var recipeId = Session.get('selectingRecipe');
+          var imageId = fileObj._id;
+          Meteor.call("recipeImages", recipeId, imageId);
+        }
+      });
+    });
+  },
+
+  'click .deleteRecipeImage': function(event, template) {
+    var imageId = this._id;
+    var recipeId = Session.get('selectingRecipe');
+    Meteor.call("removeRecipeImage", recipeId, imageId);
+  },
+
 });
 
 Template.recipeUpdate.events({
@@ -187,13 +247,15 @@ Template.recipeUpdate.events({
     Session.set('editingRecipe', false);
     $('.recipeName').val(null);
     $('.recipeStage').val(null);
+    $('.recipeIsSeasonal').val(null);
   },
 
   "click .save": function(event, template){
     var recipeName= template.find(".recipeName").value;
     var recipeStage= template.find(".recipeStage").value;
+    var recipeIsSeasonal= template.find(".recipeIsSeasonal").value;
 
-    Meteor.call('addRecipe', recipeName, recipeStage);
+    Meteor.call('addRecipe', recipeName, recipeStage, recipeIsSeasonal);
   },
 });
 
@@ -203,19 +265,29 @@ Session.setDefault("selectingRecipe", false);
 Template.recipeSummary.events({
   "click .recipeSummary": function(event, template){
     Session.set("selectingRecipe", this._id);
+    console.log(this._id);
     $('#recipeName').text(this.recipeName);
     $('#recipeStage').val(this.recipeStage);
-    console.log(this.classification);
     if(this.recipeIsActive){
       $('#recipeIsActive').val('Yes');
     }else{
       $('#recipeIsActive').val('No');
-
     };
     if(this.classification){
       $('#recipeClassification').val(this.classification);
     }else{
       $('#recipeClassification').val('-');
+    };
+    if(this.recipeIsSeasonal){
+      $('#recipeIsSeasonal').val('Yes');
+    }else{
+      $('#recipeIsSeasonal').val('No');
+    };
+    console.log(this.recipeDescription);
+    if(this.recipeDescription){
+      $('#recipeDescription').val(this.recipeDescription);
+    }else{
+      $('#recipeDescription').val(null);
     };
 
 
@@ -296,12 +368,13 @@ Template.recipeIngredientSelection.events({
     return false;
   },
   "change .editPercentage": function(event, template){
-    var id= this.ingredientId;
-    var className = '.editPercentage'+id;
+    var ingredientId= this.ingredientId;
+    var className = '.editPercentage'+ingredientId;
     var percentage = Number($(className).val());
 
     var recipeId = Session.get('selectingRecipe');
-    var ingredientId = Session.get('getRecipeIngredientId');
+
+    console.log(ingredientId);
 
     Meteor.call("updateRecipePercentage", recipeId, ingredientId, percentage);
     return false;

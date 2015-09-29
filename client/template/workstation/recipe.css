@@ -340,3 +340,44 @@
   color: #333;
   font-weight: bold;
 }
+
+.dropzoneContainer {
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+.recipeImageContainer {
+  border: 1px solid #999;
+  display: block;
+  width: 100%;
+  float: left;
+  padding: 3px;
+  min-height: 90px;
+  margin-bottom: 10px;
+}
+
+.recipeImageUnit {
+  border: 1px solid #999;
+  display: block;
+  width: 30%;
+  height: 90px;
+  float: left;
+  margin-right: 3px;
+  background-size: contain;
+}
+
+.deleteRecipeImage {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  color: #888;
+  float: right;
+  margin-right: 5px;
+}
+
+
+.deleteRecipeImage:hover {
+  color: #222;
+
+}

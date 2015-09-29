@@ -36,7 +36,7 @@
               <div class="recipeInformationRow">
                 <div class="col-xs-3">
                   <label for="stage"> Stage:</label>
-                    <select name= "recipeStage" id='recipeStage' class='form-control recipeStage' value='{{selectingRecipe.recipeStage}}'>
+                    <select name= "recipeStage" id='recipeStage' class='form-control' value='{{selectingRecipe.recipeStage}}'>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -45,14 +45,14 @@
                 </div>
                 <div class="col-xs-3">
                   <label for="recipeIsActive"> Active:</label>
-                    <select name= "recipeIsActive" id='recipeIsActive' class='form-control recipeStage' value='{{#if selectingRecipe.recipeIsActive}}true{{else}}false{{/if}}'>
+                    <select name= "recipeIsActive" id='recipeIsActive' class='form-control' value='{{#if selectingRecipe.recipeIsActive}}true{{else}}false{{/if}}'>
                         <option>Yes</option>
                         <option>No</option>
                       </select>
                 </div>
                 <div class="col-xs-3">
                   <label for="recipeClassification"> Classification:</label>
-                    <select name= "recipeClassification" id='recipeClassification' class='form-control recipeClassification'>
+                    <select name= "recipeClassification" id='recipeClassification' class='form-control'>
                       <option>-</option>
                       <option>Fruits</option>
                       <option>Starchy Roots</option>
@@ -61,9 +61,24 @@
                       <option>Protein</option>
                     </select>
                 </div>
-
+                <div class="col-xs-3">
+                  <label for="recipeIsSeasonal"> Seasonal?</label>
+                    <select name= "recipeIsSeasonal" id='recipeIsSeasonal' class='form-control'>
+                      <option>-</option>
+                      <option>Yes</option>
+                      <option>No</option>
+                    </select>
+                </div>
 
               </div>
+
+              <div class="recipeInformationRow">
+                <h5>Description</h5>
+                <textarea id='recipeDescription' row="5" type='text' class='recipeDescription input form-control input-xlarge' name= "recipeDescription" placeholder='Enter description of the recipe.' onfocus="this.placeholder = ''" onblur='placeholder="Enter description of the recipe."'> Enter description of the recipe.
+                </textarea>
+              </div>
+
+
 
               <span class="line"></span>
               <div class="recipeInformationRow">
@@ -106,6 +121,24 @@
                 </table>
               </div>
 
+              <div class="recipeInformationRow">
+                <h5>Recipe Images</h5>
+                <div class="recipeImageContainer">
+                  {{#each recipeImages}}
+                  <div class="recipeImageUnit" style="background: url('{{this.url}}') no-repeat; background-size: contain">
+                    <div class="deleteRecipeImage">x</div>
+                  </div>
+                  {{/each}}
+                </div>
+                <div class="dropzoneContainer">
+                  <div id="recipeImageDropZone" class="dropzone">
+                    <div class="well well-drop-zone">
+                      Drop file(s) here to upload.....
+                    </div>
+                  </div>
+                </div>
+
+              </div>
 
               <div class="recipeDeleteButton">
                 <button type="button" class="btn btn-lg" id="recipeDeleteButton">
@@ -161,6 +194,12 @@
           <option>2</option>
           <option>3</option>
           <option>4</option>
+        </select>
+        <label for="seasonal"> Seasonal:</label>
+        <select name= "recipeSeasonal" class='form-control recipeIsSeasonal'>
+          <option>-</option>
+          <option>Yes</option>
+          <option>No</option>
         </select>
 
       </div>

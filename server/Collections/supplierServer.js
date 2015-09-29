@@ -35,8 +35,13 @@ SupplierImages.deny({
   });
 
 Meteor.methods({
-  updateSuppliers: function(supplierId, supplierName, supplierMainContact, supplierPhoneNumber, supplierEmail, supplierAddressLine1, supplierAddressLine2, supplierZIP, supplierCity, supplierDescription, supplierProduce, isOrganic, isWinterActive, supplierProdReceipt){
+  updateSuppliers: function(supplierId, supplierName, supplierMainContact, supplierPhoneNumber, supplierEmail, supplierAddressLine1, supplierAddressLine2, supplierZIP, supplierCity, supplierState, supplierDescription, supplierProduce, isOrganic, isWinterActive,supplierProdReceipt){
+
+
       if(supplierId){
+        var supplierObject = Suppliers.findOne({_id: supplierId});
+        var imageId= supplierObject.imageId;
+
         var newDate= new Date();
         var currentDate = moment(newDate).format('ll');
         Suppliers.update({_id:supplierId}, {$set:{
@@ -48,10 +53,12 @@ Meteor.methods({
           supplierAddressLine2: supplierAddressLine2,
           supplierZIP: supplierZIP,
           supplierCity: supplierCity,
+          supplierState: supplierState,
           supplierDescription: supplierDescription,
           supplierProduce: supplierProduce,
           isOrganic: isOrganic,
           isWinterActive: isWinterActive,
+          imageId: imageId,
           supplierProdReceipt: supplierProdReceipt
         }});
         console.log(supplierId);
@@ -67,10 +74,12 @@ Meteor.methods({
           supplierAddressLine2: supplierAddressLine2,
           supplierZIP: supplierZIP,
           supplierCity: supplierCity,
+          supplierState: supplierState,
           supplierDescription: supplierDescription,
           supplierProduce: supplierProduce,
           isOrganic: isOrganic,
           isWinterActive: isWinterActive,
+          imageId: [],
           supplierProdReceipt: supplierProdReceipt
         });
       };
@@ -83,6 +92,7 @@ Meteor.methods({
       console.log('delete'+supplierObject);
       console.log('delete related image'+ supplierObject.imageId);
     },
+
     SupplierImages: function(supplierId, imageId){
       Suppliers.update({_id: supplierId}, {$push: {"imageId": imageId}});
       return false;

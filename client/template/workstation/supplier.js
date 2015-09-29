@@ -12,7 +12,11 @@ Template.supplier.helpers ({
   supplierImages: function() {
     var supplierId= Session.get("selectingSupplier");
     var supplierObject = Suppliers.findOne({_id: supplierId});
-    return SupplierImages.find({_id:{ $in: supplierObject.imageId}});;
+    if(supplierObject.imageId.length>0){
+      return SupplierImages.find({_id:{ $in: supplierObject.imageId}});
+    }else{
+      return false;
+    };
   }
 });
 
@@ -67,13 +71,15 @@ Template.supplierUpdate.events({
     var supplierAddressLine2= template.find(".supplierAddressLine2").value;
     var supplierZIP= template.find(".supplierZIP").value;
     var supplierCity= template.find(".supplierCity").value;
+    var supplierState= template.find(".supplierState").value;
     var supplierDescription= template.find(".supplierDescription").value;
     var supplierProduce= template.find(".supplierProduce").value;
     var isOrganic= Session.get("isOrganic");
     var isWinterActive= Session.get("isWinterActive");
     var supplierProdReceipt= template.find(".supplierProdReceipt").value;
 
-    Meteor.call('updateSuppliers', supplierId, supplierName, supplierMainContact, supplierPhoneNumber, supplierEmail, supplierAddressLine1, supplierAddressLine2, supplierZIP,supplierCity, supplierDescription, supplierProduce, isOrganic, isWinterActive, supplierProdReceipt); // skipped photo for now
+
+    Meteor.call('updateSuppliers', supplierId, supplierName, supplierMainContact, supplierPhoneNumber, supplierEmail, supplierAddressLine1, supplierAddressLine2, supplierZIP,supplierCity, supplierState, supplierDescription, supplierProduce, isOrganic, isWinterActive, supplierProdReceipt); // skipped photo for now
   },
 
   "click .delete": function(event, template){

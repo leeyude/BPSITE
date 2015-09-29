@@ -38,6 +38,7 @@ if (Meteor.isServer) {
         dateFR: dateFR,
         dateSA: dateSA,
         menuEntries: [],
+        numActiveRecipies: 0,
       });
     };
   };
@@ -74,7 +75,6 @@ Meteor.methods({
         }
       );
     }else{
-      console.log(submittingObject);
       console.log('item exist'+existingMenuItem);
       // only updates supplier information
       MenuCalendarWeeks.update(
@@ -88,4 +88,48 @@ Meteor.methods({
     };
 
   },
+
+  removeRecipeFromMenu:function(selectingMenuWeek, selectedRecipeId){
+    MenuCalendarWeeks.update(
+      {menuWeekName: selectingMenuWeek},
+      {
+        $pull: {
+               menuEntries: {selectedRecipeId: selectedRecipeId},
+        }
+      },
+      { multi: true }
+    );
+
+  },
+
+  menuRecipeSetPublic:function(getCalendarWeekName, selectedRecipeId, menuRecipeIsPublic){
+    MenuCalendarWeeks.update(
+      {menuWeekName: getCalendarWeekName, 'menuEntries.selectedRecipeId': selectedRecipeId},
+      {
+        $set: {
+          "menuEntries.$.menuRecipeIsPublic": menuRecipeIsPublic,
+        }
+      }
+    );
+    var menuRecipeEntries = MenuCalendarWeeks.findOne({menuWeekName: getCalendarWeekName}).menuEntries;
+    var recipeNum = menuRecipeEntries.length;
+    console.log(recipeNum);
+    var numActiveRecipies = 0;
+    for(i=0;i<recipeNum;i++){
+      if(menuRecipeEntries[i].menuRecipeIsPublic){
+        numActiveRecipies++;
+      };
+    };
+    console.log(numActiveRecipies);
+
+    MenuCalendarWeeks.update(
+      {menuWeekName: getCalendarWeekName},
+      {
+        $set: {
+          numActiveRecipies: numActiveRecipies,
+        }
+      }
+    );
+  },
+
 });

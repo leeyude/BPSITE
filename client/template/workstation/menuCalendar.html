@@ -27,6 +27,7 @@
               <thead>
                 <tr>
                   <th colspan="2">WK#     </th>
+                  <th colspan="1">#RCP </th>
                   <th colspan="2">SU         </th>
                   <th colspan="2">MO        </th>
                   <th colspan="2">TU        </th>
@@ -36,7 +37,7 @@
                   <th colspan="2">SA        </th>
                 </tr>
                 <tr>
-                  <th colspan="16" id='menuCalendarThisMonth'> {{viewingMonth.thisMonthText}}, {{viewingMonth.thisYear}}    </th>
+                  <th colspan="17" id='menuCalendarThisMonth'> {{viewingMonth.thisMonthText}}, {{viewingMonth.thisYear}}    </th>
                 </tr>
               </thead>
               <tbody>
@@ -46,7 +47,7 @@
               </tbody>
               <thead>
                 <tr>
-                  <th colspan="16" id='menuCalendarNextMonth'> {{viewingMonth.nextMonthText}}, {{viewingMonth.nextMonthYear}}      </th>
+                  <th colspan="17" id='menuCalendarNextMonth'> {{viewingMonth.nextMonthText}}, {{viewingMonth.nextMonthYear}}      </th>
                 </tr>
               </thead>
               <tbody>
@@ -70,13 +71,14 @@
                   <table class='table table-striped table-bordered table-hover table-condensed'>
                     <thead>
                         <tr>
+
                             <th colspan="4">Recipe</th>
                             <th colspan="2">Classification</th>
                             <th colspan="2">Description</th>
-                            <th colspan="2">Nutrients</th>
-                            <th colspan="2">Images</th>
+                            <th colspan="1">Is Public?</th>
+                            <th colspan="2">Images?</th>
                             <th colspan="1">Seasonal?</th>
-                            <th colspan="1">remove</th>
+                            <th colspan="1">Remove</th>
                         </tr>
                         <tr>
                             <th class='recipeTypeHeader' colspan="14">Single Puree</th>
@@ -121,11 +123,196 @@
                     {{/if}}
                     </tbody>
                   </table>
-
-
-
               </div>
+              <div class="menuInformationRow">
+                <h3>Recipe Information</h3>
 
+                <div class="menuInformationRow">
+                  {{#if menuRecipeDetails.selectedRecipeName}}
+                  <div class="col-sm-6">
+                    <h4>Recipe Name: {{menuRecipeDetails.selectedRecipeName}}</h4>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="menuRecipePublicCheckboxWrap clearfix">
+                      <label>
+                        <div id='menuRecipeSetToPublic' class="menuRecipePublicCheckbox {{#if menuRecipeDetails.menuRecipeIsPublic}}active{{/if}}">
+                          <div class="menuRecipePublicCheckboxIcon "></div>
+
+                          <input  checked="" class="allergenInput"  multiple="" name="allergenSoybeans" type="checkbox" value=
+                          {{#if  menuRecipeDetails.menuRecipeIsPublic}} true{{else}}false{{/if}}>
+                          Set to Public
+                        </div>
+                      </label>
+                    </div>
+
+                    <div class="menuRecipePublicCheckboxWrap clearfix">
+                      <label>
+                        <div id='menuRecipeSetToPrivate'  class="menuRecipePublicCheckbox {{#if menuRecipeDetails.menuRecipeIsPublic}}{{else}}active{{/if}}">
+                          <div class="menuRecipePublicCheckboxIcon "></div>
+                          <input checked="" class="allergenInput"  multiple="" name="allergenSoybeans" type="checkbox" value={{#if  menuRecipeDetails.menuRecipeIsPublic}}false{{else}}true{{/if}}>
+                          Set to Private
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  {{/if}}
+                </div>
+
+
+
+
+                <div class="menuInformationRow">
+                  <div class="col-sm-6">
+                    <h5>Recipe Images</h5>
+
+                    <div class="recipeInformationContainer">
+                      {{#each menuRecipeImage}}
+                      <div class="recipeImageUnit" style="background: url('{{this.url}}') no-repeat; background-size: contain">
+                      </div>
+                      {{/each}}
+                    </div>
+
+                  </div>
+                  <div class="col-sm-6">
+
+                    <h5>Nutrients</h5>
+                    <div class="recipeInformationContainer">
+                      <p>
+                        {{menuRecipeNutrients}}
+
+                      </p>
+                    </div>
+
+
+                  </div>
+                </div>
+                <div class="menuInformationRow">
+                  <div class="col-sm-6">
+                    <h5>Ingredients and Suppliers</h5>
+                    <table class='table table-striped table-bordered table-hover table-condensed'>
+                      <thead>
+                        <tr>
+                          <th>Ingredient</th>
+                          <th>Producer</th>
+                          <th>Neighborhood</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each menuRecipeIngredientNSupplier}}
+                        <tr>
+                          <td>{{ingredientName}}</td>
+                          <td>{{supplierName}}</td>
+                          <td>{{supplierCity}}, {{supplierState}}</td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-sm-6">
+                    <h5>Allergens</h5>
+                    {{#with menuRecipeAllergens}}
+                    <!-- Allergy button, Wheat-->
+
+                    <div class="allergenCheckboxWrap clearfix">
+                        <label>
+                          <div class="allergenCheckbox {{#if allergenWheat}}active{{/if}}">
+                            <input checked="" class="allergenInput" multiple="" name="allergenWheat" type="checkbox" value={{#if allergenWheat}}true{{else}}false{{/if}}>
+                            Wheat
+                          </div>
+                        </label>
+                    </div>
+
+                    <!-- Allergy button, Shelfish-->
+
+                    <div class="allergenCheckboxWrap clearfix">
+                        <label>
+                          <div class="allergenCheckbox {{#if allergenShellfish}}active{{/if}}">
+                            <input checked="" class="allergenInput" multiple="" name="allergenShellfish" type="checkbox" value={{#if  allergenShellfish}}true{{else}}false{{/if}}>
+                            Shellfish
+                          </div>
+                        </label>
+                    </div>
+
+                    <!-- Allergy button, Eggs-->
+
+                    <div class="allergenCheckboxWrap clearfix">
+                        <label>
+                          <div class="allergenCheckbox {{#if allergenEggs}}active{{/if}}">
+                            <input checked="" class="allergenInput" multiple="" name="allergenEggs" type="checkbox" value={{#if  allergenEggs}}true{{else}}false{{/if}}>
+                            Eggs
+                          </div>
+                        </label>
+                    </div>
+
+                    <!-- Allergy button, Fish-->
+
+                    <div class="allergenCheckboxWrap clearfix">
+                        <label>
+                          <div class="allergenCheckbox {{#if allergenFish}}active{{/if}}">
+                            <input checked="" class="allergenInput" multiple="" name="allergenFish" type="checkbox" value={{#if  allergenFish}}true{{else}}false{{/if}}>
+                            Fish
+                          </div>
+                        </label>
+                    </div>
+
+                    <!-- Allergy button, Peanuts-->
+
+                    <div class="allergenCheckboxWrap clearfix">
+                        <label>
+                          <div class="allergenCheckbox {{#if allergenPeanuts}}active{{/if}}">
+                            <input checked="" class="allergenInput"  multiple="" name="allergenPeanuts" type="checkbox" value={{#if  allergenPeanuts}}true{{else}}false{{/if}}>
+                            Peanuts
+                          </div>
+                        </label>
+                    </div>
+
+                    <!-- Allergy button, Milk-->
+
+                    <div class="allergenCheckboxWrap clearfix">
+                      <label>
+                        <div class="allergenCheckbox {{#if allergenMilk}}active{{/if}}">
+                          <input checked="" class="allergenInput" multiple="" name="allergenMilk" type="checkbox" value={{#if  allergenMilk}}true{{else}}false{{/if}}>
+                          Milk
+                        </div>
+                      </label>
+                    </div>
+
+                    <!-- Allergy button, Tree nuts-->
+
+                    <div class="allergenCheckboxWrap clearfix">
+                      <label>
+                        <div class="allergenCheckbox {{#if allergenTreeNuts}}active{{/if}}">
+                          <input checked="" class="allergenInput" multiple="" name="allergenTreeNuts" type="checkbox" value={{#if  allergenTreeNuts}}true{{else}}false{{/if}}>
+                          Tree Nuts
+                        </div>
+                      </label>
+                    </div>
+
+                    <!-- Allergy button, Soybeans-->
+
+                    <div class="allergenCheckboxWrap clearfix">
+                      <label>
+                        <div class="allergenCheckbox {{#if allergenSoybeans}}active{{/if}}">
+                          <input checked="" class="allergenInput"  multiple="" name="allergenSoybeans" type="checkbox" value={{#if  allergenSoybeans}}true{{else}}false{{/if}}>
+                          Soybeans
+                        </div>
+                      </label>
+                    </div>
+
+                    <h5>Other Allergens</h5>
+
+                    <div class="recipeInformationContainer">
+                      <p>
+                        {{otherAllergens}}
+
+                      </p>
+                    </div>
+
+
+                    {{/with}}
+                  </div>
+                </div>
+              </div>
             </div>
 
 
@@ -140,14 +327,15 @@
 
 <template name="menuCalendarWeeks">
   <tr id={{menuWeekName}} class='menuWeekRow'>
-    <th colspan="2">{{weekOfYear}}     </th>
-    <th colspan="2">{{dateSU}}         </th>
-    <th colspan="2">{{dateMO}}        </th>
-    <th colspan="2">{{dateTU}}        </th>
-    <th colspan="2">{{dateWE}}        </th>
-    <th colspan="2">{{dateTH}}        </th>
-    <th colspan="2">{{dateFR}}        </th>
-    <th colspan="2">{{dateSA}}        </th>
+    <td colspan="2">{{weekOfYear}}     </td>
+    <td colspan="1">{{#if numActiveRecipies}}{{numActiveRecipies}}{{else}}0{{/if}}    </td>
+    <td colspan="2">{{dateSU}}         </td>
+    <td colspan="2">{{dateMO}}        </td>
+    <td colspan="2">{{dateTU}}        </td>
+    <td colspan="2">{{dateWE}}        </td>
+    <td colspan="2">{{dateTH}}        </td>
+    <td colspan="2">{{dateFR}}        </td>
+    <td colspan="2">{{dateSA}}        </td>
   </tr>
 </template>
 
@@ -284,33 +472,38 @@
 
 
 <template name="menuRecipeSinglePuree">
-  <td colspan="4">{{selectedRecipeName}}</td>
-  <td colspan="2">Y</td>
-  <td colspan="2">Z</td>
-  <td colspan="2">Y</td>
-  <td colspan="2">Z</td>
-  <td colspan="1">remove</td>
-  <td colspan="1">remove</td>
-
+  <tr class="menuRecipeSinglePuree" id='menuRecipeId{{selectedRecipeId}}'>
+    <td colspan="4">{{selectedRecipeName}}</td>
+    <td colspan="2">{{classification}}</td>
+    <td colspan="2">{{recipeDescription}}</td>
+    <td colspan="1">{{#if menuRecipeIsPublic}}Yes{{else}}No{{/if}}</td>
+    <td colspan="2">{{#if imageId}}Yes{{else}}No{{/if}}</td>
+    <td colspan="1">{{#if recipeIsSeasonal}}Yes{{else}}No{{/if}}</td>
+    <td colspan="1"><div class="deleteMenuRecipe">x</div></td>
+  </tr>
 </template>
 
 
 <template name="menuRecipeYummyPairs">
-  <td colspan="4">{{selectedRecipeName}}</td>
-  <td colspan="2">Y</td>
-  <td colspan="2">Z</td>
-  <td colspan="2">Y</td>
-  <td colspan="2">Z</td>
-  <td colspan="1">remove</td>
-  <td colspan="1">remove</td>
+  <tr class="menuRecipeYummyPairs" id='menuRecipeId{{selectedRecipeId}}'>
+    <td colspan="4">{{selectedRecipeName}}</td>
+    <td colspan="2">{{classification}}</td>
+    <td colspan="2">{{recipeDescription}}</td>
+    <td colspan="1">{{#if menuRecipeIsPublic}}Yes{{else}}No{{/if}}</td>
+    <td colspan="2">{{#if imageId}}Yes{{else}}No{{/if}}</td>
+    <td colspan="1">{{#if recipeIsSeasonal}}Yes{{else}}No{{/if}}</td>
+    <td colspan="1"><div class="deleteMenuRecipe">x</div></td>
+  </tr>
 </template>
 
 <template name="menuRecipeTastyTrio">
-  <td colspan="4">{{selectedRecipeName}}</td>
-  <td colspan="2">Y</td>
-  <td colspan="2">Z</td>
-  <td colspan="2">Y</td>
-  <td colspan="2">Z</td>
-  <td colspan="1">remove</td>
-  <td colspan="1">remove</td>
+  <tr class="menuRecipeTastyTrio" id='menuRecipeId{{selectedRecipeId}}'>
+    <td colspan="4">{{selectedRecipeName}}</td>
+    <td colspan="2">{{classification}}</td>
+    <td colspan="2">{{recipeDescription}}</td>
+    <td colspan="1">{{#if menuRecipeIsPublic}}Yes{{else}}No{{/if}}</td>
+    <td colspan="2">{{#if imageId}}Yes{{else}}No{{/if}}</td>
+    <td colspan="1">{{#if recipeIsSeasonal}}Yes{{else}}No{{/if}}</td>
+    <td colspan="1"><div class="deleteMenuRecipe">x</div></td>
+  </tr>
 </template>

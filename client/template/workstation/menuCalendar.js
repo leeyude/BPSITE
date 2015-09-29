@@ -193,7 +193,6 @@ Template.menuAddRecipe.events({
     };
     Session.set('selectingMenuType', menuSelection);
     Session.set("selectingMenuRecipe", false);
-
   },
 
   "click #menuSinglePuree": function(event, template){
@@ -244,7 +243,6 @@ Template.menuGetRecipe.events({
   "click .recipeSelectionCheckboxWrap": function(event, template){
     $('.supplierforIngredientCheckbox').removeClass("active");
 
-
     var ingredientsIncluded = this.recipeIncludeIngredients;
     Session.set("selectingMenuRecipe", ingredientsIncluded); // display all ingredients of this selected recipe
     $('.recipeSelectionCheckbox').removeClass("active");
@@ -259,17 +257,20 @@ Template.menuGetRecipe.events({
         selectedRecipeId: this._id,
         selectedRecipeName: this.recipeName,
         classification: this.classification,
+        recipeIsSeasonal: this.recipeIsSeasonal,
+        recipeDescription: this.recipeDescription,
+        imageId: this.imageId,
         ingredient: ingredientsIncluded[i].ingredientId,
         supplier: null,
       };
     }
+
     Session.set("menuDetailObjects", menuDetailObjects);
     return false;
   }
 });
 
 Session.setDefault("selectedMenuIngredient", false);
-
 
 Template.ingredientIncludedInRecipe.events({
   "click .selectedIngredientCheckboxWrap": function(event, template){
@@ -298,12 +299,16 @@ Template.allSuppliers.events({
   var getMenuDetailObjects = Session.get('menuDetailObjects');
   var setMenuDetailObjects = [];
 
+
   for(i=0;i<getMenuDetailObjects.length;i++){
     if(getMenuDetailObjects[i].ingredient==selectedIngredientId){
       setMenuDetailObjects[i]= {
         selectedRecipeId: getMenuDetailObjects[i].selectedRecipeId,
         selectedRecipeName: getMenuDetailObjects[i].selectedRecipeName,
         classification: getMenuDetailObjects[i].classification,
+        recipeIsSeasonal: getMenuDetailObjects[i].recipeIsSeasonal,
+        recipeDescription: getMenuDetailObjects[i].recipeDescription,
+        imageId: getMenuDetailObjects[i].imageId,
         ingredient: getMenuDetailObjects[i].ingredient,
         supplier: this._id,
       };
@@ -312,6 +317,9 @@ Template.allSuppliers.events({
         selectedRecipeId: getMenuDetailObjects[i].selectedRecipeId,
         selectedRecipeName: getMenuDetailObjects[i].selectedRecipeName,
         classification: getMenuDetailObjects[i].classification,
+        recipeIsSeasonal: getMenuDetailObjects[i].recipeIsSeasonal,
+        recipeDescription: getMenuDetailObjects[i].recipeDescription,
+        imageId: getMenuDetailObjects[i].imageId,
         ingredient: getMenuDetailObjects[i].ingredient,
         supplier: getMenuDetailObjects[i].supplier,
       };
@@ -329,6 +337,7 @@ Template.menuAddRecipe.events({
     var getMenuDetailObjects = Session.get('menuDetailObjects');
     var getMenuType = Session.get('selectingMenuType');
     var getCalendarWeekName = Session.get('selectingMenuWeek');
+
 
     var checkSupplierCompletion = false;
 
@@ -365,7 +374,12 @@ Template.menuAddRecipe.events({
         selectedRecipeId: getMenuDetailObjects[0].selectedRecipeId,
         selectedRecipeName: getMenuDetailObjects[0].selectedRecipeName,
         classification: getMenuDetailObjects[0].classification,
+        recipeIsSeasonal: getMenuDetailObjects[0].recipeIsSeasonal,
+        recipeDescription: getMenuDetailObjects[0].recipeDescription,
+        imageId: getMenuDetailObjects[0].imageId,
+        menuRecipeIsPublic: false,
         supplierDetails: setMenuDetailObjects,
+
       };
       console.log(submittingObject);
       console.log(submittingObject.menuType);
@@ -390,7 +404,6 @@ Template.menuCalendar.helpers({
           menuObjects.push(menuWeekObject.menuEntries[i]);
         };
       };
-      console.log(menuObjects);
       return menuObjects;
     }else{
       return false;
@@ -406,7 +419,6 @@ Template.menuCalendar.helpers({
           menuObjects.push(menuWeekObject.menuEntries[i]);
         };
       };
-      console.log(menuObjects);
       return menuObjects;
     }else{
       return false;
@@ -422,7 +434,6 @@ Template.menuCalendar.helpers({
           menuObjects.push(menuWeekObject.menuEntries[i]);
         };
       };
-      console.log(menuObjects);
       return menuObjects;
     }else{
       return false;
@@ -430,5 +441,186 @@ Template.menuCalendar.helpers({
 
   },
 
+  menuRecipeDetails: function(){
+    return Session.get('menuRecipeDetails');
+  },
 
+});
+
+
+// to display information of selected recipeId
+Session.setDefault("menuRecipeDetails", false);
+
+
+Template.menuRecipeSinglePuree.events({
+  "click .menuRecipeSinglePuree": function(event, template){
+    Session.set("menuRecipeDetails", this);
+  },
+
+  "click .deleteMenuRecipe": function(event, template){
+     var selectedRecipeId = this.selectedRecipeId;
+     var selectingMenuWeek = Session.get('selectingMenuWeek');
+
+     Meteor.call("removeRecipeFromMenu", selectingMenuWeek, selectedRecipeId);
+  },
+});
+
+Template.menuRecipeYummyPairs.events({
+  "click .menuRecipeYummyPairs": function(event, template){
+    Session.set("menuRecipeDetails", this);
+  },
+
+  "click .deleteMenuRecipe": function(event, template){
+     var selectedRecipeId = this.selectedRecipeId;
+     var selectingMenuWeek = Session.get('selectingMenuWeek');
+
+     Meteor.call("removeRecipeFromMenu", selectingMenuWeek, selectedRecipeId);
+  },
+});
+
+Template.menuRecipeTastyTrio.events({
+  "click .menuRecipeTastyTrio": function(event, template){
+    Session.set("menuRecipeDetails", this);
+  },
+
+  "click .deleteMenuRecipe": function(event, template){
+     var selectedRecipeId = this.selectedRecipeId;
+     var selectingMenuWeek = Session.get('selectingMenuWeek');
+
+     Meteor.call("removeRecipeFromMenu", selectingMenuWeek, selectedRecipeId);
+  },
+});
+
+Template.menuCalendar.helpers({
+  menuRecipeImage: function(){
+    var menuRecipeObject = Session.get('menuRecipeDetails');
+    if(menuRecipeObject){
+      if(menuRecipeObject.imageId.length>0){
+        return RecipeImages.find({_id:{ $in: menuRecipeObject.imageId}});;
+      }else{
+        return false;
+      };
+    }else{
+      return false;
+    };
+
+  },
+
+  menuRecipeIngredientNSupplier: function(){
+    var menuRecipeObject = Session.get('menuRecipeDetails');
+    if(menuRecipeObject){
+
+      var supplierDetails = menuRecipeObject.supplierDetails;
+      var ingredientNSupplierDetailObject = [];
+
+      for(i=0;i<supplierDetails.length;i++){
+        var ingredientObject = IngredientCollects.findOne({_id: supplierDetails[i].ingredient});
+        var supplierObject = Suppliers.findOne({_id: supplierDetails[i].supplier});
+
+        ingredientNSupplierDetailObject[i] = {
+          ingredientName: ingredientObject.itemName,
+          supplierName: supplierObject.supplierName,
+          supplierCity: supplierObject.supplierCity,
+          supplierState: supplierObject.supplierState
+        };
+      };
+      return ingredientNSupplierDetailObject;
+    }else{
+      return false;
+    };
+  },
+
+  menuRecipeNutrients: function(){
+    var menuRecipeObject = Session.get('menuRecipeDetails');
+    if(menuRecipeObject){
+      var ingredientNutrients = '';
+      var supplierDetails = menuRecipeObject.supplierDetails;
+
+      for(i=0;i<supplierDetails.length;i++){
+        var ingredientObject = IngredientCollects.findOne({_id: supplierDetails[i].ingredient});
+        if(ingredientNutrients==''){
+          ingredientNutrients = ingredientObject.nutrition;
+        }else{
+          ingredientNutrients = ingredientNutrients+", "+ingredientObject.nutrition;
+        };
+      };
+      return ingredientNutrients;
+    }else{
+      return false;
+    };
+  },
+
+  menuRecipeAllergens: function(){
+    var menuRecipeObject = Session.get('menuRecipeDetails');
+    if(menuRecipeObject){
+      var supplierDetails = menuRecipeObject.supplierDetails;
+      var allergenControlItem = {
+         allergenWheat: false,
+         allergenShellfish: false,
+         allergenEggs: false,
+         allergenFish: false,
+         allergenPeanuts: false,
+         allergenMilk: false,
+         allergenTreeNuts: false,
+         allergenSoybeans: false,
+         otherAllergens: [],
+      };
+
+      for(i=0;i<supplierDetails.length;i++){
+        var ingredientObject = IngredientCollects.findOne({_id: supplierDetails[i].ingredient});
+        if(ingredientObject.allergenWheat){
+          allergenControlItem.allergenWheat =true;
+        };
+        if(ingredientObject.allergenShellfish){
+          allergenControlItem.allergenShellfish =true;
+        };
+        if(ingredientObject.allergenEggs){
+          allergenControlItem.allergenEggs =true;
+        };
+        if(ingredientObject.allergenFish){
+          allergenControlItem.allergenFish =true;
+        };
+        if(ingredientObject.allergenPeanuts){
+          allergenControlItem.allergenPeanuts =true;
+        };
+        if(ingredientObject.allergenMilk){
+          allergenControlItem.allergenMilk =true;
+        };
+        if(ingredientObject.allergenTreeNuts){
+          allergenControlItem.allergenTreeNuts =true;
+        };
+        if(ingredientObject.allergenSoybeans){
+          allergenControlItem.allergenSoybeans =true;
+        };
+        if(ingredientObject.otherAllergens){
+          allergenControlItem.otherAllergens.push(ingredientObject.otherAllergens);
+        };
+      };
+
+      return allergenControlItem;
+    }else{
+      return false;
+    };
+  },
+
+});
+
+Template.menuCalendar.events({
+  "click #menuRecipeSetToPublic": function(event, template){
+    var getCalendarWeekName = Session.get('selectingMenuWeek');
+    var getMenuDetailObjects = Session.get('menuRecipeDetails');
+    var menuRecipeIsPublic = true;
+    Meteor.call("menuRecipeSetPublic", getCalendarWeekName, getMenuDetailObjects.selectedRecipeId, menuRecipeIsPublic);
+    $('#menuRecipeSetToPublic').addClass('active');
+    $('#menuRecipeSetToPrivate').removeClass('active');
+  },
+
+  "click #menuRecipeSetToPrivate": function(event, template){
+    var getCalendarWeekName = Session.get('selectingMenuWeek');
+    var getMenuDetailObjects = Session.get('menuRecipeDetails');
+    var menuRecipeIsPublic = false;
+    Meteor.call("menuRecipeSetPublic", getCalendarWeekName, getMenuDetailObjects.selectedRecipeId, menuRecipeIsPublic);
+    $('#menuRecipeSetToPublic').removeClass('active');
+    $('#menuRecipeSetToPrivate').addClass('active');
+  },
 });
