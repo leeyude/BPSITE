@@ -251,19 +251,25 @@ defaultMealOption = function(userId, birthInput){
 zipData = function(zipInput){
 
   var zipObject = Zips.findOne({zipcode:zipInput});
-  var result = {
-    city: zipObject.cityName,
-    state: zipObject.stateAbb,
-    currentServing: zipObject.currentServing,
-    MO: zipObject.MO,
-    TU: zipObject.TU,
-    WE: zipObject.WE,
-    TH: zipObject.TH,
-    FR: zipObject.FR,
-    SA: zipObject.SA,
-    SU: zipObject.SU
+  if(zipObject){
+    var result = {
+      city: zipObject.cityName,
+      state: zipObject.stateAbb,
+      currentServing: zipObject.currentServing,
+      MO: zipObject.MO,
+      TU: zipObject.TU,
+      WE: zipObject.WE,
+      TH: zipObject.TH,
+      FR: zipObject.FR,
+      SA: zipObject.SA,
+      SU: zipObject.SU
+    };
+    return result;
+  }else{
+    var error = false;
+    return error;
   };
-  return result;
+
 };
 // this section generates baby names
 getBabyName = function(userObject){
@@ -559,4 +565,15 @@ getSubscriptionPlan = function(userId){
   };
 
   return subscriptionPlan;
+};
+
+getDeliveryDays = function(abb){
+  var deliveryDays = ['Sundays','Mondays','Tuesdays','Wednesdays','Thursdays','Fridays','Saturdays'];
+  if(abb=='SU'){return deliveryDays[0]};
+  if(abb=='MO'){return deliveryDays[1]};
+  if(abb=='TU'){return deliveryDays[2]};
+  if(abb=='WE'){return deliveryDays[3]};
+  if(abb=='TH'){return deliveryDays[4]};
+  if(abb=='FR'){return deliveryDays[5]};
+  if(abb=='SA'){return deliveryDays[6]};
 };

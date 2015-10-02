@@ -1,8 +1,896 @@
 <template name="myAccount">
   {{>navMenu}}
   <section id="myAccount">
-    <div class="container clearfix">
+    <div class="container-fluid clearfix">
+      <div class="myAccountBlockBackground">
+        <div class="myAccountBlockContent">
+          <div id='overlayDark' class="overlay-dark hidden"></div>
+          <div class="myAccountHeader clearfix">
+            <h3>My Account</h3>
+            <span class="line"></span>
+          </div>
+          <div class="row">
+            <div class="accountManagementSession">
+              <div class="col-sm-3">
+                <div id='accMngtNav' class="accMngtNav">
 
+                  <div class="accMngtItemWrap">
+                    <div id='accMngtSelectionMealPlan' class="accMngtItem active">
+                      <div class="accMngtItemIcon mealPlansIcon">
+
+                      </div>
+                      <a href="#">My Baby's Meal Plan</a>
+                    </div>
+                  </div>
+                  <div class="accMngtItemWrap">
+                    <div id='accMngtSelectionDelivery' class="accMngtItem">
+                      <div class="accMngtItemIcon deliveryInfoIcon">
+
+                      </div>
+                      <a href="#">Delivery Information</a>
+                    </div>
+                  </div>
+                  <div class="accMngtItemWrap">
+                    <div id='accMngtSelectionInfo' class="accMngtItem">
+                      <div class="accMngtItemIcon accountInfoIcon">
+
+                      </div>
+                      <a href="#">Account Information</a>
+                    </div>
+                  </div>
+                  <div class="accMngtItemWrap">
+                    <div id='accMngtSelectionPayment' class="accMngtItem">
+                      <div class="accMngtItemIcon paymentIcon">
+
+                      </div>
+                      <a href="#">Payment Information</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <div class="accountMngtContent">
+                  <div id="accountMealPlans" class="accountContentWrap clearfix ">
+
+                    <div class="accountEditBlock slideDown clearfix">
+                      <div class="accountEditHeader">
+                        <h3>My Baby's Meal Plan</h3>
+                        <div class="closeIcon">
+                        </div>
+                      </div>
+                      <div class="accountEditSection">
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-3">
+                            Delivery Days
+                          </div>
+                          <div class="accountEditRowValue col-sm-9">
+                            <select id="accountEditMealPlan_deliveryDays" class="inputFull">
+                              <option value="">-</option>
+                              <option value="SU">Sundays</option>
+                              <option value="MO">Mondays</option>
+                              <option value="TU">Tuesdays</option>
+                              <option value="WE">Wednesdays</option>
+                              <option value="TH">Thursdays</option>
+                              <option value="FR">Fridays</option>
+                              <option value="SA">Saturdays</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class='line'></div>
+
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-3">
+                            <div class="accountInfoItemTitle">
+                              Baby Name
+                            </div>
+                          </div>
+                          <div class="accountInfoValue col-sm-9">
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyName.[0]}}
+                            </div>
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyName.[1]}}
+                            </div>
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyName.[2]}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-3">
+                            <div class="accountInfoItemTitle">
+                              Baby Age
+                            </div>
+                          </div>
+                          <div class="accountInfoValue col-sm-9">
+                            {{#if myAccountMealPlan.babyStatus.[0]}}
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{getAgesbyBirthdays.[0].months}} Months/ {{getAgesbyBirthdays.[0].days}} Days
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[1]}}
+
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{getAgesbyBirthdays.[1].months}} Months/ {{getAgesbyBirthdays.[1].days}} Days
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[2]}}
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{getAgesbyBirthdays.[2].months}} Months/ {{getAgesbyBirthdays.[2].days}} Days
+                            </div>
+                            {{/if}}
+
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-3">
+                            Plan Type
+                          </div>
+                          <div class="accountEditRowValue col-sm-9">
+                            {{#if myAccountMealPlan.babyStatus.[0]}}
+                            <div class="col-sm-4">
+                              <select id="accountEditMealPlan_planType_1" class="mealPlanTypeOption">
+                                <option value="SM">Small Box</option>
+                                <option value="ME">Medium Box</option>
+                                <option value="LG">Large Box</option>
+                              </select>
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[1]}}
+                            <div class="col-sm-4">
+                              <select id="accountEditMealPlan_planType_2" class="mealPlanTypeOption">
+                                <option value="SM">Small Box</option>
+                                <option value="ME">Medium Box</option>
+                                <option value="LG">Large Box</option>
+                              </select>
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[2]}}
+                            <div class="col-sm-4">
+                              <select id="accountEditMealPlan_planType_3" class="mealPlanTypeOption">
+                                <option value="SM">Small Box</option>
+                                <option value="ME">Medium Box</option>
+                                <option value="LG">Large Box</option>
+                              </select>
+                            </div>
+                            {{/if}}
+
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow selectSinglePuree clearfix">
+                          <div class="accountEditRowTitle col-sm-3">
+                            Puree Type
+                            {{#if mealPlanFieldCheckingWarning}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-9">
+                            {{#if myAccountMealPlan.babyStatus.[0]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_singlePuree_1" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput" type="checkbox">
+                                    Single Puree
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[1]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_singlePuree_2" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput" type="checkbox">
+                                    Single Puree
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[2]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_singlePuree_3" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput" type="checkbox">
+                                    Single Puree
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                          </div>
+                        </div>
+                        <div class="accountEditRow selectYummyPairs clearfix">
+                          <div class="accountEditRowTitle col-sm-3">
+                          </div>
+                          <div class="accountEditRowValue col-sm-9">
+                            {{#if myAccountMealPlan.babyStatus.[0]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_yummyPairs_1" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                    Yummy Pairs
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[1]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_yummyPairs_2" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                    Yummy Pairs
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[2]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_yummyPairs_3" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                    Yummy Pairs
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                          </div>
+                        </div>
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-3">
+                          </div>
+                          <div class="accountEditRowValue col-sm-9">
+                            {{#if myAccountMealPlan.babyStatus.[0]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_tastyTrio_1" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                    Tasty Trio
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[1]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_tastyTrio_2" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                    Tasty Trio
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                            {{#if myAccountMealPlan.babyStatus.[2]}}
+                            <div class="col-sm-4">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditMealPlan_tastyTrio_3" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                    Tasty Trio
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+                            {{/if}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accountEditFooter">
+                        <div class="accountEditMealPlanSave">
+                          <button class="btn" id="accountEditMealPlanSave">
+                          Save
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accountDisplayBlock">
+                      <div class="accountContentHeader clearfix">
+                        <h3>My Baby's Meal Plan</h3>
+                        <div class='editBlock' id="myAccountEditMealPlan">
+                          <div class="editIcon" >
+                          </div>
+                          Edit
+                        </div>
+                      </div>
+                      <div class="accountInfoBlock clearfix">
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            <div class="accountInfoItemTitle">
+                              Name
+                            </div>
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyName.[0]}}
+                            </div>
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyName.[1]}}
+                            </div>
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyName.[2]}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            <div class="accountInfoItemTitle">
+                              Plan Type
+                            </div>
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyPlanType.[0]}}
+                            </div>
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyPlanType.[1]}}
+                            </div>
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyPlanType.[2]}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            <div class="accountInfoItemTitle">
+                              Recipe Type
+                            </div>
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyRecipeType.[0]}}
+                            </div>
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyRecipeType.[1]}}
+                            </div>
+                            <div class="accountInfoRowValue col-sm-4">
+                              {{myAccountMealPlan.babyRecipeType.[2]}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            <div class="accountInfoItemTitle">
+                              Delivery Days
+                            </div>
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            <div id='accountDeliveryDays' class="accountInfoRowValue">
+                              {{myAccountMealPlan.deliveryDays}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="accountDeliveryInfo" class="accountContentWrap clearfix hidden">
+
+                    <div class="accountEditBlock slideDown clearfix">
+                      <div class="accountEditHeader">
+                        <h3>Delivery Information</h3>
+                        <div class="closeIcon">
+                        </div>
+                      </div>
+                      <div class="accountEditSection">
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Name
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+
+                            <div class="accountInfoValue col-sm-8">
+                              {{myAccountDelivery.deliveryName}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Address Line 1
+                            {{#if deliveryFieldCheckingWarning.addressLine1}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditDelivery_addressLine1" type="text" placeholder="Address Line 1" onfocus="this.placeholder = ''" onblur='this.placeholder = "Address Line 1"'>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Address Line 2 (Optional)
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditDelivery_addressLine2" type="text" placeholder="Address Line 2" onfocus="this.placeholder = ''" onblur='this.placeholder = "Address Line 2"'>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            City
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditDelivery_city" type="text" placeholder="City" onfocus="this.placeholder = ''" onblur='this.placeholder = "City"' disabled>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            State
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditDelivery_state" type="text" placeholder="State" onfocus="this.placeholder = ''" onblur='this.placeholder = "State"' disabled>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            ZIP Code
+                            {{#if deliveryFieldCheckingWarning.addressZIP}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditDelivery_zip" type="text" placeholder="ZIP Code" onfocus="this.placeholder = ''" onblur='this.placeholder = "ZIP Code"'>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Address Type
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditDelivery_typeResidential" class="accountEditOptionCheckbox active">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                    Residential
+                                  </div>
+                                </label>
+                              </div>
+
+                              <!-- Address Type button, Business-->
+
+                              <div class="accountEditOptionWrap clearfix">
+                                <label>
+                                  <div id="accountEditDelivery_typeBusiness" class="accountEditOptionCheckbox">
+                                    <div class="accountEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                    Business
+                                  </div>
+                                </label>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Phone
+                            {{#if deliveryFieldCheckingWarning.userPhoneNumber}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditDelivery_phone" type="text" placeholder="Phone" onfocus="this.placeholder = ''" onblur='this.placeholder = "Phone"'>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accountEditFooter">
+                        <div class="accountEditDeliverySave">
+                          <button class="btn" id="accountEditDeliverySave">
+                          Save
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accountDisplayBlock">
+                      <div class="accountContentHeader clearfix">
+                        <h3>Delivery Information</h3>
+                        <div class='editBlock' id="myAccountEditDelivery">
+                          <div class="editIcon">
+                          </div>
+                          Edit
+                        </div>
+                      </div>
+
+                      <div class="accountInfoBlock clearfix">
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Name
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            {{myAccountDelivery.deliveryName}}
+                          </div>
+                        </div>
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Address
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            <dd>                          {{myAccountDelivery.deliveryAddress}}
+  </dd>
+                            <dd>{{myAccountDelivery.deliveryCity}}, {{myAccountDelivery.deliveryState}}, {{myAccountDelivery.deliveryZIP}}</dd>
+                          </div>
+                        </div>
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Phone
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            {{myAccountDelivery.deliveryUserPhone}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                  </div>
+                  <div id="accountInfo" class="accountContentWrap clearfix hidden">
+                    <div class="accountEditBlock slideDown clearfix">
+                      <div class="accountEditHeader">
+                        <h3>Account Information</h3>
+                        <div class="closeIcon">
+                        </div>
+                      </div>
+                      <div class="accountEditSection">
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            First Name
+                            {{#if accountInfoFieldCheckingWarning.userFirstName}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditInfo_firstName" type="text" placeholder="First Name" onfocus="this.placeholder = ''" onblur='this.placeholder = "First Name"'>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Last Name
+                            {{#if accountInfoFieldCheckingWarning.userLastName}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditInfo_lastName" type="text" placeholder="Last Name" onfocus="this.placeholder = ''" onblur='this.placeholder = "Last Name"'>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Email
+                            {{#if accountInfoFieldCheckingWarning.userEmail}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditInfo_email" type="text" placeholder="Email" onfocus="this.placeholder = ''" onblur='this.placeholder = "Email"'>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Old Password
+                            {{#if accountInfoFieldCheckingWarning.oldPassword}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditInfo_oldPassword" type="password" placeholder="Password" onfocus="this.placeholder = ''" onblur='this.placeholder = "Old Password"'>
+                            </div>
+                            <div class="passwordNote">
+                              (leave blank to keep existing password)
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            New Password
+                            {{#if accountInfoFieldCheckingWarning.password}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditInfo_password" type="password" placeholder="Password" onfocus="this.placeholder = ''" onblur='this.placeholder = "New Password"'>
+                            </div>
+                            <div class="passwordNote">
+                              (leave blank to keep existing password)
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Confirm New Password
+                            {{#if accountInfoFieldCheckingWarning.password}}
+                            <div class="warningIcon"></div>
+                            {{/if}}
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditInfo_passwordRe" type="password" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur='this.placeholder = "Confirm Password"'>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="accountEditFooter">
+                        <div class="accountEditAccountInfoSave">
+                          <button class="btn" id="accountEditAccountInfoSave">
+                          Save
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accountDisplayBlock">
+                      <div class="accountContentHeader clearfix">
+                        <h3>Account Information</h3>
+                        <div class='editBlock' id="myAccountEditAccountInfo">
+                          <div class="editIcon">
+                          </div>
+                          Edit
+                        </div>
+                      </div>
+                      <div class="accountInfoBlock clearfix">
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Name
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            {{myAccountInfo.name}}
+                          </div>
+                        </div>
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Email
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            {{myAccountInfo.email}}
+                          </div>
+                        </div>
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Password
+                          </div>
+                          <div class="accountInfoValue col-sm-8">
+                            ********************
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+                  <div id="accountPaymentInfo" class="accountContentWrap clearfix hidden">
+                    <div class="accountEditBlock slideDown clearfix">
+                      <div class="accountEditHeader">
+                        <h3>Payment Information</h3>
+                        <div class="closeIcon">
+                        </div>
+                      </div>
+                      <div class="accountEditSection">
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Name on Card
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditPayment_nameOnCard" type="text" placeholder="Name on Card" onfocus="this.placeholder = ''" onblur='this.placeholder = "Name on Card"'>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Credit Card Number
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditPayment_cardNumber" type="text" placeholder="Credit Card Number" onfocus="this.placeholder = ''" onblur='this.placeholder = "Credit Card Number"'>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            Expiration Date
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <select id="accountEditPayment_expMonth" class="inputFull" data-stripe="exp-month">
+
+                              <option value="">Month</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                            </select>
+
+                            <select id="accountEditPayment_expYear" class="inputFull" name="expirationDateYear" data-stripe="exp-year">
+                              <option value="">Year</option>
+                              <option value="2015">2015</option>
+                              <option value="2016">2016</option>
+                              <option value="2017">2017</option>
+                              <option value="2018">2018</option>
+                              <option value="2019">2019</option>
+                              <option value="2020">2020</option>
+                              <option value="2021">2021</option>
+                              <option value="2022">2022</option>
+                              <option value="2023">2023</option>
+                              <option value="2024">2024</option>
+                              <option value="2025">2025</option>
+                              <option value="2026">2026</option>
+                              <option value="2027">2027</option>
+                              <option value="2028">2028</option>
+                              <option value="2029">2029</option>
+                              <option value="2030">2030</option>
+                              <option value="2031">2031</option>
+                              <option value="2032">2032</option>
+                              <option value="2033">2033</option>
+                              <option value="2034">2034</option>
+                              <option value="2035">2035</option>
+                              <option value="2036">2036</option>
+                              <option value="2037">2037</option>
+                              <option value="2038">2038</option>
+                              <option value="2039">2039</option>
+                              <option value="2040">2040</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="accountEditRow clearfix">
+                          <div class="accountEditRowTitle col-sm-4">
+                            CVC Code
+                          </div>
+                          <div class="accountEditRowValue col-sm-8">
+                            <div class="accountEditInputBlock clearfix">
+                              <input class="string accountEditInput required" id="accountEditInfo_cvc" type="text" placeholder="CVC Code" onfocus="this.placeholder = ''" onblur='this.placeholder = "CVC Code"'>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="accountEditFooter">
+                        <div class="accountEditPaymentSave">
+                          <button class="btn" id="accountEditPaymentSave">
+                          Save
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accountDisplayBlock">
+                      <div class="accountContentHeader clearfix">
+                        <h3>Payment Information</h3>
+                        <div class='editBlock' id="myAccountEditPayment">
+                          <div class="editIcon">
+                          </div>
+                          Edit
+                        </div>
+                      </div>
+                      <div class="accountInfoBlock clearfix">
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Name on Card
+                          </div>
+                          <div id='nameOnCard' class="accountInfoValue col-sm-8">
+                            {{myAccountPayment.name}}
+                          </div>
+                        </div>
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Card Type
+                          </div>
+                          <div id='brandOnCard' class="accountInfoValue col-sm-8">
+                            {{myAccountPayment.brand}}
+                          </div>
+                        </div>
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Card Number
+                          </div>
+                          <div id='last4OnCard' class="accountInfoValue col-sm-8">
+                            Ending in {{myAccountPayment.last4}}
+
+                          </div>
+                        </div>
+                        <div class="accountInfoRow clearfix">
+                          <div class="accountInfoTitle col-sm-4">
+                            Expiration Date
+                          </div>
+                          <div id='endDateOnCard' class="accountInfoValue col-sm-8">
+                            {{myAccountPayment.exp_month}}/{{myAccountPayment.exp_year}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   {{>mainFooter}}

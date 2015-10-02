@@ -1,22 +1,15 @@
-// remember me
-
-Session.setDefault("rememberMe", false);
-
-Template.signin.helpers({
-  rememberMe: function(){
-    return Session.get("rememberMe");
-  }
-});
-
 Template.signin.events({
-  "click .rememberMeCheckboxIcon": function(event, template){
-    var rememberMe = Session.get("rememberMe");
-    if(rememberMe){
-      Session.set("rememberMe", false);
-    }else{
-      Session.set("rememberMe", true);
-    };
-    console.log(rememberMe);
-    return false;
+  "click #logInButton": function(event, template){
+    var accountEmail = $('#signInEmail').val();
+    var accountPassword = $('#signInPassword').val();
+    Meteor.loginWithPassword(accountEmail, accountPassword, function(err){
+      if (err){
+        toastr.error('Login failed. Please try again.');
+      }else{
+        toastr.success('Log-In successful.');
+      };
+    });
+     return false;
+
   },
 });

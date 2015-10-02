@@ -1,6 +1,7 @@
 #shortFooter {
   background-color: rgb(84, 173, 40);
   color: white;
+  z-index: 1030;
 }
 
 #mainFooter .col-sm-12 {

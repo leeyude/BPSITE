@@ -14,6 +14,8 @@
 #mainFooter {
   background-color: rgb(84, 173, 40);
   color: white!important;
+  z-index: 1030;
+  position: relative;
 }
 
 #mainFooter .col-sm-2 {

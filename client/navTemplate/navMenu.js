@@ -246,8 +246,14 @@ if (Meteor.isClient) {
   });
 
 // sign-in routing
-  Router.route('/myAccount', function () {
-    this.render('myAccount');
+  Router.route('/myAccount', {
+    action: function(){
+
+      this.render('myAccount');
+    },
+    waitOn: function(){
+      return [Meteor.subscribe('userData')];
+    },
   });
 
   Router.route('/deliverySchedule', {

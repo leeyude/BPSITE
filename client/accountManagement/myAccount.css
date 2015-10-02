@@ -1,0 +1,567 @@
+#myAccount {
+  padding-top: 140px;
+  text-align: center;
+  background-color: rgb(240, 255, 233);
+  background-image: url(/pearBackground.png);
+  padding-bottom: 70px;
+}
+
+#myAccount h3 {
+  margin-top: 0px;
+  font-size: 30px;
+  line-height: 70px;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-weight: bold;
+  float: left;
+  width: 100%;
+  text-align: left;
+  padding: 5px 36px 0 36px;
+}
+
+#myAccount p {
+  font-family: "Quando", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5em;
+  font-size: 16px;
+  padding-top: 10px;
+  color: rgb(84, 173, 40);
+  margin-bottom: 20px;
+}
+
+#myAccount .myAccountContent p {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#myAccount .line {
+  border-top: 1px solid #ddd;
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+#myAccount h4 {
+  text-align: left;
+  font-size: 20px;
+  float: left;
+  width: 100%;
+}
+
+#myAccount h5 {
+  font-size: 16px;
+  text-align: left;
+  float: left;
+  width: 100%;
+}
+
+.myAccountBlockBackground {
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+  -moz-box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+  background-color: white;
+  border: 1px solid #c3c3c3;
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+
+.myAccountBlockContent {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+#myAccountCalendar {
+  outline: #aaa solid 2px;
+}
+
+#myAccountCalendarBlock table{
+  width:100%;
+}
+
+#myAccount th, #myAccount td  {
+  text-align: center;
+  padding: 0;
+}
+
+#myAccount table {
+  border-collapse: collapse!important;
+}
+
+#myAccount th {
+  border: none;
+  font-size: 14px;
+  font-family: "Quando", sans-serif;
+  font-weight: lighter;
+  line-height: 1.5em;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  color: #666;
+}
+
+#myAccount td  {
+ height: 60px;
+ border-spacing: 0px;
+ border-collapse: collapse;
+ border: 1px solid #ddd!important;
+ border-top: 0;
+ font-family: "Quando", sans-serif;
+ color: #999;
+}
+
+#myAccount td.invisible {
+  border: 0!important;
+}
+
+#myAccount table {
+    border-collapse: separate;
+    empty-cells: hide;
+    table-layout: fixed;
+
+}
+
+.myAccountContentHeader {
+  width: 100%;
+  float: left;
+}
+
+.myAccountContentHeader h4 {
+  margin: 0;
+}
+
+.accountDisplayBlock .accountInfoBlock, .accountEditBlock, .accountEditHeader, .accountEditSection, .accountEditFooter {
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+.accountEditBlock {
+  background: white;
+  border-radius: 4px;
+  position: relative;
+  z-index: 50;
+}
+
+.slideDown {
+  -moz-transition-duration: .3s;
+  -webkit-transition-duration: .3s;
+  -o-transition-duration: .3s;
+  transition-duration: .3s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  max-height: 1000px;
+  overflow: hidden;
+}
+
+.accountEditHeader {
+  border-bottom: 1px solid #ddd;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+.closeIcon {
+  width: 20px;
+  height: 20px;
+  background: url(/accountClose.png) no-repeat;
+  background-size: 20px 20px;
+  position: relative;
+  display: block;
+  float: right;
+  margin-top: 28px;
+  cursor: pointer;
+}
+
+.accountEditSection{
+  padding: 30px;
+  border-bottom: 1px solid #ddd;
+
+}
+
+.accountEditSection .line {
+  margin-top: 24px;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+.accountEditRow {
+  margin-top: 10px;
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+.accountEditRowTitle {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Quando", sans-serif;
+  color: #666;
+}
+
+.accountEditRowValue {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Quando", sans-serif;
+  color: #666;
+}
+
+.accountManagementSession .col-sm-3 {
+  padding: 0;
+}
+
+#accountEditDelivery_city, #accountEditDelivery_state {
+  background-color: #eee;
+}
+
+#myAccount .accountEditOptionWrap{
+  margin-left: 1%;
+  margin-right: 1%;
+  float: left;
+  width: 48%;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 18px;
+}
+
+#accountMealPlans .accountEditOptionWrap {
+  float: left;
+  width: 100%;
+  font-family: "Gentium Book Basic", sans-serif;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#myAccount .accountEditOptionWrap label{
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#myAccount .accountEditOptionCheckbox {
+  line-height: 30px;
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+}
+
+#myAccount .accountEditOptionCheckbox.active {
+  line-height: 30px;
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border-radius:3px;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid rgb(84, 173, 40);
+  color: rgb(84, 173, 40);
+}
+
+#myAccount .accountEditOptionCheckboxIcon {
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+#myAccount .active .accountEditOptionCheckboxIcon {
+  top: 5px;
+  left: 10px;
+
+  background-image: url(/check.png);
+  border: none;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+
+#myAccount select {
+  line-height: 30px;
+  font-family: "Quando", sans-serif;
+  text-align: left;
+  border-radius: 2px;
+  display: inline-block;
+  width: 48%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  cursor: pointer;
+  height: 34px;
+  background-color: white;
+  color: #888;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+#myAccount .accountEditRowValue .mealPlanTypeOption {
+  width: 100%;
+}
+
+.accountEditDeliverySave .btn {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 4px;
+}
+
+.accountEditFooter {
+padding-top: 14px;
+padding-bottom: 14px;
+}
+
+.accMngtNav {
+  display: block;
+  margin-top: 12px;
+  margin-right: 0px;
+  width: 100%;
+  float: left;
+
+}
+
+.accMngtItemWrap {
+  display: block;
+  width: 100%;
+  float: left;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.accMngtItem {
+  display: block;
+  list-style: none;
+  cursor: pointer;
+  width: 100%;
+  float: left;
+  height: 64px;
+  vertical-align: middle;
+  padding-top: 17px;
+}
+
+.accMngtItemIcon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: block;
+  float: left;
+}
+
+.mealPlansIcon.accMngtItemIcon {
+  background: url(/accountMealPlanInactive.png) no-repeat;
+  background-size: 20px 30px;
+  left: 5px;
+}
+
+.deliveryInfoIcon.accMngtItemIcon {
+  background: url(/AccountDeliveryInactive.png) no-repeat;
+  background-size: 30px 22px;
+  top: 2px;
+}
+
+.accountInfoIcon.accMngtItemIcon {
+  background: url(/accountInfoInactive.png) no-repeat;
+  background-size: 24px 24px;
+  left: 3px;
+}
+
+.paymentIcon.accMngtItemIcon {
+  background: url(/accountPaymentInactive.png) no-repeat;
+  background-size: 30px 22px;
+  top: 2px;
+}
+
+.accMngtItemWrap a {
+  font-size: 20px;
+  font-family: "Gentium Book Basic", sans-serif;
+  text-align: left;
+  color: #666;
+  width: auto;
+  float: left;
+  margin-left: 10px;
+}
+
+.accMngtItemWrap:hover .mealPlansIcon.accMngtItemIcon, .active  .mealPlansIcon.accMngtItemIcon{
+  background: url(/accountMealPlan.png) no-repeat;
+  background-size: 20px 30px;
+  left: 5px;
+}
+
+.accMngtItemWrap:hover .deliveryInfoIcon.accMngtItemIcon, .active .deliveryInfoIcon.accMngtItemIcon  {
+  background: url(/AccountDelivery.png) no-repeat;
+  background-size: 30px 22px;
+  top: 2px;
+}
+
+.accMngtItemWrap:hover .accountInfoIcon.accMngtItemIcon, .active .accountInfoIcon.accMngtItemIcon {
+  background: url(/accountInfo.png) no-repeat;
+  background-size: 24px 24px;
+  left: 3px;
+}
+
+.accMngtItemWrap:hover .paymentIcon.accMngtItemIcon, .active .paymentIcon.accMngtItemIcon {
+  background: url(/accountPaymentIcon.png) no-repeat;
+  background-size: 30px 22px;
+  top: 2px;
+}
+
+.accMngtItemWrap:hover a, .accMngtItemWrap:focus a, .accMngtItemWrap .active a {
+  text-decoration: none;
+  color: rgb(84, 173, 40);
+}
+
+.accMngtItemWrap a:focus {
+  text-decoration: none;
+
+}
+
+.accMngtItemWrap:hover .accMngtItem, .active.accMngtItem {
+  border-bottom: 4px solid rgb(84, 173, 40);
+}
+
+.accountMngtContent {
+  padding: 30px;
+  padding-bottom: 60px;
+  width: 100%;
+  display: block;
+  float: left;
+  border-left: 1px solid #ddd;
+}
+
+#myAccount .accountContentHeader {
+  border-bottom: 1px solid #ddd;
+  display: block;
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+}
+
+#myAccount .accountContentWrap h3 {
+  font-size: 26px;
+  width: auto;
+  float: left;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+#myAccount .col-sm-4, #myAccount .col-sm-8 {
+  padding-left: 0;
+}
+
+.editBlock {
+  display: block;
+  width: auto;
+  float: right;
+  font-size: 12px;
+  font-family: "Quando", sans-serif;
+  font-weight: lighter;
+  color: rgb(84, 173, 40);
+  margin-top: 33px;
+  cursor: pointer;
+}
+
+.editBlock:hover {
+  text-decoration: underline;
+}
+
+.editIcon {
+  background: url(/accountEdit.png) no-repeat;
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  display: block;
+  float: left;
+  margin-right: 6px;
+}
+
+.accountInfoTitle {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Quando", sans-serif;
+  color: #666;
+}
+
+.accountInfoValue {
+  text-align: left;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: "Quando", sans-serif;
+  color: #888;
+}
+
+.accountEditRowTitle {
+  margin-top: 7px;
+}
+
+
+.accountEditInput {
+  line-height: 30px;
+  font-family: "Quando", sans-serif;
+  text-align: left;
+  padding-left: 10px;
+  border-radius: 3px;
+  display: inline-block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  cursor: auto;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+#accountEditInfo_cvc.accountEditInput {
+  width: 48%;
+}
+
+.passwordNote {
+  color: #999;
+  font-size: 12px;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 4px;
+}
+
+.accountInfoRow {
+  padding-top: 24px;
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+.firstRow.accountInfoRow {
+  padding-top: 0;
+}
+
+.overlay-dark {
+    background-color: #000;
+    opacity: .7;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}

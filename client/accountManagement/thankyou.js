@@ -59,10 +59,12 @@ Template.thankyou.helpers({
 
     var calendarDateWithValue = todayWeekday; // start to set dates from today
     for(i=todayDateInMonth; i<(daysInMonth[todayMonth]+1);i++){
+      console.log("print i..."+i);
+
       firstMonthValueArray[calendarDateWithValue]= i; // setting displayed dates
       // and to set class of these displayed dates
-      for(j=0; j<deliveryDatesThisMonth.length; j++){
-
+      for(j=0; j<(deliveryDatesThisMonth.length+1); j++){
+        console.log("print j..."+j);
         if(i==deliveryDatesThisMonth[j]){
           console.log("when i =..."+i+"and and and "+deliveryDatesThisMonth[j]);
           console.log(deliveryStatusThisMonth[j]==99);
@@ -70,7 +72,7 @@ Template.thankyou.helpers({
             console.log("it is true that date is ..."+deliveryDatesThisMonth[j]);
             console.log(calendarDateWithValue);
             firstMonthClassValueArray[calendarDateWithValue]='skipped';
-            console.log(firstMonthClassValueArray[calendarDateWithValue]);
+            console.log('first month class with date value'+firstMonthClassValueArray[calendarDateWithValue]);
             console.log(firstMonthClassValueArray);
           }else{
             firstMonthClassValueArray[calendarDateWithValue]='scheduled';
@@ -83,7 +85,7 @@ Template.thankyou.helpers({
       calendarDateWithValue++;
     };
     firstMonthClassValueArray[todayWeekday]='todayIcon';
-
+    console.log('this month class array'+firstMonthClassValueArray);
      // the array includes all dates remaining for display in the current month.
 
 
@@ -146,12 +148,9 @@ Template.thankyou.helpers({
     Session.set("firstMonthClassValueArray", firstMonthClassValueArray);
     Session.set("secondMonthClassValueArray", secondMonthClassValueArray);
 
-
-
-
-
     return Session.get("thisMonth");
   },
+
   nextMonth: function(){
     return Session.get("nextMonth");
   },
@@ -173,4 +172,10 @@ Template.thankyou.helpers({
   secondMonthClassValueArray: function(){
     return Session.get("secondMonthClassValueArray");
   },
+});
+
+Template.thankyou.events({
+  "click .myAccount": function(event, template){
+    Router.go('/myAccount');
+  }
 });
