@@ -3,6 +3,8 @@
   text-align: center;
   background-color: rgb(240, 255, 233);
   padding-bottom: 40px;
+  background-image: url(/pearBackground.png);
+
 }
 
 #thankyou h3 {
@@ -67,10 +69,28 @@
     display: block;
 }
 
-.centralBlock {
-  width: 60%;
+#thankyou .thankyouBlockBackground {
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+  -moz-box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.06);
+  background-color: white;
+  border: 1px solid #c3c3c3;
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  padding-bottom: 30px;
+}
+
+
+#thankyou .centralBlock {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
 }
 
 #thankyou .calendarHeader{

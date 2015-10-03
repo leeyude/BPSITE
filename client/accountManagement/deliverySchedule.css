@@ -3,6 +3,8 @@
   text-align: center;
   background-color: rgb(240, 255, 233);
   padding-bottom: 40px;
+  background-image: url(/pearBackground.png);
+
 }
 
 #deliverySchedule h3 {

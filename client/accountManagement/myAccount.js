@@ -24,14 +24,14 @@ Template.myAccount.helpers({
         babyRecipeType[0]='Single Puree';
       };
       if(userObject.profile.babyProfileOne.yummyPairs){
-        if(babyRecipeType[0]){
+        if(babyRecipeType[0]!=''){
           babyRecipeType[0]=babyRecipeType[0]+", Yummy Pairs";
         }else{
           babyRecipeType[0]='Yummy Pairs';
         };
       };
       if(userObject.profile.babyProfileOne.tastyTrio){
-        if(babyRecipeType[0]){
+        if(babyRecipeType[0]!=''){
           babyRecipeType[0]=babyRecipeType[0]+", Tasty Trio";
         }else{
           babyRecipeType[0]='Tasty Trio';
@@ -55,14 +55,14 @@ Template.myAccount.helpers({
         babyRecipeType[1]='Single Puree';
       };
       if(userObject.profile.babyProfileTwo.yummyPairs){
-        if(babyRecipeType[1]){
+        if(babyRecipeType[1]!=''){
           babyRecipeType[1]=babyRecipeType[1]+", Yummy Pairs";
         }else{
           babyRecipeType[1]='Yummy Pairs';
         };
       };
       if(userObject.profile.babyProfileTwo.tastyTrio){
-        if(babyRecipeType[1]){
+        if(babyRecipeType[1]!=''){
           babyRecipeType[1]=babyRecipeType[1]+", Tasty Trio";
         }else{
           babyRecipeType[1]='Tasty Trio';
@@ -84,14 +84,14 @@ Template.myAccount.helpers({
         babyRecipeType[2]='Single Puree';
       };
       if(userObject.profile.babyProfileThree.yummyPairs){
-        if(babyRecipeType[2]){
+        if(babyRecipeType[2]!=''){
           babyRecipeType[2]=babyRecipeType[2]+", Yummy Pairs";
         }else{
           babyRecipeType[2]='Yummy Pairs';
         };
       };
       if(userObject.profile.babyProfileThree.tastyTrio){
-        if(babyRecipeType[2]){
+        if(babyRecipeType[2]!=''){
           babyRecipeType[2]=babyRecipeType[2]+", Tasty Trio";
         }else{
           babyRecipeType[2]='Tasty Trio';
@@ -165,7 +165,7 @@ Template.myAccount.helpers({
           $('#brandOnCard').text('');
         };
         if(result.last4){
-          $('#last4OnCard').text(result.last4);
+          $('#last4OnCard').text('Ending in '+result.last4);
         }else{
           $('#last4OnCard').text('');
         };
@@ -174,10 +174,6 @@ Template.myAccount.helpers({
         }else{
           $('#endDateOnCard').text('');
         };
-
-        $('#brandOnCard').text(result.brand);
-        $('#last4OnCard').text(result.last4);
-        $('#endDateOnCard').text(result.exp_month+'/'+result.exp_year);
 
 //result = {
 //last4: customerObject.sources.data[0].last4,
@@ -369,7 +365,12 @@ Template.myAccount.events({
       $('#accountEditMealPlan_deliveryDays option[value="SA"]').remove();
     };
 
-    $('.overlay-dark').removeClass('hidden');
+    $('.overlay-dark').removeClass('closed');
+
+    $("#accountMealPlans>.accountEditBlock.closed").removeClass("closed");
+    $("html, body").animate({ scrollTop: 160 }, "slow");
+
+
     return false;
 
   },
@@ -395,7 +396,10 @@ Template.myAccount.events({
     };
     $('#accountEditDelivery_phone').val(userObject.profile.userPhoneNumber);
 
-    $('.overlay-dark').removeClass('hidden');
+    $('.overlay-dark').removeClass('closed');
+    $("#accountDeliveryInfo>.accountEditBlock.closed").removeClass("closed");
+    $("html, body").animate({ scrollTop: 160 }, "slow");
+
     return false;
   },
 
@@ -409,14 +413,21 @@ Template.myAccount.events({
     $('#accountEditInfo_lastName').val(userObject.profile.userLastName);
     $('#accountEditInfo_email').val(userObject.emails[0].address);
 
-    $('.overlay-dark').removeClass('hidden');
+    $('.overlay-dark').removeClass('closed');
+    $("#accountInfo>.accountEditBlock.closed").removeClass("closed");
+    $("html, body").animate({ scrollTop: 160 }, "slow");
+
     return false;
   },
 
   "click #myAccountEditPayment": function(event, template){
     Session.set("paymentFieldCheckingWarning", false);
 
-    $('.overlay-dark').removeClass('hidden');
+    $('.overlay-dark').removeClass('closed');
+    $("#accountPaymentInfo>.accountEditBlock.closed").removeClass("closed");
+    $("html, body").animate({ scrollTop: 160 }, "slow");
+
+    return false;
   },
 
 // activate all buttons in the four sections
@@ -544,7 +555,33 @@ Template.myAccount.events({
     tastyTrio: false
   }];
 
-  if($('#accountEditMealPlan_singlePuree_1').hasClass('active')||$('#accountEditMealPlan_singlePuree_2').hasClass('active')||$('#accountEditMealPlan_singlePuree_2').hasClass('active')){
+  console.log($('.pureeTypeCheck1').hasClass('active'));
+  console.log($('.pureeTypeCheck2').hasClass('active'));
+  console.log($('.pureeTypeCheck3').hasClass('active'));
+
+  if(userObject.profile.babyProfileTwo.babyStatus){
+    if(userObject.profile.babyProfileThree.babyStatus){
+      if($('.pureeTypeCheck1').hasClass('active')&&$('.pureeTypeCheck2').hasClass('active')&&$('.pureeTypeCheck3').hasClass('active')){
+        var validteDataEntry= true; // true means data entry is complete
+      }else{
+        var validteDataEntry= false; // true means data entry is complete
+      }
+    }else{
+      if($('.pureeTypeCheck1').hasClass('active')&&$('.pureeTypeCheck2').hasClass('active')){
+        var validteDataEntry= true; // true means data entry is complete
+      }else{
+        var validteDataEntry= false; // true means data entry is complete
+      }
+    }
+  }else{
+    if($('.pureeTypeCheck1').hasClass('active')){
+      var validteDataEntry= true; // true means data entry is complete
+    }else{
+      var validteDataEntry= false; // true means data entry is complete
+    }
+  };
+
+  if(validteDataEntry){
     Session.set("mealPlanFieldCheckingWarning", false);
     if(userObject.profile.babyProfileOne.babyStatus){
       if($('#accountEditMealPlan_planType_1').val()=='SM'){
@@ -675,7 +712,8 @@ Template.myAccount.events({
         toastr.success('Meal plans are updated.');
       }
     });
-    $('.overlay-dark').addClass('hidden');
+    $('.overlay-dark').addClass('closed');
+    $("#accountMealPlans>.accountEditBlock").addClass("closed");
 
     return false;
 
@@ -724,7 +762,9 @@ Template.myAccount.events({
       }
     });
 
-    $('.overlay-dark').addClass('hidden');
+    $('.overlay-dark').addClass('closed');
+    $("#accountDeliveryInfo>.accountEditBlock").addClass("closed");
+
     return false;
 
   };
@@ -876,7 +916,8 @@ Template.myAccount.events({
                 }
               });
 
-              $('.overlay-dark').addClass('hidden');
+              $('.overlay-dark').addClass('closed');
+              $("#accountInfo>.accountEditBlock").addClass("closed");
               return false;
             };
           });
@@ -964,7 +1005,8 @@ Template.myAccount.events({
           }
         });
 
-        $('.overlay-dark').addClass('hidden');
+        $('.overlay-dark').addClass('closed');
+        $("#accountInfo>.accountEditBlock").addClass("closed");
 
         return false;
       };
@@ -987,9 +1029,79 @@ Template.myAccount.events({
   var exp_year = $('#accountEditPayment_expYear').val();
   var cvc = $('#accountEditInfo_cvc').val();
 
- 
+  var paymentFieldCheckingWarning = {
+    cardNum: false,
+    exp: false,
+    cvc: false,
+  };
 
-  $('.overlay-dark').addClass('hidden');
+  if(cardNum==''||exp_month==''||exp_year==''||cvc==''){
+    // any of the field is empty
+    if(cardNum==''){
+      paymentFieldCheckingWarning.cardNum= true
+    };
+    if(exp_month==''||exp_year==''){
+      paymentFieldCheckingWarning.exp= true
+    };
+    if(cvc==''){
+      paymentFieldCheckingWarning.cvc= true
+    };
+    Session.set("paymentFieldCheckingWarning", paymentFieldCheckingWarning);
+    toastr.error('Please ensure filling these fields.')
+
+  }else{
+    // all fields are filled
+    Stripe.card.createToken({
+        number: cardNum,
+        cvc: cvc,
+        exp_month: exp_month,
+        exp_year: exp_year,
+        name: name
+    }, function(status, response) {
+        if (response.error) {
+          console.log(response.error);
+          toastr.error('Card entry is invalid. Please try again.')
+
+          paymentFieldCheckingWarning = {
+            cardNum: false,
+            exp: false,
+            cvc: false,
+          };
+          Session.set("paymentFieldCheckingWarning", paymentFieldCheckingWarning);
+
+        } else {
+          // response contains id and card, which contains additional card details
+          var stripeToken = response.id;
+
+          Meteor.call("updateStripeCard", stripeID, stripeToken, function(error, result){
+                if(error){
+                  console.log("error", error);
+                  toastr.error('Credit card information is invalid. Please try again.');
+                  paymentFieldCheckingWarning = {
+                    cardNum: false,
+                    exp: false,
+                    cvc: false,
+                  };
+                  Session.set("paymentFieldCheckingWarning", paymentFieldCheckingWarning);
+                  return false;
+
+                }
+                if(result){
+                  console.log(result);
+                  toastr.success('Credit card successfully updated.');
+                  Session.set("paymentFieldCheckingWarning", false);
+                  return false;
+                }
+          });
+        }
+    });
+
+/*    */
+
+  };
+
+  $('.overlay-dark').addClass('closed');
+  $("#accountPaymentInfo>.accountEditBlock").addClass("closed");
 
   return false;
 },
@@ -998,11 +1110,23 @@ Template.myAccount.events({
 
 // cancel editing
   "click .closeIcon": function(event, template){
-    $('.overlay-dark').addClass('hidden');
+    $('.overlay-dark').addClass('closed');
+    $("#accountMealPlans>.accountEditBlock").addClass("closed");
+    $("#accountDeliveryInfo>.accountEditBlock").addClass("closed");
+    $("#accountInfo>.accountEditBlock").addClass("closed");
+    $("#accountPaymentInfo>.accountEditBlock").addClass("closed");
+
     return false;
   },
+
   "click .overlay-dark": function(event, template){
-    $('.overlay-dark').addClass('hidden');
+    $('.overlay-dark').addClass('closed');
+
+    $("#accountMealPlans>.accountEditBlock").addClass("closed");
+    $("#accountDeliveryInfo>.accountEditBlock").addClass("closed");
+    $("#accountInfo>.accountEditBlock").addClass("closed");
+    $("#accountPaymentInfo>.accountEditBlock").addClass("closed");
+
     return false;
   },
 
@@ -1025,6 +1149,21 @@ Template.myAccount.helpers({
   },
   paymentFieldCheckingWarning: function(){
     return Session.get('paymentFieldCheckingWarning');
+  },
+
+});
+
+Template.body.events({
+  "keyup": function(event){
+    if(event.keyCode == 27){
+      $('.overlay-dark').addClass('closed');
+
+      $("#accountMealPlans>.accountEditBlock").addClass("closed");
+      $("#accountDeliveryInfo>.accountEditBlock").addClass("closed");
+      $("#accountInfo>.accountEditBlock").addClass("closed");
+      $("#accountPaymentInfo>.accountEditBlock").addClass("closed");
+
+      return false;    };
   },
 
 });

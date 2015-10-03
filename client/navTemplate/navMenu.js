@@ -176,6 +176,8 @@ if (Meteor.isClient) {
     action: function(){
 
       this.render('thankyou');
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+
     },
     onBeforeAction: function(){
       var preUserToken= Session.get("preUserLoggedIn");
@@ -314,6 +316,13 @@ Template.navMenu.events({
   "click #signOut": function(event, template){
     console.log("click log out");
     Meteor.logout();
+    Router.go('/');
     return false;
-  }
+  },
+
+  "click #myAccountBtn": function(event, template){
+    Router.go('/myAccount');
+    return false;
+  },
+
 });

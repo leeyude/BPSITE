@@ -77,6 +77,7 @@ Meteor.methods({
         }
       }
     );
+    var stripEmailUpdate = askStripeUpdate_email(userId, userEmail);
     return 'successful';
   },
 

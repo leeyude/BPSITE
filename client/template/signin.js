@@ -6,6 +6,7 @@ Template.signin.events({
       if (err){
         toastr.error('Login failed. Please try again.');
       }else{
+        Router.go('/deliverySchedule');
         toastr.success('Log-In successful.');
       };
     });
