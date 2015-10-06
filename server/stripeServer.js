@@ -58,8 +58,11 @@ Meteor.methods({
 // other Stripe functions
 
 askStripeUpdate_email = function(userId, userEmail){
-  var userObject = Meteor.users.find({_id: userId});
+  var userObject = Meteor.users.findOne({_id: userId});
+  console.log(userObject);
   var userStripeID = userObject.stripeID;
+
+  console.log(userStripeID);
 
   var Stripe = StripeSync("sk_test_g1O9OQ69qAtW4liCXH7zRzLN");
 

@@ -249,8 +249,10 @@ defaultMealOption = function(userId, birthInput){
 
 // Get ZIP to check state and city
 zipData = function(zipInput){
+  Meteor.subscribe("zipsSearch", zipInput);
 
   var zipObject = Zips.findOne({zipcode:zipInput});
+  console.log('this zip data is in the global js'+zipObject);
   if(zipObject){
     var result = {
       city: zipObject.cityName,

@@ -281,8 +281,14 @@ if (Meteor.isClient) {
     },
   });
 
-  Router.route('/babyProfile', function () {
-    this.render('babyProfile');
+  Router.route('/babyProfile', {
+    action: function(){
+
+      this.render('babyProfile');
+    },
+    waitOn: function(){
+      return [Meteor.subscribe('userData')];
+    },
   });
 
 }

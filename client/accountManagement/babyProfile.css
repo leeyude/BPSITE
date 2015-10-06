@@ -1,23 +1,22 @@
 #babyProfile {
-  padding-top: 100px;
+  padding-top: 150px;
   text-align: center;
   background-color: rgb(240, 255, 233);
   background-image: url(/pearBackground.png);
-
-  padding-bottom: 40px;
+  padding-bottom: 100px;
+  z-index: 0;
 }
 
 #babyProfile h3 {
-  margin-bottom: 15px;
   margin-top: 0px;
-  padding-bottom: 0px;
-  font-size: 32px;
-  line-height: 1.1em;
+  font-size: 30px;
+  line-height: 70px;
   font-family: "Gentium Book Basic", sans-serif;
-  font-weight: 700;
+  font-weight: bold;
   float: left;
   width: 100%;
   text-align: left;
+  padding: 5px 36px 0 36px;
 }
 
 #babyProfile p {
@@ -38,7 +37,7 @@
 }
 
 #babyProfile .line {
-  border-top: 1px solid #c3c3c3;
+  border-top: 1px solid #ddd;
   display: block;
   float: left;
   width: 100%;
@@ -67,18 +66,13 @@
   border: 1px solid #c3c3c3;
   position: relative;
   z-index: 1;
-  padding: 32px;
+  padding: 0;
 }
 
 .babyProfileBlockContent {
   width: 100%;
-  display: inline-block;
-}
-
-.scheduleHeader {
-  display: inline-block;
-  width: 100%;
-
+  display: block;
+  border-radius: 4px;
 }
 
 #babyProfileCalendar {
@@ -130,10 +124,6 @@
 
 }
 
-.babyProfileHeader {
-  margin-bottom: 15px;
-}
-
 .babyProfileContentHeader {
   width: 100%;
   float: left;
@@ -141,4 +131,692 @@
 
 .babyProfileContentHeader h4 {
   margin: 0;
+}
+
+.profileDisplayBlock .profileInfoBlock, .profileEditBlock, .profileEditHeader, .profileEditSection, .profileEditFooter {
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+.profileEditBlock {
+  background: white;
+  border-radius: 4px;
+  position: relative;
+  z-index: 50;
+}
+
+.slideDown {
+  -moz-transition-duration: .3s;
+  -webkit-transition-duration: .3s;
+  -o-transition-duration: .3s;
+  transition-duration: .3s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  max-height: 1000px;
+  overflow: hidden;
+}
+
+.profileEditHeader {
+  border-bottom: 1px solid #ddd;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+.closeIcon {
+  width: 20px;
+  height: 20px;
+  background: url(/profileClose.png) no-repeat;
+  background-size: 20px 20px;
+  position: relative;
+  display: block;
+  float: right;
+  margin-top: 28px;
+  cursor: pointer;
+}
+
+.profileEditSection{
+  padding: 30px;
+  border-bottom: 1px solid #ddd;
+
+}
+
+.profileEditSection .line {
+  margin-top: 24px;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+.profileEditRow {
+  margin-top: 10px;
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+.profileEditRowTitle {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Quando", sans-serif;
+  color: #666;
+}
+
+.profileEditRowValue {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Quando", sans-serif;
+  color: #666;
+}
+
+.profileManagementSession .col-sm-3 {
+  padding: 0;
+}
+
+#babyProfileMealPlans .profileEditOptionWrap {
+  float: left;
+  width: 100%;
+  font-family: "Gentium Book Basic", sans-serif;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#babyProfile .profileEditOptionWrap label{
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#babyProfile .profileEditOptionCheckbox {
+  line-height: 30px;
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+}
+
+#babyProfile .profileEditOptionCheckbox.active {
+  line-height: 30px;
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  float: left;
+  position: relative;
+  border-radius:3px;
+  text-align: left;
+  cursor: pointer;
+  border: 1px solid rgb(84, 173, 40);
+  color: rgb(84, 173, 40);
+}
+
+#babyProfile .profileEditOptionCheckboxIcon {
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+#babyProfile .active .profileEditOptionCheckboxIcon {
+  top: 5px;
+  left: 10px;
+
+  background-image: url(/check.png);
+  border: none;
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+
+#babyProfile select {
+  line-height: 30px;
+  font-family: "Quando", sans-serif;
+  text-align: left;
+  border-radius: 2px;
+  display: inline-block;
+  width: 48%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  cursor: pointer;
+  height: 34px;
+  background-color: white;
+  color: #888;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+#babyProfile .profileEditRowValue .mealPlanTypeOption {
+  width: 100%;
+}
+
+.profileEditFooter {
+padding-top: 14px;
+padding-bottom: 14px;
+}
+
+.profileMngtNav {
+  display: block;
+  margin-top: 12px;
+  margin-right: 0px;
+  width: 100%;
+  float: left;
+
+}
+
+.babyProfileItemWrap {
+  display: block;
+  width: 100%;
+  float: left;
+  padding-left: 30px;
+}
+
+.babyProfileItem {
+  display: block;
+  list-style: none;
+  cursor: pointer;
+  width: 100%;
+  float: left;
+  height: 64px;
+  vertical-align: middle;
+  padding-top: 17px;
+}
+
+.babyProfileItemIcon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: block;
+  float: left;
+}
+
+.mealPlansIcon.babyProfileItemIcon {
+  background: url(/accountMealPlanInactive.png) no-repeat;
+  background-size: 20px 30px;
+  left: 5px;
+}
+
+.basicsIcon.babyProfileItemIcon {
+  background: url(/basicsInactive.png) no-repeat;
+  background-size: 28px 28px;
+  left: 1px;
+}
+
+.allergenNotesIcon.babyProfileItemIcon {
+  background: url(/shieldInactive.png) no-repeat;
+  background-size: 24px 24px;
+  left: 3px;
+}
+
+.babyProfileItemWrap a {
+  font-size: 18px;
+  font-family: "Gentium Book Basic", sans-serif;
+  text-align: left;
+  color: #666;
+  width: auto;
+  float: left;
+  margin-left: 10px;
+}
+
+.babyProfileItemWrap:hover .mealPlansIcon.babyProfileItemIcon, .active  .mealPlansIcon.babyProfileItemIcon{
+  background: url(/accountMealPlan.png) no-repeat;
+  background-size: 20px 30px;
+  left: 5px;
+}
+
+.babyProfileItemWrap:hover .basicsIcon.babyProfileItemIcon, .active  .basicsIcon.babyProfileItemIcon{
+  background: url(/basics.png) no-repeat;
+  background-size: 28px 28px;
+  left: 1px;
+}
+
+.babyProfileItemWrap:hover .allergenNotesIcon.babyProfileItemIcon, .active  .allergenNotesIcon.babyProfileItemIcon{
+  background: url(/shield.png) no-repeat;
+  background-size: 24px 24px;
+  left: 3px;
+}
+
+.babyProfileItemWrap:hover a, .babyProfileItemWrap:focus a, .babyProfileItemWrap .active a {
+  text-decoration: none;
+  color: rgb(84, 173, 40);
+}
+
+.babyProfileItemWrap a:focus {
+  text-decoration: none;
+
+}
+
+.babyProfileItemWrap:hover .babyProfileItem, .active.babyProfileItem {
+  border-bottom: 4px solid rgb(84, 173, 40);
+}
+
+.profileMngtContent {
+  padding: 30px;
+  padding-bottom: 60px;
+  width: 100%;
+  display: block;
+  float: left;
+  border-left: 1px solid #ddd;
+  min-height: 400px;
+
+}
+
+#babyProfile .babyProfileContentHeader {
+  border-bottom: 1px solid #ddd;
+  display: block;
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+}
+
+#babyProfile .babyProfileContentWrap h3 {
+  font-size: 26px;
+  width: auto;
+  float: left;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+.babyProfileContentWrap {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  float: left;
+}
+
+#babyProfile .col-sm-4, #babyProfile .col-sm-8 {
+  padding-left: 0;
+}
+
+.editBlock {
+  display: block;
+  width: auto;
+  float: right;
+  font-size: 12px;
+  font-family: "Quando", sans-serif;
+  font-weight: lighter;
+  color: rgb(84, 173, 40);
+  margin-top: 33px;
+  cursor: pointer;
+}
+
+.editBlock:hover {
+  text-decoration: underline;
+}
+
+.profileInfoBlock .editBlock {
+  margin-top: 0;
+  width: auto;
+  text-align: center;
+  display: block;
+  float: left;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius: 2px;
+  padding: 4px 8px 4px 8px;
+}
+
+.editIcon {
+  background: url(/profileEdit.png) no-repeat;
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  display: block;
+  float: left;
+  margin-right: 6px;
+}
+
+#babyProfileBirthdayInput {
+    line-height: 30px;
+    font-family: "Quando", sans-serif;
+    text-align: center;
+    display: inline-block;
+    width: 40%;
+    float: left;
+    position: relative;
+    border: 1px solid #c3c3c3;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    cursor: pointer;
+}
+
+.profileInfoTitle {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Quando", sans-serif;
+  color: #666;
+}
+
+.profileInfoValue {
+  text-align: left;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: "Quando", sans-serif;
+  color: #888;
+}
+
+.profileInfoItemTitle, .profileInfoRowValue, .profileEditRowTitle{
+  margin-top: 7px;
+}
+
+.profileEditRow .genderSelection.active {
+    font-family: "Quando", sans-serif;
+    line-height: 32px;
+    display: block;
+    width: 30%;
+    float: left;
+    position: relative;
+    border: 1px solid rgb(84, 173, 40);
+    border-radius: 3px;
+    color: rgb(84, 173, 40);
+    text-align: left;
+    cursor: pointer;
+    padding-left: 40px;
+    margin-right: 10px;
+}
+
+.profileEditRow .genderSelection {
+    font-family: "Quando", sans-serif;
+    line-height: 32px;
+    display: block;
+    width: 30%;
+    float: left;
+    position: relative;
+    border: 1px solid #c3c3c3;
+    border-radius: 3px;
+    color: #c3c3c3;
+    text-align: left;
+    cursor: pointer;
+    padding-left: 40px;
+    margin-right: 10px;
+
+}
+
+.babyProfileEditAllergenSelection {
+    font-family: "Quando", sans-serif;
+    line-height: 32px;
+    display: block;
+    width: 40%;
+    float: left;
+    position: relative;
+    border: 1px solid #c3c3c3;
+    border-radius: 3px;
+    color: #c3c3c3;
+    text-align: left;
+    cursor: pointer;
+    padding-left: 40px;
+    margin-right: 10px;
+}
+
+.babyProfileEditAllergenSelection.active {
+  border: 1px solid rgb(84, 173, 40);
+  color: rgb(84, 173, 40);
+}
+
+.babyProfileEditAllergenSelection.allergic.active {
+  border: 1px solid #C8662E;
+  color: #C8662E;
+}
+
+
+.profileEditRow .profileRadioIcon {
+    background-size: 20px,auto;
+    width: 20px;
+    height: 20px;
+    top: 6px;
+    left: 10px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 2px;
+    display: block;
+    float: left;
+    position: absolute;
+    cursor: pointer;
+    background-image: url(/radio-notSelected.png);
+}
+
+.profileEditRow .active .profileRadioIcon {
+    background-size: 20px,auto;
+    width: 20px;
+    height: 20px;
+    top: 6px;
+    left: 10px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 2px;
+    display: block;
+    float: left;
+    position: absolute;
+    cursor: pointer;
+    background-image: url(/radio-selected.png);
+}
+
+#babyProfile .freqInput {
+    border: 1px solid rgb(84, 173, 40);
+    color: rgb(84, 173, 40);
+    font-family: "Quando", sans-serif;
+    line-height: 36px;
+    display: block;
+    width: 122px;
+    float: left;
+    position: relative;
+    border-radius: 3px;
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 40px;
+}
+
+#babyProfile .freqBlock {
+    float: left;
+    width: auto;
+    text-align: center;
+    display: inline-block;
+    width: 38px;
+    border-right: 1px solid rgb(84, 173, 40);
+    border-left: 1px solid rgb(84, 173, 40);
+}
+
+.profileEditInput {
+  line-height: 30px;
+  font-family: "Quando", sans-serif;
+  text-align: left;
+  padding-left: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  width: 60%;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  cursor: auto;
+  margin-right: 1%;
+}
+
+#babyProfileAllergenNotes .profileEditInput {
+  text-align: left;
+}
+
+.profileInfoRow {
+  padding-top: 24px;
+  width: 100%;
+  display: block;
+  float: left;
+}
+
+.firstRow.profileInfoRow {
+  padding-top: 0;
+}
+
+.profileInfoAllergenEntry {
+  padding-left: 12px;
+}
+
+.allergenWheat:hover, .allergenShellfish:hover, .allergenEggs:hover, .allergenFish:hover, .allergenPeanuts:hover, .allergenMilk:hover, .allergenTreeNuts:hover, .allergenSoybeans:hover, .allergenOthers:hover {
+  background-color: #f9f3ef;
+  border-radius: 4px;
+}
+
+.allergenShield {
+  width: 30px;
+  height: 30px;
+  background-position: 3px 3px;
+  background-size: 24px 24px;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  margin-left: 15px;
+  margin-top: -7px;
+}
+
+.allergenShield.active {
+  width: 30px;
+  height: 30px;
+  background: url(/shield.png) no-repeat;
+  background-position: 3px 3px;
+  background-size: 24px 24px;
+  border-radius: 2px;
+}
+
+#babyProfileAllergenNotes .profileInfoRow {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.allergenEditTitle {
+  margin-bottom: 10px;
+  font-style: italic;
+  color: #999;
+}
+
+#babyProfileAllergenNotes .babyProfileEditAllergenShieldIcon {
+  border-radius: 2px;
+  background: url(/shieldInactive.png) no-repeat;
+  background-size: 18px 18px;
+  background-position: 0px 2px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+#babyProfileAllergenNotes .active .babyProfileEditAllergenShieldIcon {
+  border-radius: 2px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  background: url(/shieldWarning.png) no-repeat;
+  background-size: 18px 18px;
+  background-position: 0px 2px;
+}
+
+#babyProfileAllergenNotes .babyProfileEditAllergenRadioIcon{
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  top: 6px;
+  left: 10px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  position: absolute;
+  cursor: pointer;
+  background-image: url(/radio-notSelected.png) no;
+}
+
+#babyProfileAllergenNotes .active .babyProfileEditAllergenRadioIcon{
+  background-size: 20px,auto;
+  width: 20px;
+  height: 20px;
+  top: 6px;
+  left: 10px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 2px;
+  display: block;
+  float: left;
+  position: absolute;
+  cursor: pointer;
+  background-image: url(/radio-selected.png);
+}
+
+#babyProfileAllergenNotes .profileEditInput {
+  width: 100%;
+}
+
+.overlay-dark {
+    background-color: #000;
+    opacity: .6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+      transition-property: all;
+      -moz-transition-duration: 0.8s;
+      -webkit-transition-duration: 0.8s;
+      -o-transition-duration: 0.8s;
+      transition-duration: 0.8s;
+      transition-timing-function: cubic-bezier(1, 0.1, 0.1, 1);
+
+    vertical-align:top;
+}
+
+.overlay-dark.closed {
+    z-index: -1;
+    opacity: 0;
+}
+
+.slider {
+	overflow-y: hidden;
+	max-height: 1000px; /* approximate max height */
+
+  transition-property: all;
+  -moz-transition-duration: 0.6s;
+  -webkit-transition-duration: 0.6s;
+  -o-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.4, 0.25, 0.1, 1);
+
+}
+
+.slider.closed {
+
+
+	max-height: 0;
+  z-index: 20;
+
+}
+
+.babyProfileDisplayBlock {
+  position: absolute;
+  top: 30px;
+  bottom: 60px;
+  left: 45px;
+  right:45px;
 }

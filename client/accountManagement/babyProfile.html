@@ -10,27 +10,45 @@
             <span class="line"></span>
           </div>
           <div class="row">
-            <div class="accountManagementSession">
+            <div class="profileManagementSession">
               <div class="col-sm-3">
-                <div id='accMngtNav' class="accMngtNav">
+                <div id='profileMngtNav' class="profileMngtNav">
 
-                  <div class="accMngtItemWrap">
-                    <div id='accMngtSelectionMealPlan' class="accMngtItem active">
-                      <div class="accMngtItemIcon mealPlansIcon">
+                  <div class="babyProfileItemWrap">
+                    <div id='babyProfileSelectionMealPlan' class="babyProfileItem active">
+                      <div class="babyProfileItemIcon mealPlansIcon">
 
                       </div>
                       <a href="#">My Baby's Meal Plan</a>
                     </div>
                   </div>
 
+                  <div class="babyProfileItemWrap">
+                    <div id='babyProfileSelectionBasics' class="babyProfileItem">
+                      <div class="babyProfileItemIcon basicsIcon">
+
+                      </div>
+                      <a href="#">Baby's Profile</a>
+                    </div>
+                  </div>
+
+                  <div class="babyProfileItemWrap">
+                    <div id='babyProfileSelectionAllergenNotes' class="babyProfileItem">
+                      <div class="babyProfileItemIcon allergenNotesIcon">
+
+                      </div>
+                      <a href="#">Allergy Notes</a>
+                    </div>
+                  </div>
+
                 </div>
               </div>
               <div class="col-sm-9 clearfix">
-                <div class="accountMngtContent">
+                <div class="profileMngtContent">
 
-                  <div id="accountMealPlans" class="accountContentWrap clearfix ">
-                    <div class="accountDisplayBlock">
-                      <div class="accountContentHeader clearfix">
+                  <div id="babyProfileMealPlans" class="babyProfileContentWrap clearfix ">
+                    <div class="babyProfileDisplayBlock clearfix">
+                      <div class="babyProfileContentHeader clearfix">
                         <h3>My Baby's Meal Plan</h3>
                         <div class='editBlock' id="babyProfileEditMealPlan">
                           <div class="editIcon" >
@@ -38,72 +56,72 @@
                           Edit
                         </div>
                       </div>
-                      <div class="accountInfoBlock clearfix">
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-4">
-                            <div class="accountInfoItemTitle">
+                      <div class="profileInfoBlock clearfix">
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
                               Name
                             </div>
                           </div>
-                          <div class="accountInfoValue col-sm-8">
-                            <div class="accountInfoRowValue col-sm-4">
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyName.[0]}}
                             </div>
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyName.[1]}}
                             </div>
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyName.[2]}}
                             </div>
                           </div>
                         </div>
 
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-4">
-                            <div class="accountInfoItemTitle">
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
                               Plan Type
                             </div>
                           </div>
-                          <div class="accountInfoValue col-sm-8">
-                            <div class="accountInfoRowValue col-sm-4">
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyPlanType.[0]}}
                             </div>
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyPlanType.[1]}}
                             </div>
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyPlanType.[2]}}
                             </div>
                           </div>
                         </div>
 
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-4">
-                            <div class="accountInfoItemTitle">
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
                               Recipe Type
                             </div>
                           </div>
-                          <div class="accountInfoValue col-sm-8">
-                            <div class="accountInfoRowValue col-sm-4">
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyRecipeType.[0]}}
                             </div>
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyRecipeType.[1]}}
                             </div>
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyRecipeType.[2]}}
                             </div>
                           </div>
                         </div>
 
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-4">
-                            <div class="accountInfoItemTitle">
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
                               Delivery Days
                             </div>
                           </div>
-                          <div class="accountInfoValue col-sm-8">
-                            <div id='accountDeliveryDays' class="accountInfoRowValue">
+                          <div class="profileInfoValue col-sm-8">
+                            <div id='profileDeliveryDays' class="profileInfoRowValue">
                               {{babyProfileMealPlan.deliveryDays}}
                             </div>
                           </div>
@@ -111,20 +129,20 @@
                       </div>
                     </div>
 
-                    <div class="accountEditBlock slider closed clearfix">
-                      <div class="accountEditHeader">
+                    <div class="profileEditBlock closed slider clearfix">
+                      <div class="profileEditHeader">
                         <h3>My Baby's Meal Plan</h3>
                         <div class="closeIcon">
                         </div>
                       </div>
-                      <div class="accountEditSection">
+                      <div class="profileEditSection">
 
-                        <div class="accountEditRow clearfix">
-                          <div class="accountEditRowTitle col-sm-3">
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
                             Delivery Days
                           </div>
-                          <div class="accountEditRowValue col-sm-9 clearfix">
-                            <select id="accountEditMealPlan_deliveryDays" class="inputFull">
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <select id="profileEditMealPlan_deliveryDays" class="inputFull">
                               <option value="">-</option>
                               <option value="SU">Sundays</option>
                               <option value="MO">Mondays</option>
@@ -139,45 +157,45 @@
 
                         <div class='line'></div>
 
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-3">
-                            <div class="accountInfoItemTitle">
-                              Baby Name
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-3">
+                            <div class="profileInfoItemTitle">
+                              Baby's Name
                             </div>
                           </div>
-                          <div class="accountInfoValue col-sm-9 clearfix">
-                            <div class="accountInfoRowValue col-sm-4">
+                          <div class="profileInfoValue col-sm-9 clearfix">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyName.[0]}}
                             </div>
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyName.[1]}}
                             </div>
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{babyProfileMealPlan.babyName.[2]}}
                             </div>
                           </div>
                         </div>
 
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-3">
-                            <div class="accountInfoItemTitle">
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-3">
+                            <div class="profileInfoItemTitle">
                               Baby Age
                             </div>
                           </div>
-                          <div class="accountInfoValue col-sm-9 clearfix">
+                          <div class="profileInfoValue col-sm-9 clearfix">
                             {{#if babyProfileMealPlan.babyStatus.[0]}}
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{getAgesbyBirthdays.[0].months}} Months/ {{getAgesbyBirthdays.[0].days}} Days
                             </div>
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[1]}}
 
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{getAgesbyBirthdays.[1].months}} Months/ {{getAgesbyBirthdays.[1].days}} Days
                             </div>
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[2]}}
-                            <div class="accountInfoRowValue col-sm-4">
+                            <div class="profileInfoRowValue col-sm-4">
                               {{getAgesbyBirthdays.[2].months}} Months/ {{getAgesbyBirthdays.[2].days}} Days
                             </div>
                             {{/if}}
@@ -185,14 +203,14 @@
                           </div>
                         </div>
 
-                        <div class="accountEditRow clearfix">
-                          <div class="accountEditRowTitle col-sm-3">
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
                             Plan Type
                           </div>
-                          <div class="accountEditRowValue col-sm-9 clearfix">
+                          <div class="profileEditRowValue col-sm-9 clearfix">
                             {{#if babyProfileMealPlan.babyStatus.[0]}}
                             <div class="col-sm-4">
-                              <select id="accountEditMealPlan_planType_1" class="mealPlanTypeOption">
+                              <select id="profileEditMealPlan_planType_1" class="mealPlanTypeOption">
                                 <option value="SM">Small Box</option>
                                 <option value="ME">Medium Box</option>
                                 <option value="LG">Large Box</option>
@@ -201,7 +219,7 @@
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[1]}}
                             <div class="col-sm-4">
-                              <select id="accountEditMealPlan_planType_2" class="mealPlanTypeOption">
+                              <select id="profileEditMealPlan_planType_2" class="mealPlanTypeOption">
                                 <option value="SM">Small Box</option>
                                 <option value="ME">Medium Box</option>
                                 <option value="LG">Large Box</option>
@@ -210,7 +228,7 @@
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[2]}}
                             <div class="col-sm-4">
-                              <select id="accountEditMealPlan_planType_3" class="mealPlanTypeOption">
+                              <select id="profileEditMealPlan_planType_3" class="mealPlanTypeOption">
                                 <option value="SM">Small Box</option>
                                 <option value="ME">Medium Box</option>
                                 <option value="LG">Large Box</option>
@@ -221,21 +239,21 @@
                           </div>
                         </div>
 
-                        <div class="accountEditRow selectSinglePuree clearfix">
-                          <div class="accountEditRowTitle col-sm-3">
+                        <div class="profileEditRow selectSinglePuree clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
                             Puree Type
                             {{#if mealPlanFieldCheckingWarning}}
                             <div class="warningIcon"></div>
                             {{/if}}
                           </div>
-                          <div class="accountEditRowValue col-sm-9 clearfix">
+                          <div class="profileEditRowValue col-sm-9 clearfix">
                             {{#if babyProfileMealPlan.babyStatus.[0]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_singlePuree_1" class="pureeTypeCheck pureeTypeCheck1 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput" type="checkbox">
+                                  <div id="profileEditMealPlan_singlePuree_1" class="pureeTypeCheck pureeTypeCheck1 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput" type="checkbox">
                                     Single Puree
                                   </div>
                                 </label>
@@ -244,11 +262,11 @@
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[1]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_singlePuree_2" class="pureeTypeCheck pureeTypeCheck2 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput" type="checkbox">
+                                  <div id="profileEditMealPlan_singlePuree_2" class="pureeTypeCheck pureeTypeCheck2 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput" type="checkbox">
                                     Single Puree
                                   </div>
                                 </label>
@@ -257,11 +275,11 @@
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[2]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_singlePuree_3" class="pureeTypeCheck pureeTypeCheck3 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput" type="checkbox">
+                                  <div id="profileEditMealPlan_singlePuree_3" class="pureeTypeCheck pureeTypeCheck3 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput" type="checkbox">
                                     Single Puree
                                   </div>
                                 </label>
@@ -270,17 +288,17 @@
                             {{/if}}
                           </div>
                         </div>
-                        <div class="accountEditRow selectYummyPairs clearfix">
-                          <div class="accountEditRowTitle col-sm-3">
+                        <div class="profileEditRow selectYummyPairs clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
                           </div>
-                          <div class="accountEditRowValue col-sm-9 clearfix">
+                          <div class="profileEditRowValue col-sm-9 clearfix">
                             {{#if babyProfileMealPlan.babyStatus.[0]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_yummyPairs_1" class="pureeTypeCheck pureeTypeCheck1 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                  <div id="profileEditMealPlan_yummyPairs_1" class="pureeTypeCheck pureeTypeCheck1 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput"  type="checkbox">
                                     Yummy Pairs
                                   </div>
                                 </label>
@@ -289,11 +307,11 @@
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[1]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_yummyPairs_2" class="pureeTypeCheck pureeTypeCheck2 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                  <div id="profileEditMealPlan_yummyPairs_2" class="pureeTypeCheck pureeTypeCheck2 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput"  type="checkbox">
                                     Yummy Pairs
                                   </div>
                                 </label>
@@ -302,11 +320,11 @@
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[2]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_yummyPairs_3" class="pureeTypeCheck pureeTypeCheck3 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                  <div id="profileEditMealPlan_yummyPairs_3" class="pureeTypeCheck pureeTypeCheck3 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput"  type="checkbox">
                                     Yummy Pairs
                                   </div>
                                 </label>
@@ -315,17 +333,17 @@
                             {{/if}}
                           </div>
                         </div>
-                        <div class="accountEditRow clearfix">
-                          <div class="accountEditRowTitle col-sm-3">
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
                           </div>
-                          <div class="accountEditRowValue col-sm-9 clearfix">
+                          <div class="profileEditRowValue col-sm-9 clearfix">
                             {{#if babyProfileMealPlan.babyStatus.[0]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_tastyTrio_1" class="pureeTypeCheck pureeTypeCheck1 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                  <div id="profileEditMealPlan_tastyTrio_1" class="pureeTypeCheck pureeTypeCheck1 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput"  type="checkbox">
                                     Tasty Trio
                                   </div>
                                 </label>
@@ -334,11 +352,11 @@
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[1]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_tastyTrio_2" class="pureeTypeCheck pureeTypeCheck2 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                  <div id="profileEditMealPlan_tastyTrio_2" class="pureeTypeCheck pureeTypeCheck2 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput"  type="checkbox">
                                     Tasty Trio
                                   </div>
                                 </label>
@@ -347,11 +365,11 @@
                             {{/if}}
                             {{#if babyProfileMealPlan.babyStatus.[2]}}
                             <div class="col-sm-4">
-                              <div class="accountEditOptionWrap clearfix">
+                              <div class="profileEditOptionWrap clearfix">
                                 <label>
-                                  <div id="accountEditMealPlan_tastyTrio_3" class="pureeTypeCheck pureeTypeCheck3 accountEditOptionCheckbox">
-                                    <div class="accountEditOptionCheckboxIcon "></div>
-                                    <input checked="" class="accountEditOptionInput"  type="checkbox">
+                                  <div id="profileEditMealPlan_tastyTrio_3" class="pureeTypeCheck pureeTypeCheck3 profileEditOptionCheckbox">
+                                    <div class="profileEditOptionCheckboxIcon "></div>
+                                    <input checked="" class="profileEditOptionInput"  type="checkbox">
                                     Tasty Trio
                                   </div>
                                 </label>
@@ -361,9 +379,9 @@
                           </div>
                         </div>
                       </div>
-                      <div class="accountEditFooter">
-                        <div class="accountEditMealPlanSave">
-                          <button class="btn" id="accountEditMealPlanSave">
+                      <div class="profileEditFooter">
+                        <div class="profileEditMealPlanSave">
+                          <button class="btn" id="profileEditMealPlanSave">
                           Save
                           </button>
                         </div>
@@ -371,166 +389,788 @@
                     </div>
                   </div>
 
-                  <div id="accountPaymentInfo" class="accountContentWrap clearfix hidden">
-                    <div class="accountDisplayBlock">
-                      <div class="accountContentHeader clearfix">
-                        <h3>Payment Information</h3>
-                        <div class='editBlock' id="babyProfileEditPayment">
-                          <div class="editIcon">
-                          </div>
-                          Edit
-                        </div>
+                  <div id="babyProfileBasics" class="babyProfileContentWrap hidden clearfix ">
+                    <div class="babyProfileDisplayBlock clearfix">
+                      <div class="babyProfileContentHeader clearfix">
+                        <h3>Baby's Profile</h3>
+
                       </div>
-                      <div class="accountInfoBlock clearfix">
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-4">
-                            Name on Card
+                      <div class="profileInfoBlock clearfix">
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                              Name
+                            </div>
                           </div>
-                          <div id='nameOnCard' class="accountInfoValue col-sm-8">
-                            {{babyProfilePayment.name}}
-                          </div>
-                        </div>
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-4">
-                            Card Type
-                          </div>
-                          <div id='brandOnCard' class="accountInfoValue col-sm-8">
-                            {{babyProfilePayment.brand}}
-                          </div>
-                        </div>
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-4">
-                            Card Number
-                          </div>
-                          <div id='last4OnCard' class="accountInfoValue col-sm-8"> {{babyProfilePayment.last4}}
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileMealPlan.babyName.[0]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileMealPlan.babyName.[1]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileMealPlan.babyName.[2]}}
+                            </div>
                           </div>
                         </div>
-                        <div class="accountInfoRow clearfix">
-                          <div class="accountInfoTitle col-sm-4">
-                            Expiration Date
+
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                              Birthday
+                            </div>
                           </div>
-                          <div id='endDateOnCard' class="accountInfoValue col-sm-8">
-                            {{babyProfilePayment.exp_month}}/{{babyProfilePayment.exp_year}}
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.birthday.[0]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.birthday.[1]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.birthday.[2]}}
+                            </div>
                           </div>
                         </div>
+
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                              Gender
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{#if babyProfileBasics.gender.[0]}}
+                              Boy
+                              {{else}}
+                              Girl
+                              {{/if}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{#if babyProfileBasics.gender.[1]}}
+                              Boy
+                              {{else}}
+                              Girl
+                              {{/if}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{#if babyProfileBasics.gender.[2]}}
+                              Boy
+                              {{else}}
+                              Girl
+                              {{/if}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                              Meals a day
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.mealsPerDay.[0]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.mealsPerDay.[1]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.mealsPerDay.[2]}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                              Ounces per meal
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.ouncePerMeal.[0]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.ouncePerMeal.[1]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileBasics.ouncePerMeal.[2]}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div class='editBlock' id="babyProfileEditBasics_1">
+                                <div class="editIcon" >
+                                </div>
+                                Edit
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div class='editBlock' id="babyProfileEditBasics_2">
+                                <div class="editIcon" >
+                                </div>
+                                Edit
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div class='editBlock' id="babyProfileEditBasics_3">
+                                <div class="editIcon" >
+                                </div>
+                                Edit
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
                       </div>
                     </div>
-                    <div class="accountEditBlock slider closed clearfix">
-                      <div class="accountEditHeader">
-                        <h3>Payment Information</h3>
+
+                    <div class="profileEditBlock closed slider clearfix">
+                      <div class="profileEditHeader">
+                        <h3>Baby's Profile</h3>
                         <div class="closeIcon">
                         </div>
                       </div>
-                      <div class="accountEditSection">
+                      <div class="profileEditSection">
 
-                        <div class="accountEditRow clearfix">
-                          <div class="accountEditRowTitle col-sm-4">
-                            Name on Card
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                              Baby's Name
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8 clearfix">
+                            <div class="profileEditInputBlock clearfix">
+                              <input class="string profileEditInput required" id="babyNameInput" type="text" placeholder="Enter baby's name" onfocus="this.placeholder = ''" onblur="this.placeholder = &quot;Enter baby's name&quot;">
+                            </div>                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-4">
+                            Birthday
 
                           </div>
-                          <div class="accountEditRowValue col-sm-8">
-                            <div class="accountEditInputBlock clearfix">
-                              <input class="string accountEditInput required" id="accountEditPayment_nameOnCard" type="text" placeholder="Name on Card" onfocus="this.placeholder = ''" onblur='this.placeholder = "Name on Card"'>
-                            </div>
+                          <div class="profileInfoValue col-sm-8 clearfix">
+                            <input id="babyProfileBirthdayInput" data-provide="datepicker" data-date-format="M dd, yyyy">
+                            <div class="input-group-addon clearfix"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></div>
+
                           </div>
                         </div>
 
-                        <div class="accountEditRow clearfix">
-                          <div class="accountEditRowTitle col-sm-4">
-                            Credit Card Number
-                            {{#if paymentFieldCheckingWarning.cardNum}}
-                            <div class="warningIcon"></div>
-                            {{/if}}
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-4">
+                            Gender
                           </div>
-                          <div class="accountEditRowValue col-sm-8">
-                            <div class="accountEditInputBlock clearfix">
-                              <input class="string accountEditInput required" id="accountEditPayment_cardNumber" type="text" placeholder="Credit Card Number" onfocus="this.placeholder = ''" onblur='this.placeholder = "Credit Card Number"'>
+                          <div class="profileEditRowValue col-sm-8 clearfix">
+                            <div id="babyProfileRadioBoy" class="genderSelection">
+                              <div class="profileRadioIcon clearfix">
+                              </div>
+                              <input class="gender" name="radioBoy" required="required" type="radio" value="true">
+                              Boy
                             </div>
+
+                            <div id="babyProfileRadioGirl" class="genderSelection">
+                              <div class="profileRadioIcon clearfix">
+                              </div>
+                              <input name="radioGirl" required="required" type="radio" value="false">
+                              Girl
+                            </div>
+
                           </div>
                         </div>
 
-                        <div class="accountEditRow clearfix">
-                          <div class="accountEditRowTitle col-sm-4">
-                            Expiration Date
-                            {{#if paymentFieldCheckingWarning.exp}}
-                            <div class="warningIcon"></div>
-                            {{/if}}
+                        <div class="profileEditRow selectSinglePuree clearfix">
+                          <div class="profileEditRowTitle col-sm-4">
+                            Meals per day
                           </div>
-                          <div class="accountEditRowValue col-sm-8">
-                            <select id="accountEditPayment_expMonth" class="inputFull" data-stripe="exp-month">
+                          <div class="profileEditRowValue col-sm-8 clearfix">
+                            <div class="freqInput active">
+                              <div class="freqIconMinus clearfix"></div>
+                                <div class="freqBlock">
+                                  <input id="babyProfileMealFreq" type="number">
+                                  {{mealFreq}}
+                                </div>
+                              <div class="freqIconPlus clearfix"></div>
+                            </div>
 
-                              <option value="">Month</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                            </select>
-
-                            <select id="accountEditPayment_expYear" class="inputFull" name="expirationDateYear" data-stripe="exp-year">
-                              <option value="">Year</option>
-                              <option value="2015">2015</option>
-                              <option value="2016">2016</option>
-                              <option value="2017">2017</option>
-                              <option value="2018">2018</option>
-                              <option value="2019">2019</option>
-                              <option value="2020">2020</option>
-                              <option value="2021">2021</option>
-                              <option value="2022">2022</option>
-                              <option value="2023">2023</option>
-                              <option value="2024">2024</option>
-                              <option value="2025">2025</option>
-                              <option value="2026">2026</option>
-                              <option value="2027">2027</option>
-                              <option value="2028">2028</option>
-                              <option value="2029">2029</option>
-                              <option value="2030">2030</option>
-                              <option value="2031">2031</option>
-                              <option value="2032">2032</option>
-                              <option value="2033">2033</option>
-                              <option value="2034">2034</option>
-                              <option value="2035">2035</option>
-                              <option value="2036">2036</option>
-                              <option value="2037">2037</option>
-                              <option value="2038">2038</option>
-                              <option value="2039">2039</option>
-                              <option value="2040">2040</option>
-                            </select>
                           </div>
                         </div>
-
-                        <div class="accountEditRow clearfix">
-                          <div class="accountEditRowTitle col-sm-4">
-                            CVC Code
-                            {{#if paymentFieldCheckingWarning.cvc}}
-                            <div class="warningIcon"></div>
-                            {{/if}}
+                        <div class="profileEditRow selectYummyPairs clearfix">
+                          <div class="profileEditRowTitle col-sm-4">
+                            Ounces per meal
                           </div>
-                          <div class="accountEditRowValue col-sm-8">
-                            <div class="accountEditInputBlock clearfix">
-                              <input class="string accountEditInput required" id="accountEditInfo_cvc" type="text" placeholder="CVC Code" onfocus="this.placeholder = ''" onblur='this.placeholder = "CVC Code"'>
+                          <div class="profileEditRowValue col-sm-8 clearfix">
+                            <div class="freqInput active">
+                              <div class="OunceIconMinus clearfix"></div>
+                                <div class="freqBlock">
+                                  <input id="babyProfileMealOunces" type="number" >
+                                  {{ouncePerMeal}}
+                                </div>
+                              <div class="OunceIconPlus clearfix"></div>
                             </div>
+
                           </div>
                         </div>
 
                       </div>
-
-                      <div class="accountEditFooter">
-                        <div class="accountEditPaymentSave">
-                          <button class="btn" id="accountEditPaymentSave">
+                      <div class="profileEditFooter">
+                        <div class="profileEditBasicsSave">
+                          <button class="btn" id="profileEditBasicsSave">
                           Save
                           </button>
                         </div>
                       </div>
                     </div>
+                  </div>
 
+                  <div id="babyProfileAllergenNotes" class="babyProfileContentWrap hidden clearfix ">
+                    <div class="babyProfileDisplayBlock clearfix">
+                      <div class="babyProfileContentHeader clearfix">
+                        <h3>Allergen Notes</h3>
+
+                      </div>
+                      <div class="profileInfoBlock clearfix">
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                              Name
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileMealPlan.babyName.[0]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileMealPlan.babyName.[1]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileMealPlan.babyName.[2]}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                              Your allergen concerns
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenWheat clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Wheat
+
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenWheat_1" class="allergenShield {{#if babyProfileAllergens.allergenWheat.[0]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenWheat_2" class="allergenShield {{#if babyProfileAllergens.allergenWheat.[1]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenWheat_3" class="allergenShield {{#if babyProfileAllergens.allergenWheat.[2]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenShellfish clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Shellfish
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenShellfish_1" class="allergenShield {{#if babyProfileAllergens.allergenShellfish.[0]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenShellfish_2" class="allergenShield {{#if babyProfileAllergens.allergenShellfish.[1]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenShellfish_3" class="allergenShield {{#if babyProfileAllergens.allergenShellfish.[2]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenEggs clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Eggs
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenEggs_1" class="allergenShield {{#if babyProfileAllergens.allergenEggs.[0]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenEggs_2" class="allergenShield {{#if babyProfileAllergens.allergenEggs.[1]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenEggs_3" class="allergenShield {{#if babyProfileAllergens.allergenEggs.[2]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenFish clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Fish
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenFish_1" class="allergenShield {{#if babyProfileAllergens.allergenFish.[0]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenFish_2" class="allergenShield {{#if babyProfileAllergens.allergenFish.[1]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenFish_3" class="allergenShield {{#if babyProfileAllergens.allergenFish.[2]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenPeanuts clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Peanuts
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenPeanuts_1" class="allergenShield {{#if babyProfileAllergens.allergenPeanuts.[0]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenPeanuts_2" class="allergenShield {{#if babyProfileAllergens.allergenPeanuts.[1]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenPeanuts_3" class="allergenShield {{#if babyProfileAllergens.allergenPeanuts.[2]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenMilk clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Milk
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenMilk_1" class="allergenShield {{#if babyProfileAllergens.allergenMilk.[0]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenMilk_2" class="allergenShield {{#if babyProfileAllergens.allergenMilk.[1]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenMilk_3" class="allergenShield {{#if babyProfileAllergens.allergenMilk.[2]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenTreeNuts clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Tree Nuts
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenTreeNuts_1" class="allergenShield {{#if babyProfileAllergens.allergenTreeNuts.[0]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenTreeNuts_2" class="allergenShield {{#if babyProfileAllergens.allergenTreeNuts.[1]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenTreeNuts_3" class="allergenShield {{#if babyProfileAllergens.allergenTreeNuts.[2]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenSoybeans clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Soybeans
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenSoybeans_1" class="allergenShield {{#if babyProfileAllergens.allergenSoybeans.[0]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenSoybeans_2" class="allergenShield {{#if babyProfileAllergens.allergenSoybeans.[1]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div id="profileInfoAllergenSoybeans_3" class="allergenShield {{#if babyProfileAllergens.allergenSoybeans.[2]}} active {{/if}}">
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileInfoRow allergenOthers clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+                                  <div class="profileInfoAllergenEntry">
+                                    Others
+                                  </div>
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileAllergens.otherAllergen.[0]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileAllergens.otherAllergen.[1]}}
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              {{babyProfileAllergens.otherAllergen.[2]}}
+                            </div>
+                          </div>
+                        </div>
+
+
+
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-4">
+                            <div class="profileInfoItemTitle">
+
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-8">
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div class='editBlock' id="babyProfileEditAllergenNotes_1">
+                                <div class="editIcon" >
+                                </div>
+                                Edit
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div class='editBlock' id="babyProfileEditAllergenNotes_2">
+                                <div class="editIcon" >
+                                </div>
+                                Edit
+                              </div>
+                            </div>
+                            <div class="profileInfoRowValue col-sm-4">
+                              <div class='editBlock' id="babyProfileEditAllergenNotes_3">
+                                <div class="editIcon" >
+                                </div>
+                                Edit
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+                      </div>
+                    </div>
+
+                    <div class="profileEditBlock closed slider clearfix">
+                      <div class="profileEditHeader">
+                        <h3>Allergen Notes</h3>
+                        <div class="closeIcon">
+                        </div>
+                      </div>
+                      <div class="profileEditSection">
+
+                        <div class="profileInfoRow clearfix">
+                          <div class="profileInfoTitle col-sm-3">
+                            <div class="profileInfoItemTitle">
+                              Baby's Name
+                            </div>
+                          </div>
+                          <div class="profileInfoValue col-sm-9 clearfix">
+                            <div class="profileInfoRowValue ">
+                              {{currentBaby.name}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle allergenEditTitle">
+                            Mark all allergens that you concern for {{currentBaby.name}}
+                          </div>
+
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Wheat
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div id="babyProfileEditAllergenWheatAvoid" class="babyProfileEditAllergenSelection allergic">
+                              <div class="babyProfileEditAllergenShieldIcon clearfix"></div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Avoid it
+                            </div>
+
+                            <div id="babyProfileEditAllergenWheatOk" class="babyProfileEditAllergenSelection">
+                              <div class="babyProfileEditAllergenRadioIcon clearfix">
+                              </div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Fine with it
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Shellfish
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div id="babyProfileEditAllergenShellfishAvoid" class="babyProfileEditAllergenSelection allergic">
+                              <div class="babyProfileEditAllergenShieldIcon clearfix"></div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Avoid it
+                            </div>
+
+                            <div id="babyProfileEditAllergenShellfishOk" class="babyProfileEditAllergenSelection">
+                              <div class="babyProfileEditAllergenRadioIcon clearfix">
+                              </div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Fine with it
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Eggs
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div id="babyProfileEditAllergenEggsAvoid" class="babyProfileEditAllergenSelection allergic">
+                              <div class="babyProfileEditAllergenShieldIcon clearfix"></div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Avoid it
+                            </div>
+
+                            <div id="babyProfileEditAllergenEggsOk" class="babyProfileEditAllergenSelection">
+                              <div class="babyProfileEditAllergenRadioIcon clearfix">
+                              </div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Fine with it
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Fish
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div id="babyProfileEditAllergenFishAvoid" class="babyProfileEditAllergenSelection allergic">
+                              <div class="babyProfileEditAllergenShieldIcon clearfix"></div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Avoid it
+                            </div>
+
+                            <div id="babyProfileEditAllergenFishOk" class="babyProfileEditAllergenSelection">
+                              <div class="babyProfileEditAllergenRadioIcon clearfix">
+                              </div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Fine with it
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Peanuts
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div id="babyProfileEditAllergenPeanutsAvoid" class="babyProfileEditAllergenSelection allergic">
+                              <div class="babyProfileEditAllergenShieldIcon clearfix"></div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Avoid it
+                            </div>
+
+                            <div id="babyProfileEditAllergenPeanutsOk" class="babyProfileEditAllergenSelection">
+                              <div class="babyProfileEditAllergenRadioIcon clearfix">
+                              </div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Fine with it
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Milk
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div id="babyProfileEditAllergenMilkAvoid" class="babyProfileEditAllergenSelection allergic">
+                              <div class="babyProfileEditAllergenShieldIcon clearfix"></div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Avoid it
+                            </div>
+
+                            <div id="babyProfileEditAllergenMilkOk" class="babyProfileEditAllergenSelection">
+                              <div class="babyProfileEditAllergenRadioIcon clearfix">
+                              </div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Fine with it
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Tree Nuts
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div id="babyProfileEditAllergenTreeNutsAvoid" class="babyProfileEditAllergenSelection allergic">
+                              <div class="babyProfileEditAllergenShieldIcon clearfix"></div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Avoid it
+                            </div>
+
+                            <div id="babyProfileEditAllergenTreeNutsOk" class="babyProfileEditAllergenSelection">
+                              <div class="babyProfileEditAllergenRadioIcon clearfix">
+                              </div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Fine with it
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Soybeans
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div id="babyProfileEditAllergenSoybeansAvoid" class="babyProfileEditAllergenSelection allergic">
+                              <div class="babyProfileEditAllergenShieldIcon clearfix"></div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Avoid it
+                            </div>
+
+                            <div id="babyProfileEditAllergenSoybeansOk" class="babyProfileEditAllergenSelection">
+                              <div class="babyProfileEditAllergenRadioIcon clearfix">
+                              </div>
+                              <input class="allergenInput" required="required" type="radio" value="true">
+                              Fine with it
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="profileEditRow clearfix">
+                          <div class="profileEditRowTitle col-sm-3">
+                            Others
+                          </div>
+                          <div class="profileEditRowValue col-sm-9 clearfix">
+                            <div class="profileEditInputBlock clearfix">
+                              <input class="string profileEditInput required" id="profileEditOtherAllergenInput" type="text" placeholder="Enter other allergens that concern you." onfocus="this.placeholder = ''" onblur="this.placeholder = &quot;Enter other allergens that concern you.&quot;">
+                            </div>
+
+                          </div>
+                        </div>
+
+
+
+                      </div>
+                      <div class="profileEditFooter">
+                        <div class="profileEditAllergenSave">
+                          <button class="btn" id="profileEditAllergenSave">
+                          Save
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                 </div>

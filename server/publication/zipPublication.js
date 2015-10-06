@@ -21,6 +21,10 @@ Meteor.publish('zipsPublish', function(currentServing, zipInput){
         {limit: 50}
       );
     };
-    console.log("publish"+this);  
+    console.log("publish"+this);
     return this.ready;
+});
+
+Meteor.publish("zipsSearch", function(zipcode){
+    return Zips.find({zipcode: zipcode});
 });

@@ -1,116 +1,4 @@
 Template.myAccount.helpers({
-  myAccountMealPlan: function(){
-    var userId = Meteor.userId();
-    var userObject = Meteor.users.findOne({_id: userId});
-    var deliveryDays = getDeliveryDays(userObject.profile.deliveryDay);
-    $('#accountDeliveryDays').text(deliveryDays);
-
-    var babyName = [];
-    var babyPlanType = [];
-    var babyRecipeType= [[],[],[]];
-    var babyStatus = [userObject.profile.babyProfileOne.babyStatus, userObject.profile.babyProfileTwo.babyStatus, userObject.profile.babyProfileThree.babyStatus];
-
-    if(userObject.profile.babyProfileOne.babyStatus){
-      babyName[0] = userObject.profile.babyProfileOne.name;
-      if(userObject.profile.babyProfileOne.boxSmall){
-        babyPlanType[0] = 'Small Box';
-      }else if(userObject.profile.babyProfileOne.boxMedium){
-        babyPlanType[0] = 'Medium Box';
-      }else{
-        babyPlanType[0] = 'Large Box';
-      };
-
-      if(userObject.profile.babyProfileOne.singlePuree){
-        babyRecipeType[0]='Single Puree';
-      };
-      if(userObject.profile.babyProfileOne.yummyPairs){
-        if(babyRecipeType[0]!=''){
-          babyRecipeType[0]=babyRecipeType[0]+", Yummy Pairs";
-        }else{
-          babyRecipeType[0]='Yummy Pairs';
-        };
-      };
-      if(userObject.profile.babyProfileOne.tastyTrio){
-        if(babyRecipeType[0]!=''){
-          babyRecipeType[0]=babyRecipeType[0]+", Tasty Trio";
-        }else{
-          babyRecipeType[0]='Tasty Trio';
-        };
-      };
-    };
-
-    if(userObject.profile.babyProfileTwo.babyStatus){
-      $('#babyTwo').removeClass('invisible');
-
-      babyName[1] = userObject.profile.babyProfileTwo.name;
-      if(userObject.profile.babyProfileTwo.boxSmall){
-        babyPlanType[1] = 'Small Box';
-      }else if(userObject.profile.babyProfileTwo.boxMedium){
-        babyPlanType[1] = 'Medium Box';
-      }else{
-        babyPlanType[1] = 'Large Box';
-      };
-
-      if(userObject.profile.babyProfileTwo.singlePuree){
-        babyRecipeType[1]='Single Puree';
-      };
-      if(userObject.profile.babyProfileTwo.yummyPairs){
-        if(babyRecipeType[1]!=''){
-          babyRecipeType[1]=babyRecipeType[1]+", Yummy Pairs";
-        }else{
-          babyRecipeType[1]='Yummy Pairs';
-        };
-      };
-      if(userObject.profile.babyProfileTwo.tastyTrio){
-        if(babyRecipeType[1]!=''){
-          babyRecipeType[1]=babyRecipeType[1]+", Tasty Trio";
-        }else{
-          babyRecipeType[1]='Tasty Trio';
-        };
-      };
-    };
-
-    if(userObject.profile.babyProfileThree.babyStatus){
-      babyName[2] = userObject.profile.babyProfileThree.name;
-      if(userObject.profile.babyProfileThree.boxSmall){
-        babyPlanType[2] = 'Small Box';
-      }else if(userObject.profile.babyProfileThree.boxMedium){
-        babyPlanType[2] = 'Medium Box';
-      }else{
-        babyPlanType[2] = 'Large Box';
-      };
-
-      if(userObject.profile.babyProfileThree.singlePuree){
-        babyRecipeType[2]='Single Puree';
-      };
-      if(userObject.profile.babyProfileThree.yummyPairs){
-        if(babyRecipeType[2]!=''){
-          babyRecipeType[2]=babyRecipeType[2]+", Yummy Pairs";
-        }else{
-          babyRecipeType[2]='Yummy Pairs';
-        };
-      };
-      if(userObject.profile.babyProfileThree.tastyTrio){
-        if(babyRecipeType[2]!=''){
-          babyRecipeType[2]=babyRecipeType[2]+", Tasty Trio";
-        }else{
-          babyRecipeType[2]='Tasty Trio';
-        };
-      };
-    };
-
-    var setMyAccountMealPlanObject = {
-      babyStatus: babyStatus,
-      babyName: babyName,
-      babyPlanType: babyPlanType,
-      babyRecipeType: babyRecipeType,
-      deliveryDays: deliveryDays
-    };
-
-    Session.set('myAccountMealPlan', setMyAccountMealPlanObject);
-
-    return Session.get('myAccountMealPlan');
-  },
   myAccountDelivery: function(){
     var userId = Meteor.userId();
     var userObject = Meteor.users.findOne({_id: userId});
@@ -197,22 +85,10 @@ Template.myAccount.helpers({
 });
 
 Template.myAccount.events({
-  "click #accMngtSelectionMealPlan": function(event, template){
-// changing webform classes
-    $('#accountMealPlans').removeClass('hidden');
-    $('#accountDeliveryInfo').addClass('hidden');
-    $('#accountInfo').addClass('hidden');
-    $('#accountPaymentInfo').addClass('hidden');
-
-    $('.accMngtItem').removeClass('active');
-    $('#accMngtSelectionMealPlan').addClass('active');
-    return false;
-  },
 
   "click #accMngtSelectionDelivery": function(event, template){
     var userId = Meteor.userId();
 // changing webform classes
-    $('#accountMealPlans').addClass('hidden');
     $('#accountDeliveryInfo').removeClass('hidden');
     $('#accountInfo').addClass('hidden');
     $('#accountPaymentInfo').addClass('hidden');
@@ -221,10 +97,10 @@ Template.myAccount.events({
     $('#accMngtSelectionDelivery').addClass('active');
     return false;
   },
+
   "click #accMngtSelectionInfo": function(event, template){
     var userId = Meteor.userId();
 // changing webform classes
-    $('#accountMealPlans').addClass('hidden');
     $('#accountDeliveryInfo').addClass('hidden');
     $('#accountInfo').removeClass('hidden');
     $('#accountPaymentInfo').addClass('hidden');
@@ -236,7 +112,6 @@ Template.myAccount.events({
   "click #accMngtSelectionPayment": function(event, template){
     var userId = Meteor.userId();
 // changing webform classes
-    $('#accountMealPlans').addClass('hidden');
     $('#accountDeliveryInfo').addClass('hidden');
     $('#accountInfo').addClass('hidden');
     $('#accountPaymentInfo').removeClass('hidden');
@@ -246,134 +121,7 @@ Template.myAccount.events({
     return false;
   },
 
-// four sections of editing
-  "click #myAccountEditMealPlan": function(event, template){
-    Session.set("mealPlanFieldCheckingWarning", false);
-
-    var userId = Meteor.userId();
-    var userObject = Meteor.users.findOne({_id: userId});
-// set delivery days
-    var deliveryDays = getDeliveryDays(userObject.profile.deliveryDay);
-    $('#accountEditMealPlan_deliveryDays').val(userObject.profile.deliveryDay);
-
-    var babyPlanType = [];
-    var babyRecipeType= [[],[],[]];
-    var babyStatus = [userObject.profile.babyProfileOne.babyStatus, userObject.profile.babyProfileTwo.babyStatus, userObject.profile.babyProfileThree.babyStatus];
-
-    if(userObject.profile.babyProfileOne.babyStatus){
-
-      if(userObject.profile.babyProfileOne.boxSmall){
-        $('#accountEditMealPlan_planType_1').val('SM');
-      }else if(userObject.profile.babyProfileOne.boxMedium){
-        $('#accountEditMealPlan_planType_1').val('ME');
-      }else{
-        $('#accountEditMealPlan_planType_1').val('LG');
-      };
-
-      if(userObject.profile.babyProfileOne.singlePuree){
-        $('#accountEditMealPlan_singlePuree_1').addClass('active');
-      }else{
-        $('#accountEditMealPlan_singlePuree_1').removeClass('active');
-      };
-      if(userObject.profile.babyProfileOne.yummyPairs){
-        $('#accountEditMealPlan_yummyPairs_1').addClass('active');
-      }else{
-        $('#accountEditMealPlan_yummyPairs_1').removeClass('active');
-      };
-      if(userObject.profile.babyProfileOne.tastyTrio){
-        $('#accountEditMealPlan_tastyTrio_1').addClass('active');
-      }else{
-        $('#accountEditMealPlan_tastyTrio_1').removeClass('active');
-      };
-    };
-
-    if(userObject.profile.babyProfileTwo.babyStatus){
-
-      if(userObject.profile.babyProfileTwo.boxSmall){
-        $('#accountEditMealPlan_planType_2').val('SM');
-      }else if(userObject.profile.babyProfileTwo.boxMedium){
-        $('#accountEditMealPlan_planType_2').val('ME');
-      }else{
-        $('#accountEditMealPlan_planType_2').val('LG');
-      };
-
-      if(userObject.profile.babyProfileTwo.singlePuree){
-        $('#accountEditMealPlan_singlePuree_2').addClass('active');
-      }else{
-        $('#accountEditMealPlan_singlePuree_2').removeClass('active');
-      };
-      if(userObject.profile.babyProfileTwo.yummyPairs){
-        $('#accountEditMealPlan_yummyPairs_2').addClass('active');
-      }else{
-        $('#accountEditMealPlan_yummyPairs_2').removeClass('active');
-      };
-      if(userObject.profile.babyProfileTwo.tastyTrio){
-        $('#accountEditMealPlan_tastyTrio_2').addClass('active');
-      }else{
-        $('#accountEditMealPlan_tastyTrio_2').removeClass('active');
-      };
-    };
-
-    if(userObject.profile.babyProfileThree.babyStatus){
-
-      if(userObject.profile.babyProfileThree.boxSmall){
-        $('#accountEditMealPlan_planType_3').val('SM');
-      }else if(userObject.profile.babyProfileThree.boxMedium){
-        $('#accountEditMealPlan_planType_3').val('ME');
-      }else{
-        $('#accountEditMealPlan_planType_3').val('LG');
-      };
-
-      if(userObject.profile.babyProfileThree.singlePuree){
-        $('#accountEditMealPlan_singlePuree_3').addClass('active');
-      }else{
-        $('#accountEditMealPlan_singlePuree_3').removeClass('active');
-      };
-      if(userObject.profile.babyProfileThree.yummyPairs){
-        $('#accountEditMealPlan_yummyPairs_3').addClass('active');
-      }else{
-        $('#accountEditMealPlan_yummyPairs_3').removeClass('active');
-      };
-      if(userObject.profile.babyProfileThree.tastyTrio){
-        $('#accountEditMealPlan_tastyTrio_3').addClass('active');
-      }else{
-        $('#accountEditMealPlan_tastyTrio_3').removeClass('active');
-      };
-    };
-
-    var userZip = userObject.profile.addressZIP;
-    var zipObject = zipData(userZip);
-    if(!zipObject.SU){
-      $('#accountEditMealPlan_deliveryDays option[value="SU"]').remove();
-    };
-    if(!zipObject.MO){
-      $('#accountEditMealPlan_deliveryDays option[value="MO"]').remove();
-    };
-    if(!zipObject.TU){
-      $('#accountEditMealPlan_deliveryDays option[value="TU"]').remove();
-    };
-    if(!zipObject.WE){
-      $('#accountEditMealPlan_deliveryDays option[value="WE"]').remove();
-    };
-    if(!zipObject.TH){
-      $('#accountEditMealPlan_deliveryDays option[value="TH"]').remove();
-    };
-    if(!zipObject.FR){
-      $('#accountEditMealPlan_deliveryDays option[value="FR"]').remove();
-    };
-    if(!zipObject.SA){
-      $('#accountEditMealPlan_deliveryDays option[value="SA"]').remove();
-    };
-
-    $('.overlay-dark').removeClass('closed');
-
-    $("#accountMealPlans>.accountEditBlock.closed").removeClass("closed");
-    $("html, body").animate({ scrollTop: 160 }, "slow");
-
-
-    return false;
-
-  },
+// three sections of editing
 
   "click #myAccountEditDelivery": function(event, template){
     Session.set("deliveryFieldCheckingWarning", false);
@@ -403,6 +151,19 @@ Template.myAccount.events({
     return false;
   },
 
+  "click #accountEditDelivery_typeResidential": function(event, template){
+    $('#accountEditDelivery_typeResidential').addClass('active');
+    $('#accountEditDelivery_typeBusiness').removeClass('active');
+    return false;
+  },
+
+  "click #accountEditDelivery_typeBusiness": function(event, template){
+    $('#accountEditDelivery_typeResidential').removeClass('active');
+    $('#accountEditDelivery_typeBusiness').addClass('active');
+    return false;
+  },
+
+
   "click #myAccountEditAccountInfo": function(event, template){
     Session.set("accountInfoFieldCheckingWarning", false);
 
@@ -430,300 +191,7 @@ Template.myAccount.events({
     return false;
   },
 
-// activate all buttons in the four sections
-
-  "click #accountEditMealPlan_singlePuree_1": function(event, template){
-    if($('#accountEditMealPlan_singlePuree_1').hasClass('active')){
-      $('#accountEditMealPlan_singlePuree_1').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_singlePuree_1').addClass('active')
-    };
-    return false;
-  },
-
-  "click #accountEditMealPlan_singlePuree_2": function(event, template){
-    if($('#accountEditMealPlan_singlePuree_2').hasClass('active')){
-      $('#accountEditMealPlan_singlePuree_2').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_singlePuree_2').addClass('active')
-    };
-    return false;
-  },
-  "click #accountEditMealPlan_singlePuree_3": function(event, template){
-    if($('#accountEditMealPlan_singlePuree_3').hasClass('active')){
-      $('#accountEditMealPlan_singlePuree_3').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_singlePuree_3').addClass('active')
-    };
-    return false;
-  },
-  "click #accountEditMealPlan_yummyPairs_1": function(event, template){
-    if($('#accountEditMealPlan_yummyPairs_1').hasClass('active')){
-      $('#accountEditMealPlan_yummyPairs_1').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_yummyPairs_1').addClass('active')
-    };
-    return false;
-  },
-  "click #accountEditMealPlan_yummyPairs_2": function(event, template){
-    if($('#accountEditMealPlan_yummyPairs_2').hasClass('active')){
-      $('#accountEditMealPlan_yummyPairs_2').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_yummyPairs_2').addClass('active')
-    };
-    return false;
-  },
-  "click #accountEditMealPlan_yummyPairs_3": function(event, template){
-    if($('#accountEditMealPlan_yummyPairs_3').hasClass('active')){
-      $('#accountEditMealPlan_yummyPairs_3').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_yummyPairs_3').addClass('active')
-    };
-    return false;
-  },
-  "click #accountEditMealPlan_tastyTrio_1": function(event, template){
-    if($('#accountEditMealPlan_tastyTrio_1').hasClass('active')){
-      $('#accountEditMealPlan_tastyTrio_1').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_tastyTrio_1').addClass('active')
-    };
-    return false;
-  },
-  "click #accountEditMealPlan_tastyTrio_2": function(event, template){
-    if($('#accountEditMealPlan_tastyTrio_2').hasClass('active')){
-      $('#accountEditMealPlan_tastyTrio_2').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_tastyTrio_2').addClass('active')
-    };
-    return false;
-  },
-  "click #accountEditMealPlan_tastyTrio_3": function(event, template){
-    if($('#accountEditMealPlan_tastyTrio_3').hasClass('active')){
-      $('#accountEditMealPlan_tastyTrio_3').removeClass('active')
-    }else{
-      $('#accountEditMealPlan_tastyTrio_3').addClass('active')
-    };
-    return false;
-  },
-  "click #accountEditDelivery_typeResidential": function(event, template){
-    if($('#accountEditDelivery_typeResidential').hasClass('active')){
-    }else{
-      $('#accountEditDelivery_typeResidential').addClass('active')
-      $('#accountEditDelivery_typeBusiness').removeClass('active')
-    };
-    return false;
-  },
-  "click #accountEditDelivery_typeBusiness": function(event, template){
-    if($('#accountEditDelivery_typeBusiness').hasClass('active')){
-    }else{
-      $('#accountEditDelivery_typeResidential').removeClass('active')
-      $('#accountEditDelivery_typeBusiness').addClass('active')
-    };
-    return false;
-  },
-
-// four save events for the four sections
-
-"click #accountEditMealPlanSave": function(event, template){
-  var userId = Meteor.userId();
-  var userObject = Meteor.users.findOne({_id: userId});
-
-  var planType = [{
-    boxSmall: false,
-    boxMedium: false,
-    boxLarge: false
-  },{
-    boxSmall: false,
-    boxMedium: false,
-    boxLarge: false
-  },{
-    boxSmall: false,
-    boxMedium: false,
-    boxLarge: false
-  }];
-  var pureeType = [{
-    singlePuree: false,
-    yummyPairs: false,
-    tastyTrio: false
-  },{
-    singlePuree: false,
-    yummyPairs: false,
-    tastyTrio: false
-  },{
-    singlePuree: false,
-    yummyPairs: false,
-    tastyTrio: false
-  }];
-
-  console.log($('.pureeTypeCheck1').hasClass('active'));
-  console.log($('.pureeTypeCheck2').hasClass('active'));
-  console.log($('.pureeTypeCheck3').hasClass('active'));
-
-  if(userObject.profile.babyProfileTwo.babyStatus){
-    if(userObject.profile.babyProfileThree.babyStatus){
-      if($('.pureeTypeCheck1').hasClass('active')&&$('.pureeTypeCheck2').hasClass('active')&&$('.pureeTypeCheck3').hasClass('active')){
-        var validteDataEntry= true; // true means data entry is complete
-      }else{
-        var validteDataEntry= false; // true means data entry is complete
-      }
-    }else{
-      if($('.pureeTypeCheck1').hasClass('active')&&$('.pureeTypeCheck2').hasClass('active')){
-        var validteDataEntry= true; // true means data entry is complete
-      }else{
-        var validteDataEntry= false; // true means data entry is complete
-      }
-    }
-  }else{
-    if($('.pureeTypeCheck1').hasClass('active')){
-      var validteDataEntry= true; // true means data entry is complete
-    }else{
-      var validteDataEntry= false; // true means data entry is complete
-    }
-  };
-
-  if(validteDataEntry){
-    Session.set("mealPlanFieldCheckingWarning", false);
-    if(userObject.profile.babyProfileOne.babyStatus){
-      if($('#accountEditMealPlan_planType_1').val()=='SM'){
-        planType[0] = {
-          boxSmall: true,
-          boxMedium: false,
-          boxLarge: false
-        }
-      };
-      if($('#accountEditMealPlan_planType_1').val()=='ME'){
-        planType[0] = {
-          boxSmall: false,
-          boxMedium: true,
-          boxLarge: false
-        }
-      };
-      if($('#accountEditMealPlan_planType_1').val()=='LG'){
-        planType[0] = {
-          boxSmall: false,
-          boxMedium: false,
-          boxLarge: true
-        }
-      };
-
-      if($('#accountEditMealPlan_singlePuree_1').hasClass('active')){
-        pureeType[0].singlePuree = true;
-      }else{
-        pureeType[0].singlePuree = false;
-      };
-      if($('#accountEditMealPlan_yummyPairs_1').hasClass('active')){
-        pureeType[0].yummyPairs = true;
-      }else{
-        pureeType[0].yummyPairs = false;
-      };
-      if($('#accountEditMealPlan_tastyTrio_1').hasClass('active')){
-        pureeType[0].tastyTrio = true;
-      }else{
-        pureeType[0].tastyTrio = false;
-      };
-    };
-
-    if(userObject.profile.babyProfileTwo.babyStatus){
-      if($('#accountEditMealPlan_planType_2').val()=='SM'){
-        planType[1] = {
-          boxSmall: true,
-          boxMedium: false,
-          boxLarge: false
-        }
-      };
-      if($('#accountEditMealPlan_planType_2').val()=='ME'){
-        planType[1] = {
-          boxSmall: false,
-          boxMedium: true,
-          boxLarge: false
-        }
-      };
-      if($('#accountEditMealPlan_planType_2').val()=='LG'){
-        planType[1] = {
-          boxSmall: false,
-          boxMedium: false,
-          boxLarge: true
-        }
-      };
-      if($('#accountEditMealPlan_singlePuree_2').hasClass('active')){
-        pureeType[1].singlePuree = true;
-      }else{
-        pureeType[1].singlePuree = false;
-      };
-      if($('#accountEditMealPlan_yummyPairs_2').hasClass('active')){
-        pureeType[1].yummyPairs = true;
-      }else{
-        pureeType[1].yummyPairs = false;
-      };
-      if($('#accountEditMealPlan_tastyTrio_2').hasClass('active')){
-        pureeType[1].tastyTrio = true;
-      }else{
-        pureeType[1].tastyTrio = false;
-      };
-    };
-
-    if(userObject.profile.babyProfileThree.babyStatus){
-      if($('#accountEditMealPlan_planType_3').val()=='SM'){
-        planType[2] = {
-          boxSmall: true,
-          boxMedium: false,
-          boxLarge: false
-        }
-      };
-      if($('#accountEditMealPlan_planType_3').val()=='ME'){
-        planType[2] = {
-          boxSmall: false,
-          boxMedium: true,
-          boxLarge: false
-        }
-      };
-      if($('#accountEditMealPlan_planType_3').val()=='LG'){
-        planType[2] = {
-          boxSmall: false,
-          boxMedium: false,
-          boxLarge: true
-        }
-      };
-      if($('#accountEditMealPlan_singlePuree_3').hasClass('active')){
-        pureeType[2].singlePuree = true;
-      }else{
-        pureeType[2].singlePuree = false;
-      };
-      if($('#accountEditMealPlan_yummyPairs_3').hasClass('active')){
-        pureeType[2].yummyPairs = true;
-      }else{
-        pureeType[2].yummyPairs = false;
-      };
-      if($('#accountEditMealPlan_tastyTrio_3').hasClass('active')){
-        pureeType[2].tastyTrio = true;
-      }else{
-        pureeType[2].tastyTrio = false;
-      };
-    };
-
-    var deliveryDays = $('#accountEditMealPlan_deliveryDays').val();
-
-    Meteor.call("myAccountSaveMyMealPlan", userId, deliveryDays, planType, pureeType, function(error, result){
-      if(error){
-        console.log("error", error);
-        toastr.error('Your choice cannot be saved at this moment. Please try again later.');
-      }
-      if(result){
-        toastr.success('Meal plans are updated.');
-      }
-    });
-    $('.overlay-dark').addClass('closed');
-    $("#accountMealPlans>.accountEditBlock").addClass("closed");
-
-    return false;
-
-  }else{
-    Session.set("mealPlanFieldCheckingWarning", true);
-    console.log(Session.get('mealPlanFieldCheckingWarning'));
-    toastr.error('Please choose at least one puree type.');
-    return false;
-  };
-},
+// three save events for the four sections
 
 "click #accountEditDeliverySave": function(event, template){
   var userId = Meteor.userId();
@@ -793,26 +261,8 @@ Template.myAccount.events({
     return false;
   }else{
     // ZIP code is 5 digits
-    var zipObject = zipData(addressZIP);
-    if(zipObject){
-      if(zipObject.currentServing){
-        // ZIP code is served by us
-
-        var deliveryFieldCheckingWarning = Session.get('deliveryFieldCheckingWarning');
-        if(deliveryFieldCheckingWarning){
-          deliveryFieldCheckingWarning.addressZIP = false;
-
-        }else{
-          deliveryFieldCheckingWarning = false;
-        };
-        Session.set("deliveryFieldCheckingWarning", deliveryFieldCheckingWarning);
-
-        $('#accountEditDelivery_city').val(zipObject.city);
-        $('#accountEditDelivery_state').val(zipObject.state);
-        return false;
-
-      }else{
-        // ZIP code is not served by us now
+    Meteor.call("getZipData", addressZIP, function(error, result){
+      if(error){
         var deliveryFieldCheckingWarning = Session.get('deliveryFieldCheckingWarning');
         if(deliveryFieldCheckingWarning){
           deliveryFieldCheckingWarning.addressZIP = true;
@@ -825,26 +275,47 @@ Template.myAccount.events({
           };
         };
         Session.set("deliveryFieldCheckingWarning", deliveryFieldCheckingWarning);
-        toastr.error('We currently do not serve the ZIP Code area you entered. Please contact us for support.');
+        toastr.error('The ZIP Code you entered does not exist. Please try again or contact us for support.')
         return false;
-      };
-    }else{
-      // ZIP code does not exist
-      var deliveryFieldCheckingWarning = Session.get('deliveryFieldCheckingWarning');
-      if(deliveryFieldCheckingWarning){
-        deliveryFieldCheckingWarning.addressZIP = true;
+      }
+      if(result){
+        var zipObject = result;
+        console.log('this zip object is the working js is...'+zipObject);
+        if(zipObject.currentServing=='Yes'){
+          // ZIP code is served by us
 
-      }else{
-        deliveryFieldCheckingWarning = {
-          addressLine1: false,
-          addressZIP: true,
-          userPhoneNumber: false,
+          var deliveryFieldCheckingWarning = Session.get('deliveryFieldCheckingWarning');
+          if(deliveryFieldCheckingWarning){
+            deliveryFieldCheckingWarning.addressZIP = false;
+
+          }else{
+            deliveryFieldCheckingWarning = false;
+          };
+          Session.set("deliveryFieldCheckingWarning", deliveryFieldCheckingWarning);
+
+          $('#accountEditDelivery_city').val(zipObject.city);
+          $('#accountEditDelivery_state').val(zipObject.state);
+          return false;
+
+        }else{
+          // ZIP code is not served by us now
+          var deliveryFieldCheckingWarning = Session.get('deliveryFieldCheckingWarning');
+          if(deliveryFieldCheckingWarning){
+            deliveryFieldCheckingWarning.addressZIP = true;
+
+          }else{
+            deliveryFieldCheckingWarning = {
+              addressLine1: false,
+              addressZIP: true,
+              userPhoneNumber: false,
+            };
+          };
+          Session.set("deliveryFieldCheckingWarning", deliveryFieldCheckingWarning);
+          toastr.error('We currently do not serve the ZIP Code area you entered. Please contact us for support.');
+          return false;
         };
-      };
-      Session.set("deliveryFieldCheckingWarning", deliveryFieldCheckingWarning);
-      toastr.error('The ZIP Code you entered does not exist. Please try again or contact us for support.')
-      return false;
-    };
+      }
+    });
   };
 
 },
@@ -1111,7 +582,6 @@ Template.myAccount.events({
 // cancel editing
   "click .closeIcon": function(event, template){
     $('.overlay-dark').addClass('closed');
-    $("#accountMealPlans>.accountEditBlock").addClass("closed");
     $("#accountDeliveryInfo>.accountEditBlock").addClass("closed");
     $("#accountInfo>.accountEditBlock").addClass("closed");
     $("#accountPaymentInfo>.accountEditBlock").addClass("closed");
@@ -1122,7 +592,6 @@ Template.myAccount.events({
   "click .overlay-dark": function(event, template){
     $('.overlay-dark').addClass('closed');
 
-    $("#accountMealPlans>.accountEditBlock").addClass("closed");
     $("#accountDeliveryInfo>.accountEditBlock").addClass("closed");
     $("#accountInfo>.accountEditBlock").addClass("closed");
     $("#accountPaymentInfo>.accountEditBlock").addClass("closed");
@@ -1132,15 +601,11 @@ Template.myAccount.events({
 
 });
 
-Session.setDefault("mealPlanFieldCheckingWarning", false);
 Session.setDefault("deliveryFieldCheckingWarning", false);
 Session.setDefault("accountInfoFieldCheckingWarning", false);
 Session.setDefault("paymentFieldCheckingWarning", false);
 
 Template.myAccount.helpers({
-  mealPlanFieldCheckingWarning: function(){
-    return Session.get('mealPlanFieldCheckingWarning');
-  },
   deliveryFieldCheckingWarning: function(){
     return Session.get('deliveryFieldCheckingWarning');
   },
@@ -1158,7 +623,6 @@ Template.body.events({
     if(event.keyCode == 27){
       $('.overlay-dark').addClass('closed');
 
-      $("#accountMealPlans>.accountEditBlock").addClass("closed");
       $("#accountDeliveryInfo>.accountEditBlock").addClass("closed");
       $("#accountInfo>.accountEditBlock").addClass("closed");
       $("#accountPaymentInfo>.accountEditBlock").addClass("closed");
