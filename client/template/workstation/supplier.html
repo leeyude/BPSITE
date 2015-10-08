@@ -75,13 +75,12 @@
                 {{selectingSupplier.supplierDescription}}
               </p>
 
-              <h5>Supplier Photos</h5>
+              <h5>Supplier Photos </h5>
+              <h5>(Selected photo will be displayed in How It works Session)
+</h5>
               <div class="supplierPhotoBlock">
                 {{#each supplierImages}}
-                <div class="supplierPhotoUnit" style="background: url('{{this.url}}') no-repeat; background-size: contain">
-                  <div class="deleteRecipeImage">x</div>
-
-                </div>
+                  {{>supplierImage}}
                 {{/each}}
               </div>
             </div>
@@ -116,8 +115,6 @@
     </div>
   </div>
 </section>
-
-
 </template>
 
 <template name="supplierSummary">
@@ -219,4 +216,11 @@
   </div>
 </div>
 
+</template>
+
+
+<template name="supplierImage">
+  <div id={{_id}} class="supplierPhotoUnit {{#if publiclyDisplay}}selected{{/if}}" style="background: url('{{url}}') no-repeat; background-size: contain">
+    <div class="deleteSupplierImage">x</div>
+  </div>
 </template>

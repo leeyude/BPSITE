@@ -57,9 +57,23 @@
         <div class="row-fluid">
           <div class="content">
             <h4> Farm-fresh ingredients from family-run business</h4>
-            <p>
-              Meet more trusted farm partners!
-            </p>
+            <div class='sliderRowBlock clearfix'>
+              <div class="sliderRow clearfix">
+                <div id="carousel">
+                  {{#each farmerIntro}}
+                    {{>farmerIntroduction}}
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+            <div class="noteRow">
+              <p>
+                Meet more trusted farm partners!
+              </p>
+            </div>
+
+
+
             <a href="/signup" class="btn get-started">
               <span> Get Started Today »</span>
             </a>
@@ -160,4 +174,25 @@
 
 
     {{>mainFooter}}
+</template>
+
+<template name="farmerIntroduction">
+
+  <div id="farmer{{_id}}" class="farmPhotos" style="background: url('{{supplierImages.url}}') no-repeat; background-size: contain">
+    <div class="farmDescriptionBlock">
+      <div class='farmerName'>
+        <h5>{{supplierName}}</h5>
+      </div>
+      <div class="farmerLocation">
+        <h5>{{supplierCity}}, {{supplierState}}</h5>
+      </div>
+      <div class='farmerDescription'>
+        <p>
+          {{supplierDescription}}
+        </p>
+      </div>
+
+    </div>
+  </div>
+
 </template>

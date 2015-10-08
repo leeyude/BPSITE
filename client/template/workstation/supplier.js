@@ -54,11 +54,18 @@ Template.supplierUpdate.events({
 
   "change .supplierZIP": function(event, template){
     var supplierZIP= template.find(".supplierZIP").value;
-    var zipObject = Zips.findOne({zipcode:supplierZIP});
-    var supplierCity = zipObject.cityName;
-    var supplierState= zipObject.stateAbb;
-    $('.supplierCity').val(supplierCity);
-    $('.supplierState').val(supplierState);
+    var zipReady = Meteor.subscribe('zipsSearch', supplierZIP);
+    Tracker.autorun(function(){
+      if(zipReady.ready()){
+        var zipObject = Zips.findOne({zipcode:supplierZIP});
+        var supplierCity = zipObject.cityName;
+        var supplierState= zipObject.stateAbb;
+        $('.supplierCity').val(supplierCity);
+        $('.supplierState').val(supplierState);
+      };
+    });
+
+
   },
 
   "click .save": function(event, template){
@@ -78,8 +85,27 @@ Template.supplierUpdate.events({
     var isWinterActive= Session.get("isWinterActive");
     var supplierProdReceipt= template.find(".supplierProdReceipt").value;
 
+    var updateObject = {
+      supplierId: supplierId,
+      supplierName: supplierName,
+      supplierMainContact: supplierMainContact,
+      supplierPhoneNumber: supplierPhoneNumber,
+      supplierEmail: supplierEmail,
+      supplierAddressLine1: supplierAddressLine1,
+      supplierAddressLine2: supplierAddressLine2,
+      supplierZIP: supplierZIP,
+      supplierCity: supplierCity,
+      supplierState: supplierState,
+      supplierDescription: supplierDescription,
+      supplierProduce: supplierProduce,
+      isOrganic: isOrganic,
+      isWinterActive: isWinterActive,
+      supplierProdReceipt: supplierProdReceipt
+    };
 
-    Meteor.call('updateSuppliers', supplierId, supplierName, supplierMainContact, supplierPhoneNumber, supplierEmail, supplierAddressLine1, supplierAddressLine2, supplierZIP,supplierCity, supplierState, supplierDescription, supplierProduce, isOrganic, isWinterActive, supplierProdReceipt); // skipped photo for now
+    console.log(supplierState);
+
+    Meteor.call('updateSuppliers', updateObject); // skipped photo for now
   },
 
   "click .delete": function(event, template){
@@ -133,6 +159,7 @@ Template.supplierSummary.events({
     $('.supplierAddressLine2').val(this.supplierAddressLine2);
     $('.supplierZIP').val(this.supplierZIP);
     $('.supplierCity').val(this.supplierCity);
+    $('.supplierState').val(this.supplierState);
 
     $('.supplierDescription').val(this.supplierDescription);
     $('.supplierProduce').val(this.supplierProduce);
@@ -157,4 +184,55 @@ Session.setDefault("selectingSupplier", false);
 
 SupplierImages = new FS.Collection("supplierImages", {
   stores: [new FS.Store.FileSystem("supplierImages")]
+});
+
+// Setting publicly displayed image
+
+Template.supplier.events({
+  'click .deleteSupplierImage': function(event, template) {
+    var supplierId= Session.get("selectingSupplier");
+    var imageId = this._id;
+
+    Meteor.call("removeSupplierImage", supplierId, imageId);
+  },
+
+  "click .supplierPhotoUnit": function(event, template){
+    var supplierId= Session.get("selectingSupplier");
+    var photoId = '#'+this._id;
+    if($(photoId).hasClass('selected')){
+      $(photoId).removeClass('selected');
+      Meteor.call("updatePubliclyDisplayPhoto", supplierId, false, function(error, result){
+        if(error){
+          console.log("error", error);
+        }
+        if(result){
+          return false;
+        }
+      });
+    }else{
+      $('.supplierPhotoUnit').removeClass('selected');
+      $(photoId).addClass('selected');
+      Meteor.call("updatePubliclyDisplayPhoto", supplierId, this._id, function(error, result){
+        if(error){
+          console.log("error", error);
+        }
+        if(result){
+          return false;
+        }
+      });
+    };
+
+  }
+});
+
+Template.supplierImage.helpers({
+  publiclyDisplay: function(){
+    var supplierId= Session.get("selectingSupplier");
+    var supplierObject = Suppliers.findOne({_id: supplierId});
+    if(this._id==supplierObject.publicPhoto){
+      return true;
+    }else{
+      return false;
+    };
+  }
 });

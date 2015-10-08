@@ -86,7 +86,7 @@
 
 .supplierInformation p {
   border: 1px solid #999;
-  height: 60px;
+  min-height: 60px;
   padding-left: 6px;
 }
 
@@ -142,4 +142,24 @@
   float: left;
   margin-right: 3px;
   background-size: contain;
+}
+
+.supplierPhotoUnit.selected {
+  border: 3px solid rgb(84, 173, 40);
+}
+
+.deleteSupplierImage {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  color: #888;
+  float: right;
+  margin-right: 5px;
+  z-index: 5;
+}
+
+
+.deleteSupplierImage:hover {
+  color: #222;
+
 }

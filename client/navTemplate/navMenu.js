@@ -12,8 +12,13 @@ if (Meteor.isClient) {
     this.render('homepage');
   });
 
-  Router.route('/howItWorks', function () {
-    this.render('howItWorks');
+  Router.route('/howItWorks', {
+    action: function(){
+      this.render('howItWorks');
+    },
+    waitOn: function(){
+      return [Meteor.subscribe('supplierImages'), Meteor.subscribe('supplierPublish')];
+    },
   });
 
   Router.route('/weeklyMenu', function () {

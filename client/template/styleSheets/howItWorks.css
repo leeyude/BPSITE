@@ -136,8 +136,8 @@
   background-size: cover;
   position: center;
   text-align: center;
-  height: 450px;
-  padding-top: 80px;
+  height: 740px;
+  padding-top: 60px;
 }
 
 #howItWorksFarmFresh h4 {
@@ -271,4 +271,126 @@
   font-size: 22px;
   padding-bottom: 12px;
   margin-top: 15px;
+}
+
+
+.sliderRowBlock {
+  display: block;
+  width: 100%;
+  float: left;
+  padding-top: 20px;
+}
+
+.sliderRow {
+  display: block;
+  width:    960px;
+  height:    400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#carousel {
+  min-width:    960px;
+  min-height: 400px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#carousel .farmPhotos {
+  width: 960px;
+  height: 400px;
+}
+
+#carousel .farmDescriptionBlock {
+  background-color:rgba(0, 0, 0, 0.5);
+  width: 360px;
+  height: 100%;
+  display: block;
+  float: right;
+  padding: 20px;
+}
+
+#carousel .farmerName {
+  border-bottom: 1px solid white;
+
+}
+
+#carousel h5 {
+  text-align: left;
+  line-height: 30px;
+  color: white;
+  font-size: 24px;
+  z-index: 15;
+  opacity: 1;
+}
+
+#carousel .farmerDescription {
+  display: block;
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+}
+
+#carousel .farmerDescription p{
+  text-align: left;
+  font-size: 16px;
+  color: white;
+}
+
+#carousel .farmerLocation h5 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: white;
+}
+
+.slick-prev {
+  left: -1px;
+}
+
+.slick-next {
+  right: -1px;
+}
+
+ul.farmDots {
+  padding: 0;
+}
+
+#carousel .farmDots li button{
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 10px;
+  border-color: 1px solid white;
+  height: 12px;
+  width: 12px;
+  margin-top: 20px;
+  margin-left: 6px;
+  margin-right: 6px;
+  display: inline;
+  color: transparent;
+  font-size: 0;
+  padding: 0;
+}
+
+#carousel .farmDots li:hover button{
+  opacity: 1;
+}
+
+#carousel .farmDots li.slick-active button{
+  opacity: 1;
+}
+
+#carousel .farmDots li{
+  display: inline;
+
+}
+
+.noteRow {
+  width: 100%;
+  display: block;
+  float: left;
+  margin-top: 30px;
 }

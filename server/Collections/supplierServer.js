@@ -35,52 +35,51 @@ SupplierImages.deny({
   });
 
 Meteor.methods({
-  updateSuppliers: function(supplierId, supplierName, supplierMainContact, supplierPhoneNumber, supplierEmail, supplierAddressLine1, supplierAddressLine2, supplierZIP, supplierCity, supplierState, supplierDescription, supplierProduce, isOrganic, isWinterActive,supplierProdReceipt){
+  updateSuppliers: function(updateObject){
 
 
-      if(supplierId){
-        var supplierObject = Suppliers.findOne({_id: supplierId});
+      if(updateObject.supplierId){
+        var supplierObject = Suppliers.findOne({_id: updateObject.supplierId});
         var imageId= supplierObject.imageId;
 
         var newDate= new Date();
         var currentDate = moment(newDate).format('ll');
-        Suppliers.update({_id:supplierId}, {$set:{
-          supplierName: supplierName,
-          supplierMainContact: supplierMainContact,
-          supplierPhoneNumber: supplierPhoneNumber,
-          supplierEmail: supplierEmail,
-          supplierAddressLine1: supplierAddressLine1,
-          supplierAddressLine2: supplierAddressLine2,
-          supplierZIP: supplierZIP,
-          supplierCity: supplierCity,
-          supplierState: supplierState,
-          supplierDescription: supplierDescription,
-          supplierProduce: supplierProduce,
-          isOrganic: isOrganic,
-          isWinterActive: isWinterActive,
+        Suppliers.update({_id:updateObject.supplierId}, {$set:{
+          supplierName: updateObject.supplierName,
+          supplierMainContact: updateObject.supplierMainContact,
+          supplierPhoneNumber: updateObject.supplierPhoneNumber,
+          supplierEmail: updateObject.supplierEmail,
+          supplierAddressLine1: updateObject.supplierAddressLine1,
+          supplierAddressLine2: updateObject.supplierAddressLine2,
+          supplierZIP: updateObject.supplierZIP,
+          supplierCity: updateObject.supplierCity,
+          supplierState: updateObject.supplierState,
+          supplierDescription: updateObject.supplierDescription,
+          supplierProduce: updateObject.supplierProduce,
+          isOrganic: updateObject.isOrganic,
+          isWinterActive: updateObject.isWinterActive,
           imageId: imageId,
-          supplierProdReceipt: supplierProdReceipt
+          supplierProdReceipt: updateObject.supplierProdReceipt
         }});
-        console.log(supplierId);
       } else {
         var newDate= new Date();
         var currentDate = moment(newDate).format('ll');
         Suppliers.insert({
-          supplierName: supplierName,
-          supplierMainContact: supplierMainContact,
-          supplierPhoneNumber: supplierPhoneNumber,
-          supplierEmail: supplierEmail,
-          supplierAddressLine1: supplierAddressLine1,
-          supplierAddressLine2: supplierAddressLine2,
-          supplierZIP: supplierZIP,
-          supplierCity: supplierCity,
-          supplierState: supplierState,
-          supplierDescription: supplierDescription,
-          supplierProduce: supplierProduce,
-          isOrganic: isOrganic,
-          isWinterActive: isWinterActive,
+          supplierName: updateObject.supplierName,
+          supplierMainContact: updateObject.supplierMainContact,
+          supplierPhoneNumber: updateObject.supplierPhoneNumber,
+          supplierEmail: updateObject.supplierEmail,
+          supplierAddressLine1: updateObject.supplierAddressLine1,
+          supplierAddressLine2: updateObject.supplierAddressLine2,
+          supplierZIP: updateObject.supplierZIP,
+          supplierCity: updateObject.supplierCity,
+          supplierState: updateObject.supplierState,
+          supplierDescription: updateObject.supplierDescription,
+          supplierProduce: updateObject.supplierProduce,
+          isOrganic: updateObject.isOrganic,
+          isWinterActive: updateObject.isWinterActive,
           imageId: [],
-          supplierProdReceipt: supplierProdReceipt
+          supplierProdReceipt: updateObject.supplierProdReceipt
         });
       };
     },
@@ -96,5 +95,18 @@ Meteor.methods({
     SupplierImages: function(supplierId, imageId){
       Suppliers.update({_id: supplierId}, {$push: {"imageId": imageId}});
       return false;
-    }
+    },
+
+    removeSupplierImage: function(supplierId, imageId){
+      Suppliers.update(
+        {_id: supplierId},
+        { $pull: { imageId: imageId} },
+        { multi: true }
+      );
+    },
+
+    updatePubliclyDisplayPhoto: function(supplierId, imageId){
+      Suppliers.update({_id: supplierId}, {$set: {publicPhoto: imageId}});
+      return false;
+    },
 });
