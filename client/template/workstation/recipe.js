@@ -268,22 +268,25 @@ Template.recipeSummary.events({
     console.log(this._id);
     $('#recipeName').text(this.recipeName);
     $('#recipeStage').val(this.recipeStage);
+
     if(this.recipeIsActive){
       $('#recipeIsActive').val('Yes');
     }else{
       $('#recipeIsActive').val('No');
     };
+
     if(this.classification){
       $('#recipeClassification').val(this.classification);
     }else{
       $('#recipeClassification').val('-');
     };
+
     if(this.recipeIsSeasonal){
       $('#recipeIsSeasonal').val('Yes');
     }else{
       $('#recipeIsSeasonal').val('No');
     };
-    console.log(this.recipeDescription);
+
     if(this.recipeDescription){
       $('#recipeDescription').val(this.recipeDescription);
     }else{
@@ -324,6 +327,7 @@ Template.recipeEditIngredients.helpers({
 Template.recipeEditIngredients.events({
   "click #recipeEditIngredientButton": function(event, template){
     var recipeId= Session.get("selectingRecipe");
+    console.log(recipeId);
     var recipeObject = Recipies.findOne({_id: recipeId});
     var numberOfIngredients = recipeObject.recipeIncludeIngredients.length;
     var ingredientIdList = [];
@@ -337,28 +341,26 @@ Template.recipeEditIngredients.events({
 
   },
 
-  "click .ingredientOptions": function(event, template){
+  "click .recipeIngredientCheckbox": function(event, template){
     // get recipe id
     var recipeId= Session.get("selectingRecipe");
+    console.log('click');
     var recipeObject = Recipies.findOne({_id: recipeId});
     var recipeIngredients= recipeObject.recipeIncludeIngredients;
+    var ingredientId = this._id;
 
+    console.log(this);
 
-    $('.recipeIngredientCheckbox').click(function(event) {
-      var ingredientId = this.id;
+    if($("#"+ingredientId).hasClass('active')){
+      $("#"+ingredientId).removeClass("active");
+      Meteor.call("removeIngredientFromRecipe", recipeId, ingredientId);
+    }else{
+      $("#"+ingredientId).addClass("active");
+      Meteor.call("addIngredientFromRecipe", recipeId, ingredientId);
+    };
 
-        if($(this).hasClass('active')){
-          $(this).removeClass("active");
-          Meteor.call("removeIngredientFromRecipe", recipeId, ingredientId);
-        }else{
-          $(this).addClass("active");
-          Meteor.call("addIngredientFromRecipe", recipeId, ingredientId);
-        };
+    return false;
 
-
-      event.stopImmediatePropagation();
-      return false;
-    });
   },
 });
 

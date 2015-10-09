@@ -42,7 +42,7 @@ Template.signup.events({
 
       Meteor.call("emailExist", userEmail, userZip, function(error, result){
         if(error){
-          alert("Please enter a valid 5-digit ZIP Code.");
+          toastr.error('Please enter a valid 5-digit ZIP Code.');
         }
         if(result){
           Session.set("inputWarningEmail", false);
@@ -52,7 +52,7 @@ Template.signup.events({
             Session.setPersistent("validZIP", userZip);
             Session.setPersistent("userEmail", userEmail);
             Session.setPersistent("preUserLoggedIn", true);
-            console.log(result);
+
           }else if(result==="notCovered"){
             Meteor.call("notCoverTheZIPWaitlisted", userEmail, userZip);
             Session.setPersistent("getNotCoveredZIP", userZip);
@@ -61,7 +61,7 @@ Template.signup.events({
           };
 
           Session.setPersistent("preUserLoggedIn", Meteor.users.findOne({"emails.address":userEmail})._id);
-          console.log("useraccount id is......."+Session.get("preUserLoggedIn"));
+
           Router.go('/profile');
 
         }else if(result==="active"){

@@ -269,7 +269,8 @@ if (Meteor.isClient) {
       this.render('deliverySchedule');
     },
     onBeforeAction: function(){
-      var userToken= Session.get("preUserLoggedIn");
+      var userToken= Meteor.userId();
+;
       // all properties available in the route function
       // are also available here such as this.params
       if (!userToken) {
@@ -281,8 +282,8 @@ if (Meteor.isClient) {
       }
     },
     waitOn: function(){
-      var userEmail = Session.get("userEmail");
-      return Meteor.subscribe('preUser', userEmail);
+      var userId= Meteor.userId();
+      return Meteor.subscribe('userData', userId);
     },
   });
 

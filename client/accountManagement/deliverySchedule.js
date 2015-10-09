@@ -283,6 +283,42 @@ Template.deliverySchedule.helpers({
 
     return Session.get("weekInfo");
   },
+
+  // to display menu info according to week selection
+
+  menuInfo: function(){
+    var weekSelection = Session.get("weekSelection");
+    console.log("weekSelection is.... "+weekSelection);
+    var momentSelectedDate = moment().set({
+      'year': weekSelection[2],
+      'month':weekSelection[0],
+      'date':Number(weekSelection[1]),
+    });
+
+    // data needs to have
+    // 1. time, 2. skipped or scheduled, 3.
+
+    var dateForLogQuery = moment(momentSelectedDate).format("dddd, MMM Do");
+    var dateForHeader = moment(momentSelectedDate).format("dddd, MMMM Do");
+    if(weekSelection[3]=='skipped'){
+      var statusText = 'Skipped';
+      var statusClass = 'skippedDelivery'
+    }else if(weekSelection[3]=='scheduled'){
+      var statusText = 'Scheduled';
+      var statusClass = 'scheduledDelivery'
+
+    };
+    var weekInfo= {
+      header: dateForHeader,
+      statusText: statusText,
+      statusClass: statusClass,
+    };
+    Session.set("menuInfo", menuInfo);
+
+
+    return Session.get("menuInfo");
+  },
+
 });
 
 Template.deliverySchedule.events({
