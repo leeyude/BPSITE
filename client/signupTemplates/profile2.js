@@ -492,7 +492,7 @@ Template.profile2.events({
       }
     };
 
-    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday,  mealFreq, mealOunces, 'babyTwo');
     
     if(babyName){
       var fieldCheckingWarning=false;
@@ -579,7 +579,7 @@ Template.profile2.events({
       }
     };
 
-    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+var getDefaultMealOption = defaultMealOption(preId, babyBirthday,  mealFreq, mealOunces, 'babyTwo');
 
     if(babyName){
       var fieldCheckingWarning=false;
@@ -649,7 +649,7 @@ Template.profile2.events({
       }
     };
 
-    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday,  mealFreq, mealOunces, 'babyTwo');
 
     if(babyName){
       var fieldCheckingWarning=false;
@@ -696,7 +696,7 @@ Template.profile2.events({
     var preId= Session.get("preUserLoggedIn");
     var babyBirthday = template.find("#babyBirthday").value;
 
-    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday,  mealFreq, mealOunces, 'babyTwo');
 
     Meteor.call("cancel2", preId, getDefaultMealOption);
 

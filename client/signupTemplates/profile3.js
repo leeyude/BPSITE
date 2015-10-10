@@ -493,7 +493,7 @@ Template.profile3.events({
       }
     };
 
-    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday,  mealFreq, mealOunces, 'babyThree');
 
     if(babyName){
       var fieldCheckingWarning=false;
@@ -530,7 +530,7 @@ Template.profile3.events({
     var preId= Session.get("preUserLoggedIn");
     var babyBirthday = template.find("#babyBirthday").value;
 
-    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday,  mealFreq, mealOunces, 'babyThree');
 
     Meteor.call("cancel3", preId, getDefaultMealOption);
     Router.go('/mealPlan');
