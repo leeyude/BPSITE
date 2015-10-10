@@ -494,7 +494,7 @@ Template.profile.events({
       }
     };
 
-    var getDefaultMealOption = defaultMealOption(preId, babyBirthday);
+    var getDefaultMealOption = defaultMealOption(preId, babyBirthday,  mealFreq, mealOunces, 'babyOne');
 
     if(babyName){
       var fieldCheckingWarning=false;

@@ -184,7 +184,7 @@
 }
 
 #deliverySchedule .skipMark {
-  background: url("/skip.png")  no-repeat;
+  background: url("/skipped.png")  no-repeat;
   background-size: contain;
   width: 22px;
   height: 22px;
@@ -201,7 +201,7 @@
 }
 
 #deliverySchedule .skipped {
-  background: url("/skip.png") no-repeat 50% 75%;
+  background: url("/skipped.png") no-repeat 50% 75%;
   background-size: 24px 24px ;
 }
 
@@ -214,6 +214,17 @@
   margin-bottom: 12px;
 }
 
+.deliveryHeaderRow {
+  width: 100%;
+  display: inline-block;
+  float: left;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #bbb;
+}
+
+.deliveryHeaderRow .col-md-6 {
+  padding: 0;
+}
 
 .statusMarkBlock, .logisticsMarkBlock {
   width: auto;
@@ -232,7 +243,7 @@
 }
 
 #deliverySchedule .skippedDelivery {
-  background: url("/skip.png")  no-repeat;
+  background: url("/skipped.png")  no-repeat;
   background-size: contain;
   width: 26px;
   height: 26px;
@@ -261,7 +272,7 @@
 }
 
 #deliverySchedule  h5.Skipped {
-  color: #961521;
+  color: #96152E;
 }
 
 #deliverySchedule .logisticsMarkBlock h5 {
@@ -270,4 +281,58 @@
   width: auto;
   margin-left: 8px;
   font-size: 18px;
+}
+
+.changeDeliveryBlock {
+  width: auto;
+  float: right;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.changeMenu, .separationBar {
+  float: left;
+  display: inline-block;
+  width: auto;
+  color: #53ad28;
+  font-size: 14px;
+  font-family: "Gentium Book Basic", sans-serif;
+  margin-right: 4px;
+  margin-left: 4px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.skipDelivery {
+  float: right;
+  display: inline-block;
+  width: auto;
+  color: #53ad28;
+  font-size: 14px;
+  font-family: "Gentium Book Basic", sans-serif;
+  margin-right: 4px;
+  margin-left: 4px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.changeMenu:hover, .skipDelivery:hover {
+  text-decoration: underline;
+}
+
+.unskipDelivery {
+  float: right;
+  display: inline-block;
+  width: auto;
+  color: #53ad28;
+  font-size: 14px;
+  font-family: "Gentium Book Basic", sans-serif;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.menuRecipeBlock, .menuRow {
+  width: 100%;
+  display: inline-block;
+  float: left;
 }

@@ -43,6 +43,7 @@ ejson@1.0.6
 email@1.0.6
 facebook@1.2.1
 fastclick@1.0.3
+force-ssl@1.0.4
 geojson-utils@1.0.3
 google@1.1.5
 gwendall:body-events@0.1.6

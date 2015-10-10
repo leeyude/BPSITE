@@ -9,17 +9,17 @@
               <span class="line"></span>
             </div>
             <div class="row">
-              <div id="deliveryScheduleCalendarBlock" class="col-sm-6">
+              <div id="deliveryScheduleCalendarBlock" class="col-sm-3">
                 <table id="deliveryScheduleCalendar" class="table table-striped table-bordered table-hover">
                   <thead>
                     <tr class="weekdayName">
-                      <th>Sun               </th>
-                      <th>Mon               </th>
-                      <th>Tue               </th>
-                      <th>Wed               </th>
-                      <th>Thu               </th>
-                      <th>Fri               </th>
-                      <th>Sat               </th>
+                      <th>S               </th>
+                      <th>M               </th>
+                      <th>T               </th>
+                      <th>W               </th>
+                      <th>T               </th>
+                      <th>F               </th>
+                      <th>S               </th>
                     </tr>
 
                     <tr class="monthHeader">
@@ -340,21 +340,65 @@
                 </table>
 
               </div>
-              <div id="deliveryContent" class="col-sm-6">
+              <div id="deliveryContent" class="col-sm-9">
                 <div class="deliveryContentHeader">
                   <h4> {{weekInfo.header}}</h4>
-                  <div class="statusMarkBlock">
-                    <div class="statusMark {{weekInfo.statusClass}}">
+
+                  <div class="deliveryHeaderRow">
+                    <div class="col-md-6">
+                      <div class="statusMarkBlock">
+                        <div class="statusMark {{weekInfo.statusClass}}">
+
+                        </div>
+                        <h5 class="{{weekInfo.statusText}}">{{weekInfo.statusText}}</h5>
+                      </div>
+
+                      <div class="logisticsMarkBlock">
+                        <div class="logisticsMark">
+
+                        </div>
+                        <h5>delivered by 8pm</h5>
+                      </div>
 
                     </div>
-                    <h5 class="{{weekInfo.statusText}}">{{weekInfo.statusText}}</h5>
-                  </div>
-                  <div class="logisticsMarkBlock">
-                    <div class="logisticsMark">
+                    <div class="col-md-6">
+                      <div class="changeDeliveryBlock">
+                        <div class="changeMenu">
+                          Change My Menu
+                        </div>
+                        {{#if menuInfo.skipped}}
 
+                        <div class="unskipDelivery btn">
+                          Unskip This Delivery
+                        </div>
+
+                        {{else}}
+                        <div class="separationBar">
+                          |
+                        </div>
+
+                        <div class="skipDelivery">
+                          Skip This Delivery
+                        </div>
+                        {{/if}}
+                      </div>
                     </div>
-                    <h5>delivered by 8pm</h5>
                   </div>
+
+
+
+                </div>
+                <div class="menuRecipeBlock">
+                  <div class="menuRow">
+
+                  </div>
+                  <div class="menuRow">
+
+                  </div>
+                  <div class="menuRow">
+
+                  </div>
+                  {{menuInfo}}
                 </div>
               </div>
             </div>

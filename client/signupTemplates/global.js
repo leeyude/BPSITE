@@ -117,64 +117,76 @@ mealVolume = function(userId, babyStatus){
       demandPerWeek[i]=false;
     };
   };
-  console.log(demandPerWeek);
-  console.log("demand per week");
+  console.log("demand per week..."+demandPerWeek);
   return demandPerWeek;
 };
 
 // This defaultMealOption function is used to set default meal options based on users input as users proceed with entering profiles.
 
-defaultMealOption = function(userId, birthInput){
-  var babyAges = BDDifferenceResults(userId, birthInput);
+defaultMealOption = function(userId, birthInput, mealFreq, mealOunces, whichBaby){
   var userObject = Meteor.users.findOne({_id:userId});
   var babyStatus = [
     userObject.profile.babyProfileOne.babyStatus,
     userObject.profile.babyProfileTwo.babyStatus,
     userObject.profile.babyProfileThree.babyStatus
   ];
-  console.log("baby Status =..."+babyStatus);
-
-  var defaultPureeOption = [{},{},{}];
+  var babyAges = BDDifferenceResults(userId, birthInput);
   var mealPerWeek = mealVolume(userId, babyStatus);
 
-  for (var i = 0; i < 3; i++) {
-    if(babyStatus[i]){  // baby status is active, so the function gets what user saved before.
-      if(i==0){
-        console.log("status true,"+" i="+i);
-        defaultPureeOption[i]={
-          singlePuree: userObject.profile.babyProfileOne.singlePuree,
-          yummyPairs: userObject.profile.babyProfileOne.yummyPairs,
-          tastyTrio: userObject.profile.babyProfileOne.tastyTrio,
-          boxSmall: userObject.profile.babyProfileOne.boxSmall,
-          boxMedium: userObject.profile.babyProfileOne.boxMedium,
-          boxLarge: userObject.profile.babyProfileOne.boxLarge,
-        };
-      }else if(i==1){
-        console.log("status true,"+" i="+i);
-        defaultPureeOption[i]={
-          singlePuree: userObject.profile.babyProfileTwo.singlePuree,
-          yummyPairs: userObject.profile.babyProfileTwo.yummyPairs,
-          tastyTrio: userObject.profile.babyProfileTwo.tastyTrio,
-          boxSmall: userObject.profile.babyProfileTwo.boxSmall,
-          boxMedium: userObject.profile.babyProfileTwo.boxMedium,
-          boxLarge: userObject.profile.babyProfileTwo.boxLarge,
-        };
-      }else if(i==2){
-        console.log("status true,"+" i="+i);
-        defaultPureeOption[i]={
-          singlePuree: userObject.profile.babyProfileThree.singlePuree,
-          yummyPairs: userObject.profile.babyProfileThree.yummyPairs,
-          tastyTrio: userObject.profile.babyProfileThree.tastyTrio,
-          boxSmall: userObject.profile.babyProfileThree.boxSmall,
-          boxMedium: userObject.profile.babyProfileThree.boxMedium,
-          boxLarge: userObject.profile.babyProfileThree.boxLarge,
-        };
-      };
-    }else{  // baby status is not active, so the function sets a default value for meal option and box size for the user.
-      console.log("status false"+" i="+i);
-      console.log(mealPerWeek[i]);
-      if(babyAges[i].months>=10){
-        defaultPureeOption[i]={
+  if(mealFreq=="6+"){
+    var demandPerWeek= 6*mealOunces*7;
+  }else if(mealFreq){
+    var demandPerWeek= mealFreq*mealOunces*7;
+  }else{
+    var demandPerWeek= false;
+  };
+
+  if(whichBaby=='babyOne'){
+    mealPerWeek[0]=demandPerWeek;
+  }else if(whichBaby=='babyTwo'){
+    mealPerWeek[1]=demandPerWeek;
+  }else if(whichBaby=='babyThree'){
+    mealPerWeek[2]=demandPerWeek;
+  };
+
+  console.log(babyAges);
+  console.log("baby Status =..."+babyStatus);
+  console.log(mealPerWeek);
+
+  var defaultPureeOption = [{
+    singlePuree: false,
+    yummyPairs: false,
+    tastyTrio: false,
+  },{
+    singlePuree: false,
+    yummyPairs: false,
+    tastyTrio: false,
+  },{
+    singlePuree: false,
+    yummyPairs: false,
+    tastyTrio: false,
+  }];
+
+  if(babyStatus[0]){
+    console.log("baby one status true");
+
+    defaultPureeOption[0]={
+      singlePuree: userObject.profile.babyProfileOne.singlePuree,
+      yummyPairs: userObject.profile.babyProfileOne.yummyPairs,
+      tastyTrio: userObject.profile.babyProfileOne.tastyTrio,
+      boxSmall: userObject.profile.babyProfileOne.boxSmall,
+      boxMedium: userObject.profile.babyProfileOne.boxMedium,
+      boxLarge: userObject.profile.babyProfileOne.boxLarge,
+    };
+  }else{
+    console.log("baby one status false");
+    console.log("baby age =..."+babyAges[0].months);
+    console.log(mealPerWeek[0]);
+    console.log(mealPerWeek[0]>=56);
+    console.log(mealPerWeek[0]>=28);
+    if(babyAges[0].months>=10){
+      if(mealPerWeek[0]>=56){
+        defaultPureeOption[0]={
           singlePuree: false,
           yummyPairs:false,
           tastyTrio:true,
@@ -182,12 +194,134 @@ defaultMealOption = function(userId, birthInput){
           boxMedium:false,
           boxLarge:true,
         };
-      }else if(babyAges[i].months>=8){
-        console.log("does meal per week >= 84"+mealPerWeek[i]>=84);
-        if(mealPerWeek[i]>=84){
-          console.log("meal per week >=84"+mealPerWeek[i]);
+      }else if(mealPerWeek[0]>=28){
+        defaultPureeOption[0]={
+          singlePuree: false,
+          yummyPairs:false,
+          tastyTrio:true,
+          boxSmall:false,
+          boxMedium:true,
+          boxLarge:false,
+        };
+      }else{
+        defaultPureeOption[0]={
+          singlePuree: false,
+          yummyPairs:false,
+          tastyTrio:true,
+          boxSmall:true,
+          boxMedium:false,
+          boxLarge:false,
+        };
+      };
+    }else if(babyAges[0].months>=8){
+      if(mealPerWeek[0]>=56){
+        defaultPureeOption[0]={
+          singlePuree: false,
+          yummyPairs:true,
+          tastyTrio:false,
+          boxSmall:false,
+          boxMedium:false,
+          boxLarge:true,
+        };
+      }else if(mealPerWeek[0]>=28){
+        defaultPureeOption[0]={
+          singlePuree: false,
+          yummyPairs:true,
+          tastyTrio:false,
+          boxSmall:false,
+          boxMedium:true,
+          boxLarge:false,
+        };
+      }else{
+        defaultPureeOption[0]={
+          singlePuree: false,
+          yummyPairs:true,
+          tastyTrio:false,
+          boxSmall:true,
+          boxMedium:false,
+          boxLarge:false,
+        };
+      };
+    }else{
+      if(mealPerWeek[0]>=56){
+        defaultPureeOption[0]={
+          singlePuree: true,
+          yummyPairs:false,
+          tastyTrio:false,
+          boxSmall:false,
+          boxMedium:false,
+          boxLarge:true,
+        };
+      }else if(mealPerWeek[0]>=28){
+        defaultPureeOption[0]={
+          singlePuree: true,
+          yummyPairs:false,
+          tastyTrio:false,
+          boxSmall:false,
+          boxMedium:true,
+          boxLarge:false,
+        };
+      }else{
+        defaultPureeOption[0]={
+          singlePuree: true,
+          yummyPairs:false,
+          tastyTrio:false,
+          boxSmall:true,
+          boxMedium:false,
+          boxLarge:false,
+        };
+      };
+    };
+  };
 
-          defaultPureeOption[i]={
+
+
+  if(babyStatus[1]){
+    console.log("baby two status true");
+
+    defaultPureeOption[1]={
+      singlePuree: userObject.profile.babyProfileTwo.singlePuree,
+      yummyPairs: userObject.profile.babyProfileTwo.yummyPairs,
+      tastyTrio: userObject.profile.babyProfileTwo.tastyTrio,
+      boxSmall: userObject.profile.babyProfileTwo.boxSmall,
+      boxMedium: userObject.profile.babyProfileTwo.boxMedium,
+      boxLarge: userObject.profile.babyProfileTwo.boxLarge,
+    };
+  }else{
+
+      console.log("baby one status false");
+      if(babyAges[1].months>=10){
+        if(mealPerWeek[1]>=56){
+          defaultPureeOption[1]={
+            singlePuree: false,
+            yummyPairs:false,
+            tastyTrio:true,
+            boxSmall:false,
+            boxMedium:false,
+            boxLarge:true,
+          };
+        }else if(mealPerWeek[1]>=28){
+          defaultPureeOption[1]={
+            singlePuree: false,
+            yummyPairs:false,
+            tastyTrio:true,
+            boxSmall:false,
+            boxMedium:true,
+            boxLarge:false,
+          };
+        }else{
+          defaultPureeOption[1]={
+            singlePuree: false,
+            yummyPairs:false,
+            tastyTrio:true,
+            boxSmall:true,
+            boxMedium:false,
+            boxLarge:false,
+          };
+        };
+      }else if(babyAges[1].months>=8){
+        if(mealPerWeek[1]>=56){
+          defaultPureeOption[1]={
             singlePuree: false,
             yummyPairs:true,
             tastyTrio:false,
@@ -195,23 +329,28 @@ defaultMealOption = function(userId, birthInput){
             boxMedium:false,
             boxLarge:true,
           };
-        }else{
-          console.log("meal per week <84"+mealPerWeek[i]);
-
-          defaultPureeOption[i]={
+        }else if(mealPerWeek[1]>=28){
+          defaultPureeOption[1]={
             singlePuree: false,
             yummyPairs:true,
             tastyTrio:false,
             boxSmall:false,
             boxMedium:true,
+            boxLarge:false,
+          };
+        }else{
+          defaultPureeOption[1]={
+            singlePuree: false,
+            yummyPairs:true,
+            tastyTrio:false,
+            boxSmall:true,
+            boxMedium:false,
             boxLarge:false,
           };
         };
       }else{
-        if(mealPerWeek[i]>=84){
-          console.log("meal per week >=84"+mealPerWeek[i]);
-
-          defaultPureeOption[i]={
+        if(mealPerWeek[1]>=56){
+          defaultPureeOption[0]={
             singlePuree: true,
             yummyPairs:false,
             tastyTrio:false,
@@ -219,10 +358,8 @@ defaultMealOption = function(userId, birthInput){
             boxMedium:false,
             boxLarge:true,
           };
-        }else if(mealPerWeek[i]>=56){
-          console.log("56< meal per week <84"+mealPerWeek[i]);
-
-          defaultPureeOption[i]={
+        }else if(mealPerWeek[1]>=28){
+          defaultPureeOption[1]={
             singlePuree: true,
             yummyPairs:false,
             tastyTrio:false,
@@ -231,7 +368,7 @@ defaultMealOption = function(userId, birthInput){
             boxLarge:false,
           };
         }else{
-          defaultPureeOption[i]={
+          defaultPureeOption[1]={
             singlePuree: true,
             yummyPairs:false,
             tastyTrio:false,
@@ -241,7 +378,109 @@ defaultMealOption = function(userId, birthInput){
           };
         };
       };
+  };
+  if(babyStatus[2]){
+    console.log("baby three status true");
+
+    defaultPureeOption[2]={
+      singlePuree: userObject.profile.babyProfileThree.singlePuree,
+      yummyPairs: userObject.profile.babyProfileThree.yummyPairs,
+      tastyTrio: userObject.profile.babyProfileThree.tastyTrio,
+      boxSmall: userObject.profile.babyProfileThree.boxSmall,
+      boxMedium: userObject.profile.babyProfileThree.boxMedium,
+      boxLarge: userObject.profile.babyProfileThree.boxLarge,
     };
+  }else{
+
+      console.log("baby three status false");
+      if(babyAges[2].months>=10){
+        if(mealPerWeek[2]>=56){
+          defaultPureeOption[2]={
+            singlePuree: false,
+            yummyPairs:false,
+            tastyTrio:true,
+            boxSmall:false,
+            boxMedium:false,
+            boxLarge:true,
+          };
+        }else if(mealPerWeek[2]>=28){
+          defaultPureeOption[2]={
+            singlePuree: false,
+            yummyPairs:false,
+            tastyTrio:true,
+            boxSmall:false,
+            boxMedium:true,
+            boxLarge:false,
+          };
+        }else{
+          defaultPureeOption[2]={
+            singlePuree: false,
+            yummyPairs:false,
+            tastyTrio:true,
+            boxSmall:true,
+            boxMedium:false,
+            boxLarge:false,
+          };
+        };
+      }else if(babyAges[2].months>=8){
+        if(mealPerWeek[2]>=56){
+          defaultPureeOption[2]={
+            singlePuree: false,
+            yummyPairs:true,
+            tastyTrio:false,
+            boxSmall:false,
+            boxMedium:false,
+            boxLarge:true,
+          };
+        }else if(mealPerWeek[2]>=28){
+          defaultPureeOption[2]={
+            singlePuree: false,
+            yummyPairs:true,
+            tastyTrio:false,
+            boxSmall:false,
+            boxMedium:true,
+            boxLarge:false,
+          };
+        }else{
+          defaultPureeOption[2]={
+            singlePuree: false,
+            yummyPairs:true,
+            tastyTrio:false,
+            boxSmall:true,
+            boxMedium:false,
+            boxLarge:false,
+          };
+        };
+      }else{
+        if(mealPerWeek[2]>=56){
+          defaultPureeOption[2]={
+            singlePuree: true,
+            yummyPairs:false,
+            tastyTrio:false,
+            boxSmall:false,
+            boxMedium:false,
+            boxLarge:true,
+          };
+        }else if(mealPerWeek[2]>=28){
+          defaultPureeOption[2]={
+            singlePuree: true,
+            yummyPairs:false,
+            tastyTrio:false,
+            boxSmall:false,
+            boxMedium:true,
+            boxLarge:false,
+          };
+        }else{
+          defaultPureeOption[2]={
+            singlePuree: true,
+            yummyPairs:false,
+            tastyTrio:false,
+            boxSmall:true,
+            boxMedium:false,
+            boxLarge:false,
+          };
+        };
+      };
   };
 
   return defaultPureeOption;
@@ -578,4 +817,26 @@ getDeliveryDays = function(abb){
   if(abb=='TH'){return deliveryDays[4]};
   if(abb=='FR'){return deliveryDays[5]};
   if(abb=='SA'){return deliveryDays[6]};
+};
+
+
+// convert week selection to menuWeekName in delivery schedule
+
+convertWeekSelectionToMenuWeekName = function(weekSelection){
+  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  for(i=0;i<12;i++){
+    if(weekSelection[0]==months[i]){
+      var month = i;
+    };
+  };
+  var date = parseInt(weekSelection[1]);
+  var year = weekSelection[2];
+
+  var momentDate = moment().set({'year': year, 'month': month, 'date': date});
+  var sat = moment(momentDate).day('Saturday').date();
+
+  var menuWeekObject = MenuCalendarWeeks.findOne({dateSA: sat, month: month, year: year});
+
+  return menuWeekObject;
 };

@@ -40,12 +40,7 @@ Template.deliverySchedule.helpers({
         deliveryStatusNextMonth.push(deliveryStatus);
       };
     };
-    console.log(deliveryDatesThisMonth);
-    console.log(deliveryStatusThisMonth);
-    console.log(deliveryDatesNextMonth);
-    console.log(deliveryStatusNextMonth);
-    console.log("check deliveryStatusThisMonth[0]==99");
-    console.log(deliveryStatusThisMonth[0]==99);
+
 // setting default week for right panel information view
     if(Session.get("weekSelection")){
     }else{
@@ -101,7 +96,7 @@ Template.deliverySchedule.helpers({
           };
         };
       };
-      console.log(defaultDisplayWeek);
+
       Session.set("weekSelection", defaultDisplayWeek);
     };
 
@@ -132,14 +127,10 @@ Template.deliverySchedule.helpers({
       for(j=0; j<deliveryDatesThisMonth.length; j++){
 
         if(i==deliveryDatesThisMonth[j]){
-          console.log("when i =..."+i+"and and and "+deliveryDatesThisMonth[j]);
-          console.log(deliveryStatusThisMonth[j]==99);
+
           if(deliveryStatusThisMonth[j]==99){
-            console.log("it is true that date is ..."+deliveryDatesThisMonth[j]);
-            console.log(calendarDateWithValue);
             firstMonthClassValueArray[calendarDateWithValue]='skipped';
-            console.log(firstMonthClassValueArray[calendarDateWithValue]);
-            console.log(firstMonthClassValueArray);
+
           }else{
             firstMonthClassValueArray[calendarDateWithValue]='scheduled';
           };
@@ -163,8 +154,7 @@ Template.deliverySchedule.helpers({
       };
     };
     Session.set("firstMonthWeekSwitch", firstMonthWeekSwitch);
-    console.log(firstMonthValueArray);
-    console.log(firstMonthWeekSwitch);
+
 
 
     var startDateInNextMonth = 1;
@@ -196,7 +186,6 @@ Template.deliverySchedule.helpers({
       };
       calendarDateWithValue++;
     }; // the array includes all dates remaining in the current month.
-    console.log(secondMonthClassValueArray);
     Session.set("secondMonthValueArray", secondMonthValueArray);
 
     var checkWeeksInSecondMonth = Math.ceil((secondMonthValueArray.length/7));
@@ -207,8 +196,6 @@ Template.deliverySchedule.helpers({
     };
     Session.set("secondMonthWeekSwitch", secondMonthWeekSwitch);
 
-    console.log(secondMonthValueArray);
-    console.log(secondMonthWeekSwitch);
 
     Session.set("firstMonthClassValueArray", firstMonthClassValueArray);
     Session.set("secondMonthClassValueArray", secondMonthClassValueArray);
@@ -253,7 +240,6 @@ Template.deliverySchedule.helpers({
   },
   weekInfo: function(){
     var weekSelection = Session.get("weekSelection");
-    console.log("weekSelection is.... "+weekSelection);
     var momentSelectedDate = moment().set({
       'year': weekSelection[2],
       'month':weekSelection[0],
@@ -288,30 +274,22 @@ Template.deliverySchedule.helpers({
 
   menuInfo: function(){
     var weekSelection = Session.get("weekSelection");
-    console.log("weekSelection is.... "+weekSelection);
-    var momentSelectedDate = moment().set({
-      'year': weekSelection[2],
-      'month':weekSelection[0],
-      'date':Number(weekSelection[1]),
-    });
+    var menuWeekObject = convertWeekSelectionToMenuWeekName(weekSelection);
 
-    // data needs to have
-    // 1. time, 2. skipped or scheduled, 3.
-
-    var dateForLogQuery = moment(momentSelectedDate).format("dddd, MMM Do");
-    var dateForHeader = moment(momentSelectedDate).format("dddd, MMMM Do");
     if(weekSelection[3]=='skipped'){
-      var statusText = 'Skipped';
-      var statusClass = 'skippedDelivery'
-    }else if(weekSelection[3]=='scheduled'){
-      var statusText = 'Scheduled';
-      var statusClass = 'scheduledDelivery'
-
+      var skipped = true;
+    }else{
+      var skipped = false;
     };
-    var weekInfo= {
-      header: dateForHeader,
-      statusText: statusText,
-      statusClass: statusClass,
+    console.log(skipped);
+    console.log(weekSelection);
+
+    var babyName= [,,];
+
+
+    var menuInfo= {
+      babyName: babyName,
+      skipped: skipped,
     };
     Session.set("menuInfo", menuInfo);
 
@@ -327,265 +305,260 @@ Template.deliverySchedule.events({
     var getScheduled = $('.m1wk1').children('.scheduled').text();
     var selectedWeekMonth = Session.get("thisMonth");
     var selectedWeekYear = Session.get("thisMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
-
+    console.log(this);
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m1wk2": function(event, template){
-    console.log("got clicked by helper");
     var getSkipped = $('.m1wk2').children('.skipped').text();
     var getScheduled = $('.m1wk2').children('.scheduled').text();
     var selectedWeekMonth = Session.get("thisMonth");
     var selectedWeekYear = Session.get("thisMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
-      console.log(deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m1wk3": function(event, template){
     var getSkipped = $('.m1wk3').children('.skipped').text();
     var getScheduled = $('.m1wk3').children('.scheduled').text();
     var selectedWeekMonth = Session.get("thisMonth");
     var selectedWeekYear = Session.get("thisMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m1wk4": function(event, template){
     var getSkipped = $('.m1wk4').children('.skipped').text();
     var getScheduled = $('.m1wk4').children('.scheduled').text();
     var selectedWeekMonth = Session.get("thisMonth");
     var selectedWeekYear = Session.get("thisMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m1wk5": function(event, template){
     var getSkipped = $('.m1wk5').children('.skipped').text();
     var getScheduled = $('.m1wk5').children('.scheduled').text();
     var selectedWeekMonth = Session.get("thisMonth");
     var selectedWeekYear = Session.get("thisMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m1wk6": function(event, template){
     var getSkipped = $('.m1wk6').children('.skipped').text();
     var getScheduled = $('.m1wk6').children('.scheduled').text();
     var selectedWeekMonth = Session.get("thisMonth");
     var selectedWeekYear = Session.get("thisMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m2wk1": function(event, template){
     var getSkipped = $('.m2wk1').children('.skipped').text();
     var getScheduled = $('.m2wk1').children('.scheduled').text();
     var selectedWeekMonth = Session.get("nextMonth");
     var selectedWeekYear = Session.get("nextMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m2wk2": function(event, template){
     var getSkipped = $('.m2wk2').children('.skipped').text();
     var getScheduled = $('.m2wk2').children('.scheduled').text();
     var selectedWeekMonth = Session.get("nextMonth");
     var selectedWeekYear = Session.get("nextMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m2wk3": function(event, template){
     var getSkipped = $('.m2wk3').children('.skipped').text();
     var getScheduled = $('.m2wk3').children('.scheduled').text();
     var selectedWeekMonth = Session.get("nextMonth");
     var selectedWeekYear = Session.get("nextMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m2wk4": function(event, template){
     var getSkipped = $('.m2wk4').children('.skipped').text();
     var getScheduled = $('.m2wk4').children('.scheduled').text();
     var selectedWeekMonth = Session.get("nextMonth");
     var selectedWeekYear = Session.get("nextMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m2wk5": function(event, template){
     var getSkipped = $('.m2wk5').children('.skipped').text();
     var getScheduled = $('.m2wk5').children('.scheduled').text();
     var selectedWeekMonth = Session.get("nextMonth");
     var selectedWeekYear = Session.get("nextMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
   "click .m2wk6": function(event, template){
     var getSkipped = $('.m2wk6').children('.skipped').text();
     var getScheduled = $('.m2wk6').children('.scheduled').text();
     var selectedWeekMonth = Session.get("nextMonth");
     var selectedWeekYear = Session.get("nextMonthYear");
-    console.log("this month is..."+selectedWeekMonth);
+
 
     if(getSkipped){
-      console.log(getSkipped);
-      console.log("get skipped");
+
+
       var selectedWeekDate = getSkipped;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "skipped"];
       Session.set("weekSelection", deliveryOfTheWeek);
     }else if(getScheduled){
-      console.log(getScheduled);
-      console.log("get scheduled");
+
+
       var selectedWeekDate = getScheduled;
       var deliveryOfTheWeek = [selectedWeekMonth, selectedWeekDate, selectedWeekYear, "scheduled"];
       Session.set("weekSelection", deliveryOfTheWeek);
     };
-    console.log(Session.get("weekSelection"));
+
   },
 });
