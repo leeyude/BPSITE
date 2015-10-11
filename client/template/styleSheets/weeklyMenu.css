@@ -1,9 +1,10 @@
 #weeklyMenu {
-  position: center;
   text-align: center;
   padding-bottom: 40px;
   padding-top: 100px;
   background-color: rgb(240, 255, 233);
+  display: block;
+  overflow: hidden;
 }
 
 #weeklyMenu h4{

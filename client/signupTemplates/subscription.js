@@ -267,20 +267,31 @@ Template.subscription.events({
                   Session.set("accountCreationError", false);
                   console.log(userEmail);
                   console.log(password);
-                  Meteor.subscribe('preUser', userEmail);
-                  Meteor.setTimeout(function(){
-                    Meteor.loginWithPassword(userEmail, password, function(err){
-                      if (err){
-                        console.log(err);
-                        console.log("login error");
-                      }else{
-                        console.log("log in successful");
-                      };
-                    });
-                    Router.go('/thankyou');
-                  }, 3000);
+                  var handle = Meteor.subscribe('preUser', userEmail);
 
-                  return false;
+
+                  Tracker.autorun(function() {
+                    if (handle.ready()){
+                      Tracker.autorun(function() {
+                        if (handle.ready()){
+                          $('.subcriptionWait').removeClass('hidden');
+                          Meteor.loginWithPassword(userEmail, password, function(err){
+                            if (err){
+                              console.log(err);
+                              console.log("login error");
+                            }else{
+                              console.log("log in successful");
+                            };
+                          });
+                          Router.go('/thankyou');
+                          return false;
+                        }else{
+                          console.log("waiting");
+                          $('.subcriptionWait').removeClass('hidden');
+                        };
+                      });
+                    };
+                  });
                 };
               });
             }

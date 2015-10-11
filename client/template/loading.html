@@ -1,3 +1,45 @@
-<template name="loading">
+<template name="loadingIcon">
   {{>spinner}}
+</template>
+
+<template name="loadingPage">
+  <div id='loadingPageCradle'>
+    <div class="central">
+
+      <div class="cord leftMove">
+        <div class="ball"></div>
+      </div>
+      <div class="cord">
+        <div class="ball"></div>
+      </div>
+      <div class="cord">
+        <div class="ball"></div>
+      </div>
+      <div class="cord">
+        <div class="ball"></div>
+      </div>
+      <div class="cord">
+        <div class="ball"></div>
+      </div>
+      <div class="cord">
+        <div class="ball"></div>
+      </div>
+      <div class="cord rightMove">
+        <div class="ball" id="first"></div>
+      </div>
+
+
+      <div class="shadows">
+        <div class="leftShadow"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="rightShadow"></div>
+      </div>
+      <h5>Loading...</h5>
+
+    </div>
+  </div>
 </template>
