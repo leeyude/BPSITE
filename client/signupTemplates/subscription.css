@@ -373,6 +373,16 @@
   position:inherit;
 }
 
+.subcriptionWait {
+  position: absolute;
+  display: inline-block;
+  margin-left: 1%;
+  padding-top: -4%;
+  height: 56px;
+  width: 40px;
+  margin-top: 27px;
+}
+
 #subscription .fieldWarningMessage {
   margin-bottom: 0;
 }

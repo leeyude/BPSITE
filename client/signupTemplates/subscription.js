@@ -1,169 +1,177 @@
 Template.subscription.helpers({
   deliveryData: function(){
     var userId= Session.get("preUserLoggedIn");
-    var userObject = Meteor.users.findOne({_id:userId});
-    var deliveryData = userObject.deliveryLog[0];
-    var subtotal = parseFloat(deliveryData.subtotal).toFixed(2);
+    var handle= Meteor.subscribe("userData");
 
-    var babyStatus = [userObject.profile.babyProfileOne.babyStatus, userObject.profile.babyProfileTwo.babyStatus,userObject.profile.babyProfileThree.babyStatus];
-    var babyName = getBabyName(userObject);
+    Tracker.autorun(function() {
+      if (handle.ready()){
+        var userObject = Meteor.users.findOne({_id:userId});
+        var deliveryData = userObject.deliveryLog[0];
+        var subtotal = parseFloat(deliveryData.subtotal).toFixed(2);
 
-    var allergenArray = [
-      [
-        userObject.profile.babyProfileOne.allergenWheat,
-        userObject.profile.babyProfileOne.allergenShellfish,
-        userObject.profile.babyProfileOne.allergenEggs,
-        userObject.profile.babyProfileOne.allergenFish,
-        userObject.profile.babyProfileOne.allergenPeanuts,
-        userObject.profile.babyProfileOne.allergenMilk,
-        userObject.profile.babyProfileOne.allergenTreeNuts,
-        userObject.profile.babyProfileOne.allergenSoybeans,
-      ],[
-        userObject.profile.babyProfileTwo.allergenWheat,
-        userObject.profile.babyProfileTwo.allergenShellfish,
-        userObject.profile.babyProfileTwo.allergenEggs,
-        userObject.profile.babyProfileTwo.allergenFish,
-        userObject.profile.babyProfileTwo.allergenPeanuts,
-        userObject.profile.babyProfileTwo.allergenMilk,
-        userObject.profile.babyProfileTwo.allergenTreeNuts,
-        userObject.profile.babyProfileTwo.allergenSoybeans,
-      ],[
-        userObject.profile.babyProfileThree.allergenWheat,
-        userObject.profile.babyProfileThree.allergenShellfish,
-        userObject.profile.babyProfileThree.allergenEggs,
-        userObject.profile.babyProfileThree.allergenFish,
-        userObject.profile.babyProfileThree.allergenPeanuts,
-        userObject.profile.babyProfileThree.allergenMilk,
-        userObject.profile.babyProfileThree.allergenTreeNuts,
-        userObject.profile.babyProfileThree.allergenSoybeans,
-      ]
-    ];
+        var babyStatus = [userObject.profile.babyProfileOne.babyStatus, userObject.profile.babyProfileTwo.babyStatus,userObject.profile.babyProfileThree.babyStatus];
+        var babyName = getBabyName(userObject);
 
-    if(babyStatus[1]){
-      if(babyStatus[2]){
-        var pureeArray = [[
-          deliveryData.content[0].babyProfile.singlePuree,
-          deliveryData.content[0].babyProfile.yummyPairs,
-          deliveryData.content[0].babyProfile.tastyTrio,
-        ],[
-          deliveryData.content[1].babyProfile.singlePuree,
-          deliveryData.content[1].babyProfile.yummyPairs,
-          deliveryData.content[1].babyProfile.tastyTrio,
-        ],[
-          deliveryData.content[2].babyProfile.singlePuree,
-          deliveryData.content[2].babyProfile.yummyPairs,
-          deliveryData.content[2].babyProfile.tastyTrio,
-        ]];
+        var allergenArray = [
+          [
+            userObject.profile.babyProfileOne.allergenWheat,
+            userObject.profile.babyProfileOne.allergenShellfish,
+            userObject.profile.babyProfileOne.allergenEggs,
+            userObject.profile.babyProfileOne.allergenFish,
+            userObject.profile.babyProfileOne.allergenPeanuts,
+            userObject.profile.babyProfileOne.allergenMilk,
+            userObject.profile.babyProfileOne.allergenTreeNuts,
+            userObject.profile.babyProfileOne.allergenSoybeans,
+          ],[
+            userObject.profile.babyProfileTwo.allergenWheat,
+            userObject.profile.babyProfileTwo.allergenShellfish,
+            userObject.profile.babyProfileTwo.allergenEggs,
+            userObject.profile.babyProfileTwo.allergenFish,
+            userObject.profile.babyProfileTwo.allergenPeanuts,
+            userObject.profile.babyProfileTwo.allergenMilk,
+            userObject.profile.babyProfileTwo.allergenTreeNuts,
+            userObject.profile.babyProfileTwo.allergenSoybeans,
+          ],[
+            userObject.profile.babyProfileThree.allergenWheat,
+            userObject.profile.babyProfileThree.allergenShellfish,
+            userObject.profile.babyProfileThree.allergenEggs,
+            userObject.profile.babyProfileThree.allergenFish,
+            userObject.profile.babyProfileThree.allergenPeanuts,
+            userObject.profile.babyProfileThree.allergenMilk,
+            userObject.profile.babyProfileThree.allergenTreeNuts,
+            userObject.profile.babyProfileThree.allergenSoybeans,
+          ]
+        ];
 
-        var planArray = [[
-          deliveryData.content[0].babyProfile.boxSmall,
-          deliveryData.content[0].babyProfile.boxMedium,
-          deliveryData.content[0].babyProfile.boxLarge,
-        ],[
-          deliveryData.content[1].babyProfile.boxSmall,
-          deliveryData.content[1].babyProfile.boxMedium,
-          deliveryData.content[1].babyProfile.boxLarge,
-        ],[
-          deliveryData.content[2].babyProfile.boxSmall,
-          deliveryData.content[2].babyProfile.boxMedium,
-          deliveryData.content[2].babyProfile.boxLarge,
-        ]];
+        if(babyStatus[1]){
+          if(babyStatus[2]){
+            var pureeArray = [[
+              deliveryData.content[0].babyProfile.singlePuree,
+              deliveryData.content[0].babyProfile.yummyPairs,
+              deliveryData.content[0].babyProfile.tastyTrio,
+            ],[
+              deliveryData.content[1].babyProfile.singlePuree,
+              deliveryData.content[1].babyProfile.yummyPairs,
+              deliveryData.content[1].babyProfile.tastyTrio,
+            ],[
+              deliveryData.content[2].babyProfile.singlePuree,
+              deliveryData.content[2].babyProfile.yummyPairs,
+              deliveryData.content[2].babyProfile.tastyTrio,
+            ]];
 
-      }else{
-        var pureeArray = [[
-          deliveryData.content[0].babyProfile.singlePuree,
-          deliveryData.content[0].babyProfile.yummyPairs,
-          deliveryData.content[0].babyProfile.tastyTrio,
-        ],[
-          deliveryData.content[1].babyProfile.singlePuree,
-          deliveryData.content[1].babyProfile.yummyPairs,
-          deliveryData.content[1].babyProfile.tastyTrio,
-        ],[
-          false,
-          false,
-          false
-        ]];
+            var planArray = [[
+              deliveryData.content[0].babyProfile.boxSmall,
+              deliveryData.content[0].babyProfile.boxMedium,
+              deliveryData.content[0].babyProfile.boxLarge,
+            ],[
+              deliveryData.content[1].babyProfile.boxSmall,
+              deliveryData.content[1].babyProfile.boxMedium,
+              deliveryData.content[1].babyProfile.boxLarge,
+            ],[
+              deliveryData.content[2].babyProfile.boxSmall,
+              deliveryData.content[2].babyProfile.boxMedium,
+              deliveryData.content[2].babyProfile.boxLarge,
+            ]];
 
-        var planArray = [[
-          deliveryData.content[0].babyProfile.boxSmall,
-          deliveryData.content[0].babyProfile.boxMedium,
-          deliveryData.content[0].babyProfile.boxLarge,
-        ],[
-          deliveryData.content[1].babyProfile.boxSmall,
-          deliveryData.content[1].babyProfile.boxMedium,
-          deliveryData.content[1].babyProfile.boxLarge,
-        ],[
-          false,
-          false,
-          false
-        ]];
+          }else{
+            var pureeArray = [[
+              deliveryData.content[0].babyProfile.singlePuree,
+              deliveryData.content[0].babyProfile.yummyPairs,
+              deliveryData.content[0].babyProfile.tastyTrio,
+            ],[
+              deliveryData.content[1].babyProfile.singlePuree,
+              deliveryData.content[1].babyProfile.yummyPairs,
+              deliveryData.content[1].babyProfile.tastyTrio,
+            ],[
+              false,
+              false,
+              false
+            ]];
+
+            var planArray = [[
+              deliveryData.content[0].babyProfile.boxSmall,
+              deliveryData.content[0].babyProfile.boxMedium,
+              deliveryData.content[0].babyProfile.boxLarge,
+            ],[
+              deliveryData.content[1].babyProfile.boxSmall,
+              deliveryData.content[1].babyProfile.boxMedium,
+              deliveryData.content[1].babyProfile.boxLarge,
+            ],[
+              false,
+              false,
+              false
+            ]];
+          };
+        }else{
+          var pureeArray = [[
+            deliveryData.content[0].babyProfile.singlePuree,
+            deliveryData.content[0].babyProfile.yummyPairs,
+            deliveryData.content[0].babyProfile.tastyTrio,
+          ],[
+            false,
+            false,
+            false
+          ],[
+            false,
+            false,
+            false
+          ]];
+
+          var planArray = [[
+            deliveryData.content[0].babyProfile.boxSmall,
+            deliveryData.content[0].babyProfile.boxMedium,
+            deliveryData.content[0].babyProfile.boxLarge,
+          ],[
+            false,
+            false,
+            false
+          ],[
+            false,
+            false,
+            false
+          ]];
+        };
+
+        var allergenSummary = [,,];
+        var pureeSummary = [,,];
+        var planType = [,,];
+
+        for(i=0;i<3;i++){
+          if(babyStatus[i]){
+            allergenSummary[i]= getAllergenStatement(allergenArray[i]);
+            pureeSummary[i]= getPureeStatement(pureeArray[i]);
+            planType[i] = getPlanType(planArray[i]);
+          }else{
+            allergenSummary[i]=null;
+            pureeSummary[i]= null;
+            planType[i]=null;
+          };
+        };
+
+        var deliveryDay = getDeliveryDay(userObject.profile.deliveryDay);
+        var deliveryAddress = getDeliveryAddress(userObject);
+
+        Session.set("babyStatus", babyStatus);
+        Session.set("babyName", babyName);
+        Session.set("planStatement", planType);
+        Session.set("pureeStatement", pureeSummary);
+        Session.set("allergenStatement", allergenSummary);
+        Session.set("deliveryObject", babyStatus);
+
+
+        deliveryObject = {
+          subtotal: subtotal,
+          firstDelivery: deliveryData.fulfilmentDate,
+          deliveryDate: deliveryDay,
+          deliveryAddress: deliveryAddress
+        };
+        Session.set("deliveryData", deliveryObject);
+
+        return Session.get("deliveryData");
       };
-    }else{
-      var pureeArray = [[
-        deliveryData.content[0].babyProfile.singlePuree,
-        deliveryData.content[0].babyProfile.yummyPairs,
-        deliveryData.content[0].babyProfile.tastyTrio,
-      ],[
-        false,
-        false,
-        false
-      ],[
-        false,
-        false,
-        false
-      ]];
-
-      var planArray = [[
-        deliveryData.content[0].babyProfile.boxSmall,
-        deliveryData.content[0].babyProfile.boxMedium,
-        deliveryData.content[0].babyProfile.boxLarge,
-      ],[
-        false,
-        false,
-        false
-      ],[
-        false,
-        false,
-        false
-      ]];
-    };
-
-    var allergenSummary = [,,];
-    var pureeSummary = [,,];
-    var planType = [,,];
-
-    for(i=0;i<3;i++){
-      if(babyStatus[i]){
-        allergenSummary[i]= getAllergenStatement(allergenArray[i]);
-        pureeSummary[i]= getPureeStatement(pureeArray[i]);
-        planType[i] = getPlanType(planArray[i]);
-      }else{
-        allergenSummary[i]=null;
-        pureeSummary[i]= null;
-        planType[i]=null;
-      };
-    };
-
-    var deliveryDay = getDeliveryDay(userObject.profile.deliveryDay);
-    var deliveryAddress = getDeliveryAddress(userObject);
-
-    Session.set("babyStatus", babyStatus);
-    Session.set("babyName", babyName);
-    Session.set("planStatement", planType);
-    Session.set("pureeStatement", pureeSummary);
-    Session.set("allergenStatement", allergenSummary);
-    Session.set("deliveryObject", babyStatus);
+    });
 
 
-    deliveryObject = {
-      subtotal: subtotal,
-      firstDelivery: deliveryData.fulfilmentDate,
-      deliveryDate: deliveryDay,
-      deliveryAddress: deliveryAddress
-    };
-    Session.set("deliveryData", deliveryObject);
-
-    return Session.get("deliveryData");
   },
   babyStatus: function(){
     return Session.get("babyStatus");
@@ -310,19 +318,27 @@ Template.subscription.events({
                 Session.set("accountCreationError", false);
                 console.log(userEmail);
                 console.log(password);
-                Meteor.subscribe('preUser', userEmail);
-                Meteor.setTimeout(function(){
-                  Meteor.loginWithPassword(userEmail, password, function(err){
-                    if (err){
-                      console.log(err);
-                      console.log("login error");
-                    }else{
-                      console.log("log in successful");
-                    };
-                  });
-                  Router.go('/thankyou');
-                }, 3000);
-                return false;
+                var handle = Meteor.subscribe('preUser', userEmail);
+
+                Tracker.autorun(function() {
+                  if (handle.ready()){
+                    $('.subcriptionWait').removeClass('hidden');
+                    Meteor.loginWithPassword(userEmail, password, function(err){
+                      if (err){
+                        console.log(err);
+                        console.log("login error");
+                      }else{
+                        console.log("log in successful");
+                      };
+                    });
+                    Router.go('/thankyou');
+                    return false;
+                  }else{
+                    console.log("waiting");
+                    $('.subcriptionWait').removeClass('hidden');
+                  };
+                });
+
               };
             });
           };

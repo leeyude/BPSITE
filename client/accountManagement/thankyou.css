@@ -185,7 +185,7 @@
 }
 
 #thankyou .skipMark {
-  background: url("/skip.png")  no-repeat;
+  background: url("/skipped.png")  no-repeat;
   background-size: contain;
   width: 22px;
   height: 22px;
@@ -206,6 +206,6 @@
 }
 
 #thankyou .skipped {
-  background: url("/skip.png") no-repeat 50% 75%;
+  background: url("/skipped.png") no-repeat 50% 75%;
   background-size: 32px 32px ;
 }
