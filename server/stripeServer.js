@@ -18,6 +18,7 @@ Meteor.methods({
           activeStatus: true,
         }});
         Meteor.call("createDefaultDeliveryLog", userId);
+        // locates in serverJob.js
         Accounts.setPassword(userId, password);
         console.log(Meteor.users.findOne({"emails.address":userEmail}));
         console.log("set password done.");

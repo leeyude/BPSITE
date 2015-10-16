@@ -1,0 +1,68 @@
+
+#termsSection {
+  min-height: 660px;
+  padding-top: 120px;
+  background-color: rgb(240, 255, 233);
+  background-position: center;
+  padding-bottom: 60px;
+  border-bottom: 2px solid rgb(84, 173, 40);
+  background-image: url(/pearBackground.png);
+
+}
+
+.termsBackground {
+  border-radius: 4px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #e8e8ea;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.termsBlockWrap {
+  border: 1px solid rgb(84, 173, 40);
+  background-color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+.termsBlockWrap h3 {
+  font-size: 32px;
+  text-align: left;
+}
+
+.termsHeader p {
+  color: #666;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.termsContent {
+  margin-top: 20px;
+}
+
+.termsContent p {
+  color: #444;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.5em;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+
+.termsContent und {
+  text-decoration: underline;
+}
+
+.termsContent highlight {
+  font-weight: bold;
+  line-height: 1.8em;
+}

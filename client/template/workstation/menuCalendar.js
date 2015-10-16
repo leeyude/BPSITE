@@ -147,6 +147,12 @@ Session.setDefault("selectingMenuWeek", false);
 Template.menuCalendarWeeks.events({
   "click .menuWeekRow": function(event, template){
     Session.set('selectingMenuWeek', this.menuWeekName);
+    console.log(this);
+    if(this.isReleased){
+      $('#menuWeekReleased').addClass('active');
+    }else{
+      $('#menuWeekReleased').removeClass('active');
+    };
     return false;
   },
 });
@@ -460,8 +466,10 @@ Template.menuRecipeSinglePuree.events({
   "click .deleteMenuRecipe": function(event, template){
      var selectedRecipeId = this.selectedRecipeId;
      var selectingMenuWeek = Session.get('selectingMenuWeek');
+     var menuRecipeIsPublic = this.menuRecipeIsPublic;
+     console.log(this);
 
-     Meteor.call("removeRecipeFromMenu", selectingMenuWeek, selectedRecipeId);
+     Meteor.call("removeRecipeFromMenu", selectingMenuWeek, selectedRecipeId, menuRecipeIsPublic);
   },
 });
 
@@ -513,6 +521,8 @@ Template.menuCalendar.helpers({
       var supplierDetails = menuRecipeObject.supplierDetails;
       var ingredientNSupplierDetailObject = [];
 
+
+
       for(i=0;i<supplierDetails.length;i++){
         var ingredientObject = IngredientCollects.findOne({_id: supplierDetails[i].ingredient});
         var supplierObject = Suppliers.findOne({_id: supplierDetails[i].supplier});
@@ -524,9 +534,8 @@ Template.menuCalendar.helpers({
           supplierState: supplierObject.supplierState
         };
       };
+      console.log(ingredientNSupplierDetailObject);
       return ingredientNSupplierDetailObject;
-    }else{
-      return false;
     };
   },
 
@@ -622,5 +631,19 @@ Template.menuCalendar.events({
     Meteor.call("menuRecipeSetPublic", getCalendarWeekName, getMenuDetailObjects.selectedRecipeId, menuRecipeIsPublic);
     $('#menuRecipeSetToPublic').removeClass('active');
     $('#menuRecipeSetToPrivate').addClass('active');
+  },
+
+  "click #menuWeekReleased": function(event, template){
+    console.log('click');
+    if($('#menuWeekReleased').hasClass('active')){
+      $('#menuWeekReleased').removeClass('active');
+      var getCalendarWeekName = Session.get('selectingMenuWeek');
+      Meteor.call("setMenuRelease", getCalendarWeekName, false);
+    }else{
+      $('#menuWeekReleased').addClass('active');
+      var getCalendarWeekName = Session.get('selectingMenuWeek');
+      Meteor.call("setMenuRelease", getCalendarWeekName, true);
+    };
+    return false;
   },
 });

@@ -1,5 +1,24 @@
+/*
+  weeks in a year {
+  2015: 52,
+  2016: 53,
+  2017: 52,
+  2018: 52,
+  2019: 52,
+  2020: 53,
+  2021: 52,
+  2022: 52,
+  2023: 52,
+  2024: 52,
+  2025: 52,
+  2026: 53,
+
+}
+*/
+
 Meteor.methods({
   createDefaultDeliveryLog:function(userId){
+    // Meteor Call locates in StripeServer
     var userObject = Meteor.users.findOne({_id:userId});
     var firstDelivery = userObject.deliveryLog[0].fulfilmentDate;
     var userDeliveryLog = userObject.deliveryLog[0];

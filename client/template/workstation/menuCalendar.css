@@ -52,9 +52,34 @@
   margin-bottom: 5px;
 }
 
+.menuWeekReleasedCheckbox {
+  line-height: 28px;
+  padding-left: 30px;
+  display: inline-block;
+  width: 110px;;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-right: 3%;
+}
+
 
 .opsCheckbox.active {
   line-height: 36px;
+  display: block;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+}
+
+.menuWeekReleasedCheckbox.active {
+  line-height: 28px;
   display: block;
   float: left;
   position: relative;
@@ -74,6 +99,17 @@
   left: 10px;
 }
 
+.menuWeekReleasedCheckboxIcon{
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}
+
 .active .opsCheckboxIcon {
   background-image: url(/check.png);
   border: none;
@@ -82,6 +118,17 @@
   height: 15px;
   position: absolute;
   top: 8px;
+  left: 10px;
+}
+
+.active .menuWeekReleasedCheckboxIcon {
+  background-image: url(/check.png);
+  border: none;
+  background-size: 15px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 6px;
   left: 10px;
 }
 

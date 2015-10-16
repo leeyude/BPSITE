@@ -27,6 +27,7 @@
               <thead>
                 <tr>
                   <th colspan="2">WK#     </th>
+                  <th colspan="1">RLS     </th>
                   <th colspan="1">#RCP </th>
                   <th colspan="2">SU         </th>
                   <th colspan="2">MO        </th>
@@ -65,6 +66,13 @@
 
             <div class="menuInformation clearfix {{#if selectingMenuWeek}}{{else}}invisible{{/if}}">
               <h3 > Menu of {{selectingMenuWeek}}</h3>
+
+              <div id="menuWeekReleased" class="menuWeekReleasedCheckbox">
+                <div class="menuWeekReleasedCheckboxIcon"></div>
+                <input class="menuWeekReleasedInput" type="checkbox" value=" true">
+                  Released
+              </div>
+
               {{>menuAddRecipe}}
               <div class="menuInformationRow">
                   <h5>Menu Summary</h5>
@@ -199,11 +207,7 @@
                       </thead>
                       <tbody>
                         {{#each menuRecipeIngredientNSupplier}}
-                        <tr>
-                          <td>{{ingredientName}}</td>
-                          <td>{{supplierName}}</td>
-                          <td>{{supplierCity}}, {{supplierState}}</td>
-                        </tr>
+                        {{>recipeSupplierList}}
                         {{/each}}
                       </tbody>
                     </table>
@@ -328,6 +332,7 @@
 <template name="menuCalendarWeeks">
   <tr id={{menuWeekName}} class='menuWeekRow'>
     <td colspan="2">{{weekOfYear}}     </td>
+    <td colspan="1">{{#if isReleased}}Y{{else}}N{{/if}}       </td>
     <td colspan="1">{{#if numActiveRecipies}}{{numActiveRecipies}}{{else}}0{{/if}}    </td>
     <td colspan="2">{{dateSU}}         </td>
     <td colspan="2">{{dateMO}}        </td>
@@ -505,5 +510,13 @@
     <td colspan="2">{{#if imageId}}Yes{{else}}No{{/if}}</td>
     <td colspan="1">{{#if recipeIsSeasonal}}Yes{{else}}No{{/if}}</td>
     <td colspan="1"><div class="deleteMenuRecipe">x</div></td>
+  </tr>
+</template>
+
+<template name="recipeSupplierList">
+  <tr>
+    <td>{{ingredientName}}</td>
+    <td>{{supplierName}}</td>
+    <td>{{supplierCity}}, {{supplierState}}</td>
   </tr>
 </template>

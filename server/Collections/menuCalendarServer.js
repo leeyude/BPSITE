@@ -89,16 +89,43 @@ Meteor.methods({
 
   },
 
-  removeRecipeFromMenu:function(selectingMenuWeek, selectedRecipeId){
-    MenuCalendarWeeks.update(
-      {menuWeekName: selectingMenuWeek},
-      {
-        $pull: {
-               menuEntries: {selectedRecipeId: selectedRecipeId},
+  removeRecipeFromMenu:function(selectingMenuWeek, selectedRecipeId, menuRecipeIsPublic){
+
+
+    if(menuRecipeIsPublic){
+      var numActiveRecipies = MenuCalendarWeeks.findOne({menuWeekName: selectingMenuWeek}).numActiveRecipies;
+      var updateNum = numActiveRecipies-1;
+
+      MenuCalendarWeeks.update(
+        {menuWeekName: selectingMenuWeek},
+        {
+          $pull: {
+                 menuEntries: {selectedRecipeId: selectedRecipeId},
+          }
+        },
+        { multi: true }
+      );
+
+      MenuCalendarWeeks.update(
+        {menuWeekName: selectingMenuWeek},
+        {
+          $set: {
+            numActiveRecipies: updateNum,
+          }
         }
-      },
-      { multi: true }
-    );
+      );
+    }else{
+      MenuCalendarWeeks.update(
+        {menuWeekName: selectingMenuWeek},
+        {
+          $pull: {
+                 menuEntries: {selectedRecipeId: selectedRecipeId},
+          }
+        },
+        { multi: true }
+      );
+    };
+
 
   },
 
@@ -113,7 +140,10 @@ Meteor.methods({
     );
     var menuRecipeEntries = MenuCalendarWeeks.findOne({menuWeekName: getCalendarWeekName}).menuEntries;
     var recipeNum = menuRecipeEntries.length;
+
+
     console.log(recipeNum);
+    console.log('this');
     var numActiveRecipies = 0;
     for(i=0;i<recipeNum;i++){
       if(menuRecipeEntries[i].menuRecipeIsPublic){
@@ -131,5 +161,18 @@ Meteor.methods({
       }
     );
   },
+
+  setMenuRelease:function(getCalendarWeekName, releaseStatus){
+    MenuCalendarWeeks.update(
+      {menuWeekName: getCalendarWeekName},
+      {
+        $set: {
+          isReleased: releaseStatus,
+        }
+      }
+    );
+  },
+
+
 
 });

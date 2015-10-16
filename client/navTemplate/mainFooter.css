@@ -18,14 +18,6 @@
   position: relative;
 }
 
-#mainFooter .col-sm-2 {
-  font-family: "Gentium Book Basic", sans-serif;
-  font-size: 14px;
-  min-height: 100%;
-  margin-top: 22px;
-  text-align: center;
-  vertical-align: middle;
-}
 
 #mainFooter .col-sm-8 {
   font-family: "Gentium Book Basic", sans-serif;
@@ -45,4 +37,21 @@
 
 #mainFooter a {
   color: white;
+}
+
+ .footerItem {
+  width: auto;
+  display: inline-block;
+  float: left;
+  margin-right: 20px;
+}
+
+
+#mainFooter .footerItem {
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 14px;
+  min-height: 100%;
+  margin-top: 22px;
+  text-align: center;
+  vertical-align: middle;
 }

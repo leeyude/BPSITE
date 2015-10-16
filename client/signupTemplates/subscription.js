@@ -212,6 +212,8 @@ Template.subscription.helpers({
 Template.subscription.events({
   "click #startSubscription": function(event, template){
     $('#startSubscription').prop('disabled', true);
+    $('.subcriptionWait').removeClass('hidden');
+
     var password = $('#password').val();
 
     if(password){
@@ -274,7 +276,6 @@ Template.subscription.events({
                     if (handle.ready()){
                       Tracker.autorun(function() {
                         if (handle.ready()){
-                          $('.subcriptionWait').removeClass('hidden');
                           Meteor.loginWithPassword(userEmail, password, function(err){
                             if (err){
                               console.log(err);
@@ -285,9 +286,6 @@ Template.subscription.events({
                           });
                           Router.go('/thankyou');
                           return false;
-                        }else{
-                          console.log("waiting");
-                          $('.subcriptionWait').removeClass('hidden');
                         };
                       });
                     };
@@ -344,9 +342,6 @@ Template.subscription.events({
                     });
                     Router.go('/thankyou');
                     return false;
-                  }else{
-                    console.log("waiting");
-                    $('.subcriptionWait').removeClass('hidden');
                   };
                 });
 

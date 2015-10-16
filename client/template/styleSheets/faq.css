@@ -1,0 +1,87 @@
+
+#faqDescription {
+  min-height: 660px;
+  padding-top: 120px;
+  background-color: rgb(240, 255, 233);
+  background-position: center;
+  padding-bottom: 40px;
+  border-bottom: 2px solid rgb(84, 173, 40);
+  background-image: url(/pearBackground.png);
+
+}
+
+.faqBackground {
+  border-radius: 4px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #e8e8ea;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.faqBlockWrap {
+  border: 1px solid rgb(84, 173, 40);
+  background-color: white;
+  padding: 20px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+.faqBlockWrap h3 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.faqBlock {
+
+  border-radius: 2px;
+  width: 100%;
+  display: inline-block;
+  float: left;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  padding-right: 30px;
+}
+
+.faqBlock h4 {
+  padding: 12px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  line-height: 1.25em;
+  font-weight: 400;
+  font-size: 22px;
+  text-decoration: underline;
+}
+
+.faqBlock h5 {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  line-height: 1.25em;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.faqBlock p {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+  color: #555;
+}
+
+.questionBlock {
+  margin-top: 30px;
+  padding-left: 12px;
+}

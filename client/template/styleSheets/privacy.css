@@ -1,0 +1,68 @@
+
+#privacySection {
+  min-height: 660px;
+  padding-top: 120px;
+  background-color: rgb(240, 255, 233);
+  background-position: center;
+  padding-bottom: 40px;
+  border-bottom: 2px solid rgb(84, 173, 40);
+  background-image: url(/pearBackground.png);
+
+}
+
+.privacyBackground {
+  border-radius: 4px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #e8e8ea;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.privacyBlockWrap {
+  border: 1px solid rgb(84, 173, 40);
+  background-color: white;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  display: block;
+  width: 100%;
+  float: left;
+}
+
+.privacyBlockWrap h3 {
+  font-size: 32px;
+  text-align: left;
+}
+
+.privacyHeader p {
+  color: #666;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.privacyContent {
+  margin-top: 20px;
+}
+
+.privacyContent p {
+  color: #444;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.5em;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+
+.privacyContent und {
+  text-decoration: underline;
+}
+
+.privacyContent highlight {
+  font-weight: bold;
+  line-height: 1.8em;
+}

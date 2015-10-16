@@ -206,6 +206,18 @@ if (Meteor.isClient) {
     this.render('about');
   });
 
+  Router.route('/faq', function () {
+    this.render('faq');
+  });
+
+  Router.route('/privacy', function () {
+    this.render('privacy');
+  });
+
+  Router.route('/terms', function () {
+    this.render('terms');
+  });
+
   Router.route('/workstation/themagicofbabypurest', function () {
     this.render('themagicofbabypurest');
   });
