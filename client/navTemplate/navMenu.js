@@ -8,25 +8,35 @@ Template.navMenu.events({
 
 if (Meteor.isClient) {
 
-  Router.route('/', function () {
-    this.render('homepage');
+  Router.route('/', {
+    action: function(){
+      this.render('homepage');
+      $("html, body").animate({ scrollTop: 0 }, 0);
+    },
   });
 
   Router.route('/howItWorks', {
     action: function(){
       this.render('howItWorks');
+      $("html, body").animate({ scrollTop: 0 }, 0);
     },
     waitOn: function(){
       return [Meteor.subscribe('supplierImages'), Meteor.subscribe('supplierPublish')];
     },
   });
 
-  Router.route('/weeklyMenu', function () {
-    this.render('weeklyMenu');
+  Router.route('/weeklyMenu', {
+    action: function(){
+      this.render('weeklyMenu');
+      $("html, body").animate({ scrollTop: 0 }, 0);
+    },
   });
 
-  Router.route('/pricing', function () {
-    this.render('pricing');
+  Router.route('/pricing', {
+    action: function(){
+      this.render('pricing');
+      $("html, body").animate({ scrollTop: 0 }, 0);
+    },
   });
 
   Router.route('/signup', function () {
@@ -202,20 +212,32 @@ if (Meteor.isClient) {
     },
   });
 
-  Router.route('/about', function () {
-    this.render('about');
+  Router.route('/about', {
+    action: function(){
+      this.render('about');
+      $("html, body").animate({ scrollTop: 0 }, 0);
+    },
   });
 
-  Router.route('/faq', function () {
-    this.render('faq');
+  Router.route('/faq', {
+    action: function(){
+      this.render('faq');
+      $("html, body").animate({ scrollTop: 0 }, 0);
+    },
   });
 
-  Router.route('/privacy', function () {
-    this.render('privacy');
+  Router.route('/privacy', {
+    action: function(){
+      this.render('privacy');
+      $("html, body").animate({ scrollTop: 0 }, 0);
+    },
   });
 
-  Router.route('/terms', function () {
-    this.render('terms');
+  Router.route('/terms', {
+    action: function(){
+      this.render('terms');
+      $("html, body").animate({ scrollTop: 0 }, 0);
+    },
   });
 
   Router.route('/workstation/themagicofbabypurest', function () {
