@@ -1,9 +1,9 @@
 <template name="userManagement">
   {{>workStationNav}}
 
-  <section id="Station-userManagement">
+  <section id="userManagement">
     <div class="container">
-      <div class="page-header">
+      <div class="page-header clearfix">
         <h1>User <small>List</small></h1> {{#if userTypeSelection}} <h1><small> - Consumers</small></h1>{{else}} <h1><small> - Admins</small></h1>{{/if}}
         <div class="userTypeSelection">
           <div class="userTypeBP">
@@ -51,27 +51,60 @@
 
         {{else}}
 <!--Admin-->
-        <table class='table table-striped table-bordered table-hover table-condensed'>
-          <thead>
-            <tr>
-              <th>First Name          </th>
-              <th>Last Name           </th>
-              <th>Email               </th>
-              <th>Role                </th>
-              <th>Employee #          </th>
-              <th>is Admin         </th>
-              <th>Active since         </th>
+        <div class="col-sm-4">
+          <table class='table table-striped table-bordered table-hover table-condensed'>
+            <thead>
+              <tr>
+                <th>First Name          </th>
+                <th>Last Name           </th>
+                <th>Email               </th>
+                <th>Role                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each BPadminLine}}
+                {{>BPadminData}}
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-sm-8">
+          <h3>Admin Information</h3>
+          {{>adminAdd}}
 
-            </tr>
-          </thead>
-          <tbody>
-            {{#each BPadminLine}}
-              {{>BPadminData}}
-            {{/each}}
-          </tbody>
-        </table>
+          {{#if currentAdmin}}
+          {{>adminEdit}}
+          {{/if}}
+          <div class="twoColRow userManagementInformation">
+            <div class="col-xs-6">
+              <dl>
+                <dt>First Name </dt>
+                <dd id='adminFirstName'></dd>
+                <dt>Email: </dt>
+                <dd id='adminEmail'></dd>
+                <dt>Employee #</dt>
+                <dd id='adminEmployeeNumber'></dd>
 
+              </dl>
+            </div>
+            <div class="col-xs-6">
+              <dl>
+                <dt>Last Name </dt>
+                <dd id='adminLastName'></dd>
+                <dt>Role: </dt>
+                <dd id='adminRole'></dd>
+                <dt>Created At:</dt>
+                <dd id='adminCreatedAt'></dd>
 
+              </dl>
+            </div>
+          </div>
+
+          <div id="deleteAdmin" class="btn">
+            Delete
+          </div>
+
+        </div>
         {{/if}}
       </div>
     </div>
@@ -85,11 +118,124 @@
   <tr class="BPadminData">
     <td>{{firstName}}</td>
     <td>{{lastName}}</td>
-    <td>{{email}}</td>
+    <td>{{adminEmail}}</td>
     <td>{{role}}</td>
-    <td>{{employeeSerial}}</td>
-    <td>{{isAdmin}}</td>
-    <td>{{createdAt}}</td>
-
   </tr>
+</template>
+
+<template name="adminEdit">
+<!-- Button trigger modal -->
+
+<div class="adminEditSession">
+  <button type="button" class="btn btn-lg" data-toggle="modal" id="adminEditSession" data-target="#adminEditSessionForm">
+    Edit
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="adminEditSessionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+        <h4 class="modal-title">Update Admin</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <label for="adminFirstName">First Name</label>
+        <input id='adminFirstNameEdit' type='text' class='adminFirstName input form-control input-xlarge' placeholder='First Name'>
+
+        <label for="adminLastName">Last Name</label>
+
+        <input id='adminLastNameEdit' type='text' class='adminLastName input form-control input-xlarge' placeholder='Last Name'>
+
+        <label for="adminRole">Role</label>
+        <select id='adminRoleEdit' name= "adminRole" class='form-control adminRole'>
+          <option>-</option>
+          <option>Founder</option>
+          <option>Operations</option>
+          <option>Tech</option>
+          <option>Growth</option>
+          <option>Product</option>
+          <option>General</option>
+        </select>
+
+        <label for="adminEmployeeNumber">Employee Number</label>
+        <input id='adminEmployeeNumberEdit' type='text' class='adminEmployeeNumber input form-control input-xlarge' placeholder='Employee Number'>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+        <button type="button" id='adminEditSave' class="btn btn-primary save" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</template>
+
+<template name="adminAdd">
+<!-- Button trigger modal -->
+
+<div class="adminAddSession">
+  <button type="button" class="btn btn-lg" data-toggle="modal" id="adminAddSession" data-target="#adminAddSessionForm">
+    Add
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="adminAddSessionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
+        <h4 class="modal-title">Add Admin</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <label for="adminFirstName">First Name</label>
+        <input id='adminFirstNameAdd' type='text' class='adminFirstName input form-control input-xlarge' placeholder='First Name'>
+
+        <label for="adminLastName">Last Name</label>
+
+        <input id='adminLastNameAdd' type='text' class='adminLastName input form-control input-xlarge' placeholder='Last Name'>
+
+        <label for="adminRole">Role</label>
+        <select id='adminRoleAdd' name= "adminRole" class='form-control adminRole'>
+          <option>-</option>
+          <option>Founder</option>
+          <option>Operations</option>
+          <option>Tech</option>
+          <option>Growth</option>
+          <option>Product</option>
+          <option>General</option>
+        </select>
+
+        <label for="adminEmployeeNumber">Employee Number</label>
+        <input id='adminEmployeeNumberAdd' type='text' class='adminEmployeeNumber input form-control input-xlarge' placeholder='Employee Number'>
+
+        <label for="adminEmail">Email</label>
+        <input id='adminEmailAdd' type='text' class='adminEmail input form-control input-xlarge' placeholder='Employee Email'>
+
+        <label for="adminEmployeeNumber">Password</label>
+        <input id='adminPasswordAdd' type='password' class='adminPassword input form-control input-xlarge' placeholder='Password'>
+
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+        <button type="button" id='adminAddSave' class="btn btn-primary save" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </template>

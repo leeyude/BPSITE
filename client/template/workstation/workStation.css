@@ -6,7 +6,7 @@
   display: inline-block;
 }
 
-#Station-ingredient h1, #supplier h1, #recipe h1{
+#Station-ingredient h1, #supplier h1, #recipe h1, #userManagement h1{
   width: 270px;
   float: left;
   margin-top: 0;

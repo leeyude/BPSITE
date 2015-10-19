@@ -1,4 +1,5 @@
 WaitlistUsers = new Mongo.Collection("waitlistUsers");
+UserAdmins= new Mongo.Collection("userAdmins");
 
 /*
 schema:
@@ -90,4 +91,71 @@ Meteor.methods({
 
   },
 
+  // edit admin
+  adminEditSave: function(adminUpdateObject){
+
+
+    UserAdmins.update({_id:adminUpdateObject._id}, {$set:{
+      firstName: adminUpdateObject.firstName,
+      lastName: adminUpdateObject.lastName,
+      role: adminUpdateObject.role,
+      adminEmployeeNumber:adminUpdateObject.adminEmployeeNumber,
+      profileComplete: true,
+    }});
+  },
+
+  adminAddSave: function(adminUpdateObject){
+/*    var adminUpdateObject = {
+      firstName: firstName,
+      lastName: lastName,
+      role: role,
+      adminEmployeeNumber:adminEmployeeNumber,
+      adminEmailAdd: adminEmailAdd,
+      adminPasswordAdd: adminPasswordAdd,
+      profileComplete: true,
+    };*/
+
+    var getMeteorUser = Meteor.users.findOne({"emails.address": adminUpdateObject.adminEmailAdd});
+
+    UserAdmins.insert({
+      adminId: getMeteorUser._id,
+      adminEmail: adminUpdateObject.adminEmailAdd,
+      firstName: adminUpdateObject.firstName,
+      lastName: adminUpdateObject.lastName,
+      role: adminUpdateObject.role,
+      adminEmployeeNumber:adminUpdateObject.adminEmployeeNumber,
+      profileComplete: true,
+    });
+
+  },
+
+  deleteAdmin: function(currentAdmin){
+    Meteor.users.remove({_id:currentAdmin.adminId});
+    UserAdmins.remove({_id:currentAdmin._id});
+
+  },
+
 });
+
+
+
+
+if(Meteor.isServer){
+  var adminCount = UserAdmins.find().count();
+  console.log(adminCount);
+  if(adminCount>0){
+
+  }else{
+    var user1 = Meteor.users.findOne({'emails.address':'yl@babypurest.com'});
+    var user2 = Meteor.users.findOne({'emails.address':'nw@babypurest.com'});
+
+    UserAdmins.insert({
+          adminId: user1._id,
+          adminEmail: user1.emails[0].address
+    });
+    UserAdmins.insert({
+          adminId: user2._id,
+          adminEmail: user2.emails[0].address
+    });
+  };
+}

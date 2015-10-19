@@ -268,8 +268,14 @@ if (Meteor.isClient) {
     },
   });
 
-  Router.route('/workstation/userManagement', function () {
-    this.render('userManagement');
+  Router.route('/workstation/userManagement', {
+    action: function(){
+
+      this.render('userManagement');
+    },
+    waitOn: function(){
+      return [Meteor.subscribe('allUserData'), Meteor.subscribe('adminData')];
+    },
   });
 
   Router.route('/workstation/zipcodes', function () {

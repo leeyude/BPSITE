@@ -1,0 +1,173 @@
+#userManagement .page-header {
+  display: block;
+}
+
+#userManagement .col-sm-6 {
+  padding: 0;
+}
+
+#userManagement h3 {
+  margin-top: 0;
+  width: 60%;
+  float: left;
+}
+
+.opsCheckboxWrap {
+  float: left;
+  width: 130px;
+  font-family: "Gentium Book Basic", sans-serif;
+  font-size: 14px;
+}
+
+.opsCheckbox {
+  line-height: 36px;
+  padding-left: 30px;
+  display: inline-block;
+  width: 110px;;
+  float: left;
+  position: relative;
+  border: 1px solid #c3c3c3;
+  border-radius:3px;
+  color: #c3c3c3;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.opsCheckbox.active {
+  line-height: 36px;
+  display: block;
+  float: left;
+  position: relative;
+  border: 1px solid rgb(84, 173, 40);
+  border-radius:3px;
+  color: rgb(84, 173, 40);
+}
+
+.opsCheckboxIcon{
+  border-radius: 2px;
+  border: 1px solid #c3c3c3;
+  background-size: 20px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.active .opsCheckboxIcon {
+  background-image: url(/check.png);
+  border: none;
+  background-size: 15px,auto;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+.userManagementInformation .col-xs-6 {
+  padding: 0;
+
+}
+
+.userManagementInformation h3, .userManagementInformation h5 {
+  color: #666;
+}
+
+.userManagementInformation h5 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.userManagementInformation p {
+  border: 1px solid #999;
+  min-height: 60px;
+  padding-left: 6px;
+}
+
+.userManagementInformation dt {
+  border-bottom: 1px dotted #ddd;
+  margin-bottom: 8px;
+  color: #666;
+  font-family: "Quando", sans-serif;
+  font-size: 11px;
+  min-height: 20px;
+  width: 46%;
+  float: left;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.userManagementInformation dd {
+  border-bottom: 1px dotted #ddd;
+  margin-bottom: 8px;
+  color: #777;
+  font-family: "Quando", sans-serif;
+  font-size: 11px;
+  min-height: 20px;
+  width: 46%;
+  float: right;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.twoColRow {
+  display: inline-block;
+  width: 100%;
+}
+
+.userManagementDetails {
+  width: 100%;
+  float: left;
+
+}
+
+.edituserManagement {
+  float: right;
+}
+
+.userManagementPhotoBlock {
+  border: 1px solid #999;
+  display: block;
+  width: 100%;
+  float: left;
+  padding: 3px;
+}
+
+.userManagementPhotoUnit {
+  border: 1px solid #999;
+  display: block;
+  width: 30%;
+  height: 90px;
+  float: left;
+  margin-right: 3px;
+  background-size: contain;
+}
+
+.userManagementPhotoUnit.selected {
+  border: 3px solid rgb(84, 173, 40);
+}
+
+.deleteuserManagementImage {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  color: #888;
+  float: right;
+  margin-right: 5px;
+  z-index: 5;
+}
+
+
+.deleteuserManagementImage:hover {
+  color: #222;
+
+}
+
+#adminEditSession, #adminAddSession, #deleteAdmin {
+  float: right;
+  margin-left: 10px;
+}
