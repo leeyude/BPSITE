@@ -268,10 +268,20 @@ if (Meteor.isClient) {
     },
   });
 
-  Router.route('/workstation/userManagement', {
+  Router.route('/workstation/adminUsers', {
     action: function(){
 
-      this.render('userManagement');
+      this.render('adminUsers');
+    },
+    waitOn: function(){
+      return [Meteor.subscribe('allUserData'), Meteor.subscribe('adminData')];
+    },
+  });
+
+  Router.route('/workstation/consumerUsers', {
+    action: function(){
+
+      this.render('consumerUsers');
     },
     waitOn: function(){
       return [Meteor.subscribe('allUserData'), Meteor.subscribe('adminData')];

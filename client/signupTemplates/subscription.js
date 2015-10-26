@@ -1,10 +1,11 @@
-Template.subscription.helpers({
-  deliveryData: function(){
+Template.subscription.onCreated(function(){
+
     var userId= Session.get("preUserLoggedIn");
     var handle= Meteor.subscribe("userData");
 
     Tracker.autorun(function() {
       if (handle.ready()){
+        console.log('handle ready');
         var userObject = Meteor.users.findOne({_id:userId});
         var deliveryData = userObject.deliveryLog[0];
         var subtotal = parseFloat(deliveryData.subtotal).toFixed(2);
@@ -166,12 +167,16 @@ Template.subscription.helpers({
           deliveryAddress: deliveryAddress
         };
         Session.set("deliveryData", deliveryObject);
+        console.log(deliveryObject);
 
-        return Session.get("deliveryData");
       };
     });
 
+});
 
+Template.subscription.helpers({
+  deliveryData: function(){
+    return Session.get("deliveryData");
   },
   babyStatus: function(){
     return Session.get("babyStatus");

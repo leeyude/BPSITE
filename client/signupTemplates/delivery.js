@@ -521,6 +521,10 @@ Template.delivery.events({
       var deliveryStatus = 1;
     };
 
+    var firstDelivery = template.find("#firstDeliveryOptions").value;
+    var momentFirstDelivery = moment(firstDelivery, "dddd, MMM Do");
+    var menuWeek = 'Y'+moment(momentFirstDelivery).year()+'WK'+moment(momentFirstDelivery).week();
+
     var deliveryObject = {
       addressType: userObject.profile.addressType,
       userFirstName: template.find("#userFirstName").value,
@@ -534,6 +538,7 @@ Template.delivery.events({
       deliveryDay: template.find("#deliveryDay").value,
       firstDelivery: template.find("#firstDeliveryOptions").value,
       deliveryStatus: deliveryStatus,
+      menuWeek: menuWeek,
     };
     console.log(deliveryObject);
     var warningCount = 0;

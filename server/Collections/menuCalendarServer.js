@@ -39,6 +39,7 @@ if (Meteor.isServer) {
         dateSA: dateSA,
         menuEntries: [],
         numActiveRecipies: 0,
+        isReleased: false,
       });
     };
   };

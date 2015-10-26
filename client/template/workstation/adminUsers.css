@@ -1,12 +1,12 @@
-#userManagement .page-header {
+#adminUsers .page-header {
   display: block;
 }
 
-#userManagement .col-sm-6 {
+#adminUsers .col-sm-6 {
   padding: 0;
 }
 
-#userManagement h3 {
+#adminUsers h3 {
   margin-top: 0;
   width: 60%;
   float: left;
@@ -68,27 +68,27 @@
   left: 10px;
 }
 
-.userManagementInformation .col-xs-6 {
+.adminUsersInformation .col-xs-6 {
   padding: 0;
 
 }
 
-.userManagementInformation h3, .userManagementInformation h5 {
+.adminUsersInformation h3, .adminUsersInformation h5 {
   color: #666;
 }
 
-.userManagementInformation h5 {
+.adminUsersInformation h5 {
   margin-top: 10px;
   font-size: 18px;
 }
 
-.userManagementInformation p {
+.adminUsersInformation p {
   border: 1px solid #999;
   min-height: 60px;
   padding-left: 6px;
 }
 
-.userManagementInformation dt {
+.adminUsersInformation dt {
   border-bottom: 1px dotted #ddd;
   margin-bottom: 8px;
   color: #666;
@@ -101,7 +101,7 @@
   margin-right: 2%;
 }
 
-.userManagementInformation dd {
+.adminUsersInformation dd {
   border-bottom: 1px dotted #ddd;
   margin-bottom: 8px;
   color: #777;
@@ -119,17 +119,17 @@
   width: 100%;
 }
 
-.userManagementDetails {
+.adminUsersDetails {
   width: 100%;
   float: left;
 
 }
 
-.edituserManagement {
+.editadminUsers {
   float: right;
 }
 
-.userManagementPhotoBlock {
+.adminUsersPhotoBlock {
   border: 1px solid #999;
   display: block;
   width: 100%;
@@ -137,7 +137,7 @@
   padding: 3px;
 }
 
-.userManagementPhotoUnit {
+.adminUsersPhotoUnit {
   border: 1px solid #999;
   display: block;
   width: 30%;
@@ -147,11 +147,11 @@
   background-size: contain;
 }
 
-.userManagementPhotoUnit.selected {
+.adminUsersPhotoUnit.selected {
   border: 3px solid rgb(84, 173, 40);
 }
 
-.deleteuserManagementImage {
+.deleteadminUsersImage {
   cursor: pointer;
   display: block;
   position: relative;
@@ -162,7 +162,7 @@
 }
 
 
-.deleteuserManagementImage:hover {
+.deleteadminUsersImage:hover {
   color: #222;
 
 }

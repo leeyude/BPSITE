@@ -1175,6 +1175,8 @@ Meteor.methods({
             tempDeliveryContent[0],tempDeliveryContent[1],tempDeliveryContent[2]
           ],
           subtotal: subtotal,
+          menuWeek: deliveryInfo.menuWeek,
+
         },
       ],
     }});
