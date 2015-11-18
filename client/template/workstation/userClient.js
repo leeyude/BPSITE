@@ -2,8 +2,28 @@
 // Admin user display when session value is set to false, which is default;
 // consumer user display when session value is set to true.
 UserAdmins= new Mongo.Collection("userAdmins");
+Session.setDefault("userTypeSelection", false);
+// when userTypeSelection is set to false, indicating the user type is ADMIN.
 
-Template.adminUsers.helpers({
+Template.userManagement.events({
+  "click #userTypeBPAdminButton": function(event, template){
+    Session.set("userTypeSelection", false);
+    var userTypeSelection = Session.get("userTypeSelection");
+    return Session.get("userTypeSelection");
+  },
+  "click #userTypeConsumerButton": function(event, template){
+    Session.set("userTypeSelection", true);
+    // when userTypeSelection is set to true, indicating the user type is consumer.
+
+    var userTypeSelection = Session.get("userTypeSelection");
+    return Session.get("userTypeSelection");
+  },
+});
+
+
+
+
+Template.userManagement.helpers({
   BPadminLine: function(){
     return UserAdmins.find();
   },
@@ -17,7 +37,7 @@ Template.adminUsers.helpers({
 
 Session.setDefault('currentAdmin',false);
 
-Template.adminUsers.helpers({
+Template.userManagement.helpers({
   currentAdmin: function(){
     return Session.get('currentAdmin');
   }
@@ -162,7 +182,7 @@ Template.adminAdd.events({
 
 // delete admin
 
-Template.adminUsers.events({
+Template.userManagement.events({
   "click #deleteAdmin": function(event, template){
     var currentAdmin = Session.get('currentAdmin');
     Meteor.call("deleteAdmin", currentAdmin, function(error, result){
